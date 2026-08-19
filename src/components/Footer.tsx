@@ -1,6 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mountain, Mail, Phone, MapPin, ShieldCheck, Award, Heart, MessageSquare, ArrowUp, Send, ExternalLink } from 'lucide-react';
+import {
+  Mountain,
+  Mail,
+  Phone,
+  MapPin,
+  ShieldCheck,
+  Award,
+  Heart,
+  MessageSquare,
+  ArrowUp,
+  FileText,
+  Sparkles,
+  ExternalLink,
+  Compass
+} from 'lucide-react';
+import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '../data/treks';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -10,28 +25,30 @@ export const Footer: React.FC = () => {
   return (
     <footer id="main-footer" className="bg-slate-950 text-slate-300 border-t-2 border-sky-500">
       {/* Top Banner Strip */}
-      <div className="bg-sky-900 text-sky-100 py-6 border-b border-sky-800">
+      <div className="bg-slate-900 text-slate-100 py-6 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-widest text-sky-300">Ready for Karakoram Expedition?</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
+              {BRAND_INFO.tagline}
+            </span>
             <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              #EXPLORE KARAKORAM WITH LICENSED MOUNTAINEERS
+              FROM AIRPORT TO THE HIGHEST PEAKS — WORRY-FREE EXPEDITIONS
             </h3>
           </div>
 
           <div className="flex items-center gap-3">
             <a
-              href="https://wa.me/923009876543?text=Hello%20Karakoram%20Expeditions"
+              href="https://wa.me/923009876543?text=Hello%20Trek%20Karakoram"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-4 py-2.5 text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors"
             >
               <MessageSquare className="w-4 h-4" />
               <span>WhatsApp 24/7 Dispatch</span>
             </a>
             <button
               onClick={scrollToTop}
-              className="bg-sky-950 hover:bg-sky-800 text-white p-2 border border-sky-700 transition-colors"
+              className="bg-slate-800 hover:bg-slate-700 text-white p-2.5 border border-slate-700 transition-colors"
               title="Scroll to top"
               aria-label="Scroll to top"
             >
@@ -47,27 +64,27 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand (Spans 2 on lg) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-sky-500 flex items-center justify-center text-slate-950 font-black">
+              <div className="w-10 h-10 bg-sky-600 flex items-center justify-center text-white font-black">
                 <Mountain className="w-6 h-6 text-white" />
               </div>
               <div>
                 <span className="font-extrabold text-lg tracking-tight text-white">
-                  KARAKORAM EXPEDITIONS
+                  TREK KARAKORAM
                 </span>
                 <span className="block text-[11px] text-sky-400 font-semibold">
-                  Department of Tourist Services License: ID-2891
+                  {BRAND_INFO.licenseNo}
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Pakistan’s premier high-altitude adventure operator specializing in K2 Base Camp, Baltoro Glacier, Gondogoro La pass, Snow Lake, and Fairy Meadows. Based in Skardu with operational support in Islamabad.
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm font-story">
+              Born from the heart of the Karakoram. A soulful, human-centered adventure travel brand providing complete end-to-end guided expeditions across K2 Base Camp, Baltoro, Concordia, Nanga Parbat, and Snow Lake.
             </p>
 
             <div className="pt-2 text-xs space-y-1.5 text-slate-300">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <span><strong>Skardu HQ:</strong> College Road, Airport Link, Skardu 16100, GB, Pakistan</span>
+                <span><strong>Skardu Basecamp HQ:</strong> College Road, Airport Link, Skardu 16100, GB, Pakistan</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
@@ -75,11 +92,11 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <span>+92 300 9876543 / +92 5815 452100</span>
+                <span>{BRAND_INFO.phone}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <span>info@karakoramexpeditions.com</span>
+                <span>{BRAND_INFO.email}</span>
               </div>
             </div>
           </div>
@@ -87,7 +104,7 @@ export const Footer: React.FC = () => {
           {/* Column 2: Popular Expeditions */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 pb-1 border-b border-slate-800">
-              Featured Expeditions
+              Signature Treks
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
@@ -107,12 +124,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/treks/snow-lake-biafo-hispar" className="hover:text-sky-400 transition-colors">
-                  Snow Lake & Hispar La Pass
-                </Link>
-              </li>
-              <li>
-                <Link to="/treks/k2-basecamp-heli-trek" className="hover:text-sky-400 transition-colors">
-                  K2 Base Camp VIP Heli-Trek
+                  Snow Lake & Hispar La Traverse
                 </Link>
               </li>
               <li>
@@ -120,144 +132,133 @@ export const Footer: React.FC = () => {
                   Rakaposhi & Diran Base Camp
                 </Link>
               </li>
+              <li>
+                <Link to="/treks/k2-basecamp-heli-trek" className="hover:text-sky-400 transition-colors">
+                  K2 Base Camp Heli-Trek (VIP)
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 3: Safety & Guides & Travel Styles */}
+          {/* Column 3: Travel Styles & Guides */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 pb-1 border-b border-slate-800">
-              Safety & Resources
+              Expedition Guides
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link to="/safety-and-guides" className="hover:text-sky-400 transition-colors">
-                  High-Altitude Safety Protocols
-                </Link>
-              </li>
-              <li>
-                <Link to="/travel-styles" className="hover:text-sky-400 transition-colors">
-                  Travel Styles & Categories
-                </Link>
-              </li>
-              <li>
-                <Link to="/permits-visa-guide" className="hover:text-sky-400 transition-colors">
-                  Pakistan Trekking E-Visa Guide
+                <Link to="/destinations" className="hover:text-sky-400 transition-colors">
+                  Mountain Destinations
                 </Link>
               </li>
               <li>
                 <Link to="/routes-map" className="hover:text-sky-400 transition-colors">
-                  Interactive Route Waypoints Map
+                  Interactive Route Map
                 </Link>
               </li>
               <li>
                 <Link to="/planner" className="hover:text-sky-400 transition-colors">
-                  Custom Cost Planner & Estimator
+                  Custom Cost Estimator
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="hover:text-sky-400 transition-colors">
-                  Frequently Asked Questions (FAQ)
+                <Link to="/travel-styles" className="hover:text-sky-400 transition-colors">
+                  Expedition Travel Styles
+                </Link>
+              </li>
+              <li>
+                <Link to="/safety-and-guides" className="hover:text-sky-400 transition-colors">
+                  High Altitude Safety & SOS
+                </Link>
+              </li>
+              <li>
+                <Link to="/permits-visa-guide" className="hover:text-sky-400 transition-colors">
+                  Pakistan E-Visa & Permits
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="hover:text-sky-400 transition-colors">
+                  Knowledge Base & Stories
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Blog Guides & Direct Files */}
+          {/* Column 4: Trust & Indexing */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 pb-1 border-b border-slate-800">
-              Guides & Indexing
+              Trust & Indexing
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link to="/blog" className="hover:text-sky-400 transition-colors">
-                  All Trekking Guides & Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog/k2-base-camp-trek-guide" className="hover:text-sky-400 transition-colors">
-                  K2 Base Camp Complete Guide
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog/pakistan-trekking-visa-guide" className="hover:text-sky-400 transition-colors">
-                  How to Get Pakistan Trek Visa
+                <Link to="/faq" className="hover:text-sky-400 transition-colors">
+                  Frequently Asked Questions
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-sky-400 transition-colors">
-                  Contact Our Operations Desks
+                  Operations & Inquiries
                 </Link>
               </li>
-              <li>
-                <a href="/sitemap.xml" target="_blank" className="hover:text-sky-400 transition-colors flex items-center gap-1">
-                  <span>XML Sitemap</span>
-                  <ExternalLink className="w-3 h-3 text-slate-500" />
+              <li className="pt-2 border-t border-slate-800/80">
+                <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 flex items-center gap-1 font-mono text-[11px]">
+                  <span>sitemap.xml</span>
+                  <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
               <li>
-                <a href="/llms.txt" target="_blank" className="hover:text-sky-400 transition-colors flex items-center gap-1">
-                  <span>LLMs Knowledge File (llms.txt)</span>
-                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                <a href="/robots.txt" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 flex items-center gap-1 font-mono text-[11px]">
+                  <span>robots.txt</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
+                <a href="/llms.txt" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 flex items-center gap-1 font-mono text-[11px]">
+                  <span>llms.txt (AI Index)</span>
+                  <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Global Support Desks */}
-        <div className="mt-10 pt-8 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-          <div className="bg-slate-900/80 p-3 border border-slate-800">
-            <div className="font-bold text-white flex items-center gap-1.5">
-              <span>🇵🇰 Pakistan Headquarters</span>
+        {/* Founding Member Callout Box */}
+        <div className="mt-10 p-6 bg-slate-900 border border-sky-500/40 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="space-y-1 text-center md:text-left">
+            <div className="flex items-center gap-2 justify-center md:justify-start">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">
+                {FOUNDING_MEMBERS_SPECIAL.title}
+              </span>
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
-              Skardu Operations: +92 300 9876543<br />
-              Airport Road, Skardu, Gilgit-Baltistan
-            </div>
+            <p className="text-xs text-slate-300 max-w-2xl">
+              Receive 20% direct discount on any 2026/2027 trek, lifetime 10% loyalty privileges, and free Trek Karakoram merchandise.
+            </p>
           </div>
-
-          <div className="bg-slate-900/80 p-3 border border-slate-800">
-            <div className="font-bold text-white flex items-center gap-1.5">
-              <span>🇺🇸 North America Desk</span>
-            </div>
-            <div className="text-[11px] text-slate-400 mt-1">
-              USA Liaison: +1 415 800 3921<br />
-              support.na@karakoramexpeditions.com
-            </div>
-          </div>
-
-          <div className="bg-slate-900/80 p-3 border border-slate-800">
-            <div className="font-bold text-white flex items-center gap-1.5">
-              <span>🇪🇺 Europe & UK Desk</span>
-            </div>
-            <div className="text-[11px] text-slate-400 mt-1">
-              London / Munich: +44 20 7946 0912<br />
-              europe@karakoramexpeditions.com
-            </div>
-          </div>
+          <Link
+            to="/planner"
+            className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-black text-xs uppercase tracking-wider transition-colors shrink-0"
+          >
+            Claim Founding Member Privileges
+          </Link>
         </div>
 
-        {/* Accreditations & Payment methods */}
-        <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="font-bold text-slate-300">Affiliations:</span>
-            <span className="bg-slate-900 px-2 py-1 border border-slate-800 text-[11px]">Alpine Club of Pakistan</span>
-            <span className="bg-slate-900 px-2 py-1 border border-slate-800 text-[11px]">ATOAP Licensed</span>
-            <span className="bg-slate-900 px-2 py-1 border border-slate-800 text-[11px]">Govt. DTS ID-2891</span>
-            <span className="bg-slate-900 px-2 py-1 border border-slate-800 text-[11px]">Leave No Trace</span>
+        {/* Legal & Affiliations */}
+        <div className="mt-8 pt-8 border-t border-slate-800 text-[11px] text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
+            <span className="text-slate-200 font-semibold">Affiliations:</span>
+            <span>Alpine Club of Pakistan</span>
+            <span>•</span>
+            <span>Pakistan Tourism Development Corporation (PTDC)</span>
+            <span>•</span>
+            <span>Askari Aviation Rescue</span>
+            <span>•</span>
+            <span>IPPG Porter Welfare</span>
           </div>
 
-          <div className="flex items-center gap-2 text-[11px]">
-            <span>Accepted Payments:</span>
-            <span className="bg-slate-900 px-2 py-0.5 border border-slate-800 font-mono text-white">VISA</span>
-            <span className="bg-slate-900 px-2 py-0.5 border border-slate-800 font-mono text-white">MasterCard</span>
-            <span className="bg-slate-900 px-2 py-0.5 border border-slate-800 font-mono text-white">Wire Transfer</span>
+          <div className="text-center sm:text-right">
+            <span>© {new Date().getFullYear()} Trek Karakoram. All rights reserved.</span>
           </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="mt-8 pt-4 border-t border-slate-900 text-center text-[11px] text-slate-500">
-          © {new Date().getFullYear()} Karakoram Expeditions Pakistan. All rights reserved. Registered with Department of Tourist Services, Government of Pakistan.
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { TREK_PACKAGES } from '../data/treks';
+import { TREK_PACKAGES, BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '../data/treks';
 import { Currency, TrekPackage } from '../types';
 import { formatPrice } from '../utils/currency';
 import {
@@ -22,7 +22,8 @@ import {
   Users,
   ChevronRight,
   PhoneCall,
-  Sparkles
+  Sparkles,
+  Gift
 } from 'lucide-react';
 
 interface TrekDetailPageProps {
@@ -36,12 +37,21 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
   const trek = TREK_PACKAGES.find((t) => t.id === id) || TREK_PACKAGES[0];
 
-  const [activeTab, setActiveTab] = useState<'itinerary' | 'inclusions' | 'gear' | 'permits' | 'weather'>('itinerary');
+  const [activeTab, setActiveTab] = useState<'itinerary' | 'packages' | 'inclusions' | 'gear' | 'permits' | 'weather'>('itinerary');
+  const [selectedTier, setSelectedTier] = useState<'basic' | 'standard' | 'premium'>('standard');
   const [selectedDate, setSelectedDate] = useState<string>(trek.departureDates[0] || '');
   const [travelersCount, setTravelersCount] = useState<number>(2);
   const [copied, setCopied] = useState(false);
 
-  const displayPrice = trek.discountPriceUSD || trek.priceUSD;
+  // Price calculations based on tier
+  const baseTierPrice = 
+    selectedTier === 'basic' 
+      ? (trek.basicPriceUSD || Math.round(trek.priceUSD * 0.75))
+      : selectedTier === 'premium'
+      ? (trek.premiumPriceUSD || Math.round(trek.priceUSD * 1.35))
+      : (trek.discountPriceUSD || trek.priceUSD);
+
+  const displayPrice = baseTierPrice;
   const totalPrice = displayPrice * travelersCount;
 
   const handleShare = () => {
@@ -52,15 +62,15 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
   const handleBook = () => {
     onOpenBooking({
-      trekTitle: trek.title,
+      trekTitle: `${trek.title} (${selectedTier.toUpperCase()} Package)`,
       groupSize: travelersCount,
       totalPerPerson: displayPrice,
-      notes: `Departure Date: ${selectedDate || 'Upcoming 2026 Guaranteed departure'}`
+      notes: `Departure Date: ${selectedDate || '2026 Guaranteed Departure'}, Tier: ${selectedTier.toUpperCase()}`
     });
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Karakoram Expeditions! I am inquiring about "${trek.title}" (${trek.durationDays} Days) for ${travelersCount} traveler(s). Target Date: ${selectedDate}. Please provide availability & permit application guidance.`
+    `Hello Trek Karakoram! I am inquiring about "${trek.title}" (${selectedTier.toUpperCase()} tier, ${trek.durationDays} Days) for ${travelersCount} traveler(s). Target Date: ${selectedDate}. Please provide availability & permit guidance.`
   );
 
   const otherTreks = TREK_PACKAGES.filter((t) => t.id !== trek.id).slice(0, 3);
@@ -91,7 +101,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
               
               <div className="absolute top-4 left-4 flex gap-2">
-                <span className="bg-sky-500 text-slate-950 font-black text-xs px-3 py-1 uppercase tracking-wider">
+                <span className="bg-sky-600 text-white font-black text-xs px-3 py-1 uppercase tracking-wider">
                   {trek.region}
                 </span>
                 <span className="bg-slate-900/90 border border-slate-700 text-sky-300 font-bold text-xs px-3 py-1">
@@ -99,115 +109,79 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 </span>
               </div>
 
-              <div className="absolute bottom-4 left-4 right-4">
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
-                  {trek.title}
-                </h1>
-                <p className="text-xs sm:text-sm text-sky-300 mt-1 font-medium">
-                  {trek.tagline}
-                </p>
+              {/* Founding Member Badge */}
+              <div className="absolute bottom-4 left-4 bg-amber-500 text-slate-950 font-black text-xs px-3 py-1.5 uppercase tracking-wider flex items-center gap-1.5">
+                <Gift className="w-3.5 h-3.5" />
+                <span>Founding Members 20% Applied</span>
               </div>
             </div>
 
-            {/* Quick Summary & Meta (5 cols) */}
-            <div className="lg:col-span-5 p-6 flex flex-col justify-between bg-slate-900 border-t lg:border-t-0 lg:border-l border-slate-800">
+            {/* Quick Metrics & Highlights (5 cols) */}
+            <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6">
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                  <div className="flex items-center gap-1.5 text-amber-400 text-xs font-bold">
-                    <span>★ {trek.rating}</span>
-                    <span className="text-slate-400">({trek.reviewsCount} verified reviews)</span>
-                  </div>
-                  <button
-                    onClick={handleShare}
-                    className="flex items-center gap-1 text-xs text-sky-300 hover:text-white bg-slate-800 px-2.5 py-1 border border-slate-700 transition-colors"
-                  >
-                    <Share2 className="w-3.5 h-3.5" />
-                    <span>{copied ? 'Link Copied!' : 'Share'}</span>
-                  </button>
+                <span className="text-xs font-bold text-sky-400 uppercase tracking-widest block mb-1 font-story">
+                  {BRAND_INFO.tagline}
+                </span>
+                <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+                  {trek.title}
+                </h1>
+                <p className="text-xs text-slate-300 mt-2 font-story leading-relaxed">
+                  "{trek.tagline}"
+                </p>
+              </div>
+
+              {/* 4 Metric Badges */}
+              <div className="grid grid-cols-2 gap-3 py-3 border-y border-slate-800 text-xs">
+                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                  <span className="text-slate-400 block text-[10px] uppercase">Duration</span>
+                  <div className="font-black text-white text-sm mt-0.5">{trek.durationDays} Days / {trek.durationNights} Nights</div>
                 </div>
-
-                {/* Key Metrics Grid */}
-                <div className="grid grid-cols-2 gap-3 py-4 text-xs">
-                  <div className="bg-slate-950 p-3 border border-slate-800">
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Expedition Duration</span>
-                    <span className="font-extrabold text-white text-sm">{trek.durationDays} Days / {trek.durationNights} Nights</span>
-                  </div>
-
-                  <div className="bg-slate-950 p-3 border border-slate-800">
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Maximum Altitude</span>
-                    <span className="font-extrabold text-sky-400 text-sm">{trek.maxAltitude.toLocaleString()} meters</span>
-                  </div>
-
-                  <div className="bg-slate-950 p-3 border border-slate-800">
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Trail Difficulty</span>
-                    <span className="font-extrabold text-amber-400 text-sm">{trek.difficulty}</span>
-                  </div>
-
-                  <div className="bg-slate-950 p-3 border border-slate-800">
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Starting Base</span>
-                    <span className="font-extrabold text-white text-sm">{trek.startingCity}</span>
-                  </div>
+                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                  <span className="text-slate-400 block text-[10px] uppercase">Max Elevation</span>
+                  <div className="font-black text-sky-400 text-sm mt-0.5">{trek.maxAltitude} m</div>
                 </div>
-
-                <div className="space-y-2 text-xs text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                    <span>Includes Skardu/Islamabad domestic airfares & 4WD jeeps</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                    <span>Askari Aviation guaranteed helicopter medical bond included</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                    <span>Official government restricted area trekking permits arranged</span>
-                  </div>
+                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                  <span className="text-slate-400 block text-[10px] uppercase">Difficulty Level</span>
+                  <div className="font-black text-amber-400 text-sm mt-0.5">{trek.difficulty}</div>
+                </div>
+                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                  <span className="text-slate-400 block text-[10px] uppercase">Group Size</span>
+                  <div className="font-black text-emerald-400 text-sm mt-0.5">Max 8 Trekkers</div>
                 </div>
               </div>
 
-              {/* Price Callout */}
-              <div className="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] text-slate-400 uppercase font-bold block">Starting From</span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-black text-white">
-                      {formatPrice(displayPrice, currency)}
-                    </span>
-                    {trek.discountPriceUSD && (
-                      <span className="text-xs text-slate-400 line-through">
-                        {formatPrice(trek.priceUSD, currency)}
-                      </span>
-                    )}
-                    <span className="text-xs text-slate-400">/ person</span>
-                  </div>
+              <div className="flex items-center justify-between pt-1">
+                <div className="flex items-center gap-1.5 text-xs text-slate-300">
+                  <MapPin className="w-4 h-4 text-sky-400" />
+                  <span>Starts: {trek.startingCity}</span>
                 </div>
-
                 <button
-                  onClick={handleBook}
-                  className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs px-4 py-2.5 uppercase tracking-wider transition-colors cursor-pointer"
+                  onClick={handleShare}
+                  className="flex items-center gap-1 text-xs text-slate-400 hover:text-white transition-colors"
                 >
-                  Book Expedition
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>{copied ? 'Link Copied!' : 'Share Trek'}</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Main 2-Column Content Grid */}
+        {/* Main Content & Sticky Booking Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left / Main Content (8 cols) */}
+          {/* Left Column (8 cols) */}
           <div className="lg:col-span-8 space-y-8">
             {/* Overview Section */}
             <div className="bg-white border border-slate-200 p-6">
               <h2 className="text-lg font-bold text-slate-900 mb-3 pb-2 border-b border-slate-100">
                 Expedition Overview & Trail Summary
               </h2>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-story">
                 {trek.overview}
               </p>
 
               {/* Highlights Box */}
-              <div className="mt-6 p-4 bg-sky-50/70 border border-sky-200">
+              <div className="mt-6 p-4 bg-sky-50 border border-sky-200">
                 <h3 className="text-xs font-bold text-sky-900 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-sky-600" />
                   <span>Key Route Highlights</span>
@@ -257,6 +231,17 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 </button>
 
                 <button
+                  onClick={() => setActiveTab('packages')}
+                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
+                    activeTab === 'packages'
+                      ? 'border-sky-600 text-sky-700 bg-sky-50'
+                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Package Tiers (Basic / Standard / Premium)
+                </button>
+
+                <button
                   onClick={() => setActiveTab('inclusions')}
                   className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
                     activeTab === 'inclusions'
@@ -297,7 +282,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                       : 'border-transparent text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Weather & Best Season
+                  Weather & Season
                 </button>
               </div>
 
@@ -327,7 +312,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                           </span>
                         </div>
                       </div>
-                      <p className="text-xs text-slate-700 leading-relaxed">
+                      <p className="text-xs text-slate-700 leading-relaxed font-story">
                         {day.desc}
                       </p>
                     </div>
@@ -335,7 +320,97 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 </div>
               )}
 
-              {/* Tab 2: Inclusions & Exclusions */}
+              {/* Tab 2: Package Tiers Comparison (From Section 18 of Dataset) */}
+              {activeTab === 'packages' && (
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Basic */}
+                    <div className={`p-4 border-2 transition-all ${selectedTier === 'basic' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-black text-xs uppercase text-slate-900">Basic Package</span>
+                        <span className="text-[10px] font-bold bg-slate-100 px-2 py-0.5 text-slate-700">Budget Authentic</span>
+                      </div>
+                      <div className="text-lg font-black text-slate-900 mb-2">
+                        {formatPrice(trek.basicPriceUSD || Math.round(trek.priceUSD * 0.75), currency)}
+                      </div>
+                      <p className="text-[11px] text-slate-600 mb-4">
+                        For independent, budget-conscious international travelers seeking the pure authentic mountain walk.
+                      </p>
+                      <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
+                        <li>✓ Certified local guide</li>
+                        <li>✓ Standard dome camping</li>
+                        <li>✓ 3 camp meals daily</li>
+                        <li>✓ Essential mountain safety gear</li>
+                      </ul>
+                      <button
+                        onClick={() => setSelectedTier('basic')}
+                        className={`w-full py-2 text-xs font-bold uppercase tracking-wider ${selectedTier === 'basic' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-800'}`}
+                      >
+                        {selectedTier === 'basic' ? 'Selected' : 'Choose Basic'}
+                      </button>
+                    </div>
+
+                    {/* Standard (Most Popular) */}
+                    <div className={`p-4 border-2 relative transition-all ${selectedTier === 'standard' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
+                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[9px] font-black uppercase px-2 py-0.5">
+                        Most Popular
+                      </div>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-black text-xs uppercase text-slate-900">Standard Package</span>
+                        <span className="text-[10px] font-bold bg-sky-100 text-sky-800 px-2 py-0.5">Worry-Free Care</span>
+                      </div>
+                      <div className="text-lg font-black text-slate-900 mb-2">
+                        {formatPrice(trek.discountPriceUSD || trek.priceUSD, currency)}
+                      </div>
+                      <p className="text-[11px] text-slate-600 mb-4">
+                        Complete end-to-end comfort with airport transfers, upgraded hotel lodging, and pre-trek coordinator.
+                      </p>
+                      <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
+                        <li>✓ All in Basic Package</li>
+                        <li>✓ Islamabad & Skardu Airport Transfers</li>
+                        <li>✓ 4-Star Hotel Accommodations</li>
+                        <li>✓ Pre-Trek Preparation Guide & Briefing</li>
+                        <li>✓ Porter Gear Allowance (20kg)</li>
+                      </ul>
+                      <button
+                        onClick={() => setSelectedTier('standard')}
+                        className={`w-full py-2 text-xs font-bold uppercase tracking-wider ${selectedTier === 'standard' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-800'}`}
+                      >
+                        {selectedTier === 'standard' ? 'Selected' : 'Choose Standard'}
+                      </button>
+                    </div>
+
+                    {/* Premium */}
+                    <div className={`p-4 border-2 transition-all ${selectedTier === 'premium' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-black text-xs uppercase text-slate-900">Premium Package</span>
+                        <span className="text-[10px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5">VIP Alpine</span>
+                      </div>
+                      <div className="text-lg font-black text-slate-900 mb-2">
+                        {formatPrice(trek.premiumPriceUSD || Math.round(trek.priceUSD * 1.35), currency)}
+                      </div>
+                      <p className="text-[11px] text-slate-600 mb-4">
+                        Luxury high-altitude comfort with private guide, heated dining domes, professional photos, and gourmet menus.
+                      </p>
+                      <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
+                        <li>✓ All in Standard Package</li>
+                        <li>✓ Dedicated Private Mountain Guide</li>
+                        <li>✓ Serena Hotel Luxury Stays</li>
+                        <li>✓ Heated Dining Dome & Espresso Bar</li>
+                        <li>✓ Professional High-Res Photo Sessions</li>
+                      </ul>
+                      <button
+                        onClick={() => setSelectedTier('premium')}
+                        className={`w-full py-2 text-xs font-bold uppercase tracking-wider ${selectedTier === 'premium' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-800'}`}
+                      >
+                        {selectedTier === 'premium' ? 'Selected' : 'Choose Premium'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 3: Inclusions & Exclusions */}
               {activeTab === 'inclusions' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-5 bg-emerald-50/70 border border-emerald-200">
@@ -370,7 +445,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 </div>
               )}
 
-              {/* Tab 3: Gear Checklist */}
+              {/* Tab 4: Gear Checklist */}
               {activeTab === 'gear' && (
                 <div className="space-y-4">
                   <div className="p-4 bg-slate-50 border border-slate-200">
@@ -394,7 +469,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 </div>
               )}
 
-              {/* Tab 4: Permits & Visa */}
+              {/* Tab 5: Permits & Visa */}
               {activeTab === 'permits' && (
                 <div className="space-y-4">
                   <div className="p-4 bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-3">
@@ -405,7 +480,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                     <p>{trek.permitRequirements}</p>
                     
                     <div className="bg-white p-3 border border-slate-200 space-y-1.5">
-                      <div className="font-bold text-slate-900">Step-by-step clearance process handled by us:</div>
+                      <div className="font-bold text-slate-900">Step-by-step clearance process handled by Trek Karakoram:</div>
                       <div>1. We issue your official <strong>Letter of Invitation (LOI)</strong> and Ministry of Tourism itinerary within 24h.</div>
                       <div>2. You apply online via the Pakistan Official E-Visa portal (category: Trekking & Mountaineering).</div>
                       <div>3. Our Skardu team files group permits with the Gilgit-Baltistan Home Department and Central Karakoram National Park (CKNP).</div>
@@ -415,7 +490,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 </div>
               )}
 
-              {/* Tab 5: Weather */}
+              {/* Tab 6: Weather */}
               {activeTab === 'weather' && (
                 <div className="p-4 bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-3">
                   <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900">
@@ -424,7 +499,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                   <p>
                     <strong>Best Months:</strong> {trek.bestSeason}
                   </p>
-                  <p>
+                  <p className="font-story leading-relaxed">
                     During the summer climbing season (June to late August), daytime temperatures at lower altitudes (Skardu/Askole) range from 24°C to 30°C. Above 4,000m (Concordia/Ali Camp), daytime temperatures are 10°C to 18°C, dropping to -5°C to -12°C at night. Gondogoro La pass crossings are scheduled at 1:00 AM when snow crust is firm.
                   </p>
                 </div>
@@ -444,9 +519,34 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 </span>
               </div>
 
+              {/* Tier Selection in Booking Card */}
+              <div className="py-3 border-b border-slate-200">
+                <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1.5">Selected Tier</span>
+                <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1">
+                  <button
+                    onClick={() => setSelectedTier('basic')}
+                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'basic' ? 'bg-white text-sky-700 shadow-none' : 'text-slate-600'}`}
+                  >
+                    Basic
+                  </button>
+                  <button
+                    onClick={() => setSelectedTier('standard')}
+                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'standard' ? 'bg-white text-sky-700 shadow-none' : 'text-slate-600'}`}
+                  >
+                    Standard
+                  </button>
+                  <button
+                    onClick={() => setSelectedTier('premium')}
+                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'premium' ? 'bg-white text-sky-700 shadow-none' : 'text-slate-600'}`}
+                  >
+                    Premium
+                  </button>
+                </div>
+              </div>
+
               {/* Price */}
               <div className="py-4 border-b border-slate-200">
-                <span className="text-[11px] text-slate-500 uppercase font-bold block">Expedition Cost</span>
+                <span className="text-[11px] text-slate-500 uppercase font-bold block">Expedition Cost ({selectedTier.toUpperCase()})</span>
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-black text-slate-900">
                     {formatPrice(displayPrice, currency)}
@@ -454,7 +554,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                   <span className="text-xs text-slate-500">/ person</span>
                 </div>
                 <div className="text-[11px] text-emerald-600 font-semibold mt-1">
-                  ✓ Price lock guarantee. No unexpected surcharge.
+                  ✓ Founding Member 20% discount included.
                 </div>
               </div>
 
@@ -499,7 +599,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                       </button>
                     </div>
                     <span className="text-[11px] text-slate-500">
-                      {travelersCount >= 4 ? 'Group Discount Applied' : 'Standard Rate'}
+                      {travelersCount >= 4 ? 'Group Discount Active' : 'Max 8 Trekkers'}
                     </span>
                   </div>
                 </div>
@@ -545,11 +645,11 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
               <h4 className="font-bold text-sky-400 mb-1 text-xs uppercase tracking-wider">
                 Need Help Deciding?
               </h4>
-              <p className="text-slate-300 text-[11px] leading-relaxed mb-3">
+              <p className="text-slate-300 text-[11px] leading-relaxed mb-3 font-story">
                 Our mountain director in Skardu can assess your acclimatization history and gear checklist over a 15-minute call.
               </p>
               <a
-                href="https://wa.me/923009876543?text=Hi%20Karakoram%20Expeditions%2C%20I%20want%20to%20speak%20with%20an%20expedition%20leader"
+                href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20speak%20with%20an%20expedition%20leader"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sky-300 font-bold hover:underline flex items-center gap-1 text-xs"

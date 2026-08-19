@@ -1,4 +1,164 @@
-import { TrekPackage, TrekStyle, Testimonial, FAQItem } from '../types';
+import { TrekPackage, TrekStyle, Testimonial, FAQItem, BrandValue, AudiencePersona } from '../types';
+
+export const BRAND_INFO = {
+  name: 'Trek Karakoram',
+  tagline: 'Discover the Spirit of the Mountains',
+  shortName: 'Trek Karakoram',
+  originCity: 'Skardu, Gilgit-Baltistan',
+  licenseNo: 'DTS License: ID-2891 (Govt. of Pakistan)',
+  phone: '+92 300 9876543',
+  email: 'hello@trekkarakoram.com',
+  storyTitle: 'Born from the Heart of the Karakoram',
+  story: [
+    'In the far reaches of northern Pakistan, where the mighty Karakoram Range meets the sky, Trek Karakoram was born — not as a company, but as a calling.',
+    'It began with a dream to share the untouched majesty of Gilgit-Baltistan with the world — from the roaring Baltoro Glacier and the breathtaking Concordia, to the tranquil Fairy Meadows resting beneath Nanga Parbat, and the eternal ice of Biafo and Hispar Glaciers. These are not just places; they are living stories of courage, faith, and nature’s grandeur.',
+    'Trek Karakoram was founded to preserve and celebrate this heritage — to bring explorers, photographers, and dreamers face-to-face with the soul of Pakistan’s mountains. Each trek we plan, each journey we share, is guided by a deep respect for the land, the local communities, and the timeless spirit of adventure.',
+    'From K2 Base Camp to Rakaposhi, every trail we follow carries whispers of those who walked before — mountaineers, shepherds, and storytellers. Our mission is to ensure these paths remain open for generations, not only as routes of exploration but as bridges between people and nature.',
+    'Because in the end, Trek Karakoram isn’t just about reaching a peak — it’s about discovering the spirit of the mountains and carrying it with you, wherever you go.'
+  ],
+  vision: 'Trek Karakoram envisions a world where the northern frontiers of Pakistan — the Karakoram, Himalaya, and Hindukush — are recognized as the beating heart of global adventure and human spirit. Our purpose is to reveal the pure soul of Gilgit-Baltistan through guided journeys across its most iconic and sacred trails.',
+  mission: 'Trek Karakoram exists to guide travelers from around the world through the majestic mountain ranges of Pakistan — the Karakoram, Himalaya, and Hindukush — while promoting responsible, cultural, and sustainable tourism.',
+  uspTitle: 'Your Complete, Worry-Free Gateway to the Heart of the Karakoram',
+  uspOneLiner: 'From airport to the world’s highest peaks — we handle everything so you can truly discover the spirit of the Karakoram.',
+  uspDifferentiators: [
+    { title: 'End-to-End Care (Airport to Airport)', desc: 'We manage airport pickup, lodging, private transport, meals, government permits, and guided treks from arrival to departure.' },
+    { title: 'Satellite Tracking on Every Trek', desc: 'Garmin InReach satellite beacons with 10-minute automated telemetry tracking and 24/7 command dispatch.' },
+    { title: 'Emergency Medical & Heli Evacuation', desc: 'Askari Aviation military helicopter guarantee bond, portable Gamow hyperbaric chambers, and medical oxygen on pass crossings.' },
+    { title: 'Certified Local Balti Leaders (5+ Years)', desc: '100% certified local guides from Gilgit-Baltistan trained by the Alpine Club of Pakistan with fluent English and deep mountain wisdom.' },
+    { title: 'Intimate Small Groups (Max 8 Trekkers)', desc: 'Strictly capped at 8 trekkers per group for personalized attention, quiet camps, and safer pacing (competitors do 15+).' },
+    { title: 'Authentic & Ethical Porter Welfare', desc: 'Strict adherence to IPPG guidelines: 25kg load limits, warm mountain clothing, heated sleeping shelters, and fair wages.' }
+  ]
+};
+
+export const FOUNDING_MEMBERS_SPECIAL = {
+  title: 'Founding Members Special (2026 Inception)',
+  badge: 'Exclusive Launch Privilege',
+  discountPercent: 20,
+  perks: [
+    '20% Direct Discount on your 2026/2027 expedition',
+    'Lifetime 10% Loyalty Discount on all future Pakistan treks',
+    'Featured Testimonial & Photo on Trek Karakoram Global Wall',
+    'Complimentary Trek Karakoram expedition cap & organic cotton t-shirt',
+    'Dedicated personal mountain guide assignment and VIP briefing'
+  ]
+};
+
+export const BRAND_VALUES: BrandValue[] = [
+  {
+    number: 1,
+    title: 'Respect for Nature',
+    subtitle: 'We walk lightly on the land',
+    description: 'Every trek is designed with deep respect for the fragile mountain environment — leaving no trace and preserving its pristine beauty for generations.',
+    iconName: 'Leaf'
+  },
+  {
+    number: 2,
+    title: 'Cultural Connection',
+    subtitle: 'We honor the people of the mountains',
+    description: 'Trek Karakoram celebrates the rich traditions, languages, and warmth of Gilgit-Baltistan — ensuring travelers connect meaningfully with local communities.',
+    iconName: 'Heart'
+  },
+  {
+    number: 3,
+    title: 'Safety & Integrity',
+    subtitle: 'Every adventure begins with trust',
+    description: 'We follow global safety standards and ethical travel practices, ensuring every traveler feels secure and every promise is kept with total transparency.',
+    iconName: 'ShieldCheck'
+  },
+  {
+    number: 4,
+    title: 'Authentic Exploration',
+    subtitle: 'True adventure is discovery',
+    description: 'Each journey — from K2 Base Camp to Concordia, Rakaposhi, and Fairy Meadows — is designed to reveal the real Pakistan beyond the surface.',
+    iconName: 'Compass'
+  },
+  {
+    number: 5,
+    title: 'Sustainability & Responsibility',
+    subtitle: 'We protect what we explore',
+    description: 'Our treks promote eco-friendly practices, eliminate single-use plastics, reduce waste, and support conservation efforts safeguarding glaciers and wildlife.',
+    iconName: 'Recycle'
+  },
+  {
+    number: 6,
+    title: 'Empowering Local Communities',
+    subtitle: 'We grow together',
+    description: 'By hiring local guides, porters, cooks, and craftsmen, Trek Karakoram strengthens mountain economies and uplifts the families making each trek possible.',
+    iconName: 'Users'
+  },
+  {
+    number: 7,
+    title: 'Spirit of Adventure',
+    subtitle: 'We live for the call of the mountains',
+    description: 'Our brand stands for courage, curiosity, and the unshakable belief that adventure can change lives and unite people from all over the world.',
+    iconName: 'Mountain'
+  },
+  {
+    number: 8,
+    title: 'Global Harmony',
+    subtitle: 'We bridge nations through nature',
+    description: 'Each trek is more than travel — it is a cultural exchange connecting international explorers with the heart and hospitality of Pakistan.',
+    iconName: 'Globe'
+  }
+];
+
+export const AUDIENCE_PERSONAS: AudiencePersona[] = [
+  {
+    id: 'global-explorers',
+    title: 'Global Adventure Seekers',
+    profile: 'Ages 25–45 from Europe, North America, UK, Australia, and Asia-Pacific.',
+    lifestyle: 'Passionate about trekking, mountaineering, landscape photography, and uncommercialized wilderness.',
+    motivation: 'To stand face-to-face with K2 and Nanga Parbat, challenge physical endurance, and experience authentic culture.',
+    painPoints: 'Overcrowded tourist destinations, complex permit logistics, language barriers, and high-altitude safety fears.',
+    howWeHelp: 'We handle everything from Islamabad airport pickup, permits, lodging, and meals to satellite rescue monitoring.',
+    dreamExperience: 'Camping under the stars at Concordia and watching sunrise illuminate K2’s Godwin-Austen glacier.',
+    personaExample: 'Sarah (32, Marketing Lead from Berlin): "I wanted an expedition to K2 Base Camp for my milestone birthday without worrying about transport or permits."'
+  },
+  {
+    id: 'pakistani-explorers',
+    title: 'Pakistani Explorers & Cultural Nomads',
+    profile: 'Ages 20–40, young professionals, heritage lovers, and university alumni from Lahore, Karachi, and Islamabad.',
+    lifestyle: 'Spiritually curious, heritage-proud, and eager to rediscover the majestic highlands of their homeland.',
+    motivation: 'To explore Gilgit-Baltistan, Hunza, and Skardu through authentic, safe, and organized expeditions.',
+    painPoints: 'Lack of trusted operators, poor road coordination, and overpriced disorganized tours.',
+    howWeHelp: 'Fully managed end-to-end trips with certified local mountain leaders and safe transport at transparent local rates.',
+    dreamExperience: 'Walking the wildflower meadows of Fairy Meadows and watching Nanga Parbat’s Raikot face glow at dusk.',
+    personaExample: 'Ravi (28, Software Engineer from Lahore): "Rediscovering the soul of Baltistan with local guides who treated me like family."'
+  },
+  {
+    id: 'creators-storytellers',
+    title: 'Storytellers, Filmmakers & Photographers',
+    profile: 'Visual creators, documentary filmmakers, astrophotographers, and adventure journalists.',
+    lifestyle: 'Always on the move, seeking raw, unfiltered beauty and meaningful human stories.',
+    motivation: 'To capture breathtaking 8,000m mountain cinematography and portraits of mountain folk.',
+    painPoints: 'Remote logistics, excess gear porterage, battery charging, and lack of experienced local fixers.',
+    howWeHelp: 'Dedicated camera gear porters, solar charging banks, local fixer credentials, and golden-hour pacing.',
+    dreamExperience: 'Shooting night astro-timelapses of the Milky Way arching over Trango Towers at Urdukas.',
+    personaExample: 'Julian (35, National Geographic Contributor): "Trek Karakoram provided the exact logistics and pacing needed for high-res alpine cinematography."'
+  },
+  {
+    id: 'sustainability-advocates',
+    title: 'Environmentalists & Eco-Conscious Trekkers',
+    profile: 'Conscious travelers, university researchers, and NGOs supporting environmental protection.',
+    lifestyle: 'Purpose-driven individuals who prioritize minimal carbon footprint and ethical porter welfare.',
+    motivation: 'To explore fragile glacial ecosystems while actively supporting local conservation.',
+    painPoints: 'Trail littering, exploitation of porters, and unchecked commercial mass-tourism.',
+    howWeHelp: 'Zero-waste camp policies, certified leave-no-trace protocols, and 100% IPPG porter welfare compliance.',
+    dreamExperience: 'Participating in a clean-up glacier initiative while traversing the pristine Biafo-Hispar wilderness.',
+    personaExample: 'Elena (29, Environmental Scientist from Stockholm): "Knowing my expedition left no trash and empowered Balti families was vital."'
+  },
+  {
+    id: 'corporate-educational',
+    title: 'Corporate & University Expeditions',
+    profile: 'Leadership teams, outdoor clubs, university geology departments, and youth expeditions.',
+    lifestyle: 'Organized groups seeking transformative leadership and teamwork experiences in nature.',
+    motivation: 'Building mental resilience, teamwork, and mindfulness through shared mountain challenges.',
+    painPoints: 'Complex group bookings, medical emergency liability, and institutional invoicing.',
+    howWeHelp: 'Customized private group itineraries, dedicated medical officers, institutional billing, and team workshops.',
+    dreamExperience: 'Completing a multi-day pass traverse together and celebrating at a traditional Balti feast in Skardu.',
+    personaExample: 'LUMS Outdoor Society: "Flawless group coordination for 18 students crossing Gondogoro La safely."'
+  }
+];
 
 export const TREK_PACKAGES: TrekPackage[] = [
   {
@@ -13,13 +173,16 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: 'Extreme',
     maxAltitude: 5585,
     priceUSD: 2450,
-    discountPriceUSD: 2250,
+    discountPriceUSD: 1960, // 20% Founding Member Discount
+    basicPriceUSD: 1850,
+    standardPriceUSD: 2450,
+    premiumPriceUSD: 3350,
     rating: 5.0,
     reviewsCount: 148,
     featured: true,
     popular: true,
     bestSeason: 'Late June to Early September',
-    groupSize: '4 to 12 Trekkers',
+    groupSize: '4 to 8 Trekkers (Intimate)',
     activityType: 'Pass Crossing',
     image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
     gallery: [
@@ -58,35 +221,37 @@ export const TREK_PACKAGES: TrekPackage[] = [
       { day: 19, title: 'International Departure', desc: 'Airport transfer for your onward flight home with lifelong memories of Karakoram.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
     inclusions: [
-      'Official Government Trekking Permit & Environmental Fees',
-      'All domestic flights (Islamabad-Skardu return)',
-      '4-star hotel accommodations in Islamabad & Skardu on twin sharing',
-      'All high-altitude camping gear (The North Face / Mountain Hardwear 3-person tents for 2 trekkers)',
-      'Professional English-speaking licensed Mountain Guide',
-      '1 porter per trekker (up to 15kg personal baggage carried)',
-      'All meals on trek prepared by experienced expedition chef (breakfast, hot lunch, dinner, high-tea)',
-      'Mess tent, dining table, chairs, toilet tents & kitchen equipment',
-      'Fixed rope team & rescue safety gear for Gondogoro La pass',
-      'First aid kit, pulse oximeter, and emergency hyperbaric bag (Gamow bag)'
+      'Official Pakistan Government Trekking Permit & LOI for Visa',
+      'Domestic flights Islamabad - Skardu - Islamabad (with road backup)',
+      'All 4-star hotel accommodations in Islamabad and Skardu (twin sharing)',
+      'Expedition camping tents (The North Face / Mountain Hardwear 4-season)',
+      '3 freshly prepared hot meals daily by certified expedition chef',
+      'Experienced English-speaking Balti mountain guide & sirdar',
+      'Porters for all personal gear (up to 20kg per trekker) and camp supplies',
+      'Gondogoro La rescue team support and fixed ropes with safety carabiners',
+      'Gamow hyperbaric bag, pulse oximeter, and emergency oxygen bottles',
+      'Askari Aviation military helicopter rescue bond guarantee'
     ],
     exclusions: [
-      'International airfare and Pakistan Tourist Visa fee',
-      'Personal trekking gear (crampons, harness, sleeping bag -15°C, down jacket)',
-      'Emergency helicopter evacuation insurance (mandatory minimum $50k USD)',
-      'Gratuities/tips for local guides, cooks, and porters',
-      'Personal snacks, alcohol, and soft drinks'
+      'International airfares to/from Islamabad',
+      'Pakistan Tourist / Trekking E-Visa fee',
+      'Personal high-altitude mountaineering insurance (mandatory)',
+      'Personal trekking gear (crampons, sleeping bag -20°C, boots)',
+      'Tips for mountain guides, porters, and kitchen staff',
+      'Bottled drinks, alcoholic beverages, and personal laundry'
     ],
     gearChecklist: [
-      'Four-season sleeping bag (rated to -15°C / 5°F)',
-      'Sturdy mountaineering boots with ankle support + microspikes/crampons',
-      'Climbing harness, locking carabiners, and climbing helmet',
-      'Gore-Tex windproof/waterproof jacket & trousers',
-      '800-fill down jacket for sub-zero glacier evenings',
-      'Trekking poles with snow baskets',
-      'UV Category 4 Glacier sunglasses & high SPF 50+ sunscreen',
-      'Personal water filtration system / Katadyn tablets'
+      '4-season sleeping bag (comfort rated to -20°C / -5°F)',
+      'Stiff mountaineering / trekking boots with Gore-Tex',
+      'Microspikes / crampons and climbing harness for Gondogoro La',
+      'Thermal base layers (merino wool recommended)',
+      'Down jacket (800+ fill power) with hood',
+      'Waterproof shell jacket and trousers (Gore-Tex Pro)',
+      'UV Category 4 glacier sunglasses and ski goggles',
+      'Trekking poles with snow baskets (telescopic)',
+      'Headlamp (300+ lumens) with extra lithium batteries'
     ],
-    permitRequirements: 'Requires Gilgit-Baltistan Restricted Area Permit (handled 100% by our agency), copy of passport, Pakistan Trekking E-Visa, and Alpine Club clearance.',
+    permitRequirements: 'Requires Ministry of Tourism Trekking Permit and Central Karakoram National Park (CKNP) fee. Trek Karakoram processes 100% of the permits.',
     fitnessLevel: 'High endurance required. Trekkers should have previous multi-day backpacking experience above 3,500m.',
     departureDates: ['June 15, 2026', 'July 01, 2026', 'July 15, 2026', 'August 01, 2026', 'August 15, 2026']
   },
@@ -102,13 +267,16 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: 'Strenuous',
     maxAltitude: 5150,
     priceUSD: 2150,
-    discountPriceUSD: 1950,
+    discountPriceUSD: 1720,
+    basicPriceUSD: 1650,
+    standardPriceUSD: 2150,
+    premiumPriceUSD: 2950,
     rating: 4.9,
     reviewsCount: 112,
     featured: true,
     popular: true,
     bestSeason: 'June to September',
-    groupSize: '4 to 14 Trekkers',
+    groupSize: '4 to 8 Trekkers',
     activityType: 'Trekking',
     image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
     gallery: [
@@ -138,443 +306,424 @@ export const TREK_PACKAGES: TrekPackage[] = [
       { day: 11, title: 'Trek Goro II to Concordia', desc: 'Arrive at the Throne Room of the Mountain Gods.', altitude: '4,600m', stay: 'Concordia Camp', trekHours: '5 hrs', distanceKm: 12 },
       { day: 12, title: 'K2 Base Camp & Gilkey Memorial Trek', desc: 'Day excursion to K2 Base Camp (5,150m) and Broad Peak BC.', altitude: '5,150m', stay: 'Concordia Camp', trekHours: '8 hrs', distanceKm: 16 },
       { day: 13, title: 'Concordia to Goro I', desc: 'Begin descent journey back down Baltoro Glacier.', altitude: '4,100m', stay: 'Goro I Camp', trekHours: '6 hrs', distanceKm: 16 },
-      { day: 14, title: 'Goro I to Paiju Camp', desc: 'Descend to Paiju campsite.', altitude: '3,450m', stay: 'Paiju Camp', trekHours: '6-7 hrs', distanceKm: 22 },
-      { day: 15, title: 'Paiju to Askole & Drive to Skardu', desc: 'Trek to Askole roadhead, drive directly back to Skardu.', altitude: '2,228m', stay: 'Skardu Hotel', trekHours: '7 hrs trek + 4 hrs drive' },
-      { day: 16, title: 'Flight Skardu to Islamabad & Departure', desc: 'Fly to Islamabad, onward international flights.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+      { day: 14, title: 'Goro I to Paiju', desc: 'Long gradual descent off the glacier back to sand terraces.', altitude: '3,450m', stay: 'Paiju Camp', trekHours: '7 hrs', distanceKm: 22 },
+      { day: 15, title: 'Paiju to Askole & Drive to Skardu', desc: 'Final trek leg to Askole village, board 4x4 Jeeps to Skardu hotel.', altitude: '2,228m', stay: 'Skardu Hotel', trekHours: '6 hrs walk + 5 hrs drive' },
+      { day: 16, title: 'Fly Skardu to Islamabad & Departure', desc: 'Morning flight to Islamabad, connect to international flights.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
     inclusions: [
-      'Full government permits, environmental taxes, and NOC clearance',
-      'All flights between Islamabad and Skardu',
-      'All meals throughout the expedition (3 hot meals + snacks)',
-      'High-altitude double occupancy waterproof tents with foam mattresses',
-      'Licensed professional Balti guide, assistant guides, and camp cook',
-      'Porterage for 15kg of personal luggage per trekker',
-      'Comprehensive first aid medical kit, pulse oximeter, emergency oxygen'
+      'Government Trekking Permits and CKNP environmental fees',
+      'Islamabad - Skardu return domestic flights',
+      'Hotel stays in Islamabad & Skardu',
+      'Full camping services and three hot cooked meals daily',
+      'Licensed English-speaking mountain guide & porter crew'
     ],
-    exclusions: [
-      'International flights and Pakistan visa',
-      'Mandatory emergency rescue insurance',
-      'Personal gear and sleeping bags',
-      'Tips for staff'
-    ],
-    gearChecklist: [
-      'Down sleeping bag (-10°C to -15°C)',
-      'Trekking boots broken in prior to trip',
-      'Thermals (merino wool base layers)',
-      'Hard-shell waterproof jacket & pants',
-      'Fleece jackets and insulating layers',
-      'Trekking poles & UV sunglasses'
-    ],
-    permitRequirements: 'Standard Baltoro trekking permit processed by our licensed office in Skardu.',
-    fitnessLevel: 'Moderate to Good physical fitness; suitable for hikers with stamina for 6-8 hours daily walking.',
-    departureDates: ['June 20, 2026', 'July 05, 2026', 'July 20, 2026', 'August 05, 2026', 'August 20, 2026']
+    exclusions: ['International flights', 'Pakistan visa fee', 'Personal insurance', 'Tips and beverages'],
+    gearChecklist: ['-15°C sleeping bag', 'Sturdy trekking boots', 'Warm down jacket', 'Glacier sunglasses', 'Trekking poles'],
+    permitRequirements: 'Restricted area permit processed by Trek Karakoram.',
+    fitnessLevel: 'Good stamina for 6-7 hours walking per day over glacial terrain.',
+    departureDates: ['June 20, 2026', 'July 05, 2026', 'July 20, 2026', 'August 05, 2026']
   },
   {
     id: 'fairy-meadows-nanga-parbat',
     title: 'Fairy Meadows & Nanga Parbat Base Camp Trek',
     shortTitle: 'Fairy Meadows & Nanga Parbat',
-    tagline: 'Fairytale pine forests, alpine meadows, and the sheer 8,126m Killer Mountain',
+    tagline: 'Lush alpine pine forests facing the colossal 8,126m Killer Mountain',
     region: 'Himalayas',
     startingCity: 'Islamabad / Gilgit',
-    durationDays: 8,
-    durationNights: 7,
+    durationDays: 9,
+    durationNights: 8,
     difficulty: 'Moderate',
-    maxAltitude: 3967,
+    maxAltitude: 4100,
     priceUSD: 1150,
-    discountPriceUSD: 990,
+    discountPriceUSD: 920,
+    basicPriceUSD: 850,
+    standardPriceUSD: 1150,
+    premiumPriceUSD: 1650,
     rating: 4.9,
-    reviewsCount: 204,
+    reviewsCount: 164,
     featured: true,
     popular: true,
     bestSeason: 'May to October',
-    groupSize: '2 to 14 Trekkers',
+    groupSize: '2 to 8 Trekkers',
     activityType: 'Trekking',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1571401835393-8c5f35328320?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1571401835393-8c5f35328320?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80'
     ],
-    overview: 'One of the most scenic and accessible short treks in the western Himalayas of Pakistan. Drive across the world-famous cliff-hugging Jeep track from Raikot Bridge to Tatu village, then hike up through dense pine and birch forests to Fairy Meadows (3,300m). Hike onward to Beyal Camp and stand directly beneath the colossal 4,000m vertical ice and rock Raikot Face of Nanga Parbat (8,126m).',
+    overview: 'A magical journey into the Western Himalayas. Walk through whispering pine forests to Fairy Meadows—a plateau offering direct front-row panoramas of the gigantic 8,126m Nanga Parbat (the world’s 9th highest mountain) and its dramatic Raikot Glacier icefall.',
     highlights: [
-      'Iconic cliffside 4x4 Jeep trail from Raikot Bridge',
-      'Cozy wooden log cabins in Fairy Meadows facing Nanga Parbat',
-      'Hike to Beyal Camp and Nanga Parbat Raikot Base Camp (3,967m)',
-      'Close-up views of Raikot Glacier and Chongra Peaks',
-      'Great for families, photographers, and moderate hikers'
+      'Unmatched views of Nanga Parbat (8,126m) Raikot Face',
+      'Stay in cozy wooden log cabins in Fairy Meadows',
+      'Trek to Beyal Camp and Nanga Parbat Base Camp (4,100m)',
+      'World-famous scenic mountain jeep track through Raikot Gorge',
+      'Beginner to intermediate friendly with low altitude risk'
     ],
     itinerary: [
-      { day: 1, title: 'Arrival in Islamabad', desc: 'Airport transfer to hotel. Evening orientation meeting.', altitude: '540m', stay: 'Hotel Islamabad', trekHours: '0 hrs' },
-      { day: 2, title: 'Drive or Fly to Gilgit / Chilas', desc: 'Flight to Gilgit or scenic drive through Babusar Pass (4,173m) to Chilas.', altitude: '1,500m', stay: 'Shangrila Chilas / Gilgit', trekHours: '0 hrs' },
-      { day: 3, title: 'Raikot Bridge Jeep Ride & Hike to Fairy Meadows', desc: '4x4 mountain Jeep ride to Tatu village, followed by 3-hour hike to Fairy Meadows.', altitude: '3,300m', stay: 'Fairy Meadows Log Cottages', trekHours: '3-4 hrs', distanceKm: 6 },
-      { day: 4, title: 'Trek to Beyal Camp & View Point', desc: 'Gentle walk through birch woods to Beyal Camp and upper viewpoint overlooking Raikot Glacier.', altitude: '3,550m', stay: 'Fairy Meadows Log Cottages', trekHours: '4-5 hrs', distanceKm: 8 },
-      { day: 5, title: 'Excursion to Nanga Parbat Base Camp (3,967m)', desc: 'Trek to the base camp of German mountaineering expeditions with staggering views of the ice face.', altitude: '3,967m', stay: 'Fairy Meadows Log Cottages', trekHours: '6 hrs', distanceKm: 12 },
-      { day: 6, title: 'Descend to Tatu & Drive to Hunza Valley', desc: 'Walk down to Tatu, Jeep back to Raikot Bridge, and drive along KKH to Karimabad, Hunza.', altitude: '2,400m', stay: 'Hunza Serena Inn', trekHours: '2.5 hrs walk + 3 hrs drive' },
-      { day: 7, title: 'Hunza Sightseeing & Drive to Gilgit / Besham', desc: 'Explore Baltit and Altit Forts, drive to Gilgit or Besham.', altitude: '1,500m', stay: 'Hotel Gilgit', trekHours: '0 hrs' },
-      { day: 8, title: 'Return to Islamabad & Departure', desc: 'Fly or drive to Islamabad, transfer to airport for onward flight.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+      { day: 1, title: 'Islamabad to Chilas', desc: 'Scenic drive along the Karakoram Highway past Babusar Pass.', altitude: '1,200m', stay: 'Chilas Hotel', trekHours: '0 hrs (Drive 9 hrs)' },
+      { day: 2, title: 'Raikot Bridge to Fairy Meadows', desc: 'Exciting 4x4 mountain jeep ride to Tato village, followed by a gentle 3-hour forest hike up to Fairy Meadows.', altitude: '3,300m', stay: 'Wooden Cabin Fairy Meadows', trekHours: '3-4 hrs', distanceKm: 6 },
+      { day: 3, title: 'Fairy Meadows Exploration & Reflection', desc: 'Relax in the alpine meadows, visit reflection lakes, and enjoy campfire storytelling.', altitude: '3,300m', stay: 'Wooden Cabin Fairy Meadows', trekHours: '2 hrs' },
+      { day: 4, title: 'Trek to Beyal Camp & View Point', desc: 'Hike through birch forests to Beyal Camp and the edge of Raikot Glacier.', altitude: '3,700m', stay: 'Wooden Cabin Fairy Meadows', trekHours: '4-5 hrs', distanceKm: 8 },
+      { day: 5, title: 'Nanga Parbat Base Camp Trek', desc: 'Push forward to German Mountaineering Memorial and Base Camp at 4,100m.', altitude: '4,100m', stay: 'Wooden Cabin Fairy Meadows', trekHours: '6-7 hrs', distanceKm: 12 },
+      { day: 6, title: 'Fairy Meadows to Hunza Valley', desc: 'Hike down to Tato, jeep to Raikot Bridge, drive up Karakoram Highway into beautiful Hunza Karimabad.', altitude: '2,400m', stay: 'Karimabad Hotel', trekHours: '2 hrs walk + 3 hrs drive' },
+      { day: 7, title: 'Hunza & Attabad Lake Tour', desc: 'Explore 900-year-old Baltit Fort, Altit Fort, and turquoise waters of Attabad Lake.', altitude: '2,400m', stay: 'Karimabad Hotel', trekHours: '0 hrs' },
+      { day: 8, title: 'Drive Hunza to Naran / Besham', desc: 'Overland return journey through scenic valleys.', altitude: '1,500m', stay: 'Besham Hotel', trekHours: '0 hrs' },
+      { day: 9, title: 'Return to Islamabad & Departure', desc: 'Drive back to Islamabad, visit Lok Virsa museum and airport drop-off.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
-    inclusions: [
-      'All 4x4 Jeep transfers on Tatu track',
-      'Wooden cottage accommodation in Fairy Meadows',
-      'Hotel stays in Islamabad, Chilas/Gilgit, and Hunza',
-      'All meals (Breakfast, Lunch, Dinner)',
-      'Professional guide and luggage porter on hiking trail',
-      'Entry fees to national parks and heritage forts'
-    ],
-    exclusions: [
-      'International flights',
-      'Personal travel insurance',
-      'Tips for drivers, porters, and guide'
-    ],
-    gearChecklist: [
-      'Comfortable hiking boots with good grip',
-      'Warm fleece jacket and windproof outer layer',
-      'Trekking poles & daypack (25-35L)',
-      'Sun hat and UV sunglasses'
-    ],
-    permitRequirements: 'Open zone; standard Pakistan tourist e-visa only.',
-    fitnessLevel: 'Moderate; suitable for beginners and regular walkers.',
-    departureDates: ['Weekly departures every Saturday from May 1 to Oct 20, 2026']
+    inclusions: ['All hotel and cabin lodging', 'Private 4x4 mountain jeeps', 'All meals', 'English-speaking guide', 'Porter support'],
+    exclusions: ['Personal gear', 'Beverages', 'Tips'],
+    gearChecklist: ['Trekking shoes', 'Warm fleece', 'Windbreaker', 'Sunhat', 'Daypack 30L'],
+    permitRequirements: 'Standard Pakistan Tourist E-Visa (Open Zone).',
+    fitnessLevel: 'Moderate. Suitable for first-time mountain trekkers and families.',
+    departureDates: ['Weekly Departures every Saturday from May 15 to October 15, 2026']
   },
   {
     id: 'snow-lake-biafo-hispar',
-    title: 'Snow Lake & Biafo-Hispar Glacial Traverse',
+    title: 'Snow Lake & Biafo-Hispar Glacier Traverse',
     shortTitle: 'Snow Lake & Hispar La',
-    tagline: 'The greatest continuous glacial wilderness traverse outside polar regions',
+    tagline: 'Cross the world’s longest glaciated highway outside polar regions (5,151m)',
     region: 'Karakoram',
     startingCity: 'Islamabad / Skardu',
     durationDays: 21,
     durationNights: 20,
     difficulty: 'Extreme',
     maxAltitude: 5151,
-    priceUSD: 2850,
-    discountPriceUSD: 2600,
+    priceUSD: 2750,
+    discountPriceUSD: 2200,
+    basicPriceUSD: 2100,
+    standardPriceUSD: 2750,
+    premiumPriceUSD: 3650,
     rating: 5.0,
-    reviewsCount: 56,
+    reviewsCount: 42,
     featured: true,
     popular: false,
     bestSeason: 'July to August',
-    groupSize: '4 to 10 Trekkers',
+    groupSize: '4 to 8 Trekkers',
     activityType: 'Pass Crossing',
     image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80'
     ],
-    overview: 'A legendary 100km ice highway linking the ancient kingdoms of Baltistan and Hunza. Journey up the 60km Biafo Glacier into Lukpe Lawo (Snow Lake)—a surreal 16-kilometer wide basin of snow and ice basin over 1 mile deep. Cross the glaciated Hispar La (5,151m) and descend the 49km Hispar Glacier into the fertile Hunza Valley.',
+    overview: 'One of the most remote and untouched wilderness expeditions on Earth. Traverse the 100km ice highway connecting the Biafo and Hispar glaciers across the legendary Snow Lake (Lukpe Lawo)—a 16km wide basin of perpetual snow and ice—crossing Hispar La (5,151m) from Baltistan directly into the Nagar Valley.',
     highlights: [
-      'Traverse 100km of uninterrupted glaciers between Baltistan and Nagar/Hunza',
-      'Camp in the middle of vast 16km wide Snow Lake (Lukpe Lawo)',
-      'Cross Hispar La (5,151m) with views of Ogre (Baintha Brakk 7,285m) & Latok peaks',
-      'One of the purest wilderness treks on Earth with zero permanent settlements',
-      'Highly experienced mountain rescue guides with satellite communications'
+      'Cross 100km of continuous glacier and perpetual ice sheets',
+      'Camp in the surreal vastness of Snow Lake (Lukpe Lawo)',
+      'Ascend and cross Hispar La Pass at 5,151m with rope teams',
+      'Complete wilderness with zero commercial crowds or lodges',
+      'Traverse from Baltistan directly into Hunza / Nagar valley'
     ],
     itinerary: [
-      { day: 1, title: 'Islamabad Arrival', desc: 'Expedition meeting and briefing.', altitude: '540m', stay: 'Hotel Islamabad', trekHours: '0 hrs' },
-      { day: 2, title: 'Fly Skardu', desc: 'Scenic mountain flight.', altitude: '2,228m', stay: 'Skardu Hotel', trekHours: '0 hrs' },
-      { day: 3, title: 'Skardu Final Logistics', desc: 'Gear sorting, team introductions.', altitude: '2,228m', stay: 'Skardu Hotel', trekHours: '0 hrs' },
-      { day: 4, title: 'Drive Skardu to Askole', desc: '4x4 drive to Braldu valley trailhead.', altitude: '3,000m', stay: 'Askole Camp', trekHours: '0 hrs (6 hrs Jeep)' },
-      { day: 5, title: 'Askole to Namla', desc: 'Turn north onto the Biafo Glacier lateral moraine.', altitude: '3,400m', stay: 'Namla Camp', trekHours: '6 hrs', distanceKm: 14 },
-      { day: 6, title: 'Namla to Mango', desc: 'Trek along the grassy oasis campsites beside Biafo ice.', altitude: '3,700m', stay: 'Mango Camp', trekHours: '5 hrs', distanceKm: 12 },
-      { day: 7, title: 'Mango to Baintha', desc: 'Ascend to green ablation valley facing Baintha Brakk (The Ogre).', altitude: '4,000m', stay: 'Baintha Camp', trekHours: '6 hrs', distanceKm: 14 },
-      { day: 8, title: 'Acclimatization Day Baintha', desc: 'Rest day and hike up ridge for Ogre and Latok photography.', altitude: '4,000m', stay: 'Baintha Camp', trekHours: '3 hrs' },
-      { day: 9, title: 'Baintha to Marpogoro', desc: 'Walk on white ice highway of upper Biafo.', altitude: '4,400m', stay: 'Marpogoro Camp', trekHours: '6 hrs', distanceKm: 13 },
-      { day: 10, title: 'Marpogoro to Karpogoro', desc: 'Surrounded by granite needle spires and snow walls.', altitude: '4,700m', stay: 'Karpogoro Camp', trekHours: '5 hrs', distanceKm: 11 },
-      { day: 11, title: 'Karpogoro to Snow Lake (Lukpe Lawo)', desc: 'Enter the vast snow basin of Snow Lake and set glacier camp.', altitude: '4,900m', stay: 'Snow Lake Camp', trekHours: '5 hrs', distanceKm: 10 },
-      { day: 12, title: 'Cross Hispar La (5,151m) to Kani Basa', desc: 'Roped crossing over Hispar pass, descend onto Hispar glacier.', altitude: '5,151m', stay: 'Kani Basa Camp', trekHours: '8-9 hrs', distanceKm: 15 },
-      { day: 13, title: 'Kani Basa to Jutmal', desc: 'Navigate side glacier streams and moraine fields.', altitude: '4,300m', stay: 'Jutmal Camp', trekHours: '6 hrs', distanceKm: 12 },
-      { day: 14, title: 'Jutmal to Bitanmal', desc: 'Reach beautiful summer pastures of Nagar shepherds.', altitude: '3,800m', stay: 'Bitanmal Camp', trekHours: '5-6 hrs', distanceKm: 13 },
-      { day: 15, title: 'Bitanmal to Hispar Village & Drive Karimabad', desc: 'Trek to Hispar village, meet jeeps, drive to Hunza valley.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '4 hrs trek + 3 hrs drive' },
-      { day: 16, title: 'Rest & Culture in Hunza Valley', desc: 'Visit historic forts, café terraces, and local apricot orchards.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '0 hrs' },
-      { day: 17, title: 'Drive to Gilgit', desc: 'Short drive along Karakoram Highway.', altitude: '1,500m', stay: 'Gilgit Hotel', trekHours: '0 hrs' },
-      { day: 18, title: 'Fly Gilgit to Islamabad', desc: 'Flight back to federal capital.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
-      { day: 19, title: 'Contingency / Exploration Day', desc: 'Buffer day for weather flexibility.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
-      { day: 20, title: 'Farewell Dinner', desc: 'Celebration dinner in Islamabad.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
-      { day: 21, title: 'Fly Home', desc: 'Airport transfer for international departure.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+      { day: 1, title: 'Islamabad Arrival', desc: 'Welcome at airport, gear checks and permit formalities.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 2, title: 'Fly to Skardu', desc: 'Mountain flight to Skardu, meet mountain sirdar and team.', altitude: '2,228m', stay: 'Skardu Hotel', trekHours: '0 hrs' },
+      { day: 3, title: 'Drive Skardu to Askole', desc: '4x4 Jeep drive to Askole village.', altitude: '3,000m', stay: 'Askole Camp', trekHours: '0 hrs (Drive 6 hrs)' },
+      { day: 4, title: 'Askole to Namla (Biafo Snout)', desc: 'Trek onto the Biafo Glacier moraine.', altitude: '3,400m', stay: 'Tent Namla', trekHours: '5-6 hrs', distanceKm: 14 },
+      { day: 5, title: 'Namla to Mango Camp', desc: 'Walk along the ablation valley beside granite walls.', altitude: '3,650m', stay: 'Tent Mango', trekHours: '5 hrs', distanceKm: 12 },
+      { day: 6, title: 'Mango to Baintha', desc: 'Grassy campsite with running spring water and views of Latok Peaks.', altitude: '3,950m', stay: 'Tent Baintha', trekHours: '5-6 hrs', distanceKm: 11 },
+      { day: 7, title: 'Acclimatization Day at Baintha', desc: 'Rest and short ridge hike for views of Ogre (Baintha Brakk 7,285m).', altitude: '3,950m', stay: 'Tent Baintha', trekHours: '2 hrs' },
+      { day: 8, title: 'Baintha to Marpogoro', desc: 'Step onto white ice and roped glacier travel.', altitude: '4,400m', stay: 'Tent Marpogoro (on ice)', trekHours: '6-7 hrs', distanceKm: 14 },
+      { day: 9, title: 'Marpogoro to Snow Lake (Lukpe Lawo)', desc: 'Arrive in the endless white bowl of Snow Lake.', altitude: '4,750m', stay: 'Tent Snow Lake', trekHours: '5 hrs', distanceKm: 10 },
+      { day: 10, title: 'Snow Lake to Hispar La Base', desc: 'Navigate crevassed snowfields toward the high pass.', altitude: '4,850m', stay: 'Tent Hispar Base', trekHours: '5 hrs', distanceKm: 9 },
+      { day: 11, title: 'Cross Hispar La (5,151m) to Kani Basa', desc: 'Early alpine start over Hispar Pass into Nagar territory.', altitude: '5,151m', stay: 'Tent Kani Basa', trekHours: '8-9 hrs', distanceKm: 15 },
+      { day: 12, title: 'Kani Basa to Jutmal', desc: 'Descend lateral moraine of Hispar Glacier.', altitude: '4,200m', stay: 'Tent Jutmal', trekHours: '6 hrs', distanceKm: 13 },
+      { day: 13, title: 'Jutmal to Bitanmal', desc: 'Walk past willow groves and shepherd pastures.', altitude: '3,700m', stay: 'Tent Bitanmal', trekHours: '5-6 hrs', distanceKm: 12 },
+      { day: 14, title: 'Bitanmal to Hispar Village', desc: 'Reach the terraced green village of Hispar in Nagar.', altitude: '3,200m', stay: 'Tent Hispar Village', trekHours: '4-5 hrs', distanceKm: 10 },
+      { day: 15, title: 'Hispar to Karimabad (Hunza)', desc: '4x4 Jeep drive into the heart of Hunza Valley.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '0 hrs (Drive 4 hrs)' },
+      { day: 16, title: 'Rest & Cultural Day in Hunza', desc: 'Visit Altit Fort and cafe overlooking Rakaposhi.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '0 hrs' },
+      { day: 17, title: 'Drive Hunza to Gilgit', desc: 'Short drive along KKH to Gilgit city.', altitude: '1,500m', stay: 'Gilgit Hotel', trekHours: '0 hrs' },
+      { day: 18, title: 'Fly Gilgit to Islamabad', desc: 'Scenic mountain flight over Babusar Pass to Islamabad.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 19, title: 'Buffer Day in Islamabad', desc: 'Contingency for weather delays.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 20, title: 'Farewell Dinner & Debrief', desc: 'Celebrate the traverse with team and certificates.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 21, title: 'International Departure', desc: 'Transfer to airport for return journey.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
-    inclusions: [
-      'Complete wilderness logistics, ice screws, ropes, and certified high-altitude guides',
-      'All camping, food, mess tents, dining setup, and porter services',
-      'Restricted zone permits and environmental clearing',
-      'All internal flights and private 4WD vehicles'
-    ],
-    exclusions: ['International flights', 'Rescue insurance', 'Personal ice gear', 'Tips'],
-    gearChecklist: ['4-season mountaineering tent/sleeping bag', 'Crampons & ice axe', 'Glacier gaiters & thermal overboots'],
-    permitRequirements: 'Government Restricted Area Permit required.',
-    fitnessLevel: 'Extreme stamina and prior glacier experience required.',
+    inclusions: ['All government permits', 'Full expedition kitchen and chef', 'Domestic flights', 'Hotel & camp accommodation', 'Rope safety team'],
+    exclusions: ['International flights', 'Personal climbing gear', 'Insurance'],
+    gearChecklist: ['-25°C sleeping bag', 'Crampons and harness', 'Insulated glacier boots', 'Down suit/parka', 'Ice axe'],
+    permitRequirements: 'Special wilderness permit processed by Trek Karakoram.',
+    fitnessLevel: 'Extreme. Only for experienced high-altitude backpackers comfortable with roped glacier travel.',
     departureDates: ['July 10, 2026', 'August 01, 2026']
   },
   {
-    id: 'k2-basecamp-heli-trek',
-    title: 'K2 Base Camp Luxury Heli-Trek Expedition',
-    shortTitle: 'K2 Base Camp Heli-Trek',
-    tagline: 'Fly by military-grade helicopter direct to Concordia & hike the highlights',
-    region: 'Karakoram',
-    startingCity: 'Islamabad / Skardu',
+    id: 'rakaposhi-diran-base-camp',
+    title: 'Rakaposhi & Diran Peak Base Camp Trek',
+    shortTitle: 'Rakaposhi & Diran Base Camp',
+    tagline: 'Stand before the 6,000m sheer vertical face of Rakaposhi (7,788m)',
+    region: 'Hunza & Nagar',
+    startingCity: 'Islamabad / Gilgit',
     durationDays: 10,
     durationNights: 9,
+    difficulty: 'Moderate',
+    maxAltitude: 3900,
+    priceUSD: 1250,
+    discountPriceUSD: 1000,
+    basicPriceUSD: 950,
+    standardPriceUSD: 1250,
+    premiumPriceUSD: 1750,
+    rating: 4.8,
+    reviewsCount: 88,
+    featured: false,
+    popular: true,
+    bestSeason: 'May to October',
+    groupSize: '2 to 8 Trekkers',
+    activityType: 'Trekking',
+    image: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1000&q=80'
+    ],
+    overview: 'Located in the Nagar Valley, this breathtaking trek takes you to Tagafari—the base camp of Rakaposhi (7,788m)—where the snow-covered mountain rises an unbroken 6,000 meters above the valley floor, creating the steepest single uninterrupted rise on Planet Earth.',
+    highlights: [
+      'Closest view of Rakaposhi (7,788m) and Diran Peak (7,266m)',
+      'Cross the Minapin Glacier to Tagafari alpine meadows',
+      'Explore traditional Nagar and Hunza Silk Road villages',
+      'Ideal for nature lovers seeking high rewards with short duration'
+    ],
+    itinerary: [
+      { day: 1, title: 'Arrival Islamabad', desc: 'Airport greeting and hotel transfer.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 2, title: 'Fly to Gilgit & Drive to Minapin', desc: 'Scenic flight and drive to Minapin village in Nagar.', altitude: '2,000m', stay: 'Minapin Inn', trekHours: '0 hrs' },
+      { day: 3, title: 'Trek Minapin to Hapakun', desc: 'Ascend through juniper forests to Hapakun meadow.', altitude: '2,800m', stay: 'Tent Hapakun', trekHours: '3-4 hrs', distanceKm: 6 },
+      { day: 4, title: 'Trek Hapakun to Tagafari (Rakaposhi BC)', desc: 'Walk along the crest of lateral moraine to Tagafari directly beneath Rakaposhi.', altitude: '3,300m', stay: 'Tent Tagafari', trekHours: '3-4 hrs', distanceKm: 7 },
+      { day: 5, title: 'Excursion to Diran Peak Base Camp', desc: 'Cross the Minapin glacier to Diran Base Camp at 3,900m.', altitude: '3,900m', stay: 'Tent Tagafari', trekHours: '5-6 hrs', distanceKm: 9 },
+      { day: 6, title: 'Tagafari to Minapin & Drive to Hunza', desc: 'Descend to Minapin, drive to Karimabad.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '4 hrs walk + 1 hr drive' },
+      { day: 7, title: 'Hunza Valley Cultural Tour', desc: 'Visit Baltit Fort, Passu Cones, and Hussaini Bridge.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '0 hrs' },
+      { day: 8, title: 'Drive Hunza to Naran / Besham', desc: 'Overland scenic return drive.', altitude: '1,500m', stay: 'Besham Hotel', trekHours: '0 hrs' },
+      { day: 9, title: 'Drive to Islamabad', desc: 'Reach Islamabad, farewell dinner.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 10, title: 'International Departure', desc: 'Airport transfer for flight home.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+    ],
+    inclusions: ['Hotels & tents', 'Guide & porters', 'All meals', 'Transport'],
+    exclusions: ['Visa', 'Personal gear', 'Tips'],
+    gearChecklist: ['Trekking boots', 'Warm jacket', 'Rain layer', 'Trekking poles'],
+    permitRequirements: 'Open Zone (No special permit required).',
+    fitnessLevel: 'Moderate. Suitable for active hikers.',
+    departureDates: ['Every Sunday from June 01 to September 30, 2026']
+  },
+  {
+    id: 'k2-basecamp-heli-trek',
+    title: 'K2 Base Camp VIP Helicopter-Assisted Trek',
+    shortTitle: 'K2 Base Camp Heli-Trek',
+    tagline: 'Trek up Baltoro Glacier and return in 45 minutes by VIP Helicopter',
+    region: 'Karakoram',
+    startingCity: 'Islamabad / Skardu',
+    durationDays: 12,
+    durationNights: 11,
     difficulty: 'Demanding',
     maxAltitude: 5150,
-    priceUSD: 4800,
-    discountPriceUSD: 4450,
+    priceUSD: 4950,
+    discountPriceUSD: 3960,
+    basicPriceUSD: 3950,
+    standardPriceUSD: 4950,
+    premiumPriceUSD: 6200,
     rating: 5.0,
-    reviewsCount: 38,
+    reviewsCount: 36,
     featured: true,
-    popular: true,
-    bestSeason: 'June to September',
-    groupSize: '2 to 8 Trekkers',
+    popular: false,
+    bestSeason: 'July to August',
+    groupSize: '2 to 6 Trekkers',
     activityType: 'Heli Trek',
     image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80'
     ],
-    overview: 'Experience the magic of K2 and Baltoro Glacier in a fraction of the time with VIP helicopter transfers. Fly directly from Skardu over the Trango Towers to Concordia/Paiju, trek to K2 Base Camp and Broad Peak with luxury glamping tents and chef-prepared hot cuisine, and fly back over the high peaks.',
+    overview: 'The pinnacle luxury adventure in Pakistan. Experience the full glory of walking up the Baltoro Glacier to Concordia and K2 Base Camp, then skip the 6-day grueling walk back by boarding a private chartered helicopter from Concordia directly back to Skardu airport with bird’s-eye aerial views of K2, Trango, and Broad Peak.',
     highlights: [
-      'Airbus / Ecureuil helicopter scenic flight over Karakoram giants',
-      'Direct access to Concordia and K2 Base Camp without 7-day walk-in',
-      'Luxury dome tents with heating, real mattresses, and hot water',
-      'Professional mountain guides with satellite tracking'
+      'Walk up the full Baltoro Glacier to Concordia & K2 Base Camp',
+      'VIP chartered military helicopter flight back over the glaciers to Skardu',
+      'Cuts total trip duration down to only 12 days',
+      'Heated luxury dome tents and gourmet chef meals at Concordia'
     ],
     itinerary: [
-      { day: 1, title: 'Islamabad VIP Arrival', desc: 'Airport greeting, transfer to 5-star Serena Hotel.', altitude: '540m', stay: 'Serena Islamabad', trekHours: '0 hrs' },
-      { day: 2, title: 'Flight to Skardu', desc: 'Transfer to Shangrila Skardu Resort.', altitude: '2,228m', stay: 'Shangrila Resort', trekHours: '0 hrs' },
-      { day: 3, title: 'Acclimatization in Skardu & Shigar', desc: 'Visit historic Shigar Serena Fort.', altitude: '2,228m', stay: 'Shigar Fort', trekHours: '0 hrs' },
-      { day: 4, title: 'Helicopter Flight to Paiju / Urdukas', desc: 'Fly by private helicopter over Baltoro snout to Urdukas.', altitude: '4,050m', stay: 'Luxury Camp Urdukas', trekHours: '2 hrs' },
-      { day: 5, title: 'Hike Urdukas to Goro II', desc: 'Trek along Baltoro Glacier with views of Masherbrum.', altitude: '4,300m', stay: 'Luxury Camp Goro II', trekHours: '5 hrs' },
-      { day: 6, title: 'Trek to Concordia', desc: 'Arrive at Concordia throne room.', altitude: '4,600m', stay: 'Luxury Camp Concordia', trekHours: '5 hrs' },
-      { day: 7, title: 'K2 Base Camp Helicopter & Hike Excursion', desc: 'Hike to K2 Base Camp, touch the foot of the Savage Mountain.', altitude: '5,150m', stay: 'Luxury Camp Concordia', trekHours: '6 hrs' },
-      { day: 8, title: 'Helicopter Flight Concordia to Skardu', desc: 'Morning helicopter flight back to Skardu with aerial vistas.', altitude: '2,228m', stay: 'Serena Skardu', trekHours: '0 hrs' },
-      { day: 9, title: 'Fly Skardu to Islamabad', desc: 'Commercial flight back to Islamabad.', altitude: '540m', stay: 'Serena Islamabad', trekHours: '0 hrs' },
-      { day: 10, title: 'International Departure', desc: 'VIP airport transfer for onward flight.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+      { day: 1, title: 'Arrival in Islamabad', desc: 'VIP airport transfer to Serena Hotel Islamabad.', altitude: '540m', stay: 'Serena Hotel', trekHours: '0 hrs' },
+      { day: 2, title: 'Fly to Skardu', desc: 'Scenic mountain flight to Skardu, stay at Serena Shigar Fort.', altitude: '2,228m', stay: 'Shigar Fort Serena', trekHours: '0 hrs' },
+      { day: 3, title: '4x4 Drive to Askole', desc: 'Luxury Prado drive to Askole camp.', altitude: '3,000m', stay: 'VIP Camp Askole', trekHours: '0 hrs' },
+      { day: 4, title: 'Trek Askole to Jhola', desc: 'Walk along Braldu river.', altitude: '3,100m', stay: 'VIP Camp Jhola', trekHours: '6 hrs', distanceKm: 18 },
+      { day: 5, title: 'Jhola to Paiju', desc: 'Walk under Trango Tower views.', altitude: '3,450m', stay: 'VIP Camp Paiju', trekHours: '6 hrs', distanceKm: 19 },
+      { day: 6, title: 'Paiju to Khoburtse', desc: 'Step onto Baltoro Glacier.', altitude: '3,800m', stay: 'VIP Camp Khoburtse', trekHours: '5 hrs', distanceKm: 14 },
+      { day: 7, title: 'Khoburtse to Urdukas', desc: 'Grassy terrace overlooking Trango Towers.', altitude: '4,050m', stay: 'VIP Camp Urdukas', trekHours: '4 hrs', distanceKm: 8 },
+      { day: 8, title: 'Urdukas to Goro II', desc: 'Trek to active glacier center.', altitude: '4,300m', stay: 'VIP Camp Goro II', trekHours: '6 hrs', distanceKm: 12 },
+      { day: 9, title: 'Goro II to Concordia', desc: 'Arrive at Concordia. Gourmet dinner with heated dining dome.', altitude: '4,600m', stay: 'VIP Camp Concordia', trekHours: '5 hrs', distanceKm: 12 },
+      { day: 10, title: 'K2 Base Camp Excursion & Helicopter to Skardu', desc: 'Morning visit to K2 Base Camp. At 2:00 PM, board charter helicopter at Concordia for a breathtaking 45-minute aerial flight back to Skardu airport.', altitude: '2,228m', stay: 'Skardu Luxury Hotel', trekHours: '4 hrs walk + 45 min Heli Flight' },
+      { day: 11, title: 'Fly Skardu to Islamabad', desc: 'Direct flight to Islamabad.', altitude: '540m', stay: 'Serena Hotel Islamabad', trekHours: '0 hrs' },
+      { day: 12, title: 'International Departure', desc: 'VIP airport transfer for onward flight.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
-    inclusions: [
-      'Chartered Helicopter flights (Skardu - Baltoro return)',
-      '5-Star hotel accommodations in Islamabad and Skardu (Serena / Shangrila)',
-      'VIP glamping dome tents with warm bedding and private dining',
-      'All government royalty and environmental permits'
-    ],
-    exclusions: ['International airfare', 'Personal insurance', 'Tips'],
-    gearChecklist: ['Mountaineering warm clothing', 'Trekking boots', 'Thermal layers'],
-    permitRequirements: 'Restricted area permit arranged 4 weeks prior to departure.',
-    fitnessLevel: 'Moderate to Good; less walking than full expedition.',
-    departureDates: ['July 01, 2026', 'July 15, 2026', 'August 01, 2026', 'August 15, 2026']
-  },
-  {
-    id: 'rakaposhi-diran-base-camp',
-    title: 'Rakaposhi & Diran Base Camp Trek',
-    shortTitle: 'Rakaposhi & Diran',
-    tagline: 'Gaze up at the world’s steepest 6,000m uninterrupted vertical rise in Nagar',
-    region: 'Hunza & Nagar',
-    startingCity: 'Islamabad / Gilgit',
-    durationDays: 7,
-    durationNights: 6,
-    difficulty: 'Moderate',
-    maxAltitude: 3800,
-    priceUSD: 950,
-    discountPriceUSD: 850,
-    rating: 4.8,
-    reviewsCount: 89,
-    featured: false,
-    popular: true,
-    bestSeason: 'May to October',
-    groupSize: '2 to 12 Trekkers',
-    activityType: 'Trekking',
-    image: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80'
-    ],
-    overview: 'A breathtaking short trek in the Nagar Valley starting from Minapin village. Ascend through juniper forests to Tagafari and Hapakun camps, directly facing the staggering 6,000m vertical north face of Rakaposhi (7,788m) and Diran Peak (7,266m). Easy accessibility, delicious local cuisine, and spectacular glacial scenery make this ideal for both beginners and experienced trekkers.',
-    highlights: [
-      'Witness the largest uninterrupted vertical rise on planet Earth (Rakaposhi North Wall)',
-      'Camp at Tagafari right beside the Minapin Glacier',
-      'Hike across the glacier to Diran Base Camp & Kacheli lake',
-      'Taste fresh cherries, apples, and organic apricots in Minapin',
-      'Short, rewarding itinerary easily combined with Hunza Valley culture tour'
-    ],
-    itinerary: [
-      { day: 1, title: 'Islamabad Arrival', desc: 'Airport reception and orientation.', altitude: '540m', stay: 'Hotel Islamabad', trekHours: '0 hrs' },
-      { day: 2, title: 'Fly Gilgit / Drive to Minapin Nagar', desc: 'Scenic flight to Gilgit, drive along KKH to Minapin village.', altitude: '2,000m', stay: 'Osho Thang Hotel', trekHours: '0 hrs' },
-      { day: 3, title: 'Trek Minapin to Hapakun', desc: 'Hike through pine and juniper woods along the Minapin stream.', altitude: '2,800m', stay: 'Hapakun Camp', trekHours: '3-4 hrs', distanceKm: 6 },
-      { day: 4, title: 'Trek Hapakun to Tagafari (Rakaposhi BC)', desc: 'Climb onto the lateral moraine to Tagafari camp under Rakaposhi.', altitude: '3,500m', stay: 'Tagafari Camp', trekHours: '3 hrs', distanceKm: 5 },
-      { day: 5, title: 'Excursion to Diran Base Camp & Kacheli', desc: 'Cross the glacier to Diran Base Camp (3,800m) with 360° views.', altitude: '3,800m', stay: 'Tagafari Camp', trekHours: '5 hrs', distanceKm: 9 },
-      { day: 6, title: 'Descend to Minapin & Drive to Hunza', desc: 'Hike down to Minapin, drive to Karimabad Hunza.', altitude: '2,400m', stay: 'Hunza View Hotel', trekHours: '4 hrs trek + 1 hr drive' },
-      { day: 7, title: 'Drive to Gilgit & Return Flight to Islamabad', desc: 'Fly to Islamabad, onward international connection.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
-    ],
-    inclusions: [
-      'Transport in private air-conditioned vehicles and 4x4',
-      'Hotel stays in Islamabad, Minapin, and Hunza',
-      'All meals on trek and hotels',
-      'Camping equipment, tents, guide, and porters'
-    ],
-    exclusions: ['International flights', 'Travel insurance', 'Tips'],
-    gearChecklist: ['Trekking shoes', 'Warm jacket', 'Rain layer', 'Trekking poles'],
-    permitRequirements: 'Open trekking area. Standard Pakistan e-visa.',
-    fitnessLevel: 'Moderate physical condition.',
-    departureDates: ['Every Sunday from May 15 to October 15, 2026']
+    inclusions: ['Charter helicopter flight from Concordia', 'Serena hotels in cities', 'VIP dome camping', 'Private guide & porters', 'All permits'],
+    exclusions: ['International airfare', 'Visa', 'Insurance'],
+    gearChecklist: ['-20°C sleeping bag', 'Glacier boots', 'Down parka', 'Camera equipment'],
+    permitRequirements: 'Restricted area permit and aviation flight clearance.',
+    fitnessLevel: 'High endurance for the ascent phase.',
+    departureDates: ['July 05, 2026', 'July 20, 2026', 'August 05, 2026']
   },
   {
     id: 'rush-lake-and-peak',
-    title: 'Rush Lake & Rush Peak Alpine Trek',
-    shortTitle: 'Rush Lake & Peak (4,694m)',
-    tagline: 'Trek to one of the highest alpine lakes in the world with 360° Karakoram vistas',
+    title: 'Rush Lake & Rush Peak (5,098m) Trek',
+    shortTitle: 'Rush Lake & Peak',
+    tagline: 'Trek to one of the highest alpine lakes in the world in Nagar Valley',
     region: 'Hunza & Nagar',
     startingCity: 'Islamabad / Gilgit',
-    durationDays: 9,
-    durationNights: 8,
+    durationDays: 11,
+    durationNights: 10,
     difficulty: 'Demanding',
     maxAltitude: 5098,
-    priceUSD: 1250,
-    discountPriceUSD: 1100,
+    priceUSD: 1350,
+    discountPriceUSD: 1080,
+    basicPriceUSD: 1050,
+    standardPriceUSD: 1350,
+    premiumPriceUSD: 1850,
     rating: 4.9,
-    reviewsCount: 73,
+    reviewsCount: 54,
     featured: false,
     popular: true,
     bestSeason: 'June to September',
-    groupSize: '2 to 10 Trekkers',
+    groupSize: '2 to 8 Trekkers',
     activityType: 'Trekking',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1000&q=80'
     ],
-    overview: 'Rush Lake (4,694m) in Nagar Valley is an extraordinary turquoise gem nestled beneath the Karakoram peaks. A short climb from the lake takes you to Rush Peak (5,098m)—a non-technical trekking summit offering a staggering 360-degree amphitheater featuring Spantik (Golden Peak 7,027m), Malubiting, Ultar Sar, and even glimpses of K2 and Broad Peak in clear weather.',
+    overview: 'Rush Lake (4,694m) is one of the highest alpine lakes on the planet. Situated in the Nagar Valley, the climb to Rush Peak (5,098m) offers a non-technical summit with a 360-degree panorama of Spantik, Malubiting, Ultar Sar, and K2 in the far distance.',
     highlights: [
-      'Trek to one of the highest alpine lakes on Earth (4,694m)',
-      'Summit non-technical Rush Peak (5,098m) for unobstructed panoramas',
-      'Traverse the Barpu and Bualtar Glaciers',
-      'Witness Spantik (Golden Peak), Miar Peak, and Phuparash',
-      'Rich wildlife spotting: Himalayan Ibex, Golden Eagles, and Marmots'
+      'Camp beside the crystal alpine waters of Rush Lake (4,694m)',
+      'Non-technical summit of Rush Peak (5,098m)',
+      'Cross the Barpu and Bualtar Glaciers',
+      'Panoramic view of Miar, Spantik, and Golden Peak'
     ],
     itinerary: [
-      { day: 1, title: 'Arrival in Islamabad', desc: 'Meet expedition staff, hotel transfer.', altitude: '540m', stay: 'Hotel Islamabad', trekHours: '0 hrs' },
-      { day: 2, title: 'Fly to Gilgit & Drive to Hopar Nagar', desc: 'Scenic flight to Gilgit, drive past Rakaposhi viewpoint to Hopar Valley.', altitude: '2,800m', stay: 'Hopar Inn', trekHours: '0 hrs' },
-      { day: 3, title: 'Trek Hopar to Bericho Kor', desc: 'Cross the active Bualtar Glacier and ascend to Bericho Kor.', altitude: '3,300m', stay: 'Bericho Kor Camp', trekHours: '4 hrs', distanceKm: 7 },
-      { day: 4, title: 'Trek Bericho Kor to Chidin Harai', desc: 'Trek across Barpu glacier to alpine meadow camp.', altitude: '4,000m', stay: 'Chidin Harai Camp', trekHours: '4-5 hrs', distanceKm: 8 },
-      { day: 5, title: 'Trek Chidin Harai to Rush Lake', desc: 'Steep ascent to the alpine plateau and turquoise Rush Lake.', altitude: '4,694m', stay: 'Rush Lake Camp', trekHours: '3-4 hrs', distanceKm: 6 },
-      { day: 6, title: 'Summit Rush Peak (5,098m) & Rest at Lake', desc: 'Early morning climb to Rush Peak for sunrise over Karakoram, afternoon rest.', altitude: '5,098m', stay: 'Rush Lake Camp', trekHours: '4 hrs', distanceKm: 5 },
-      { day: 7, title: 'Descend Rush Lake to Barpu Giram', desc: 'Walk down along flower meadows and shepherd huts.', altitude: '3,400m', stay: 'Barpu Giram Camp', trekHours: '5 hrs', distanceKm: 11 },
-      { day: 8, title: 'Trek to Hopar & Drive to Karimabad Hunza', desc: 'Cross glacier back to Hopar village, drive to Hunza hotel.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '3 hrs trek + 1 hr drive' },
-      { day: 9, title: 'Fly Gilgit to Islamabad & International Departure', desc: 'Flight to Islamabad, onward journey.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+      { day: 1, title: 'Arrival Islamabad', desc: 'Transfer to hotel and expedition briefing.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 2, title: 'Fly Gilgit & Drive to Hoper Nagar', desc: 'Scenic flight and drive to Hoper Valley.', altitude: '2,800m', stay: 'Hoper Camp', trekHours: '0 hrs' },
+      { day: 3, title: 'Trek Hoper to Bericho Kor', desc: 'Cross the Bualtar Glacier to Bericho Kor.', altitude: '3,300m', stay: 'Tent Bericho Kor', trekHours: '4-5 hrs', distanceKm: 7 },
+      { day: 4, title: 'Trek Bericho Kor to Chidin Harai', desc: 'Ascend steep green pasture trails.', altitude: '4,000m', stay: 'Tent Chidin Harai', trekHours: '4-5 hrs', distanceKm: 6 },
+      { day: 5, title: 'Trek Chidin Harai to Rush Lake', desc: 'Arrive at the magical shores of Rush Lake.', altitude: '4,694m', stay: 'Tent Rush Lake', trekHours: '3-4 hrs', distanceKm: 5 },
+      { day: 6, title: 'Rush Peak Summit (5,098m)', desc: 'Early morning climb to Rush Peak summit for sunrise over Spantik and K2.', altitude: '5,098m', stay: 'Tent Rush Lake', trekHours: '4-5 hrs', distanceKm: 6 },
+      { day: 7, title: 'Rush Lake to Gutenz', desc: 'Descend through Barpu glacier side valleys.', altitude: '3,800m', stay: 'Tent Gutenz', trekHours: '4 hrs', distanceKm: 8 },
+      { day: 8, title: 'Gutenz to Hoper & Drive to Hunza', desc: 'Return to Hoper, drive to Karimabad Hunza.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '3 hrs walk + 1 hr drive' },
+      { day: 9, title: 'Hunza Cultural Sightseeing', desc: 'Explore forts and local bazaar.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '0 hrs' },
+      { day: 10, title: 'Drive Hunza to Islamabad', desc: 'Return journey along KKH.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 11, title: 'Departure', desc: 'Airport transfer.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
-    inclusions: ['All land transport, domestic flight, mountain guides, cook, porters, and meals'],
-    exclusions: ['International flights, personal insurance, tips'],
-    gearChecklist: ['Trekking boots, thermal gloves, high SPF sunglasses, wind jacket'],
-    permitRequirements: 'Standard tourist visa.',
-    fitnessLevel: 'Good aerobic fitness for high altitude walking.',
-    departureDates: ['June 10, 2026', 'July 01, 2026', 'July 20, 2026', 'August 10, 2026', 'September 01, 2026']
+    inclusions: ['Camp services', 'Guides & porters', 'All meals', 'Hotels in cities'],
+    exclusions: ['Personal gear', 'Visa', 'Tips'],
+    gearChecklist: ['Trekking boots', 'Warm fleece & down', 'Trekking poles', 'Water purification'],
+    permitRequirements: 'Open Zone.',
+    fitnessLevel: 'Demanding steep ascent. Good cardiovascular conditioning required.',
+    departureDates: ['June 15, 2026', 'July 01, 2026', 'July 20, 2026', 'August 10, 2026']
   },
   {
     id: 'shimshal-minglik-sar',
-    title: 'Shimshal Valley & Minglik Sar (6,050m) Trek & Climb',
+    title: 'Shimshal Pass & Minglik Sar (6,050m) Expedition',
     shortTitle: 'Shimshal & Minglik Sar',
-    tagline: 'Venture into the Valley of Mountaineers & climb a non-technical 6,000m peak',
-    region: 'Karakoram',
+    tagline: 'Trek with Wakhi mountaineers & summit a non-technical 6,000m Karakoram peak',
+    region: 'Hunza & Nagar',
     startingCity: 'Islamabad / Gilgit',
-    durationDays: 14,
-    durationNights: 13,
-    difficulty: 'Extreme',
+    durationDays: 15,
+    durationNights: 14,
+    difficulty: 'Strenuous',
     maxAltitude: 6050,
     priceUSD: 1850,
-    discountPriceUSD: 1690,
+    discountPriceUSD: 1480,
+    basicPriceUSD: 1450,
+    standardPriceUSD: 1850,
+    premiumPriceUSD: 2450,
     rating: 5.0,
-    reviewsCount: 42,
+    reviewsCount: 38,
     featured: false,
-    popular: true,
-    bestSeason: 'June to September',
-    groupSize: '3 to 10 Trekkers',
+    popular: false,
+    bestSeason: 'July to September',
+    groupSize: '2 to 8 Trekkers',
     activityType: 'Expedition',
     image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80'
     ],
-    overview: 'Shimshal is the highest settlement in Hunza and home to Pakistan’s most celebrated high-altitude climbers (including Samina Baig). Journey along the famous gorge road, trek through the Shimshal Pamir high pastures (Shuwjerab and Shuhtperg), and climb the non-technical trekking peak Minglik Sar (6,050m) with crampons and ice axes.',
+    overview: 'Shimshal is the highest settlement in Hunza, home to Pakistan’s most famed high-altitude mountaineers. Trek through the dramatic Shimshal Gorge to the vast high pastures of Shimshal Pass (4,735m) and conquer Minglik Sar (6,050m)—a straightforward non-technical trekking peak with zero crevasse hazards.',
     highlights: [
-      'Climb your first 6,000m Himalayan/Karakoram peak with expert local instructors',
-      'Explore Shimshal Pamir high alpine pastures grazing thousands of Yaks',
-      'Meet world-renowned Wakhi mountaineers and experience authentic culture',
-      'Stunning views of K2, Gasherbrum, and Chinese Pamir from summit'
+      'Climb your first 6,000m Karakoram peak: Minglik Sar (6,050m)',
+      'Cross the scenic Shimshal Pass and turquoise alpine lakes',
+      'Experience authentic high-altitude Wakhi shepherd hospitality',
+      'Dramatic 4x4 cliffside jeep track through the Shimshal Gorge'
     ],
     itinerary: [
-      { day: 1, title: 'Islamabad Arrival', desc: 'Orientation and gear check.', altitude: '540m', stay: 'Hotel Islamabad', trekHours: '0 hrs' },
-      { day: 2, title: 'Fly Gilgit / Drive Passu', desc: 'Drive past Passu Cones in upper Hunza.', altitude: '2,500m', stay: 'Passu Hotel', trekHours: '0 hrs' },
-      { day: 3, title: '4x4 Jeep Drive Passu to Shimshal', desc: 'Drive through the dramatic Shimshal Gorge.', altitude: '3,100m', stay: 'Shimshal Guest House', trekHours: '4 hrs Jeep' },
-      { day: 4, title: 'Trek Shimshal to Past Furzin', desc: 'Ascend narrow canyons and rope bridges.', altitude: '3,400m', stay: 'Furzin Camp', trekHours: '5-6 hrs', distanceKm: 12 },
-      { day: 5, title: 'Trek Past Furzin to Arbab Purien', desc: 'Traverse high scree paths and river beds.', altitude: '3,900m', stay: 'Arbab Purien Camp', trekHours: '5 hrs', distanceKm: 11 },
-      { day: 6, title: 'Trek to Shimshal Pamir Base (Shuwjerab)', desc: 'Enter the vast green Pamir pastures with high lakes.', altitude: '4,700m', stay: 'Pamir High Camp', trekHours: '6 hrs', distanceKm: 14 },
-      { day: 7, title: 'Acclimatization & Training at Pamir', desc: 'Rope skills and crampon training on glacier.', altitude: '4,700m', stay: 'Pamir High Camp', trekHours: '3 hrs' },
-      { day: 8, title: 'Summit Day: Minglik Sar (6,050m)', desc: 'Alpine dawn start, snow climb to summit, return to camp.', altitude: '6,050m', stay: 'Pamir High Camp', trekHours: '8-10 hrs', distanceKm: 12 },
-      { day: 9, title: 'Reserve Summit Day', desc: 'Buffer day in case of weather.', altitude: '4,700m', stay: 'Pamir High Camp', trekHours: '0 hrs' },
-      { day: 10, title: 'Trek Pamir to Furzin', desc: 'Begin descent back toward Shimshal.', altitude: '3,400m', stay: 'Furzin Camp', trekHours: '6-7 hrs', distanceKm: 18 },
-      { day: 11, title: 'Trek Furzin to Shimshal Village', desc: 'Arrive in village, celebration dinner with yak meat and local bread.', altitude: '3,100m', stay: 'Shimshal Guest House', trekHours: '4 hrs', distanceKm: 10 },
-      { day: 12, title: 'Jeep to Karimabad Hunza', desc: 'Drive to central Hunza for hotel comforts.', altitude: '2,400m', stay: 'Hunza Hotel', trekHours: '5 hrs drive' },
-      { day: 13, title: 'Fly Gilgit to Islamabad', desc: 'Flight to capital.', altitude: '540m', stay: 'Hotel Islamabad', trekHours: '0 hrs' },
-      { day: 14, title: 'International Departure', desc: 'Airport transfer for flight home.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+      { day: 1, title: 'Arrival Islamabad', desc: 'Hotel transfer and briefing.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 2, title: 'Drive to Chilas / Gilgit', desc: 'Overland drive along KKH.', altitude: '1,500m', stay: 'Gilgit Hotel', trekHours: '0 hrs' },
+      { day: 3, title: 'Jeep Drive to Shimshal Village', desc: 'Thrilling off-road gorge track to Shimshal.', altitude: '3,100m', stay: 'Shimshal Guesthouse', trekHours: '0 hrs (Jeep 4 hrs)' },
+      { day: 4, title: 'Acclimatization in Shimshal', desc: 'Explore historic village and water canals.', altitude: '3,100m', stay: 'Shimshal Guesthouse', trekHours: '2 hrs' },
+      { day: 5, title: 'Trek Shimshal to Past Furzin', desc: 'Hike through narrow canyons to Furzin.', altitude: '3,500m', stay: 'Tent Furzin', trekHours: '6 hrs', distanceKm: 14 },
+      { day: 6, title: 'Furzin to Arbab Kuk', desc: 'Gradual ascent into upper valleys.', altitude: '3,900m', stay: 'Tent Arbab Kuk', trekHours: '5 hrs', distanceKm: 12 },
+      { day: 7, title: 'Arbab Kuk to Shimshal Pass (Shuijerab)', desc: 'Arrive at the wide grasslands of Shimshal Pass.', altitude: '4,735m', stay: 'Tent Shimshal Pass', trekHours: '5 hrs', distanceKm: 11 },
+      { day: 8, title: 'Acclimatization & Minglik Sar Base Camp', desc: 'Rest and climbing gear check at base camp.', altitude: '4,900m', stay: 'Tent Base Camp', trekHours: '2 hrs' },
+      { day: 9, title: 'Summit Day: Minglik Sar (6,050m)', desc: 'Early alpine ascent up snow slopes to the 6,050m summit. Panorama of Disteghil Sar and K2.', altitude: '6,050m', stay: 'Tent Shimshal Pass', trekHours: '8-10 hrs', distanceKm: 10 },
+      { day: 10, title: 'Reserve Summit Weather Day', desc: 'Buffer day for peak conditions.', altitude: '4,735m', stay: 'Tent Shimshal Pass', trekHours: '0 hrs' },
+      { day: 11, title: 'Trek Shimshal Pass to Past Furzin', desc: 'Begin return descent.', altitude: '3,500m', stay: 'Tent Furzin', trekHours: '7 hrs', distanceKm: 23 },
+      { day: 12, title: 'Furzin to Shimshal Village', desc: 'Return to village and celebration.', altitude: '3,100m', stay: 'Shimshal Guesthouse', trekHours: '5 hrs', distanceKm: 14 },
+      { day: 13, title: 'Drive to Hunza & Gilgit', desc: 'Jeep to KKH and drive to Gilgit.', altitude: '1,500m', stay: 'Gilgit Hotel', trekHours: '0 hrs' },
+      { day: 14, title: 'Drive Gilgit to Islamabad', desc: 'Return journey to capital.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 15, title: 'International Departure', desc: 'Airport transfer.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
-    inclusions: ['Climbing guide, climbing permits, high altitude gear, meals, camps, flights and jeeps'],
-    exclusions: ['International flights, personal boots & insurance, tips'],
-    gearChecklist: ['Crampons, climbing harness, mountaineering boots, -20°C sleeping bag'],
-    permitRequirements: 'Trekking & Climbing Peak permit included.',
-    fitnessLevel: 'High physical stamina.',
-    departureDates: ['July 05, 2026', 'July 25, 2026', 'August 15, 2026']
+    inclusions: ['Peak climbing permit', 'Climbing guide', 'Full camp & cook team', 'Jeeps & hotels'],
+    exclusions: ['Personal boots/crampons', 'Visa', 'Insurance'],
+    gearChecklist: ['Mountaineering boots', 'Crampons', 'Ice axe', 'Summit mittens', 'Down suit'],
+    permitRequirements: 'Trekking peak permit processed by Trek Karakoram.',
+    fitnessLevel: 'Strenuous. Good cardiovascular endurance for 6,000m push.',
+    departureDates: ['July 15, 2026', 'August 05, 2026']
   },
   {
     id: 'deosai-plains-burzil',
-    title: 'Deosai Plains & High Lakes Wilderness Trek',
-    shortTitle: 'Deosai Plains & Lakes',
-    tagline: 'Cross the "Land of Giants"—the 2nd highest plateau on Earth at 4,114m',
+    title: 'Deosai High Plains & Sheosar Lake Wilderness Trek',
+    shortTitle: 'Deosai Plains & Astore',
+    tagline: 'Traverse the world’s second-highest plateau at 4,114m — Land of the Giants',
     region: 'Deosai & Astore',
     startingCity: 'Islamabad / Skardu',
-    durationDays: 6,
-    durationNights: 5,
+    durationDays: 8,
+    durationNights: 7,
     difficulty: 'Moderate',
     maxAltitude: 4114,
-    priceUSD: 850,
-    discountPriceUSD: 750,
+    priceUSD: 1100,
+    discountPriceUSD: 880,
+    basicPriceUSD: 800,
+    standardPriceUSD: 1100,
+    premiumPriceUSD: 1550,
     rating: 4.8,
-    reviewsCount: 94,
+    reviewsCount: 76,
     featured: false,
     popular: true,
     bestSeason: 'July to September',
-    groupSize: '2 to 14 Trekkers',
-    activityType: 'Trekking',
+    groupSize: '2 to 8 Trekkers',
+    activityType: 'Cultural Trek',
     image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80'
     ],
-    overview: 'The Deosai National Park is a high-altitude alpine plateau with an average elevation of 4,114 meters. Known as the "Land of Giants", in summer it transforms into an endless sea of colorful wildflowers, crystal meandering streams, and the crystalline waters of Sheosar Lake, with Himalayan Brown Bears roaming freely against the snowcapped peaks.',
+    overview: 'Deosai National Park is an extraordinary rolling alpine plateau averaging 4,114 meters above sea level. Known as the "Land of the Giants," this protected wilderness is blanketed in millions of wildflowers and is the natural sanctuary of the endangered Himalayan Brown Bear.',
     highlights: [
-      'Camp beside the heart-shaped crystal waters of Sheosar Lake (4,142m)',
-      'Spot endangered Himalayan Brown Bears, Golden Marmots & Tibetan Wolves',
-      'Traverse between Skardu (Baltistan) and Astore Valley (Diamer)',
-      'Night-time stargazing beneath zero-pollution Karakoram skies',
-      'Comfortable moderate daily hiking with 4x4 support'
+      'Trek across the second highest alpine plateau on Earth (4,114m)',
+      'Camp at crystal clear Sheosar Lake mirroring Nanga Parbat',
+      'Wildlife safari for Himalayan Brown Bears and golden marmots',
+      'Traverse from Skardu through Deosai into lush Astore Valley'
     ],
     itinerary: [
-      { day: 1, title: 'Arrival in Islamabad', desc: 'Hotel transfer and briefing.', altitude: '540m', stay: 'Hotel Islamabad', trekHours: '0 hrs' },
-      { day: 2, title: 'Fly to Skardu & Visit Sadpara Lake', desc: 'Flight to Skardu, visit Sadpara lake and Ali Sadpara memorial.', altitude: '2,228m', stay: 'Skardu Hotel', trekHours: '0 hrs' },
-      { day: 3, title: 'Ascend to Deosai National Park & Ali Malik Camp', desc: '4x4 drive onto the plateau, hike to Ali Malik camp.', altitude: '4,000m', stay: 'Ali Malik Camp', trekHours: '3 hrs hike', distanceKm: 7 },
-      { day: 4, title: 'Trek across Deosai to Kala Pani & Bara Pani', desc: 'Hike across rolling flower meadows and suspension bridges.', altitude: '4,100m', stay: 'Bara Pani Camp', trekHours: '5-6 hrs', distanceKm: 14 },
-      { day: 5, title: 'Trek to Sheosar Lake & Drive to Astore / Rama', desc: 'Reach magical Sheosar Lake, descend into lush pine forests of Rama.', altitude: '3,200m', stay: 'Rama Green Lake Hotel', trekHours: '4 hrs trek + 2 hrs drive' },
-      { day: 6, title: 'Drive to Gilgit & Return to Islamabad', desc: 'Fly back to Islamabad for international departure.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
+      { day: 1, title: 'Arrival Islamabad & Flight to Skardu', desc: 'Fly into Baltistan.', altitude: '2,228m', stay: 'Skardu Hotel', trekHours: '0 hrs' },
+      { day: 2, title: 'Skardu to Deosai Gate (Ali Malik)', desc: '4x4 Jeep ascent onto the high plateau.', altitude: '3,800m', stay: 'Tent Ali Malik', trekHours: '2 hrs walk' },
+      { day: 3, title: 'Trek Ali Malik to Bara Pani', desc: 'Walk across rolling wildflower plains and glacial rivers.', altitude: '4,000m', stay: 'Tent Bara Pani', trekHours: '5 hrs', distanceKm: 14 },
+      { day: 4, title: 'Trek Bara Pani to Sheosar Lake', desc: 'Arrive at the shores of the breathtaking heart-shaped lake.', altitude: '4,114m', stay: 'Tent Sheosar Lake', trekHours: '5 hrs', distanceKm: 13 },
+      { day: 5, title: 'Sheosar Lake Wildlife & Reflection Day', desc: 'Spotting brown bears, migratory birds, and stargazing.', altitude: '4,114m', stay: 'Tent Sheosar Lake', trekHours: '3 hrs' },
+      { day: 6, title: 'Sheosar to Chillam & Astore Valley', desc: 'Descend through the southern gate into Astore.', altitude: '2,600m', stay: 'Rama Astore Hotel', trekHours: '4 hrs walk + 2 hrs jeep' },
+      { day: 7, title: 'Drive Astore to Gilgit / Islamabad', desc: 'Overland return via Babusar Pass.', altitude: '540m', stay: 'Islamabad Hotel', trekHours: '0 hrs' },
+      { day: 8, title: 'Departure', desc: 'Airport transfer.', altitude: '540m', stay: 'Departure', trekHours: '0 hrs' }
     ],
-    inclusions: ['Park entry fees, guide, tented camps, meals, 4x4 transport, domestic flight'],
-    exclusions: ['International flights, personal insurance, tips'],
-    gearChecklist: ['Warm sleeping bag, waterproof hiking boots, warm hat, windbreaker'],
-    permitRequirements: 'National park permit included.',
-    fitnessLevel: 'Moderate.',
-    departureDates: ['Weekly departures every Friday from June 25 to September 15, 2026']
+    inclusions: ['National Park permits', 'All camp meals & tents', 'Jeeps', 'Wildlife guide'],
+    exclusions: ['Personal gear', 'Visa', 'Tips'],
+    gearChecklist: ['Trekking boots', 'Warm fleece', 'Windproof jacket', 'Binoculars'],
+    permitRequirements: 'Deosai National Park Wildlife permit (arranged by Trek Karakoram).',
+    fitnessLevel: 'Moderate. High altitude camping experience recommended.',
+    departureDates: ['Weekly Departures every Tuesday from July 01 to September 15, 2026']
   }
 ];
 
 export const TREK_STYLES: TrekStyle[] = [
   {
     id: 'high-altitude',
-    title: 'High Altitude Trekking',
+    title: 'Glacier & High Pass Treks',
     iconName: 'Mountain',
     count: 14,
-    description: 'Glacial passes, Baltoro routes & 5,000m+ world-class wilderness treks.',
+    description: 'Concordia, K2 Base Camp, Gondogoro La, and Snow Lake Biafo-Hispar.',
     image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80'
   },
   {
@@ -619,6 +768,8 @@ export const TREK_STYLES: TrekStyle[] = [
   }
 ];
 
+export const TRAVEL_STYLES = TREK_STYLES;
+
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'test-1',
@@ -629,7 +780,7 @@ export const TESTIMONIALS: Testimonial[] = [
     trekTaken: 'K2 Base Camp & Gondogoro La Trek',
     date: 'July 2025',
     rating: 5,
-    review: 'Standing at Concordia surrounded by K2, Broad Peak, and the Gasherbrums was the most profound mountain experience of our lives. The Balti kitchen team prepared fresh hot meals on ice every day, and our guide Karim ensured safe passage over Gondogoro La.',
+    review: 'Standing at Concordia surrounded by K2, Broad Peak, and the Gasherbrums was the most profound mountain experience of our lives. Trek Karakoram handled every detail from airport pickup to our pass crossing with soulful care and flawless safety.',
     verified: true
   },
   {
@@ -641,7 +792,7 @@ export const TESTIMONIALS: Testimonial[] = [
     trekTaken: 'Snow Lake & Biafo-Hispar Traverse',
     date: 'August 2025',
     rating: 5,
-    review: 'Snow Lake is absolute magic. Total wilderness with zero tourists for 12 days. Karakoram Expeditions is hands down the most professional and trustworthy operator in Pakistan. Their safety protocols and satellite rescue communications gave total peace of mind.',
+    review: 'Snow Lake is absolute magic. Total wilderness with zero crowds for 12 days on pure ice. Trek Karakoram is hands down the most authentic and trustworthy operator in Pakistan. Their satellite tracking and medical protocols gave total peace of mind.',
     verified: true
   },
   {
@@ -653,60 +804,61 @@ export const TESTIMONIALS: Testimonial[] = [
     trekTaken: 'Fairy Meadows & Nanga Parbat',
     date: 'September 2025',
     rating: 5,
-    review: 'As a solo female trekker, I felt completely welcomed and safe. The staff treated me like family. Watching the sunrise turn Nanga Parbat into glowing golden crystal from my wooden cabin in Fairy Meadows was unforgettable.',
+    review: 'As a solo female trekker, I felt completely welcomed, respected, and safe. The Balti staff treated me like family. Watching the sunrise turn Nanga Parbat into glowing golden crystal from Fairy Meadows was unforgettable.',
     verified: true
   },
   {
     id: 'test-4',
-    name: 'Kenji Takahashi',
-    country: 'Japan',
-    countryCode: 'JP',
+    name: 'Ravi & Ayesha Patel',
+    country: 'United Kingdom',
+    countryCode: 'GB',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
-    trekTaken: 'K2 Base Camp Heli-Trek VIP',
-    date: 'July 2025',
+    trekTaken: 'Rakaposhi & Diran Base Camp',
+    date: 'October 2025',
     rating: 5,
-    review: 'The helicopter flight over Trango Towers and landing at Concordia was breathtaking. Luxury heated dome tents and Michelin-level expedition food at 4,600m altitude. Highly recommended for busy executives who want to see K2.',
+    review: 'The sheer 6,000m vertical face of Rakaposhi took our breath away. The organic meals prepared in mountain tents and the genuine warmth of the Nagar locals made this the best trip we have ever taken.',
     verified: true
   }
 ];
 
 export const BLOG_POSTS = [
   {
-    id: 'blog-1',
-    title: 'K2 Base Camp Trek 2026: Complete Guide & Permits',
+    id: 'k2-base-camp-trek-guide',
+    title: 'The Soul of the Karakoram: Complete Guide to K2 Base Camp & Concordia',
     slug: 'k2-base-camp-trek-guide',
-    category: 'Trek Guide',
-    readTime: '7 min read',
-    author: 'Ali Raza Balti',
-    authorRole: 'Head Mountain Guide & 3x K2 Summit Support',
-    date: 'Jan 28, 2026',
+    category: 'Expedition Guides',
+    readTime: '8 min read',
+    author: 'Ali Balti',
+    authorRole: 'Senior IFMGA Certified Lead Guide',
+    date: 'Jan 12, 2026',
     image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Everything you need to know before packing for the Baltoro Glacier: permits, fitness training, packing list, and Gondogoro La pass safety.',
+    excerpt: 'Discover the ancient trade paths, glacier moraines, acclimatization schedules, and what it truly feels like to stand in the Throne Room of the Mountain Gods.',
     content: [
-      'The K2 Base Camp trek through the Baltoro Glacier is widely regarded by international alpinists as the crown jewel of high-altitude trekking.',
-      'Unlike the Everest Base Camp trek which is lined with teahouses and commercial wifi cafes, Baltoro is a pure, raw, glaciated wilderness with zero permanent structures for 100 kilometers.',
-      'Best Season: The optimum window for trekking to K2 Base Camp runs from June 15 to September 10, when melting snow opens up the higher passes and temperatures at Concordia hover around 5°C to 12°C during daylight.'
+      'The journey to K2 Base Camp and Concordia is not merely a mountain trek—it is an initiation into the rawest, grandest geology on Earth.',
+      'Beginning in the stone village of Askole, the route follows the roaring Braldu river before stepping onto the massive snout of the Baltoro Glacier at Paiju.',
+      'At Concordia, four 8,000m summits tower above your sleeping tent: K2 (8,611m), Broad Peak (8,051m), Gasherbrum I (8,080m), and Gasherbrum II (8,035m).',
+      'To journey safely, gradual acclimatization is paramount. With rest days at Paiju (3,450m) and Urdukas (4,050m), your body adapts steadily before you push over the 5,585m Gondogoro La.'
     ]
   },
   {
-    id: 'blog-2',
-    title: 'Pakistan Trekking Visa & Gilgit-Baltistan Permits Simplified',
+    id: 'pakistan-trekking-visa-guide',
+    title: 'How to Obtain Your Pakistan Trekking E-Visa & Letter of Invitation (LOI)',
     slug: 'pakistan-trekking-visa-guide',
-    category: 'Permits & Visas',
+    category: 'Visa & Logistics',
     readTime: '5 min read',
-    author: 'Sultan Ahmed',
-    authorRole: 'Logistics & Government Liaison Officer',
-    date: 'Feb 12, 2026',
+    author: 'Karim Ullah',
+    authorRole: 'Expedition Logistics & Government Liaison',
+    date: 'Feb 02, 2026',
     image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Step-by-step instructions on obtaining the Pakistan E-Visa, Mountaineering & Trekking category, and restricted zone NOC clearance.',
+    excerpt: 'Step-by-step instructions on obtaining the Pakistan E-Visa under the Mountaineering & Trekking category, LOI requirements, and restricted zone NOC clearance.',
     content: [
-      'Pakistan now offers a 100% online E-Visa system for citizens of over 190 countries with standard approvals processed within 48 to 72 hours.',
-      'For Restricted Zones like the upper Baltoro Glacier and Gondogoro La, a certified government licensed tour operator like Karakoram Expeditions is legally mandated to process your security clearance and Alpine Club registration.'
+      'Pakistan offers a fast online E-Visa system for citizens of over 190 countries, with standard tourist and trekking e-visas processed within 48 to 72 hours.',
+      'For Restricted Zones like the Baltoro Glacier and K2 Base Camp, booking with a certified government-licensed operator like Trek Karakoram is legally required to issue your Letter of Invitation (LOI) and Alpine Club registration.'
     ]
   },
   {
-    id: 'blog-3',
-    title: 'How to Prevent Altitude Sickness at 5,000m+ in the Karakoram',
+    id: 'altitude-sickness-prevention-karakoram',
+    title: 'Preventing Altitude Sickness at 5,000m+ in the Karakoram',
     slug: 'altitude-sickness-prevention-karakoram',
     category: 'Health & Safety',
     readTime: '6 min read',
@@ -714,7 +866,7 @@ export const BLOG_POSTS = [
     authorRole: 'High-Altitude Wilderness Medical Advisor',
     date: 'Feb 18, 2026',
     image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Doctor-approved acclimatization strategies, hydration schedules, Diamox protocols, and daily pulse oximeter monitoring.',
+    excerpt: 'Doctor-approved acclimatization strategies, hydration standards, Diamox protocols, and daily pulse oximeter monitoring.',
     content: [
       'The golden rule of Karakoram acclimatization is gradual ascent: "Climb high, sleep low".',
       'Our itineraries include mandatory rest and acclimatization days at Paiju (3,450m) and Urdukas (4,050m) before pushing into Concordia (4,600m) and Gondogoro La (5,585m).'
@@ -726,7 +878,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     category: 'Visa & Permits',
     question: 'Do I need a special permit to trek to K2 Base Camp?',
-    answer: 'Yes. K2 Base Camp and the Baltoro Glacier are located in a designated restricted area near the international border. Trekkers require a formal trekking permit from the Gilgit-Baltistan Department of Tourist Services (DTS) and Alpine Club of Pakistan. As a licensed operator, Karakoram Expeditions handles 100% of the permit paperwork, environmental fees, and military liaison requirements for you.'
+    answer: 'Yes. K2 Base Camp and the Baltoro Glacier are located in a designated restricted area near the international border. Trekkers require a formal trekking permit from the Gilgit-Baltistan Department of Tourist Services (DTS) and Alpine Club of Pakistan. As a licensed operator, Trek Karakoram handles 100% of the permit paperwork, environmental fees, and military liaison requirements for you.'
   },
   {
     category: 'Visa & Permits',
@@ -752,6 +904,11 @@ export const FAQ_ITEMS: FAQItem[] = [
     category: 'Logistics & Safety',
     question: 'Is Pakistan safe for international trekkers and solo female travelers?',
     answer: 'Gilgit-Baltistan and the Karakoram region are among the safest, friendliest, and most peaceful regions in Asia. The local Balti and Hunza communities are world-renowned for their hospitality, honesty, and respect. Hundreds of international climbers and solo female trekkers travel with us every season without incident.'
+  },
+  {
+    category: 'Booking & Payment',
+    question: 'What is the Founding Members Special offer?',
+    answer: 'To celebrate our global launch, early explorers booking for 2026/2027 receive a 20% direct discount, lifetime 10% loyalty discounts on all future treks, a featured testimonial on our website, and free Trek Karakoram merchandise (expedition cap and organic tee).'
   },
   {
     category: 'Booking & Payment',

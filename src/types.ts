@@ -38,6 +38,9 @@ export interface TrekPackage {
   maxAltitude: number; // in meters
   priceUSD: number;
   discountPriceUSD?: number;
+  basicPriceUSD?: number;
+  standardPriceUSD?: number;
+  premiumPriceUSD?: number;
   rating: number;
   reviewsCount: number;
   featured: boolean;
@@ -100,4 +103,24 @@ export interface FAQItem {
   category: 'Visa & Permits' | 'Fitness & Altitude' | 'Logistics & Safety' | 'Booking & Payment';
 }
 
-export type Currency = 'USD' | 'EUR' | 'GBP' | 'PKR';
+export type Currency = 'USD' | 'EUR' | 'GBP' | 'PKR' | 'AUD';
+
+export interface BrandValue {
+  number: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  iconName: string;
+}
+
+export interface AudiencePersona {
+  id: string;
+  title: string;
+  profile: string;
+  lifestyle: string;
+  motivation: string;
+  painPoints: string;
+  howWeHelp: string;
+  dreamExperience: string;
+  personaExample: string;
+}
