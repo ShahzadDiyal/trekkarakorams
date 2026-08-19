@@ -1,0 +1,6 @@
+{
+  "name": "Karakoram Expeditions - Pakistan Trekking & K2 Base Camp",
+  "description": "Premier Pakistan trekking platform offering K2 Base Camp, Baltoro Glacier, Gondogoro La, Fairy Meadows, and Karakoram high-altitude treks with certified guides and fast booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
