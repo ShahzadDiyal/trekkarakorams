@@ -1,25 +1,21 @@
 import React from 'react';
-import { Mountain, Mail, Phone, MapPin, ShieldCheck, Award, Heart, MessageSquare, ArrowUp, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Mountain, Mail, Phone, MapPin, ShieldCheck, Award, Heart, MessageSquare, ArrowUp, Send, ExternalLink } from 'lucide-react';
 
-interface FooterProps {
-  onNavigateSection: (sectionId: string) => void;
-  onFilterRegion: (region: string) => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onFilterRegion }) => {
+export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <footer id="main-footer" className="bg-slate-950 text-slate-300 border-t-2 border-sky-500">
-      {/* Top Graphic Strip (Matching screenshot #EXPLORE banner) */}
+      {/* Top Banner Strip */}
       <div className="bg-sky-900 text-sky-100 py-6 border-b border-sky-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-widest text-sky-300">Ready for Adventure</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-sky-300">Ready for Karakoram Expedition?</span>
             <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              #EXPLORE KARAKORAM WITH CERTIFIED GUIDES
+              #EXPLORE KARAKORAM WITH LICENSED MOUNTAINEERS
             </h3>
           </div>
 
@@ -45,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onFilterRegio
         </div>
       </div>
 
-      {/* Main 4-Column Grid */}
+      {/* Main 5-Column Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Column 1: Brand (Spans 2 on lg) */}
@@ -91,150 +87,131 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onFilterRegio
           {/* Column 2: Popular Expeditions */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 pb-1 border-b border-slate-800">
-              Featured Treks
+              Featured Expeditions
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <button
-                  onClick={() => onNavigateSection('popular-packages-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
+                <Link to="/treks/k2-basecamp-gondogoro-la" className="hover:text-sky-400 transition-colors">
                   K2 Base Camp & Gondogoro La
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('popular-packages-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
+                <Link to="/treks/k2-basecamp-classic" className="hover:text-sky-400 transition-colors">
                   K2 Base Camp Classic (Baltoro)
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('popular-packages-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
+                <Link to="/treks/fairy-meadows-nanga-parbat" className="hover:text-sky-400 transition-colors">
                   Fairy Meadows & Nanga Parbat
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('popular-packages-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
+                <Link to="/treks/snow-lake-biafo-hispar" className="hover:text-sky-400 transition-colors">
                   Snow Lake & Hispar La Pass
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('popular-packages-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
-                  Rakaposhi & Diran Base Camp
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigateSection('popular-packages-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
+                <Link to="/treks/k2-basecamp-heli-trek" className="hover:text-sky-400 transition-colors">
                   K2 Base Camp VIP Heli-Trek
-                </button>
+                </Link>
+              </li>
+              <li>
+                <Link to="/treks/rakaposhi-diran-base-camp" className="hover:text-sky-400 transition-colors">
+                  Rakaposhi & Diran Base Camp
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Safety & Guides */}
+          {/* Column 3: Safety & Guides & Travel Styles */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 pb-1 border-b border-slate-800">
-              Trust & Safety
+              Safety & Resources
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <button
-                  onClick={() => onNavigateSection('trust-safety-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
+                <Link to="/safety-and-guides" className="hover:text-sky-400 transition-colors">
                   High-Altitude Safety Protocols
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('travel-styles-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
-                  Porter Welfare Policy (IPPG)
-                </button>
+                <Link to="/travel-styles" className="hover:text-sky-400 transition-colors">
+                  Travel Styles & Categories
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('trust-safety-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
-                  Gamow Hyperbaric Chambers
-                </button>
+                <Link to="/permits-visa-guide" className="hover:text-sky-400 transition-colors">
+                  Pakistan Trekking E-Visa Guide
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('trust-safety-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
-                  Garmin Satellite Tracking
-                </button>
+                <Link to="/routes-map" className="hover:text-sky-400 transition-colors">
+                  Interactive Route Waypoints Map
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('faq-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
-                  Emergency Evacuation Terms
-                </button>
+                <Link to="/planner" className="hover:text-sky-400 transition-colors">
+                  Custom Cost Planner & Estimator
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigateSection('faq-section')}
-                  className="hover:text-sky-400 transition-colors text-left"
-                >
-                  Booking Terms & Conditions
-                </button>
+                <Link to="/faq" className="hover:text-sky-400 transition-colors">
+                  Frequently Asked Questions (FAQ)
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Newsletter & Visa Assistance */}
+          {/* Column 4: Blog Guides & Direct Files */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 pb-1 border-b border-slate-800">
-              Visa Support & Updates
+              Guides & Indexing
             </h4>
-            <p className="text-xs text-slate-400 mb-3">
-              Subscribe to get latest 2026 permit slot announcements and Gilgit-Baltistan weather advisories.
-            </p>
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="w-full bg-slate-900 border border-slate-700 p-2 text-xs text-white focus:outline-none focus:border-sky-500"
-              />
-              <button
-                type="submit"
-                className="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 text-xs uppercase tracking-wider flex items-center justify-center gap-1 transition-colors"
-              >
-                <span>Get Season Updates</span>
-                <Send className="w-3 h-3" />
-              </button>
-            </form>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link to="/blog" className="hover:text-sky-400 transition-colors">
+                  All Trekking Guides & Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog/k2-base-camp-trek-guide" className="hover:text-sky-400 transition-colors">
+                  K2 Base Camp Complete Guide
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog/pakistan-trekking-visa-guide" className="hover:text-sky-400 transition-colors">
+                  How to Get Pakistan Trek Visa
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-sky-400 transition-colors">
+                  Contact Our Operations Desks
+                </Link>
+              </li>
+              <li>
+                <a href="/sitemap.xml" target="_blank" className="hover:text-sky-400 transition-colors flex items-center gap-1">
+                  <span>XML Sitemap</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/llms.txt" target="_blank" className="hover:text-sky-400 transition-colors flex items-center gap-1">
+                  <span>LLMs Knowledge File (llms.txt)</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Global Support Desks (Matching screenshot "OUR REPRESENTATIVES" section) */}
+        {/* Global Support Desks */}
         <div className="mt-10 pt-8 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
           <div className="bg-slate-900/80 p-3 border border-slate-800">
             <div className="font-bold text-white flex items-center gap-1.5">
               <span>🇵🇰 Pakistan Headquarters</span>
             </div>
             <div className="text-[11px] text-slate-400 mt-1">
-              Skardu Ops: +92 300 9876543<br />
+              Skardu Operations: +92 300 9876543<br />
               Airport Road, Skardu, Gilgit-Baltistan
             </div>
           </div>
@@ -260,7 +237,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onFilterRegio
           </div>
         </div>
 
-        {/* Affiliations & Payment badges */}
+        {/* Accreditations & Payment methods */}
         <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div className="flex flex-wrap items-center gap-3">
             <span className="font-bold text-slate-300">Affiliations:</span>
