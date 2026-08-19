@@ -26,11 +26,11 @@ export const PermitsVisaGuidePage: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Official Regulatory Clearance
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Pakistan Trekking Visa & Permits Guide
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -40,24 +40,24 @@ export const PermitsVisaGuidePage: React.FC = () => {
 
         {/* 3 Step Visa Process Overview */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white border-2 border-sky-500 p-6">
-            <span className="bg-sky-600 text-white font-black text-xs px-2.5 py-0.5">STEP 1</span>
+          <div className="bg-white p-6">
+            <span className="bg-sky-600 text-white font-bold text-xs px-2.5 py-0.5">STEP 1</span>
             <h3 className="text-base font-bold text-slate-900 mt-2">Book & Receive LOI</h3>
             <p className="text-xs text-slate-600 mt-2 leading-relaxed">
               Upon placing a 20% deposit on your chosen trek, Karakoram Expeditions issues your official <strong>Letter of Invitation (LOI)</strong>, stamped itinerary, and operator license copy within 24 hours.
             </p>
           </div>
 
-          <div className="bg-white border-2 border-sky-500 p-6">
-            <span className="bg-sky-600 text-white font-black text-xs px-2.5 py-0.5">STEP 2</span>
+          <div className="bg-white p-6">
+            <span className="bg-sky-600 text-white font-bold text-xs px-2.5 py-0.5">STEP 2</span>
             <h3 className="text-base font-bold text-slate-900 mt-2">Apply on NADRA Portal</h3>
             <p className="text-xs text-slate-600 mt-2 leading-relaxed">
               Submit your application online at the official Pakistan Visa Portal (<a href="https://visa.nadra.gov.pk" target="_blank" rel="noopener noreferrer" className="text-sky-600 font-bold hover:underline">visa.nadra.gov.pk</a>) under <em>"Trekking & Mountaineering"</em> category.
             </p>
           </div>
 
-          <div className="bg-white border-2 border-sky-500 p-6">
-            <span className="bg-sky-600 text-white font-black text-xs px-2.5 py-0.5">STEP 3</span>
+          <div className="bg-white p-6">
+            <span className="bg-sky-600 text-white font-bold text-xs px-2.5 py-0.5">STEP 3</span>
             <h3 className="text-base font-bold text-slate-900 mt-2">Government Permits Issued</h3>
             <p className="text-xs text-slate-600 mt-2 leading-relaxed">
               Our team in Skardu processes your group permits with the Gilgit-Baltistan Home Department and Central Karakoram National Park (CKNP) authority prior to your arrival.
@@ -70,7 +70,7 @@ export const PermitsVisaGuidePage: React.FC = () => {
           {/* Left: Detailed Information (8 cols) */}
           <div className="lg:col-span-8 space-y-6">
             {/* Required Documents */}
-            <div className="bg-white border border-slate-200 p-6 sm:p-8">
+            <div className="bg-white  p-6 sm:p-8">
               <h2 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-sky-600" />
                 <span>Required Documents for Pakistan Trekking E-Visa</span>
@@ -108,7 +108,7 @@ export const PermitsVisaGuidePage: React.FC = () => {
             </div>
 
             {/* Restricted vs Open Zone Regulations */}
-            <div className="bg-white border border-slate-200 p-6 sm:p-8">
+            <div className="bg-white  p-6 sm:p-8">
               <h2 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
                 Open Trekking Zones vs. Restricted Military Zones
               </h2>
@@ -132,7 +132,7 @@ export const PermitsVisaGuidePage: React.FC = () => {
 
           {/* Right: Quick Links & Help (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white border-2 border-sky-500 p-6 text-xs space-y-4">
+            <div className="bg-white p-6 text-xs space-y-4">
               <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider pb-2 border-b border-slate-200">
                 Official E-Visa Links
               </h3>
@@ -146,7 +146,7 @@ export const PermitsVisaGuidePage: React.FC = () => {
                 <ExternalLink className="w-4 h-4" />
               </a>
 
-              <div className="p-3 bg-sky-50 border border-sky-200 text-slate-800 space-y-1">
+              <div className="p-3 bg-sky-50  text-slate-800 space-y-1">
                 <div className="font-bold">Estimated Visa Processing Time:</div>
                 <div className="flex items-center gap-1.5 text-sky-800 font-semibold">
                   <Clock className="w-3.5 h-3.5" />
@@ -158,7 +158,7 @@ export const PermitsVisaGuidePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-sky-950 text-white p-6 border border-sky-800 text-xs space-y-3">
+            <div className="bg-sky-950 text-white p-6  text-xs space-y-3">
               <h3 className="font-bold text-sky-400 text-sm">Need Visa Assistance?</h3>
               <p className="text-slate-300 leading-relaxed">
                 Our visa specialists in Islamabad guide all booked trekkers step-by-step through the NADRA online forms to ensure 100% approval rates.

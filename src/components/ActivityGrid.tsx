@@ -14,7 +14,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
           <span className="text-xs font-bold uppercase tracking-wider text-sky-600">
             Adventure Categories
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+          <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
             Popular Activities in Pakistan
           </h2>
           <p className="text-sm text-slate-600 mt-1 max-w-2xl">
@@ -41,7 +41,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
               <span className="bg-sky-500 text-slate-950 text-[11px] font-bold px-2 py-0.5 uppercase tracking-wider mb-2 inline-block">
                 Top Highlight
               </span>
-              <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-sky-300 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-300 transition-colors">
                 Trekking in Karakoram & Himalayas
               </h3>
               <p className="text-xs text-slate-300 mt-1 flex items-center gap-1.5">
@@ -68,7 +68,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
               <span className="bg-amber-400 text-slate-950 text-[11px] font-bold px-2 py-0.5 uppercase tracking-wider mb-2 inline-block">
                 VIP Experience
               </span>
-              <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-sky-300 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-300 transition-colors">
                 Helicopter Mountain Tours
               </h3>
               <p className="text-xs text-slate-300 mt-1 flex items-center gap-1.5">

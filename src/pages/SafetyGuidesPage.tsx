@@ -27,11 +27,11 @@ export const SafetyGuidesPage: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Uncompromised Wilderness Standards
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             High-Altitude Safety & Guide Protocols
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -41,7 +41,7 @@ export const SafetyGuidesPage: React.FC = () => {
 
         {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white border border-slate-200 p-5">
+          <div className="bg-white  p-5">
             <div className="w-10 h-10 bg-sky-500 text-slate-950 flex items-center justify-center font-bold mb-3">
               <Plane className="w-5 h-5 text-white" />
             </div>
@@ -51,7 +51,7 @@ export const SafetyGuidesPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-white border border-slate-200 p-5">
+          <div className="bg-white  p-5">
             <div className="w-10 h-10 bg-sky-500 text-slate-950 flex items-center justify-center font-bold mb-3">
               <Activity className="w-5 h-5 text-white" />
             </div>
@@ -61,7 +61,7 @@ export const SafetyGuidesPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-white border border-slate-200 p-5">
+          <div className="bg-white  p-5">
             <div className="w-10 h-10 bg-sky-500 text-slate-950 flex items-center justify-center font-bold mb-3">
               <Award className="w-5 h-5 text-white" />
             </div>
@@ -71,7 +71,7 @@ export const SafetyGuidesPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-white border border-slate-200 p-5">
+          <div className="bg-white  p-5">
             <div className="w-10 h-10 bg-sky-500 text-slate-950 flex items-center justify-center font-bold mb-3">
               <Heart className="w-5 h-5 text-white" />
             </div>
@@ -85,7 +85,7 @@ export const SafetyGuidesPage: React.FC = () => {
         {/* In-Depth Sections */}
         <div className="space-y-8">
           {/* Acclimatization Schedule */}
-          <div className="bg-white border border-slate-200 p-6 sm:p-8">
+          <div className="bg-white  p-6 sm:p-8">
             <h2 className="text-lg font-bold text-slate-900 mb-3 pb-2 border-b border-slate-100">
               Gradual Altitude Acclimatization Schedules
             </h2>
@@ -93,15 +93,15 @@ export const SafetyGuidesPage: React.FC = () => {
               The golden rule of high altitude mountaineering is <em>"Climb high, sleep low"</em>. Our Karakoram itineraries are engineered with dedicated acclimatization rest days at Paiju (3,450m) and Urdukas (4,050m) before pushing onto the active ice moraine of Concordia (4,600m) and Gondogoro La pass (5,585m).
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-              <div className="p-3 bg-slate-50 border border-slate-200">
+              <div className="p-3 bg-slate-50">
                 <span className="font-bold text-slate-900 block mb-1">Daily Elevation Cap:</span>
                 <span>Ascents above 3,000m are limited to an average sleeping gain of 300m - 500m per 24 hours.</span>
               </div>
-              <div className="p-3 bg-slate-50 border border-slate-200">
+              <div className="p-3 bg-slate-50">
                 <span className="font-bold text-slate-900 block mb-1">Hydration Standards:</span>
                 <span>Mandatory 4 to 5 liters of boiled, filtered water consumed daily by every participant.</span>
               </div>
-              <div className="p-3 bg-slate-50 border border-slate-200">
+              <div className="p-3 bg-slate-50">
                 <span className="font-bold text-slate-900 block mb-1">Medical Monitoring:</span>
                 <span>Daily Lake Louise AMS score evaluations conducted by expedition leader before evening meal.</span>
               </div>
@@ -109,7 +109,7 @@ export const SafetyGuidesPage: React.FC = () => {
           </div>
 
           {/* Emergency Satellite Tracking */}
-          <div className="bg-white border border-slate-200 p-6 sm:p-8">
+          <div className="bg-white  p-6 sm:p-8">
             <h2 className="text-lg font-bold text-slate-900 mb-3 pb-2 border-b border-slate-100">
               Garmin InReach Satellite Communications & 24/7 Dispatch
             </h2>
@@ -119,7 +119,7 @@ export const SafetyGuidesPage: React.FC = () => {
           </div>
 
           {/* Porter Welfare Pledge */}
-          <div className="bg-sky-50 border border-sky-200 p-6 sm:p-8">
+          <div className="bg-sky-50  p-6 sm:p-8">
             <div className="flex items-center gap-2 text-sky-800 font-bold text-xs uppercase tracking-wider mb-2">
               <Heart className="w-4 h-4 text-sky-600" />
               <span>Our Porter Welfare Pledge</span>

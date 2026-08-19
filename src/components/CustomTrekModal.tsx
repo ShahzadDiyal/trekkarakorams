@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Send, MessageSquare, ShieldCheck, Mountain } from 'lucide-react';
+import { X, CheckCircle2, Send, MessageSquare, ShieldCheck } from 'lucide-react';
 import { TREK_PACKAGES } from '../data/treks';
 
 interface CustomTrekModalProps {
@@ -38,21 +38,22 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
   )}`;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/85 overflow-y-auto p-4 flex items-center justify-center">
-      <div className="bg-white border-2 border-sky-500 max-w-xl w-full p-6 sm:p-8 relative animate-fadeIn">
-        {/* Close Button */}
+    <div className="fixed inset-0 z-50 bg-slate-950/85 p-4 flex items-center justify-center">
+      {/* Modal Card */}
+      <div className="bg-white max-w-xl w-full max-h-[90vh] overflow-y-auto relative animate-fadeIn p-6 sm:p-8">
+        {/* Close Button - Sticky at top */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"
+          className="sticky top-0 float-right p-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs z-10"
           aria-label="Close form"
         >
           <X className="w-5 h-5" />
         </button>
 
         {!submitted ? (
-          <div>
+          <div className="clear-both">
             <div className="flex items-center gap-2 mb-2">
-              <span className="bg-sky-500 text-slate-950 text-xs font-black px-2 py-0.5 uppercase tracking-wider">
+              <span className="bg-sky-500 text-slate-950 text-xs font-bold px-2 py-0.5 uppercase tracking-wider">
                 Expedition Booking
               </span>
               <span className="text-xs text-emerald-700 font-bold flex items-center gap-1">
@@ -61,7 +62,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
               </span>
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
               Plan Your Pakistan Trek
             </h2>
             <p className="text-xs text-slate-600 mb-6">
@@ -213,7 +214,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
               <div className="pt-2 flex flex-col sm:flex-row gap-2">
                 <button
                   type="submit"
-                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-extrabold py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Expedition Inquiry</span>
@@ -232,16 +233,16 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
             </form>
           </div>
         ) : (
-          <div className="text-center py-8 space-y-4">
+          <div className="text-center py-8 space-y-4 clear-both">
             <div className="w-16 h-16 bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h3 className="text-2xl font-black text-slate-900">Inquiry Received!</h3>
+            <h3 className="text-2xl font-bold text-slate-900">Inquiry Received!</h3>
             <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
               Thank you, <strong>{name}</strong>. Our Skardu expedition operations center has received your inquiry for <strong>{trekTitle}</strong>. We will email your customized itinerary and official visa invitation details to <strong>{email}</strong> within 12 hours.
             </p>
 
-            <div className="p-4 bg-sky-50 border border-sky-200 text-xs text-slate-800 max-w-md mx-auto">
+            <div className="p-4 bg-sky-50 text-xs text-slate-800 max-w-md mx-auto">
               <strong>Need urgent assistance?</strong> Reach our high-altitude coordinator directly on WhatsApp at <strong>+92 300 9876543</strong>.
             </div>
 

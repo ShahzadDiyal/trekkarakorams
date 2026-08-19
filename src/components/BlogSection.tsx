@@ -14,7 +14,7 @@ export const BlogSection: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-wider text-sky-600">
               Expert Insights & Advice
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
               Latest Trekking Guides
             </h2>
             <p className="text-sm text-slate-600 mt-1">
@@ -34,7 +34,7 @@ export const BlogSection: React.FC = () => {
           {BLOG_POSTS.map((post) => (
             <article
               key={post.id}
-              className="bg-white border border-slate-200 flex flex-col justify-between group hover:border-sky-500 transition-colors"
+              className="bg-white  flex flex-col justify-between group hover:border-sky-500 transition-colors"
             >
               <div>
                 <div className="relative h-48 overflow-hidden bg-slate-100">
@@ -78,7 +78,7 @@ export const BlogSection: React.FC = () => {
               <div className="p-5 pt-0">
                 <button
                   onClick={() => setSelectedPost(post)}
-                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-xs py-2 px-3 border border-slate-200 hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-xs py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <span>Read Full Guide</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -115,7 +115,7 @@ export const BlogSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="relative h-60 mb-6 bg-slate-100 border border-slate-200 overflow-hidden">
+            <div className="relative h-60 mb-6 bg-slate-100  overflow-hidden">
               <img
                 src={selectedPost.image}
                 alt={selectedPost.title}
@@ -127,7 +127,7 @@ export const BlogSection: React.FC = () => {
               {selectedPost.content.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
-              
+
               <div className="bg-sky-50 border border-sky-200 p-4 mt-6">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-sky-800 mb-1">
                   Need Personalized Advice?

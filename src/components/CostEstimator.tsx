@@ -70,7 +70,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
             <Sparkles className="w-4 h-4" />
             <span>Interactive Calculator</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight">
             Custom Trek Planner & Cost Estimator
           </h2>
           <p className="text-sm text-slate-600 mt-1">
@@ -81,7 +81,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
         {/* Calculator Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Column: Form Controls (7 cols) */}
-          <div className="lg:col-span-7 bg-slate-50 border border-slate-200 p-5 sm:p-6 space-y-5">
+          <div className="lg:col-span-7 bg-slate-50  p-5 sm:p-6 space-y-5">
             {/* 1. Select Expedition */}
             <div>
               <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
@@ -176,7 +176,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
                 4. Add-ons & Safety Options
               </label>
               <div className="space-y-2">
-                <label className="flex items-center justify-between p-2.5 bg-white border border-slate-200 cursor-pointer hover:border-sky-400">
+                <label className="flex items-center justify-between p-2.5 bg-white  cursor-pointer hover:border-sky-400">
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
@@ -193,7 +193,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
                   </span>
                 </label>
 
-                <label className="flex items-center justify-between p-2.5 bg-white border border-slate-200 cursor-pointer hover:border-sky-400">
+                <label className="flex items-center justify-between p-2.5 bg-white  cursor-pointer hover:border-sky-400">
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
@@ -210,7 +210,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
                   </span>
                 </label>
 
-                <label className="flex items-center justify-between p-2.5 bg-white border border-slate-200 cursor-pointer hover:border-sky-400">
+                <label className="flex items-center justify-between p-2.5 bg-white  cursor-pointer hover:border-sky-400">
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
@@ -231,12 +231,12 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
           </div>
 
           {/* Right Column: Calculated Summary (5 cols) */}
-          <div className="lg:col-span-5 bg-sky-950 text-white border-2 border-sky-500 p-5 sm:p-6">
+          <div className="lg:col-span-5 bg-sky-950 text-white p-5 sm:p-6">
             <div className="flex items-center justify-between pb-3 border-b border-sky-800">
               <span className="text-xs font-bold text-sky-400 uppercase tracking-wider">
                 Cost Breakdown
               </span>
-              <span className="bg-sky-500 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5">
+              <span className="bg-sky-500 text-slate-950 text-[10px] font-bold uppercase px-2 py-0.5">
                 Instant Quote
               </span>
             </div>
@@ -267,7 +267,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
               {/* Total Box */}
               <div className="pt-4 mt-3 border-t border-sky-800">
                 <div className="text-xs text-sky-300 uppercase font-bold">Estimated Cost Per Person</div>
-                <div className="text-2xl sm:text-3xl font-black text-white mt-0.5">
+                <div className="text-2xl sm:text-3xl font-bold text-white mt-0.5">
                   {formatPrice(Math.round(perPersonTotal), currency)}
                 </div>
                 <div className="text-[11px] text-slate-400 mt-0.5">
@@ -282,7 +282,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
                 type="button"
                 onClick={handleProceed}
                 id="cost-estimator-book-btn"
-                className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <span>Book This Custom Plan</span>
                 <ArrowRight className="w-4 h-4" />

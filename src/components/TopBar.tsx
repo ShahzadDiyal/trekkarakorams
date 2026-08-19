@@ -62,7 +62,7 @@ export const TopBar: React.FC<TopBarProps> = ({
           <div className="h-3.5 w-px bg-sky-800" />
 
           {/* Currency Switcher */}
-          <div className="flex items-center gap-1 bg-sky-900/80 px-2 py-0.5 border border-sky-800 rounded">
+          <div className="flex items-center gap-1 bg-sky-900/80 px-2 py-0.5  rounded">
             <span className="text-sky-300 text-[11px]">Curr:</span>
             <select
               value={currentCurrency}

@@ -32,10 +32,10 @@ export const TrustSection: React.FC = () => {
               </button>
 
               {/* Experience Badge */}
-              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/95 border border-sky-500 p-3.5 flex items-center gap-3">
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/95  p-3.5 flex items-center gap-3">
                 <Mountain className="w-8 h-8 text-sky-400 shrink-0" />
                 <div>
-                  <div className="text-xs font-black uppercase text-white tracking-wider">
+                  <div className="text-xs font-bold uppercase text-white tracking-wider">
                     {BRAND_INFO.storyTitle}
                   </div>
                   <div className="text-[11px] text-slate-400 font-story">
@@ -52,7 +52,7 @@ export const TrustSection: React.FC = () => {
               <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
                 THE TREK KARAKORAM PROMISE
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
+              <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-tight mt-1">
                 {BRAND_INFO.uspTitle}
               </h2>
             </div>
@@ -79,22 +79,22 @@ export const TrustSection: React.FC = () => {
             {/* 4 Stats Boxes */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
               <div className="bg-slate-800 border border-slate-700 p-3.5 text-center">
-                <div className="text-xl sm:text-2xl font-black text-sky-400">Max 8</div>
+                <div className="text-xl sm:text-2xl font-bold text-sky-400">Max 8</div>
                 <div className="text-[10px] text-slate-300 uppercase font-semibold mt-0.5">Trekker Group Limit</div>
               </div>
 
               <div className="bg-slate-800 border border-slate-700 p-3.5 text-center">
-                <div className="text-xl sm:text-2xl font-black text-emerald-400">100%</div>
+                <div className="text-xl sm:text-2xl font-bold text-emerald-400">100%</div>
                 <div className="text-[10px] text-slate-300 uppercase font-semibold mt-0.5">Certified Balti Guides</div>
               </div>
 
               <div className="bg-slate-800 border border-slate-700 p-3.5 text-center">
-                <div className="text-xl sm:text-2xl font-black text-sky-400">24/7</div>
+                <div className="text-xl sm:text-2xl font-bold text-sky-400">24/7</div>
                 <div className="text-[10px] text-slate-300 uppercase font-semibold mt-0.5">Satellite SOS Dispatch</div>
               </div>
 
               <div className="bg-slate-800 border border-slate-700 p-3.5 text-center">
-                <div className="text-xl sm:text-2xl font-black text-amber-400">Zero</div>
+                <div className="text-xl sm:text-2xl font-bold text-amber-400">Zero</div>
                 <div className="text-[10px] text-slate-300 uppercase font-semibold mt-0.5">Hidden Travel Costs</div>
               </div>
             </div>
@@ -105,7 +105,7 @@ export const TrustSection: React.FC = () => {
       {/* Video Modal */}
       {videoOpen && (
         <div className="fixed inset-0 z-50 bg-slate-950/90 flex items-center justify-center p-4">
-          <div className="bg-slate-900 border-2 border-sky-500 w-full max-w-3xl p-6 relative">
+          <div className="bg-slate-900 w-full max-w-3xl p-6 relative">
             <button
               onClick={() => setVideoOpen(false)}
               className="absolute top-3 right-3 p-1.5 bg-slate-800 text-slate-300 hover:text-white"
@@ -113,7 +113,7 @@ export const TrustSection: React.FC = () => {
             >
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-lg font-black text-white mb-3">
+            <h3 className="text-lg font-bold text-white mb-3">
               Expedition Reel: The Heart of the Karakoram
             </h3>
             <div className="relative aspect-video bg-black flex items-center justify-center border border-slate-700">

@@ -44,12 +44,12 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
   const [copied, setCopied] = useState(false);
 
   // Price calculations based on tier
-  const baseTierPrice = 
-    selectedTier === 'basic' 
+  const baseTierPrice =
+    selectedTier === 'basic'
       ? (trek.basicPriceUSD || Math.round(trek.priceUSD * 0.75))
       : selectedTier === 'premium'
-      ? (trek.premiumPriceUSD || Math.round(trek.priceUSD * 1.35))
-      : (trek.discountPriceUSD || trek.priceUSD);
+        ? (trek.premiumPriceUSD || Math.round(trek.priceUSD * 1.35))
+        : (trek.discountPriceUSD || trek.priceUSD);
 
   const displayPrice = baseTierPrice;
   const totalPrice = displayPrice * travelersCount;
@@ -88,7 +88,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
         </div>
 
         {/* Hero Section of Trek */}
-        <div className="bg-slate-950 text-white border-2 border-sky-500 overflow-hidden mb-8">
+        <div className="bg-slate-950 text-white overflow-hidden mb-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
             {/* Main Visual Photo (7 cols) */}
             <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-[460px] overflow-hidden">
@@ -99,9 +99,9 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
-              
+
               <div className="absolute top-4 left-4 flex gap-2">
-                <span className="bg-sky-600 text-white font-black text-xs px-3 py-1 uppercase tracking-wider">
+                <span className="bg-sky-600 text-white font-bold text-xs px-3 py-1 uppercase tracking-wider">
                   {trek.region}
                 </span>
                 <span className="bg-slate-900/90 border border-slate-700 text-sky-300 font-bold text-xs px-3 py-1">
@@ -110,7 +110,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
               </div>
 
               {/* Founding Member Badge */}
-              <div className="absolute bottom-4 left-4 bg-amber-500 text-slate-950 font-black text-xs px-3 py-1.5 uppercase tracking-wider flex items-center gap-1.5">
+              <div className="absolute bottom-4 left-4 bg-amber-500 text-slate-950 font-bold text-xs px-3 py-1.5 uppercase tracking-wider flex items-center gap-1.5">
                 <Gift className="w-3.5 h-3.5" />
                 <span>Founding Members 20% Applied</span>
               </div>
@@ -122,7 +122,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 <span className="text-xs font-bold text-sky-400 uppercase tracking-widest block mb-1 font-story">
                   {BRAND_INFO.tagline}
                 </span>
-                <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+                <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight">
                   {trek.title}
                 </h1>
                 <p className="text-xs text-slate-300 mt-2 font-story leading-relaxed">
@@ -132,21 +132,21 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
               {/* 4 Metric Badges */}
               <div className="grid grid-cols-2 gap-3 py-3 border-y border-slate-800 text-xs">
-                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                <div className="bg-slate-900 p-2.5 ">
                   <span className="text-slate-400 block text-[10px] uppercase">Duration</span>
-                  <div className="font-black text-white text-sm mt-0.5">{trek.durationDays} Days / {trek.durationNights} Nights</div>
+                  <div className="font-bold text-white text-sm mt-0.5">{trek.durationDays} Days / {trek.durationNights} Nights</div>
                 </div>
-                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                <div className="bg-slate-900 p-2.5 ">
                   <span className="text-slate-400 block text-[10px] uppercase">Max Elevation</span>
-                  <div className="font-black text-sky-400 text-sm mt-0.5">{trek.maxAltitude} m</div>
+                  <div className="font-bold text-sky-400 text-sm mt-0.5">{trek.maxAltitude} m</div>
                 </div>
-                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                <div className="bg-slate-900 p-2.5 ">
                   <span className="text-slate-400 block text-[10px] uppercase">Difficulty Level</span>
-                  <div className="font-black text-amber-400 text-sm mt-0.5">{trek.difficulty}</div>
+                  <div className="font-bold text-amber-400 text-sm mt-0.5">{trek.difficulty}</div>
                 </div>
-                <div className="bg-slate-900 p-2.5 border border-slate-800">
+                <div className="bg-slate-900 p-2.5 ">
                   <span className="text-slate-400 block text-[10px] uppercase">Group Size</span>
-                  <div className="font-black text-emerald-400 text-sm mt-0.5">Max 8 Trekkers</div>
+                  <div className="font-bold text-emerald-400 text-sm mt-0.5">Max 8 Trekkers</div>
                 </div>
               </div>
 
@@ -172,7 +172,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
           {/* Left Column (8 cols) */}
           <div className="lg:col-span-8 space-y-8">
             {/* Overview Section */}
-            <div className="bg-white border border-slate-200 p-6">
+            <div className="bg-white  p-6">
               <h2 className="text-lg font-bold text-slate-900 mb-3 pb-2 border-b border-slate-100">
                 Expedition Overview & Trail Summary
               </h2>
@@ -181,7 +181,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
               </p>
 
               {/* Highlights Box */}
-              <div className="mt-6 p-4 bg-sky-50 border border-sky-200">
+              <div className="mt-6 p-4 bg-sky-50 ">
                 <h3 className="text-xs font-bold text-sky-900 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-sky-600" />
                   <span>Key Route Highlights</span>
@@ -198,13 +198,13 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
             </div>
 
             {/* Photo Gallery Grid */}
-            <div className="bg-white border border-slate-200 p-6">
+            <div className="bg-white  p-6">
               <h2 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
                 Expedition Visual Gallery
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {trek.gallery.map((img, i) => (
-                  <div key={i} className="h-44 overflow-hidden border border-slate-200 bg-slate-100">
+                  <div key={i} className="h-44 overflow-hidden  bg-slate-100">
                     <img
                       src={img}
                       alt={`${trek.title} scenery ${i + 1}`}
@@ -217,70 +217,64 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
             </div>
 
             {/* Navigation Tabs */}
-            <div className="bg-white border border-slate-200 p-6">
+            <div className="bg-white  p-6">
               <div className="border-b border-slate-200 flex flex-wrap gap-2 mb-6">
                 <button
                   onClick={() => setActiveTab('itinerary')}
-                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
-                    activeTab === 'itinerary'
+                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'itinerary'
                       ? 'border-sky-600 text-sky-700 bg-sky-50'
                       : 'border-transparent text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Day-by-Day Itinerary ({trek.itinerary.length} Days)
                 </button>
 
                 <button
                   onClick={() => setActiveTab('packages')}
-                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
-                    activeTab === 'packages'
+                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'packages'
                       ? 'border-sky-600 text-sky-700 bg-sky-50'
                       : 'border-transparent text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Package Tiers (Basic / Standard / Premium)
                 </button>
 
                 <button
                   onClick={() => setActiveTab('inclusions')}
-                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
-                    activeTab === 'inclusions'
+                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'inclusions'
                       ? 'border-sky-600 text-sky-700 bg-sky-50'
                       : 'border-transparent text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Inclusions & Exclusions
                 </button>
 
                 <button
                   onClick={() => setActiveTab('gear')}
-                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
-                    activeTab === 'gear'
+                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'gear'
                       ? 'border-sky-600 text-sky-700 bg-sky-50'
                       : 'border-transparent text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Gear Checklist
                 </button>
 
                 <button
                   onClick={() => setActiveTab('permits')}
-                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
-                    activeTab === 'permits'
+                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'permits'
                       ? 'border-sky-600 text-sky-700 bg-sky-50'
                       : 'border-transparent text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Visa & Permit Rules
                 </button>
 
                 <button
                   onClick={() => setActiveTab('weather')}
-                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${
-                    activeTab === 'weather'
+                  className={`px-4 py-2.5 text-xs font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'weather'
                       ? 'border-sky-600 text-sky-700 bg-sky-50'
                       : 'border-transparent text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Weather & Season
                 </button>
@@ -292,11 +286,11 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                   {trek.itinerary.map((day) => (
                     <div
                       key={day.day}
-                      className="p-4 bg-slate-50 border border-slate-200 transition-colors hover:border-sky-400"
+                      className="p-4 bg-slate-50  transition-colors hover:border-sky-400"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                         <div className="flex items-center gap-2">
-                          <span className="bg-sky-600 text-white font-black text-xs px-2.5 py-0.5">
+                          <span className="bg-sky-600 text-white font-bold text-xs px-2.5 py-0.5">
                             Day {day.day}
                           </span>
                           <h4 className="font-bold text-xs sm:text-sm text-slate-900">
@@ -304,7 +298,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                           </h4>
                         </div>
                         <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
-                          <span className="bg-white px-2 py-0.5 border border-slate-200 text-sky-700">
+                          <span className="bg-white px-2 py-0.5  text-sky-700">
                             Elev: {day.altitude}
                           </span>
                           <span className="bg-white px-2 py-0.5 border border-slate-200">
@@ -327,10 +321,10 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                     {/* Basic */}
                     <div className={`p-4 border-2 transition-all ${selectedTier === 'basic' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="font-black text-xs uppercase text-slate-900">Basic Package</span>
+                        <span className="font-bold text-xs uppercase text-slate-900">Basic Package</span>
                         <span className="text-[10px] font-bold bg-slate-100 px-2 py-0.5 text-slate-700">Budget Authentic</span>
                       </div>
-                      <div className="text-lg font-black text-slate-900 mb-2">
+                      <div className="text-lg font-bold text-slate-900 mb-2">
                         {formatPrice(trek.basicPriceUSD || Math.round(trek.priceUSD * 0.75), currency)}
                       </div>
                       <p className="text-[11px] text-slate-600 mb-4">
@@ -352,14 +346,14 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
                     {/* Standard (Most Popular) */}
                     <div className={`p-4 border-2 relative transition-all ${selectedTier === 'standard' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
-                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[9px] font-black uppercase px-2 py-0.5">
+                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[9px] font-bold uppercase px-2 py-0.5">
                         Most Popular
                       </div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="font-black text-xs uppercase text-slate-900">Standard Package</span>
+                        <span className="font-bold text-xs uppercase text-slate-900">Standard Package</span>
                         <span className="text-[10px] font-bold bg-sky-100 text-sky-800 px-2 py-0.5">Worry-Free Care</span>
                       </div>
-                      <div className="text-lg font-black text-slate-900 mb-2">
+                      <div className="text-lg font-bold text-slate-900 mb-2">
                         {formatPrice(trek.discountPriceUSD || trek.priceUSD, currency)}
                       </div>
                       <p className="text-[11px] text-slate-600 mb-4">
@@ -383,10 +377,10 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                     {/* Premium */}
                     <div className={`p-4 border-2 transition-all ${selectedTier === 'premium' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="font-black text-xs uppercase text-slate-900">Premium Package</span>
+                        <span className="font-bold text-xs uppercase text-slate-900">Premium Package</span>
                         <span className="text-[10px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5">VIP Alpine</span>
                       </div>
-                      <div className="text-lg font-black text-slate-900 mb-2">
+                      <div className="text-lg font-bold text-slate-900 mb-2">
                         {formatPrice(trek.premiumPriceUSD || Math.round(trek.priceUSD * 1.35), currency)}
                       </div>
                       <p className="text-[11px] text-slate-600 mb-4">
@@ -448,7 +442,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
               {/* Tab 4: Gear Checklist */}
               {activeTab === 'gear' && (
                 <div className="space-y-4">
-                  <div className="p-4 bg-slate-50 border border-slate-200">
+                  <div className="p-4 bg-slate-50 ">
                     <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-1.5">
                       <Luggage className="w-4 h-4 text-sky-600" />
                       <span>Expedition Gear Checklist ({trek.gearChecklist.length} Items)</span>
@@ -463,7 +457,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                     </div>
                   </div>
 
-                  <div className="p-4 bg-sky-50 border border-sky-200 text-xs text-slate-800">
+                  <div className="p-4 bg-sky-50  text-xs text-slate-800">
                     <strong>Skardu Basecamp Gear Room:</strong> Need last-minute rental crampons, mountaineering boots (size 38-48), down suits, or 4-season sleeping bags? Our Skardu gear facility stocks leading brands (The North Face, La Sportiva, Petzl, Grivel).
                   </div>
                 </div>
@@ -472,14 +466,14 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
               {/* Tab 5: Permits & Visa */}
               {activeTab === 'permits' && (
                 <div className="space-y-4">
-                  <div className="p-4 bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-3">
+                  <div className="p-4 bg-slate-50  text-xs text-slate-700 leading-relaxed space-y-3">
                     <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
                       <FileText className="w-4 h-4 text-sky-600" />
                       <span>Restricted Area Permits & Pakistan E-Visa Clearance</span>
                     </h4>
                     <p>{trek.permitRequirements}</p>
-                    
-                    <div className="bg-white p-3 border border-slate-200 space-y-1.5">
+
+                    <div className="bg-white p-3  space-y-1.5">
                       <div className="font-bold text-slate-900">Step-by-step clearance process handled by Trek Karakoram:</div>
                       <div>1. We issue your official <strong>Letter of Invitation (LOI)</strong> and Ministry of Tourism itinerary within 24h.</div>
                       <div>2. You apply online via the Pakistan Official E-Visa portal (category: Trekking & Mountaineering).</div>
@@ -492,7 +486,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
               {/* Tab 6: Weather */}
               {activeTab === 'weather' && (
-                <div className="p-4 bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-3">
+                <div className="p-4 bg-slate-50  text-xs text-slate-700 space-y-3">
                   <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900">
                     Climate & Weather Guide: {trek.region}
                   </h4>
@@ -509,9 +503,9 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
           {/* Right Column: Sticky Booking & Inquiry Card (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white border-2 border-sky-500 p-6 sticky top-24">
+            <div className="bg-white p-6 sticky top-24">
               <div className="pb-3 border-b border-slate-200 flex items-center justify-between">
-                <span className="text-xs font-black text-sky-700 uppercase tracking-wider">
+                <span className="text-xs font-bold text-sky-700 uppercase tracking-wider">
                   Guaranteed 2026 Departure
                 </span>
                 <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5">
@@ -525,19 +519,19 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1">
                   <button
                     onClick={() => setSelectedTier('basic')}
-                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'basic' ? 'bg-white text-sky-700 shadow-none' : 'text-slate-600'}`}
+                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'basic' ? 'bg-white text-sky-700 ' : 'text-slate-600'}`}
                   >
                     Basic
                   </button>
                   <button
                     onClick={() => setSelectedTier('standard')}
-                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'standard' ? 'bg-white text-sky-700 shadow-none' : 'text-slate-600'}`}
+                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'standard' ? 'bg-white text-sky-700 ' : 'text-slate-600'}`}
                   >
                     Standard
                   </button>
                   <button
                     onClick={() => setSelectedTier('premium')}
-                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'premium' ? 'bg-white text-sky-700 shadow-none' : 'text-slate-600'}`}
+                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'premium' ? 'bg-white text-sky-700 ' : 'text-slate-600'}`}
                   >
                     Premium
                   </button>
@@ -548,7 +542,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
               <div className="py-4 border-b border-slate-200">
                 <span className="text-[11px] text-slate-500 uppercase font-bold block">Expedition Cost ({selectedTier.toUpperCase()})</span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-slate-900">
+                  <span className="text-3xl font-bold text-slate-900">
                     {formatPrice(displayPrice, currency)}
                   </span>
                   <span className="text-xs text-slate-500">/ person</span>
@@ -606,7 +600,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
                 <div className="pt-3 border-t border-slate-200 flex justify-between items-center text-xs">
                   <span className="font-bold text-slate-700">Total Calculation:</span>
-                  <span className="font-black text-sky-700 text-base">
+                  <span className="font-bold text-sky-700 text-base">
                     {formatPrice(totalPrice, currency)}
                   </span>
                 </div>
@@ -617,7 +611,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                 <button
                   type="button"
                   onClick={handleBook}
-                  className="w-full bg-sky-600 hover:bg-sky-500 text-white font-extrabold py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  className="w-full bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Book Expedition Now</span>
                   <ArrowRight className="w-4 h-4" />
@@ -680,16 +674,16 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
                   navigate(`/treks/${t.id}`);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="bg-white border border-slate-200 p-4 hover:border-sky-500 cursor-pointer transition-colors"
+                className="bg-white  p-4 hover:border-sky-500 cursor-pointer transition-colors"
               >
                 <div className="h-36 overflow-hidden mb-3 bg-slate-100">
                   <img src={t.image} alt={t.title} className="w-full h-full object-cover" />
                 </div>
                 <span className="text-[10px] font-bold text-sky-600 uppercase">{t.region}</span>
-                <h3 className="font-bold text-xs sm:text-sm text-slate-900 line-clamp-1">{t.title}</h3>
+                <h3 className="font-bold text-xs sm:text-sm text-slate-900 ">{t.title}</h3>
                 <div className="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 text-xs">
                   <span className="text-slate-500">{t.durationDays} Days</span>
-                  <span className="font-black text-sky-700">{formatPrice(t.discountPriceUSD || t.priceUSD, currency)}</span>
+                  <span className="font-bold text-sky-700">{formatPrice(t.discountPriceUSD || t.priceUSD, currency)}</span>
                 </div>
               </div>
             ))}

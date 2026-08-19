@@ -42,7 +42,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/80 overflow-y-auto p-4 flex items-center justify-center">
-      <div className="bg-white border-2 border-sky-500 max-w-xl w-full p-6 sm:p-8 relative animate-fadeIn">
+      <div className="bg-white max-w-xl w-full p-6 sm:p-8 relative animate-fadeIn">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -55,7 +55,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         {!submitted ? (
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="bg-sky-500 text-slate-950 text-xs font-black px-2 py-0.5 uppercase tracking-wider">
+              <span className="bg-sky-500 text-slate-950 text-xs font-bold px-2 py-0.5 uppercase tracking-wider">
                 Expedition Reservation
               </span>
               <span className="text-xs text-emerald-700 font-bold flex items-center gap-1">
@@ -64,7 +64,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </span>
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               Reserve Your Karakoram Trek
             </h2>
             <p className="text-xs text-slate-600 mt-1 mb-5 leading-relaxed">
@@ -183,7 +183,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <button
                   type="submit"
-                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-extrabold py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Reservation Request</span>

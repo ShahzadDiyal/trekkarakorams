@@ -30,11 +30,11 @@ export const FAQPage: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Frequently Asked Questions
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Pakistan Trekking FAQs & Answers
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -43,7 +43,7 @@ export const FAQPage: React.FC = () => {
         </div>
 
         {/* Search & Categories Bar */}
-        <div className="bg-white border border-slate-200 p-4 mb-6 space-y-3">
+        <div className="bg-white  p-4 mb-6 space-y-3">
           <div className="relative">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input

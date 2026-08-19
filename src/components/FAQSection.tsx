@@ -26,7 +26,7 @@ export const FAQSection: React.FC = () => {
           <span className="text-xs font-bold uppercase tracking-wider text-sky-600">
             Frequently Asked Questions
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+          <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
             Planning Your Pakistan Trek
           </h2>
           <p className="text-sm text-slate-600 mt-1">
@@ -43,7 +43,7 @@ export const FAQSection: React.FC = () => {
               placeholder="Search questions (e.g., visa, altitude sickness, solo female, sleeping bags)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 pl-9 pr-3 py-2.5 text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+              className="w-full bg-slate-50  pl-9 pr-3 py-2.5 text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
             />
           </div>
 
@@ -105,14 +105,14 @@ export const FAQSection: React.FC = () => {
           })}
 
           {filteredFaqs.length === 0 && (
-            <div className="p-8 text-center bg-slate-50 border border-slate-200 text-slate-600 text-xs">
+            <div className="p-8 text-center bg-slate-50  text-slate-600 text-xs">
               No matching questions found. Ask our team directly via WhatsApp or email!
             </div>
           )}
         </div>
 
         {/* Support Banner */}
-        <div className="mt-8 p-4 bg-sky-50 border border-sky-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div className="mt-8 p-4 bg-sky-50  flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div>
             <div className="font-bold text-xs sm:text-sm text-slate-900">Have more specific questions?</div>
             <div className="text-xs text-slate-600">Our expedition managers in Skardu & Islamabad are on standby 24/7.</div>

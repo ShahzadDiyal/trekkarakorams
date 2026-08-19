@@ -129,7 +129,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
           <span className="text-xs font-bold uppercase tracking-wider text-sky-400">
             Interactive Route Explorer
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
+          <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-tight mt-1">
             Karakoram & Himalayan Peaks
           </h2>
           <p className="text-sm text-slate-300 mt-1">
@@ -162,11 +162,11 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
                         {wp.name}
                       </span>
                     </div>
-                    <span className="text-[11px] font-bold text-sky-300 bg-sky-900/60 px-2 py-0.5 border border-sky-800">
+                    <span className="text-[11px] font-bold text-sky-300 bg-sky-900/60 px-2 py-0.5 ">
                       {wp.altitude}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 mt-1 line-clamp-1">
+                  <p className="text-xs text-slate-400 mt-1 ">
                     {wp.desc}
                   </p>
                 </div>
@@ -175,23 +175,23 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
           </div>
 
           {/* Active Detail Spotlight Card (7 cols) */}
-          <div className="lg:col-span-7 bg-slate-950 border-2 border-sky-500 p-5 sm:p-7">
+          <div className="lg:col-span-7 bg-slate-950 p-5 sm:p-7">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="bg-sky-500 text-slate-950 font-black text-xs px-2.5 py-0.5 uppercase tracking-wider">
+                <span className="bg-sky-500 text-slate-950 font-bold text-xs px-2.5 py-0.5 uppercase tracking-wider">
                   {activeWaypoint.type.toUpperCase()}
                 </span>
                 <span className="text-xs text-slate-400 font-medium">
                   {activeWaypoint.region}, Gilgit-Baltistan
                 </span>
               </div>
-              <span className="text-sm font-extrabold text-amber-400">
+              <span className="text-sm font-medium text-amber-400">
                 Elev: {activeWaypoint.altitude}
               </span>
             </div>
 
             <div className="py-4">
-              <h3 className="text-xl sm:text-2xl font-black text-white">
+              <h3 className="text-xl sm:text-2xl font-bold text-white">
                 {activeWaypoint.name}
               </h3>
               <p className="text-slate-300 text-sm mt-2 leading-relaxed">
@@ -219,7 +219,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
               <button
                 type="button"
                 onClick={() => onSelectTrekById(activeWaypoint.matchedTrekId)}
-                className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs px-4 py-2.5 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium text-xs px-4 py-2.5 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>View Trek Package</span>
                 <ArrowRight className="w-3.5 h-3.5" />

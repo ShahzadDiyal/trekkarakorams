@@ -34,7 +34,7 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({ onSelectStyle
           <span className="text-xs font-bold uppercase tracking-wider text-sky-600">
             Tailored Experiences
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+          <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
             Travel Styles That Suit You
           </h2>
           <p className="text-sm text-slate-600 mt-1">
@@ -68,7 +68,7 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({ onSelectStyle
         </div>
 
         {/* Responsible Tourism & Porter Welfare Commitment */}
-        <div className="mt-8 bg-sky-50 border border-sky-200 p-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-8 bg-sky-50  p-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-sky-500 text-slate-950 font-bold shrink-0">
               <HeartHandshake className="w-5 h-5 text-white" />

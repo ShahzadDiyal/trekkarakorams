@@ -30,11 +30,11 @@ export const BlogPage: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             High Altitude Knowledge Base
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Pakistan Mountain Guides & Journal
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -43,7 +43,7 @@ export const BlogPage: React.FC = () => {
         </div>
 
         {/* Search & Categories Bar */}
-        <div className="bg-white border border-slate-200 p-4 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-white  p-4 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
             {categories.map((c) => (
               <button
@@ -77,7 +77,7 @@ export const BlogPage: React.FC = () => {
           {filteredPosts.map((post) => (
             <article
               key={post.id}
-              className="bg-white border border-slate-200 flex flex-col justify-between hover:border-sky-500 transition-colors"
+              className="bg-white  flex flex-col justify-between hover:border-sky-500 transition-colors"
             >
               <div>
                 <div className="h-48 overflow-hidden bg-slate-100 relative">
@@ -119,7 +119,7 @@ export const BlogPage: React.FC = () => {
               <div className="p-5 pt-0">
                 <button
                   onClick={() => navigate(`/blog/${post.id}`)}
-                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-xs py-2 px-3 border border-slate-200 hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-xs py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <span>Read Complete Article</span>
                   <ArrowRight className="w-3.5 h-3.5" />

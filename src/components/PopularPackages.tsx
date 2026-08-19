@@ -47,7 +47,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
             <span className="text-xs font-bold uppercase tracking-wider text-sky-600">
               Guaranteed Departures
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
               Our Popular Packages
             </h2>
             <p className="text-sm text-slate-600 mt-1">
@@ -102,7 +102,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
             ))}
           </div>
         ) : (
-          <div className="bg-white border border-slate-200 p-12 text-center">
+          <div className="bg-white  p-12 text-center">
             <h3 className="text-lg font-bold text-slate-900 mb-2">No Treks Match Your Filter</h3>
             <p className="text-sm text-slate-600 mb-4">
               Try choosing another region or reset all filters to view our full expedition catalog.

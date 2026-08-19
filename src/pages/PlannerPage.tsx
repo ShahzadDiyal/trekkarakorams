@@ -81,11 +81,11 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Interactive Quotation Engine
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Custom Trek Planner & Cost Estimator
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -96,7 +96,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
         {/* 2-Column Calculator Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Configuration Controls (7 cols) */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 p-6 space-y-6">
+          <div className="lg:col-span-7 bg-white  p-6 space-y-6">
             {/* Step 1: Route Selection */}
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -132,11 +132,10 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
                       key={n}
                       type="button"
                       onClick={() => setGroupSize(n)}
-                      className={`flex-1 py-2 text-xs font-bold border transition-colors cursor-pointer ${
-                        groupSize === n
-                          ? 'bg-sky-600 text-white border-sky-600'
-                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-sky-400'
-                      }`}
+                      className={`flex-1 py-2 text-xs font-bold border transition-colors cursor-pointer ${groupSize === n
+                        ? 'bg-sky-600 text-white border-sky-600'
+                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-sky-400'
+                        }`}
                     >
                       {n}
                     </button>
@@ -174,11 +173,10 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div
                   onClick={() => setTier('standard')}
-                  className={`p-3 border cursor-pointer transition-colors ${
-                    tier === 'standard'
-                      ? 'bg-sky-50 border-sky-500'
-                      : 'bg-slate-50 border-slate-200 hover:border-slate-300'
-                  }`}
+                  className={`p-3 border cursor-pointer transition-colors ${tier === 'standard'
+                    ? 'bg-sky-50 border-sky-500'
+                    : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                    }`}
                 >
                   <div className="flex items-center justify-between font-bold text-xs text-slate-900">
                     <span>Standard</span>
@@ -191,11 +189,10 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
 
                 <div
                   onClick={() => setTier('deluxe')}
-                  className={`p-3 border cursor-pointer transition-colors ${
-                    tier === 'deluxe'
-                      ? 'bg-sky-50 border-sky-500'
-                      : 'bg-slate-50 border-slate-200 hover:border-slate-300'
-                  }`}
+                  className={`p-3 border cursor-pointer transition-colors ${tier === 'deluxe'
+                    ? 'bg-sky-50 border-sky-500'
+                    : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                    }`}
                 >
                   <div className="flex items-center justify-between font-bold text-xs text-slate-900">
                     <span>VIP Glamping</span>
@@ -208,11 +205,10 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
 
                 <div
                   onClick={() => setTier('luxury')}
-                  className={`p-3 border cursor-pointer transition-colors ${
-                    tier === 'luxury'
-                      ? 'bg-sky-50 border-sky-500'
-                      : 'bg-slate-50 border-slate-200 hover:border-slate-300'
-                  }`}
+                  className={`p-3 border cursor-pointer transition-colors ${tier === 'luxury'
+                    ? 'bg-sky-50 border-sky-500'
+                    : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                    }`}
                 >
                   <div className="flex items-center justify-between font-bold text-xs text-slate-900">
                     <span>Ultra Luxury</span>
@@ -231,7 +227,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
                 Step 4: Safety, Gear & Add-on Services
               </label>
               <div className="space-y-2">
-                <label className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -247,7 +243,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
                   <span className="text-xs font-bold text-sky-700">+{formatPrice(120, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -263,7 +259,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
                   <span className="text-xs font-bold text-sky-700">+{formatPrice(160, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -279,7 +275,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
                   <span className="text-xs font-bold text-sky-700">+{formatPrice(280, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -295,7 +291,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
                   <span className="text-xs font-bold text-sky-700">+{formatPrice(150, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -315,12 +311,12 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
           </div>
 
           {/* Right Column: Calculated Quote Card (5 cols) */}
-          <div className="lg:col-span-5 bg-sky-950 text-white border-2 border-sky-500 p-6 sticky top-24 space-y-5">
+          <div className="lg:col-span-5 bg-sky-950 text-white p-6 sticky top-24 space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-sky-800">
               <span className="text-xs font-bold text-sky-400 uppercase tracking-wider">
                 Instant Price Calculation
               </span>
-              <span className="bg-sky-500 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5">
+              <span className="bg-sky-500 text-slate-950 text-[10px] font-bold uppercase px-2 py-0.5">
                 Transparent Quote
               </span>
             </div>
@@ -357,7 +353,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
               {/* Total Calculation */}
               <div className="mt-6 pt-4 border-t border-sky-800">
                 <div className="text-xs text-sky-300 uppercase font-bold">Estimated Cost Per Person</div>
-                <div className="text-3xl font-black text-white mt-1">
+                <div className="text-3xl font-bold text-white mt-1">
                   {formatPrice(Math.round(perPersonTotal), currency)}
                 </div>
                 <div className="text-xs text-slate-400 mt-1">
@@ -371,7 +367,7 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
               <button
                 type="button"
                 onClick={handleProceed}
-                className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <span>Reserve Custom Plan</span>
                 <ArrowRight className="w-4 h-4" />

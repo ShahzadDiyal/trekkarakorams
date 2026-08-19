@@ -56,11 +56,11 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/85 overflow-y-auto p-2 sm:p-4 md:p-6 flex items-start justify-center">
-      <div className="bg-white border-2 border-sky-500 max-w-5xl w-full my-4 overflow-hidden relative animate-fadeIn">
+      <div className="bg-white max-w-5xl w-full my-4 overflow-hidden relative animate-fadeIn">
         {/* Modal Top Header Bar */}
         <div className="bg-sky-950 text-white p-4 sm:p-5 flex items-center justify-between border-b border-sky-800">
           <div className="flex items-center gap-2">
-            <span className="bg-sky-500 text-slate-950 text-xs font-black px-2 py-0.5 uppercase tracking-wider">
+            <span className="bg-sky-500 text-slate-950 text-xs font-bold px-2 py-0.5 uppercase tracking-wider">
               {trek.region}
             </span>
             <span className="text-xs text-sky-300 font-semibold hidden sm:inline">
@@ -99,7 +99,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight">
                 {trek.title}
               </h1>
               <p className="text-xs sm:text-sm text-sky-300 mt-1 font-medium">
@@ -167,7 +167,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
             </div>
 
             {/* Key Highlights */}
-            <div className="bg-sky-50/60 border border-sky-200 p-4">
+            <div className="bg-sky-50/60  p-4">
               <h3 className="text-xs font-bold text-sky-800 uppercase tracking-wider mb-2">
                 Expedition Highlights
               </h3>
@@ -234,11 +234,11 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                 {trek.itinerary.map((day) => (
                   <div
                     key={day.day}
-                    className="p-3.5 bg-slate-50 border border-slate-200 transition-colors hover:border-sky-400"
+                    className="p-3.5 bg-slate-50  transition-colors hover:border-sky-400"
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="bg-sky-600 text-white font-black text-xs px-2 py-0.5">
+                        <span className="bg-sky-600 text-white font-bold text-xs px-2 py-0.5">
                           Day {day.day}
                         </span>
                         <h4 className="font-bold text-xs sm:text-sm text-slate-900">
@@ -246,7 +246,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                         </h4>
                       </div>
                       <div className="flex items-center gap-2 text-[11px] font-semibold text-slate-600">
-                        <span className="bg-white px-2 py-0.5 border border-slate-200 text-sky-700">
+                        <span className="bg-white px-2 py-0.5  text-sky-700">
                           Alt: {day.altitude}
                         </span>
                         <span className="bg-white px-2 py-0.5 border border-slate-200">
@@ -299,7 +299,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
 
             {/* Tab 3: Gear Checklist */}
             {activeTab === 'gear' && (
-              <div className="bg-slate-50 border border-slate-200 p-4">
+              <div className="bg-slate-50  p-4">
                 <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-1.5">
                   <Luggage className="w-4 h-4 text-sky-600" />
                   <span>Mandatory High-Altitude Gear Checklist</span>
@@ -312,7 +312,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 p-3 bg-sky-50 border border-sky-200 text-xs text-sky-800">
+                <div className="mt-4 p-3 bg-sky-50  text-xs text-sky-800">
                   <strong>Gear Rental in Skardu:</strong> High-quality crampons, harnesses, down jackets, and 8000m sleeping bags can also be rented directly from our Skardu basecamp gear room at nominal daily rates.
                 </div>
               </div>
@@ -320,7 +320,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
 
             {/* Tab 4: Permits & Visas */}
             {activeTab === 'permits' && (
-              <div className="bg-slate-50 border border-slate-200 p-4 space-y-3">
+              <div className="bg-slate-50  p-4 space-y-3">
                 <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
                   <FileText className="w-4 h-4 text-sky-600" />
                   <span>Permits & Clearance Requirements</span>
@@ -328,7 +328,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                 <p className="text-xs text-slate-700 leading-relaxed">
                   {trek.permitRequirements}
                 </p>
-                <div className="p-3 bg-white border border-slate-200 text-xs text-slate-700 space-y-1.5">
+                <div className="p-3 bg-white  text-xs text-slate-700 space-y-1.5">
                   <div><strong>Required Documents:</strong></div>
                   <div>1. Valid Passport copy (with minimum 6 months validity)</div>
                   <div>2. Pakistan E-Visa Application reference number</div>
@@ -340,13 +340,13 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
           </div>
 
           {/* Right: Booking & Instant Inquiry Box (4 cols) */}
-          <div className="lg:col-span-4 bg-slate-50 border-2 border-sky-500 p-5 flex flex-col justify-between">
+          <div className="lg:col-span-4 bg-slate-50 p-5 flex flex-col justify-between">
             <div>
               {/* Pricing summary */}
               <div className="pb-3 border-b border-slate-200">
                 <span className="text-[11px] text-slate-500 uppercase font-bold block">Expedition Price</span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-sky-700">
+                  <span className="text-2xl font-bold text-sky-700">
                     {formatPrice(displayPrice, currency)}
                   </span>
                   {trek.discountPriceUSD && (
@@ -412,7 +412,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
             <div className="space-y-2 pt-4 border-t border-slate-200">
               <button
                 onClick={() => onBookNow(trek, selectedDate, travelersCount)}
-                className="w-full bg-sky-600 hover:bg-sky-500 text-white font-extrabold py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Book This Trek</span>
                 <ArrowRight className="w-4 h-4" />

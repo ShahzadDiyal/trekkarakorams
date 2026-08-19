@@ -107,7 +107,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
               <span className="text-xs font-bold uppercase tracking-widest text-sky-600">
                 THE SOUL OF GILGIT-BALTISTAN
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                 {BRAND_INFO.storyTitle}
               </h2>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-story">
@@ -120,7 +120,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => navigate('/treks')}
-                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
+                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-medium text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
                 >
                   <span>Explore 2026 Expeditions</span>
                   <ArrowRight className="w-4 h-4" />
@@ -135,14 +135,14 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
             </div>
 
             {/* Founding Members Special Box */}
-            <div className="lg:col-span-5 bg-slate-900 border-2 border-amber-500 p-6 sm:p-7 text-white relative">
+            <div className="lg:col-span-5 bg-slate-900 p-6 sm:p-7 text-white relative">
               <div className="flex items-center gap-2 mb-3">
                 <Gift className="w-5 h-5 text-amber-400" />
-                <span className="text-xs font-black uppercase tracking-wider text-amber-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
                   {FOUNDING_MEMBERS_SPECIAL.title}
                 </span>
               </div>
-              <h3 className="text-lg font-black text-white mb-2">
+              <h3 className="text-lg font-bold text-white mb-2">
                 Join As A Founding Explorer
               </h3>
               <p className="text-xs text-slate-300 mb-4 leading-relaxed">
@@ -158,7 +158,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
               </ul>
               <button
                 onClick={() => navigate('/planner')}
-                className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+                className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
               >
                 <span>Claim 20% Founding Discount</span>
                 <ArrowRight className="w-4 h-4" />
@@ -175,7 +175,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
             <span className="text-xs font-bold uppercase tracking-widest text-sky-600">
               OUR GUIDING PRINCIPLES
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
               The 8 Core Values of Trek Karakoram
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-2">
@@ -187,16 +187,16 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
             {BRAND_VALUES.map((val) => (
               <div
                 key={val.number}
-                className="bg-white border border-slate-200 p-5 hover:border-sky-500 transition-colors flex flex-col justify-between"
+                className="bg-white  p-5 hover:border-sky-500 transition-colors flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <div className="p-2 bg-slate-100 border border-slate-200">
                       {renderValueIcon(val.iconName)}
                     </div>
-                    <span className="text-xs font-black text-slate-400">0{val.number}</span>
+                    <span className="text-xs font-bold text-slate-400">0{val.number}</span>
                   </div>
-                  <h3 className="text-sm font-black text-slate-900 tracking-tight mb-0.5">
+                  <h3 className="text-sm font-bold text-slate-900 tracking-tight mb-0.5">
                     {val.title}
                   </h3>
                   <div className="text-[11px] font-bold text-sky-600 mb-2">
@@ -242,7 +242,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
             <span className="text-xs font-bold uppercase tracking-widest text-sky-600">
               CRAFTED FOR EVERY EXPLORER
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
               For Those Who Seek More Than Just A Destination
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-2 font-story">
@@ -252,9 +252,9 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {AUDIENCE_PERSONAS.slice(0, 3).map((persona) => (
-              <div key={persona.id} className="bg-slate-50 border border-slate-200 p-6 flex flex-col justify-between">
+              <div key={persona.id} className="bg-slate-50  p-6 flex flex-col justify-between">
                 <div>
-                  <div className="inline-block bg-sky-100 text-sky-800 text-[10px] font-black px-2 py-0.5 uppercase tracking-wider mb-2">
+                  <div className="inline-block bg-sky-100 text-sky-800 text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider mb-2">
                     {persona.title}
                   </div>
                   <h3 className="text-base font-bold text-slate-900 mb-2">
@@ -263,7 +263,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
                   <p className="text-xs text-slate-600 mb-4 leading-relaxed">
                     <strong>Motivation:</strong> {persona.motivation}
                   </p>
-                  <div className="bg-white p-3 border border-slate-200 text-xs text-slate-700 mb-4">
+                  <div className="bg-white p-3  text-xs text-slate-700 mb-4">
                     <span className="font-bold text-slate-900 block mb-0.5">How We Help:</span>
                     {persona.howWeHelp}
                   </div>
@@ -306,7 +306,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
             <span className="text-xs font-bold uppercase tracking-widest text-sky-100">
               {BRAND_INFO.tagline}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-0.5">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-0.5">
               Secure Your 2026 Karakoram Permit
             </h2>
             <p className="text-xs text-sky-100 mt-1 max-w-xl">
@@ -317,7 +317,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
               onClick={() => navigate('/planner')}
-              className="bg-slate-950 hover:bg-slate-900 text-white font-extrabold text-xs px-5 py-3 uppercase tracking-wider flex items-center gap-2 transition-colors cursor-pointer"
+              className="bg-slate-950 hover:bg-slate-900 text-white font-medium text-xs px-5 py-3 uppercase tracking-wider flex items-center gap-2 transition-colors cursor-pointer"
             >
               <span>Calculate Custom Quote</span>
               <ArrowRight className="w-4 h-4" />
@@ -326,7 +326,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
               href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white hover:bg-slate-100 text-sky-900 font-extrabold text-xs px-5 py-3 flex items-center gap-2 transition-colors"
+              className="bg-white hover:bg-slate-100 text-sky-900 font-medium text-xs px-5 py-3 flex items-center gap-2 transition-colors"
             >
               <PhoneCall className="w-4 h-4" />
               <span>WhatsApp Direct Hotline</span>

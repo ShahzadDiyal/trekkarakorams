@@ -17,11 +17,11 @@ export const RoutesMapPage: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Geographic Expedition Cartography
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Karakoram & Himalayan Route Explorer
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -35,13 +35,13 @@ export const RoutesMapPage: React.FC = () => {
         </div>
 
         {/* Comprehensive Route Waypoints & Camps Breakdown */}
-        <div className="bg-white border border-slate-200 p-6 sm:p-8 space-y-6">
+        <div className="bg-white  p-6 sm:p-8 space-y-6">
           <h2 className="text-xl font-bold text-slate-900 pb-2 border-b border-slate-200">
             Baltoro Glacier & K2 Expedition Waypoints
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-xs text-slate-700">
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>1. Askole Village (Trailhead)</span>
                 <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">3,040m</span>
@@ -51,7 +51,7 @@ export const RoutesMapPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>2. Paiju Camp</span>
                 <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">3,450m</span>
@@ -61,7 +61,7 @@ export const RoutesMapPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>3. Urdukas Camp</span>
                 <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">4,050m</span>
@@ -71,7 +71,7 @@ export const RoutesMapPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>4. Goro II Glacial Camp</span>
                 <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">4,300m</span>
@@ -81,7 +81,7 @@ export const RoutesMapPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>5. Concordia Amphitheatre</span>
                 <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">4,600m</span>
@@ -91,7 +91,7 @@ export const RoutesMapPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>6. Gondogoro La High Pass</span>
                 <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">5,585m</span>
@@ -105,7 +105,7 @@ export const RoutesMapPage: React.FC = () => {
           <div className="pt-4 border-t border-slate-200 flex justify-end">
             <button
               onClick={() => navigate('/treks/k2-basecamp-gondogoro-la')}
-              className="bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <span>View K2 & Gondogoro La Trek Details</span>
               <ArrowRight className="w-4 h-4" />

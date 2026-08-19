@@ -22,7 +22,7 @@ export const TestimonialsSection: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-wider text-sky-600">
               Verified Trekkers
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
               What Our Climbers Say
             </h2>
             <p className="text-sm text-slate-600 mt-1">

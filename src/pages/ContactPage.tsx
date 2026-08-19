@@ -42,11 +42,11 @@ export const ContactPage: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Operations & Inquiries
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Get In Touch With Our Team
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -57,7 +57,7 @@ export const ContactPage: React.FC = () => {
         {/* 2-Column Grid: Form + Office Locations */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           {/* Left: Contact Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 p-6 sm:p-8">
+          <div className="lg:col-span-7 bg-white p-6 sm:p-8">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4 text-xs">
                 <div>
@@ -148,7 +148,7 @@ export const ContactPage: React.FC = () => {
                 <div className="pt-2 flex flex-col sm:flex-row gap-3">
                   <button
                     type="submit"
-                    className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-extrabold py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                    className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
                     <span>Send Expedition Inquiry</span>
@@ -187,7 +187,7 @@ export const ContactPage: React.FC = () => {
           {/* Right: Offices & Emergency Contact Details (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Skardu Basecamp HQ */}
-            <div className="bg-white border border-slate-200 p-6 space-y-3 text-xs text-slate-700">
+            <div className="bg-white  p-6 space-y-3 text-xs text-slate-700">
               <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                 <Mountain className="w-5 h-5 text-sky-600 shrink-0" />
                 <div>
@@ -210,7 +210,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* Islamabad Liaison Office */}
-            <div className="bg-white border border-slate-200 p-6 space-y-3 text-xs text-slate-700">
+            <div className="bg-white  p-6 space-y-3 text-xs text-slate-700">
               <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                 <ShieldCheck className="w-5 h-5 text-sky-600 shrink-0" />
                 <div>
@@ -229,7 +229,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* International Liaison Desks */}
-            <div className="bg-sky-950 text-white border border-sky-800 p-6 space-y-3 text-xs">
+            <div className="bg-sky-950 text-white  p-6 space-y-3 text-xs">
               <h3 className="font-bold text-sky-400 uppercase tracking-wider text-xs">
                 International Support Desks
               </h3>

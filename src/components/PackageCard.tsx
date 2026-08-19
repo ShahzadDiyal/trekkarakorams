@@ -36,7 +36,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
   const displayPrice = trek.discountPriceUSD || trek.priceUSD;
 
   return (
-    <div className="bg-white border border-slate-200 flex flex-col h-full group hover:border-sky-500 transition-colors">
+    <div className="bg-white  flex flex-col h-full group hover:border-sky-500 transition-colors">
       {/* Image Container with Badges */}
       <div className="relative h-52 overflow-hidden bg-slate-100">
         <img
@@ -60,7 +60,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
 
         {/* Discount Ribbon if active */}
         {trek.discountPriceUSD && (
-          <div className="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5">
+          <div className="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-bold uppercase px-2 py-0.5">
             Save ${(trek.priceUSD - trek.discountPriceUSD).toLocaleString()}
           </div>
         )}
@@ -116,7 +116,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
           <div>
             <span className="text-[11px] text-slate-500 block uppercase font-medium">Starting from</span>
             <div className="flex items-baseline gap-1.5">
-              <span className="text-lg sm:text-xl font-extrabold text-sky-700">
+              <span className="text-lg sm:text-xl font-medium text-sky-700">
                 {formatPrice(displayPrice, currency)}
               </span>
               {trek.discountPriceUSD && (

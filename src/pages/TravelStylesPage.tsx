@@ -24,11 +24,11 @@ export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, on
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Tailored Mountain Experiences
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Travel Styles That Match Your Ambition
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -51,7 +51,7 @@ export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, on
               <div
                 key={style.id}
                 id={style.id}
-                className="bg-white border border-slate-200 p-6 sm:p-8 scroll-mt-24"
+                className="bg-white p-6 sm:p-8 scroll-mt-24"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                   <div className="lg:col-span-4 h-64 sm:h-72 overflow-hidden bg-slate-900 relative">
@@ -61,14 +61,14 @@ export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, on
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-3 bg-sky-500 text-slate-950 font-black text-[11px] px-2 py-0.5 uppercase tracking-wider">
+                    <div className="absolute bottom-3 left-3 bg-sky-500 text-slate-950 font-bold text-[11px] px-2 py-0.5 uppercase tracking-wider">
                       {style.count} Expeditions
                     </div>
                   </div>
 
                   <div className="lg:col-span-8 space-y-4">
                     <div>
-                      <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                      <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
                         {style.title}
                       </h2>
                       <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2">
@@ -85,10 +85,10 @@ export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, on
                           <div
                             key={t.id}
                             onClick={() => navigate(`/treks/${t.id}`)}
-                            className="p-3 bg-slate-50 border border-slate-200 hover:border-sky-500 cursor-pointer transition-colors"
+                            className="p-3 bg-slate-50 hover:border-sky-500 cursor-pointer transition-colors"
                           >
                             <span className="text-[10px] font-bold text-sky-600 uppercase block">{t.region.split(' ')[0]}</span>
-                            <h4 className="font-bold text-xs text-slate-900 line-clamp-1 mt-0.5">{t.title}</h4>
+                            <h4 className="font-bold text-xs text-slate-900  mt-0.5">{t.title}</h4>
                             <div className="text-[11px] font-bold text-sky-700 mt-2">
                               {formatPrice(t.discountPriceUSD || t.priceUSD, currency)}
                             </div>

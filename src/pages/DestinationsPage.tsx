@@ -138,11 +138,11 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Geographic Explorer & Guide
           </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
             Pakistan Mountain Destinations
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -158,11 +158,10 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
               <button
                 key={region.id}
                 onClick={() => setSelectedRegionId(region.id)}
-                className={`p-3 text-left border transition-all cursor-pointer ${
-                  isSelected
+                className={`p-3 text-left transition-all cursor-pointer ${isSelected
                     ? 'bg-sky-600 text-white border-sky-600 font-bold'
                     : 'bg-white text-slate-700 border-slate-200 hover:border-sky-400 font-semibold'
-                }`}
+                  }`}
               >
                 <div className="text-[10px] uppercase opacity-75">{region.mountainRange.split(' ')[0]}</div>
                 <div className="text-xs sm:text-sm font-bold truncate mt-0.5">{region.name.split('&')[0]}</div>
@@ -172,7 +171,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
         </div>
 
         {/* Active Region Spotlight */}
-        <div className="bg-white border border-slate-200 overflow-hidden mb-12">
+        <div className="bg-white  overflow-hidden mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
             {/* Visual Photo (5 cols) */}
             <div className="lg:col-span-5 h-72 sm:h-96 lg:h-auto relative overflow-hidden bg-slate-900">
@@ -183,10 +182,10 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="text-[10px] uppercase font-black bg-sky-500 text-slate-950 px-2 py-0.5">
+                <span className="text-[10px] uppercase font-bold bg-sky-500 text-slate-950 px-2 py-0.5">
                   {activeRegion.mountainRange}
                 </span>
-                <h2 className="text-xl sm:text-2xl font-black text-white mt-1">
+                <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">
                   {activeRegion.name}
                 </h2>
               </div>
@@ -205,15 +204,15 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
 
               {/* Facts Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-xs text-slate-700">
-                <div className="p-3 bg-slate-50 border border-slate-200">
+                <div className="p-3 bg-slate-50">
                   <span className="font-bold text-slate-900 block mb-0.5">Primary Hub:</span>
                   <span>{activeRegion.hubCity}</span>
                 </div>
-                <div className="p-3 bg-slate-50 border border-slate-200">
+                <div className="p-3 bg-slate-50">
                   <span className="font-bold text-slate-900 block mb-0.5">Best Season:</span>
                   <span>{activeRegion.bestMonths}</span>
                 </div>
-                <div className="p-3 bg-slate-50 border border-slate-200 sm:col-span-2">
+                <div className="p-3 bg-slate-50 sm:col-span-2">
                   <span className="font-bold text-slate-900 block mb-0.5">Access Airport / Route:</span>
                   <span>{activeRegion.accessAirport}</span>
                 </div>
@@ -227,7 +226,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {activeRegion.keyPeaks.map((peak, i) => (
-                      <span key={i} className="text-xs font-semibold bg-sky-50 text-sky-800 px-2.5 py-1 border border-sky-200">
+                      <span key={i} className="text-xs font-semibold bg-sky-50 text-sky-800 px-2.5 py-1 ">
                         {peak}
                       </span>
                     ))}
@@ -256,7 +255,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
                 </div>
                 <button
                   onClick={() => navigate(`/treks?region=${encodeURIComponent(activeRegion.name)}`)}
-                  className="bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Browse {activeRegion.name.split(' ')[0]} Treks</span>
                   <ArrowRight className="w-4 h-4" />
@@ -275,7 +274,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
             {DESTINATION_REGIONS.map((r) => (
               <div
                 key={r.id}
-                className="bg-white border border-slate-200 p-5 flex flex-col justify-between hover:border-sky-500 transition-colors"
+                className="bg-white  p-5 flex flex-col justify-between hover:border-sky-500 transition-colors"
               >
                 <div>
                   <div className="h-40 overflow-hidden mb-3 bg-slate-100">
@@ -292,7 +291,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
                       setSelectedRegionId(r.id);
                       window.scrollTo({ top: 200, behavior: 'smooth' });
                     }}
-                    className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-xs py-2 px-3 border border-slate-200 hover:border-sky-500 transition-colors"
+                    className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-xs py-2 px-3  hover:border-sky-500 transition-colors"
                   >
                     View Destination Details
                   </button>

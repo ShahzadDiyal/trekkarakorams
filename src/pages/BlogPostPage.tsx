@@ -42,12 +42,12 @@ export const BlogPostPage: React.FC = () => {
         </div>
 
         {/* Article Container */}
-        <article className="bg-white border border-slate-200 p-6 sm:p-10 mb-10">
-          <span className="text-xs font-bold text-sky-600 uppercase tracking-wider bg-sky-50 px-2.5 py-1 border border-sky-200">
+        <article className="bg-white  p-6 sm:p-10 mb-10">
+          <span className="text-xs font-bold text-sky-600 uppercase tracking-wider bg-sky-50 px-2.5 py-1 ">
             {post.category}
           </span>
 
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3 leading-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mt-3 leading-tight">
             {post.title}
           </h1>
 
@@ -68,7 +68,7 @@ export const BlogPostPage: React.FC = () => {
 
             <button
               onClick={handleShare}
-              className="flex items-center gap-1 text-xs text-slate-700 hover:text-sky-600 bg-slate-100 px-3 py-1 border border-slate-200 transition-colors"
+              className="flex items-center gap-1 text-xs text-slate-700 hover:text-sky-600 bg-slate-100 px-3 py-1  transition-colors"
             >
               <Share2 className="w-3.5 h-3.5" />
               <span>{copied ? 'Link Copied!' : 'Share'}</span>
@@ -122,7 +122,7 @@ export const BlogPostPage: React.FC = () => {
                   navigate(`/blog/${p.id}`);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="p-4 bg-white border border-slate-200 hover:border-sky-500 cursor-pointer transition-colors"
+                className="p-4 bg-white  hover:border-sky-500 cursor-pointer transition-colors"
               >
                 <span className="text-[10px] font-bold text-sky-600 uppercase">{p.category}</span>
                 <h4 className="font-bold text-xs sm:text-sm text-slate-900 mt-1 line-clamp-2">{p.title}</h4>

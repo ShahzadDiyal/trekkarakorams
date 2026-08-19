@@ -117,13 +117,13 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
         </div>
 
         {/* Page Header */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 border-2 border-sky-500 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
                 2026 Guaranteed Departures
               </span>
-              <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
+              <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
                 Pakistan Trekking Packages
               </h1>
               <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -131,12 +131,12 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
               </p>
             </div>
 
-            <div className="bg-slate-900 border border-sky-800 p-4 shrink-0 text-xs text-sky-200">
+            <div className="bg-slate-900  p-4 shrink-0 text-xs text-sky-200">
               <div className="font-bold text-white text-sm">Need Custom Dates?</div>
               <div className="text-[11px] text-slate-400 mt-0.5">Private bespoke groups welcome for any date.</div>
               <button
                 onClick={() => navigate('/planner')}
-                className="mt-3 w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold py-2 px-3 text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                className="mt-3 w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium py-2 px-3 text-xs uppercase tracking-wider transition-colors cursor-pointer"
               >
                 Open Cost Planner
               </button>
@@ -145,7 +145,7 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="bg-white border border-slate-200 p-4 sm:p-5 mb-8 space-y-4">
+        <div className="bg-white p-4 sm:p-5 mb-8 space-y-4">
           {/* Top Search & Reset Row */}
           <div className="flex flex-col md:flex-row items-center gap-3">
             <div className="relative flex-1 w-full">
@@ -312,24 +312,24 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
         )}
 
         {/* Informational Guidance Section */}
-        <div className="mt-14 bg-white border border-slate-200 p-6 sm:p-8">
+        <div className="mt-14 bg-white p-6 sm:p-8">
           <h2 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-200">
             Pakistan Trekking Seasonality & Best Months
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-slate-700 leading-relaxed">
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <h3 className="font-bold text-slate-900 mb-1 text-xs">Peak Karakoram Summer (Mid-June - August)</h3>
               <p>
                 Best period for K2 Base Camp, Gondogoro La pass, Snow Lake, and 8,000m base camps. High passes are snow-free or manageable with microspikes, and Baltoro glacial rivers are monitored daily.
               </p>
             </div>
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <h3 className="font-bold text-slate-900 mb-1 text-xs">Autumn Golden Season (September - October)</h3>
               <p>
                 Crystal-clear skies, dry weather, and magnificent golden apricot foliage throughout Hunza, Nagar, Rakaposhi, and Fairy Meadows. Daytime temperatures are pleasant with crisp evenings.
               </p>
             </div>
-            <div className="p-4 bg-slate-50 border border-slate-200">
+            <div className="p-4 bg-slate-50 ">
               <h3 className="font-bold text-slate-900 mb-1 text-xs">Spring Blossom Season (April - May)</h3>
               <p>
                 Ideal for lower-altitude cultural treks in Hunza, Skardu valley orchards, and lower Karakoram Highway scenic tours before high glacial passes open in June.
