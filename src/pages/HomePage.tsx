@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import router, { useRouter } from 'next/router';
 import { Hero } from '../components/Hero';
 import { ActivityGrid } from '../components/ActivityGrid';
 import { PopularPackages } from '../components/PopularPackages';
@@ -37,26 +37,26 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleHeroSearch = (filters: { query: string; region: string; duration: string; difficulty: string }) => {
     const params = new URLSearchParams();
     if (filters.query) params.set('q', filters.query);
     if (filters.region) params.set('region', filters.region);
     if (filters.difficulty) params.set('difficulty', filters.difficulty);
-    navigate(`/treks?${params.toString()}`);
+    router.push(`/treks?${params.toString()}`);
   };
 
   const handleTagClick = (tag: string) => {
-    navigate(`/treks?q=${encodeURIComponent(tag)}`);
+    router.push(`/treks?q=${encodeURIComponent(tag)}`);
   };
 
   const handleActivitySelect = (activity: string) => {
-    navigate(`/treks?activity=${encodeURIComponent(activity)}`);
+    router.push(`/treks?activity=${encodeURIComponent(activity)}`);
   };
 
   const handleStyleSelect = (styleId: string) => {
-    navigate(`/travel-styles#${styleId}`);
+    router.push(`/travel-styles#${styleId}`);
   };
 
   const renderValueIcon = (iconName: string) => {
@@ -119,14 +119,14 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <button
-                  onClick={() => navigate('/treks')}
+                  onClick={() => router.push('/treks')}
                   className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-medium text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
                 >
                   <span>Explore 2026 Expeditions</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => navigate('/destinations')}
+                  onClick={() => router.push('/destinations')}
                   className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider transition-colors"
                 >
                   Learn About The Regions
@@ -157,7 +157,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
                 ))}
               </ul>
               <button
-                onClick={() => navigate('/planner')}
+                onClick={() => router.push('/planner')}
                 className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
               >
                 <span>Claim 20% Founding Discount</span>
@@ -221,9 +221,9 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
         currency={currency}
         activeRegionFilter=""
         onFilterChange={(region) => {
-          if (region) navigate(`/treks?region=${encodeURIComponent(region)}`);
+          if (region) router.push(`/treks?region=${encodeURIComponent(region)}`);
         }}
-        onViewDetail={(trek) => navigate(`/treks/${trek.id}`)}
+        onViewDetail={(trek) => router.push(`/treks/${trek.id}`)}
         onBookNow={(trek) => {
           onOpenBooking({
             trekTitle: trek.title,
@@ -232,7 +232,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
             notes: 'Booked directly from Home Page featured packages'
           });
         }}
-        onResetFilters={() => navigate('/treks')}
+        onResetFilters={() => router.push('/treks')}
       />
 
       {/* 6. Who We Guide - Target Explorers Profiles & Personas */}
@@ -250,9 +250,9 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6">
             {AUDIENCE_PERSONAS.slice(0, 3).map((persona) => (
-              <div key={persona.id} className="bg-slate-50  p-6 flex flex-col justify-between">
+              <div key={persona.id} className="bg-slate-50 p-3 md:p-6 flex flex-col justify-between">
                 <div>
                   <div className="inline-block bg-sky-100 text-sky-800 text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider mb-2">
                     {persona.title}
@@ -288,7 +288,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
       <CostEstimator currency={currency} onOpenBooking={onOpenBooking} />
 
       {/* 10. Interactive Map Explorer */}
-      <MapExplorer onSelectTrekById={(id) => navigate(`/treks/${id}`)} />
+      <MapExplorer onSelectTrekById={(id) => router.push(`/treks/${id}`)} />
 
       {/* 11. Verified Trekkers Testimonials */}
       <TestimonialsSection />
@@ -299,41 +299,47 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
       {/* 13. FAQ Section */}
       <FAQSection />
 
-      {/* Bottom Conversion CTA Strip */}
-      <section className="bg-sky-600 text-white py-10 border-t border-sky-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-sky-100">
-              {BRAND_INFO.tagline}
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-0.5">
-              Secure Your 2026 Karakoram Permit
-            </h2>
-            <p className="text-xs text-sky-100 mt-1 max-w-xl">
-              Restricted area permits for K2 Base Camp, Concordia, and Baltoro are allocated strictly on a quota basis. Connect with our Skardu operations HQ.
-            </p>
-          </div>
+    {/* Bottom Conversion CTA Strip */}
+<section className="bg-sky-600 text-white py-8 sm:py-10 border-t border-sky-700">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+      
+      {/* Left: Text Content */}
+      <div className="text-center md:text-left w-full md:w-auto">
+        <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-sky-100">
+          {BRAND_INFO.tagline}
+        </span>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-0.5 leading-tight">
+          Secure Your 2026 Karakoram Permit
+        </h2>
+        <p className="text-sm sm:text-base text-sky-100 mt-1 max-w-xl mx-auto md:mx-0 leading-relaxed">
+          Restricted area permits for K2 Base Camp, Concordia, and Baltoro are allocated strictly on a quota basis. Connect with our Skardu operations HQ.
+        </p>
+      </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <button
-              onClick={() => navigate('/planner')}
-              className="bg-slate-950 hover:bg-slate-900 text-white font-medium text-xs px-5 py-3 uppercase tracking-wider flex items-center gap-2 transition-colors cursor-pointer"
-            >
-              <span>Calculate Custom Quote</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a
-              href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white hover:bg-slate-100 text-sky-900 font-medium text-xs px-5 py-3 flex items-center gap-2 transition-colors"
-            >
-              <PhoneCall className="w-4 h-4" />
-              <span>WhatsApp Direct Hotline</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Right: Buttons */}
+      <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+        <button
+          onClick={() => router.push('/planner')}
+          className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-medium text-sm sm:text-xs px-6 py-3.5 sm:py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg border border-slate-800/30 rounded-lg sm:rounded-none"
+        >
+          <span>Calculate Custom Quote</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
+
+        <a
+          href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full sm:w-auto bg-white hover:bg-slate-100 text-sky-900 font-medium text-sm sm:text-xs px-6 py-3.5 sm:py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg border border-white/20 rounded-lg sm:rounded-none"
+        >
+          <PhoneCall className="w-4 h-4" />
+          <span>WhatsApp Direct Hotline</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
   );
 };

@@ -25,42 +25,46 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 text-slate-300">
       {/* Top Banner – simplified */}
-      <div className="bg-slate-900 text-slate-100 py-4 ">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3">
-          <div className="text-center md:text-left">
-            <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
-              {BRAND_INFO.tagline}
-            </span>
-            <p className="text-[16px] font-semibold text-white">Worry‑free expeditions from airport to the highest peaks</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="https://wa.me/923009876543?text=Hello%20Trek%20Karakoram"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 text-[13px] uppercase tracking-wider flex items-center gap-1.5 transition-colors"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>WhatsApp 24/7</span>
-            </a>
-            <button
-              onClick={scrollToTop}
-              className="bg-slate-800 hover:bg-slate-700 text-white p-2 border border-slate-700 transition-colors"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp className="w-4 h-4" />
-            </button>
+      <div className="bg-slate-900 text-slate-100 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+            <div>
+              <span className="text-[11px] sm:text-[13px] font-bold uppercase tracking-widest text-sky-400">
+                {BRAND_INFO.tagline}
+              </span>
+              <p className="text-[14px] sm:text-[16px] font-semibold text-white leading-tight">
+                Worry‑free expeditions from airport to the highest peaks
+              </p>
+            </div>
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <a
+                href="https://wa.me/923009876543?text=Hello%20Trek%20Karakoram"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2.5 sm:py-2 text-[13px] uppercase tracking-wider flex items-center gap-1.5 transition-colors rounded-lg sm:rounded-none flex-1 sm:flex-none justify-center"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>WhatsApp 24/7</span>
+              </a>
+              <button
+                onClick={scrollToTop}
+                className="bg-slate-800 hover:bg-slate-700 text-white p-2.5 sm:p-2 border border-slate-700 transition-colors rounded-lg sm:rounded-none"
+                aria-label="Scroll to top"
+              >
+                <ArrowUp className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Footer – 3 columns */}
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {/* Column 1: Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-sky-600 flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-sky-600 flex items-center justify-center text-white font-bold rounded-lg sm:rounded-none">
                 <Mountain className="w-6 h-6" />
               </div>
               <div>
@@ -93,23 +97,23 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-950/50 px-2 py-1 border border-emerald-800/60 rounded">
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-950/50 px-2.5 py-1 border border-emerald-800/60 rounded-full">
                 <ShieldCheck className="w-3 h-3" />
                 Licensed & Insured
               </span>
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-400 bg-amber-950/50 px-2 py-1 border border-amber-800/60 rounded">
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-400 bg-amber-950/50 px-2.5 py-1 border border-amber-800/60 rounded-full">
                 <Award className="w-3 h-3" />
-                Alpine Club Pakistan
+                Alpine Club PK
               </span>
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-sky-400 bg-sky-950/50 px-2 py-1 /60 rounded">
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-sky-400 bg-sky-950/50 px-2.5 py-1 border border-sky-800/60 rounded-full">
                 <Lock className="w-3 h-3" />
                 Secure Booking
               </span>
             </div>
           </div>
 
-          {/* Column 2: Popular Treks & Expedition Guides (includes removed navbar items) */}
+          {/* Column 2: Popular Treks & Expedition Guides */}
           <div>
             <h4 className="text-[13px] font-bold text-white uppercase tracking-wider mb-3 pb-1 border-b border-slate-800">
               Popular Treks
@@ -127,7 +131,6 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-1.5 text-[13px] text-slate-400">
               <li><Link href="/destinations" className="hover:text-sky-400 transition-colors">Mountain Destinations</Link></li>
-              {/* Removed navbar items are here */}
               <li><Link href="/routes-map" className="hover:text-sky-400 transition-colors">Interactive Route Map</Link></li>
               <li><Link href="/planner" className="hover:text-sky-400 transition-colors">Custom Cost Estimator</Link></li>
               <li><Link href="/travel-styles" className="hover:text-sky-400 transition-colors">Expedition Travel Styles</Link></li>
@@ -162,7 +165,7 @@ export const Footer: React.FC = () => {
               </li>
             </ul>
 
-            {/* Affiliations (optional, kept clean) */}
+            {/* Affiliations */}
             <div className="mt-4 pt-4 border-t border-slate-800/60">
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Affiliations</p>
               <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-slate-500">
@@ -178,12 +181,12 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Founding Member Callout – simplified */}
-        <div className="mt-10 p-4 bg-slate-900 /30 flex flex-col sm:flex-row items-center justify-between gap-3 rounded">
-          <div className="flex items-center gap-3">
-            <Sparkles className="w-5 h-5 text-amber-400 shrink-0" />
+        {/* Founding Member Callout */}
+        <div className="mt-10 p-4 sm:p-5 bg-slate-900/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl sm:rounded-none border border-slate-800/50 shadow-sm sm:shadow-none">
+          <div className="flex items-start sm:items-center gap-3">
+            <Sparkles className="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
             <div>
-              <span className="text-[13px] font-bold text-amber-400 uppercase tracking-wider">
+              <span className="text-[13px] font-bold text-amber-400 uppercase tracking-wider block">
                 {FOUNDING_MEMBERS_SPECIAL.title}
               </span>
               <p className="text-[13px] text-slate-300">
@@ -193,15 +196,15 @@ export const Footer: React.FC = () => {
           </div>
           <Link
             href="/planner"
-            className="px-5 py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[13px] uppercase tracking-wider transition-colors shrink-0"
+            className="px-6 sm:px-5 py-3 sm:py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[13px] uppercase tracking-wider transition-colors rounded-lg sm:rounded-none w-full sm:w-auto text-center"
           >
             Claim Privileges
           </Link>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 pt-6 border-t border-slate-800 text-[11px] text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-4">
+        <div className="mt-8 pt-6 border-t border-slate-800 text-[11px] text-slate-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             <span>© {new Date().getFullYear()} Trek Karakoram. All rights reserved.</span>
             <span className="hidden sm:inline">•</span>
             <span className="flex items-center gap-1">

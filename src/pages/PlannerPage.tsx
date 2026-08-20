@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 import { TREK_PACKAGES } from '../data/treks';
 import { Currency } from '../types';
 import { formatPrice } from '../utils/currency';
@@ -24,7 +25,7 @@ interface PlannerPageProps {
 }
 
 export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBooking }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const [selectedTrekId, setSelectedTrekId] = useState<string>(TREK_PACKAGES[0].id);
   const [groupSize, setGroupSize] = useState<number>(2);
@@ -75,7 +76,9 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <button onClick={() => router.push('/')} className="hover:text-sky-600">
+            Home
+          </button>
           <span>/</span>
           <span className="font-semibold text-slate-900">Custom Trek Planner & Cost Calculator</span>
         </div>

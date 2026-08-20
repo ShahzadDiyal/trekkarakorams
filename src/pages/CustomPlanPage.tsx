@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { CheckCircle2, Send, MessageSquare, ShieldCheck, ArrowLeft } from 'lucide-react';
 import { TREK_PACKAGES } from '../data/treks';
 
 export const CustomPlanPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -30,7 +30,7 @@ export const CustomPlanPage: React.FC = () => {
       <div className="max-w-3xl mx-auto">
         {/* Back button */}
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => router.back()}
           className="inline-flex items-center gap-1 text-sm text-slate-600 hover:text-sky-600 mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -235,7 +235,7 @@ export const CustomPlanPage: React.FC = () => {
               </div>
 
               <button
-                onClick={() => navigate('/')}
+                onClick={() => router.push('/')}
                 className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-6 py-2.5 transition-colors cursor-pointer"
               >
                 Return to Home

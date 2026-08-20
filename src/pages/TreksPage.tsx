@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { TREK_PACKAGES } from '../data/treks';
 import { PackageCard } from '../components/PackageCard';
 import { Currency, TrekPackage } from '../types';
@@ -22,14 +22,13 @@ interface TreksPageProps {
 }
 
 export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const router = useRouter();
 
-  // Search & Filter state derived from query params
-  const initialQuery = searchParams.get('q') || '';
-  const initialRegion = searchParams.get('region') || '';
-  const initialDifficulty = searchParams.get('difficulty') || '';
-  const initialActivity = searchParams.get('activity') || '';
+  // Read initial query params from router.query (on mount and on URL changes)
+  const initialQuery = (router.query.q as string) || '';
+  const initialRegion = (router.query.region as string) || '';
+  const initialDifficulty = (router.query.difficulty as string) || '';
+  const initialActivity = (router.query.activity as string) || '';
 
   const [query, setQuery] = useState(initialQuery);
   const [selectedRegion, setSelectedRegion] = useState(initialRegion);
@@ -37,6 +36,32 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
   const [selectedActivity, setSelectedActivity] = useState(initialActivity);
   const [selectedDurationRange, setSelectedDurationRange] = useState<string>('ALL');
   const [sortBy, setSortBy] = useState<'recommended' | 'price-asc' | 'price-desc' | 'altitude' | 'duration'>('recommended');
+
+  // Sync local state with URL query params when they change (e.g., browser back/forward)
+  useEffect(() => {
+    setQuery((router.query.q as string) || '');
+    setSelectedRegion((router.query.region as string) || '');
+    setSelectedDifficulty((router.query.difficulty as string) || '');
+    setSelectedActivity((router.query.activity as string) || '');
+  }, [router.query]);
+
+  // Update URL query params when filters change
+  useEffect(() => {
+    const queryParams: Record<string, string> = {};
+    if (query) queryParams.q = query;
+    if (selectedRegion) queryParams.region = selectedRegion;
+    if (selectedDifficulty) queryParams.difficulty = selectedDifficulty;
+    if (selectedActivity) queryParams.activity = selectedActivity;
+
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: queryParams,
+      },
+      undefined,
+      { shallow: true }
+    );
+  }, [query, selectedRegion, selectedDifficulty, selectedActivity, router]);
 
   const regions = [
     'Central Karakoram',
@@ -103,7 +128,8 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
     setSelectedActivity('');
     setSelectedDurationRange('ALL');
     setSortBy('recommended');
-    setSearchParams({});
+    // Clear URL query params
+    router.replace(router.pathname, undefined, { shallow: true });
   };
 
   return (
@@ -111,13 +137,15 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <button onClick={() => navigate('/')} className="hover:text-sky-600">Home</button>
+          <button onClick={() => router.push('/')} className="hover:text-sky-600">
+            Home
+          </button>
           <span>/</span>
           <span className="font-semibold text-slate-900">All Pakistan Trekking Expeditions</span>
         </div>
 
         {/* Page Header */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8 mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
@@ -131,11 +159,11 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
               </p>
             </div>
 
-            <div className="bg-slate-900  p-4 shrink-0 text-xs text-sky-200">
+            <div className="bg-slate-900 p-4 shrink-0 text-xs text-sky-200">
               <div className="font-bold text-white text-sm">Need Custom Dates?</div>
               <div className="text-[11px] text-slate-400 mt-0.5">Private bespoke groups welcome for any date.</div>
               <button
-                onClick={() => navigate('/planner')}
+                onClick={() => router.push('/planner')}
                 className="mt-3 w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium py-2 px-3 text-xs uppercase tracking-wider transition-colors cursor-pointer"
               >
                 Open Cost Planner
@@ -269,13 +297,13 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
 
         {/* Packages Grid */}
         {filteredTreks.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredTreks.map((trek) => (
               <PackageCard
                 key={trek.id}
                 trek={trek}
                 currency={currency}
-                onViewDetail={() => navigate(`/treks/${trek.id}`)}
+                onViewDetail={() => router.push(`/treks/${trek.id}`)}
                 onBookNow={() => {
                   onOpenBooking({
                     trekTitle: trek.title,
@@ -302,7 +330,7 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
                 Reset All Filters
               </button>
               <button
-                onClick={() => navigate('/planner')}
+                onClick={() => router.push('/planner')}
                 className="bg-slate-900 text-white font-bold text-xs px-4 py-2 hover:bg-slate-800 transition-colors"
               >
                 Create Custom Route
@@ -317,19 +345,19 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
             Pakistan Trekking Seasonality & Best Months
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-slate-700 leading-relaxed">
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50">
               <h3 className="font-bold text-slate-900 mb-1 text-xs">Peak Karakoram Summer (Mid-June - August)</h3>
               <p>
                 Best period for K2 Base Camp, Gondogoro La pass, Snow Lake, and 8,000m base camps. High passes are snow-free or manageable with microspikes, and Baltoro glacial rivers are monitored daily.
               </p>
             </div>
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50">
               <h3 className="font-bold text-slate-900 mb-1 text-xs">Autumn Golden Season (September - October)</h3>
               <p>
                 Crystal-clear skies, dry weather, and magnificent golden apricot foliage throughout Hunza, Nagar, Rakaposhi, and Fairy Meadows. Daytime temperatures are pleasant with crisp evenings.
               </p>
             </div>
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50">
               <h3 className="font-bold text-slate-900 mb-1 text-xs">Spring Blossom Season (April - May)</h3>
               <p>
                 Ideal for lower-altitude cultural treks in Hunza, Skardu valley orchards, and lower Karakoram Highway scenic tours before high glacial passes open in June.

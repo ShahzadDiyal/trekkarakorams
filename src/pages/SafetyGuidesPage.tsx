@@ -1,5 +1,6 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 import {
   ShieldCheck,
   Award,
@@ -12,16 +13,19 @@ import {
   PhoneCall,
   ArrowRight
 } from 'lucide-react';
+import Link from 'next/link';
 
 export const SafetyGuidesPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <button onClick={() => router.push('/')} className="hover:text-sky-600">
+            Home
+          </button>
           <span>/</span>
           <span className="font-semibold text-slate-900">Expedition Safety & Mountain Guide Standards</span>
         </div>

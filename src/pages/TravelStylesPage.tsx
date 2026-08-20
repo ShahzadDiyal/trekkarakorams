@@ -1,5 +1,6 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 import { TREK_STYLES, TREK_PACKAGES } from '../data/treks';
 import { Currency } from '../types';
 import { formatPrice } from '../utils/currency';
@@ -11,14 +12,16 @@ interface TravelStylesPageProps {
 }
 
 export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, onOpenBooking }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <button onClick={() => router.push('/')} className="hover:text-sky-600">
+            Home
+          </button>
           <span>/</span>
           <span className="font-semibold text-slate-900">Expedition Travel Styles in Pakistan</span>
         </div>
@@ -84,7 +87,7 @@ export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, on
                         {matchedTreks.map((t) => (
                           <div
                             key={t.id}
-                            onClick={() => navigate(`/treks/${t.id}`)}
+                            onClick={() => router.push(`/treks/${t.id}`)}
                             className="p-3 bg-slate-50 hover:border-sky-500 cursor-pointer transition-colors"
                           >
                             <span className="text-[10px] font-bold text-sky-600 uppercase block">{t.region.split(' ')[0]}</span>
@@ -99,7 +102,7 @@ export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, on
 
                     <div className="pt-2 flex justify-end">
                       <button
-                        onClick={() => navigate(`/treks?activity=${encodeURIComponent(style.title.split(' ')[0])}`)}
+                        onClick={() => router.push(`/treks?activity=${encodeURIComponent(style.title.split(' ')[0])}`)}
                         className="bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs px-4 py-2 flex items-center gap-1 transition-colors cursor-pointer"
                       >
                         <span>Explore All {style.title}</span>

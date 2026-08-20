@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 import { Mountain, MapPin, Compass, ArrowRight, Sun, Calendar, Sparkles, CheckCircle2 } from 'lucide-react';
 import { TREK_PACKAGES } from '../data/treks';
 import { Currency } from '../types';
@@ -122,7 +123,7 @@ const DESTINATION_REGIONS: DestinationRegion[] = [
 ];
 
 export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [selectedRegionId, setSelectedRegionId] = useState<string>(DESTINATION_REGIONS[0].id);
 
   const activeRegion = DESTINATION_REGIONS.find((r) => r.id === selectedRegionId) || DESTINATION_REGIONS[0];
@@ -132,7 +133,9 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <button onClick={() => router.push('/')} className="hover:text-sky-600">
+            Home
+          </button>
           <span>/</span>
           <span className="font-semibold text-slate-900">Northern Pakistan Trekking Destinations</span>
         </div>
@@ -254,7 +257,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
                   Ready to trek in <strong>{activeRegion.name}</strong>?
                 </div>
                 <button
-                  onClick={() => navigate(`/treks?region=${encodeURIComponent(activeRegion.name)}`)}
+                  onClick={() => router.push(`/treks?region=${encodeURIComponent(activeRegion.name)}`)}
                   className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Browse {activeRegion.name.split(' ')[0]} Treks</span>

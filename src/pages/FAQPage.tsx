@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 import { FAQ_ITEMS } from '../data/treks';
 import { HelpCircle, ChevronDown, Search, MessageSquare, PhoneCall, ShieldCheck } from 'lucide-react';
 
 export const FAQPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
+  const router = useRouter();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -24,7 +26,9 @@ export const FAQPage: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <button onClick={() => router.push('/')} className="hover:text-sky-600">
+            Home
+          </button>
           <span>/</span>
           <span className="font-semibold text-slate-900">Pakistan Trekking FAQs & Knowledge Center</span>
         </div>

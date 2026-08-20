@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 import { BLOG_POSTS } from '../data/treks';
 import { Calendar, Clock, User, ArrowRight, Search, BookOpen } from 'lucide-react';
 
 export const BlogPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('ALL');
 
@@ -24,7 +25,9 @@ export const BlogPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <button onClick={() => router.push('/')} className="hover:text-sky-600">
+            Home
+          </button>
           <span>/</span>
           <span className="font-semibold text-slate-900">Pakistan Trekking Guides & Expedition Blog</span>
         </div>
@@ -104,7 +107,7 @@ export const BlogPage: React.FC = () => {
                   </div>
 
                   <h2
-                    onClick={() => navigate(`/blog/${post.id}`)}
+                    onClick={() => router.push(`/blog/${post.id}`)}
                     className="text-base font-bold text-slate-900 hover:text-sky-600 cursor-pointer transition-colors"
                   >
                     {post.title}
@@ -118,7 +121,7 @@ export const BlogPage: React.FC = () => {
 
               <div className="p-5 pt-0">
                 <button
-                  onClick={() => navigate(`/blog/${post.id}`)}
+                  onClick={() => router.push(`/blog/${post.id}`)}
                   className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-xs py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <span>Read Complete Article</span>

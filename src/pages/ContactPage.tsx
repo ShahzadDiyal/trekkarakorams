@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import {
   MapPin,
   Phone,
@@ -36,13 +36,13 @@ export const ContactPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Contact Karakoram Expeditions Pakistan</span>
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8 mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
             Operations & Inquiries
           </span>
@@ -187,7 +187,7 @@ export const ContactPage: React.FC = () => {
           {/* Right: Offices & Emergency Contact Details (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Skardu Basecamp HQ */}
-            <div className="bg-white  p-6 space-y-3 text-xs text-slate-700">
+            <div className="bg-white p-6 space-y-3 text-xs text-slate-700">
               <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                 <Mountain className="w-5 h-5 text-sky-600 shrink-0" />
                 <div>
@@ -210,7 +210,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* Islamabad Liaison Office */}
-            <div className="bg-white  p-6 space-y-3 text-xs text-slate-700">
+            <div className="bg-white p-6 space-y-3 text-xs text-slate-700">
               <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                 <ShieldCheck className="w-5 h-5 text-sky-600 shrink-0" />
                 <div>
@@ -229,7 +229,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* International Liaison Desks */}
-            <div className="bg-sky-950 text-white  p-6 space-y-3 text-xs">
+            <div className="bg-sky-950 text-white p-6 space-y-3 text-xs">
               <h3 className="font-bold text-sky-400 uppercase tracking-wider text-xs">
                 International Support Desks
               </h3>

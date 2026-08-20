@@ -27,7 +27,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
           {/* Main Large Trekking Card (Spans 2 cols on lg) */}
           <div
             onClick={() => onSelectActivity('Trekking')}
-            className="md:col-span-2 lg:col-span-2 group relative h-72 sm:h-80 overflow-hidden cursor-pointer border border-slate-200"
+            className="md:col-span-2 lg:col-span-2 group relative h-72 sm:h-90 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
               src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80"
@@ -54,7 +54,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
           {/* Helicopter Tour Card */}
           <div
             onClick={() => onSelectActivity('Heli Trek')}
-            className="md:col-span-1 lg:col-span-2 group relative h-72 sm:h-80 overflow-hidden cursor-pointer border border-slate-200"
+            className="md:col-span-1 lg:col-span-2 group relative h-72 sm:h-90 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
               src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1000&q=80"

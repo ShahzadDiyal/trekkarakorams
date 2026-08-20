@@ -19,15 +19,15 @@ import {
 } from 'lucide-react';
 
 export const TreksPageClient: React.FC = () => {
-  const searchParams = useSearchParams();
+const searchParams = useSearchParams();
   const router = useRouter();
   const { currency, onOpenBooking } = useApp();
 
   // Search & Filter state derived from query params
-  const initialQuery = searchParams.get('q') || '';
-  const initialRegion = searchParams.get('region') || '';
-  const initialDifficulty = searchParams.get('difficulty') || '';
-  const initialActivity = searchParams.get('activity') || '';
+const initialQuery = searchParams?.get('q') || '';
+const initialRegion = searchParams?.get('region') || '';
+const initialDifficulty = searchParams?.get('difficulty') || '';
+const initialActivity = searchParams?.get('activity') || '';
 
   const [query, setQuery] = useState(initialQuery);
   const [selectedRegion, setSelectedRegion] = useState(initialRegion);
@@ -267,7 +267,7 @@ export const TreksPageClient: React.FC = () => {
 
         {/* Packages Grid */}
         {filteredTreks.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredTreks.map((trek) => (
               <PackageCard
                 key={trek.id}

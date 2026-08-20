@@ -43,7 +43,7 @@ export const RoutesMapPageClient: React.FC = () => {
             Baltoro Glacier & K2 Expedition Waypoints
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-[13px] text-slate-700">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 text-[13px] text-slate-700">
             <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>1. Askole Village (Trailhead)</span>

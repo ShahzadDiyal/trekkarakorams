@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { BLOG_POSTS, TREK_PACKAGES } from '../data/treks';
 import {
   Calendar,
@@ -15,8 +16,8 @@ import {
 } from 'lucide-react';
 
 export const BlogPostPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
+  const router = useRouter();
+  const { slug } = router.query as { slug: string };
 
   const post = BLOG_POSTS.find((p) => p.id === slug) || BLOG_POSTS[0];
   const [copied, setCopied] = useState(false);
@@ -34,16 +35,16 @@ export const BlogPostPage: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap">
-          <Link to="/" className="hover:text-sky-600">Home</Link>
+          <Link href="/" className="hover:text-sky-600">Home</Link>
           <ChevronRight className="w-3 h-3 text-slate-400" />
-          <Link to="/blog" className="hover:text-sky-600">Trekking Guides</Link>
+          <Link href="/blog" className="hover:text-sky-600">Trekking Guides</Link>
           <ChevronRight className="w-3 h-3 text-slate-400" />
           <span className="font-semibold text-slate-900 truncate max-w-xs">{post.title}</span>
         </div>
 
         {/* Article Container */}
-        <article className="bg-white  p-6 sm:p-10 mb-10">
-          <span className="text-xs font-bold text-sky-600 uppercase tracking-wider bg-sky-50 px-2.5 py-1 ">
+        <article className="bg-white p-6 sm:p-10 mb-10">
+          <span className="text-xs font-bold text-sky-600 uppercase tracking-wider bg-sky-50 px-2.5 py-1">
             {post.category}
           </span>
 
@@ -68,7 +69,7 @@ export const BlogPostPage: React.FC = () => {
 
             <button
               onClick={handleShare}
-              className="flex items-center gap-1 text-xs text-slate-700 hover:text-sky-600 bg-slate-100 px-3 py-1  transition-colors"
+              className="flex items-center gap-1 text-xs text-slate-700 hover:text-sky-600 bg-slate-100 px-3 py-1 transition-colors"
             >
               <Share2 className="w-3.5 h-3.5" />
               <span>{copied ? 'Link Copied!' : 'Share'}</span>
@@ -119,10 +120,10 @@ export const BlogPostPage: React.FC = () => {
               <div
                 key={p.id}
                 onClick={() => {
-                  navigate(`/blog/${p.id}`);
+                  router.push(`/blog/${p.id}`);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="p-4 bg-white  hover:border-sky-500 cursor-pointer transition-colors"
+                className="p-4 bg-white hover:border-sky-500 cursor-pointer transition-colors"
               >
                 <span className="text-[10px] font-bold text-sky-600 uppercase">{p.category}</span>
                 <h4 className="font-bold text-xs sm:text-sm text-slate-900 mt-1 line-clamp-2">{p.title}</h4>
