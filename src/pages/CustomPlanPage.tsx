@@ -247,3 +247,6 @@ export const CustomPlanPage: React.FC = () => {
     </div>
   );
 };
+
+
+export default CustomPlanPage;

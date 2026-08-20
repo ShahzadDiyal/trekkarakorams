@@ -343,3 +343,6 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
     </main>
   );
 };
+
+
+export default HomePage;

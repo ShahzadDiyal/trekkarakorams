@@ -396,3 +396,6 @@ export const PlannerPage: React.FC<PlannerPageProps> = ({ currency, onOpenBookin
     </div>
   );
 };
+
+
+export default PlannerPage;

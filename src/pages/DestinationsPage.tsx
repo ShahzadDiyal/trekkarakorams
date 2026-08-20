@@ -307,3 +307,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ currency }) 
     </div>
   );
 };
+
+
+
+export default DestinationsPage;

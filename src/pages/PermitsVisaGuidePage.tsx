@@ -182,3 +182,7 @@ export const PermitsVisaGuidePage: React.FC = () => {
     </div>
   );
 };
+
+
+export default PermitsVisaGuidePage;
+

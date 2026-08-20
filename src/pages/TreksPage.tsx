@@ -369,3 +369,6 @@ export const TreksPage: React.FC<TreksPageProps> = ({ currency, onOpenBooking })
     </div>
   );
 };
+
+
+export default TreksPage;

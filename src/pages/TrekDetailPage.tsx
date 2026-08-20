@@ -694,3 +694,6 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
     </div>
   );
 };
+
+
+export default TrekDetailPage;

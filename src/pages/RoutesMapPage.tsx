@@ -119,3 +119,6 @@ export const RoutesMapPage: React.FC = () => {
     </div>
   );
 };
+
+
+export default RoutesMapPage

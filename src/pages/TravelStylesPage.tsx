@@ -119,3 +119,6 @@ export const TravelStylesPage: React.FC<TravelStylesPageProps> = ({ currency, on
     </div>
   );
 };
+
+
+export default TravelStylesPage

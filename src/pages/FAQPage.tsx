@@ -138,3 +138,9 @@ export const FAQPage: React.FC = () => {
     </div>
   );
 };
+
+
+export default FAQPage;
+
+
+

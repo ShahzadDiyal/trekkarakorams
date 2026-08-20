@@ -163,3 +163,7 @@ export const SafetyGuidesPage: React.FC = () => {
     </div>
   );
 };
+
+
+export default SafetyGuidesPage;
+
