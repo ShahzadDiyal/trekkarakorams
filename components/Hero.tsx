@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
       {/* Background with improved overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="/videos/trek-video.mp4"
+          src="/videos/k2-base-video.mp4"
           autoPlay
           loop
           muted
