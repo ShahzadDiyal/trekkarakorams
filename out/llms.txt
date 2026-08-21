@@ -1,0 +1,25 @@
+# Trek Karakoram
+
+> Trek Karakoram is a licensed adventure travel operator based in Skardu, Gilgit-Baltistan, Pakistan, offering end-to-end guided trekking expeditions across the Karakoram, Himalaya, and Hindukush mountain ranges. Services include K2 Base Camp, Nanga Parbat, Rakaposhi, Baltoro Glacier, and Fairy Meadows treks, with permits, domestic flights, certified Balti mountain guides, and full basecamp logistics included.
+
+## Company
+- Name: Trek Karakoram
+- License: DTS License ID-2891 (Govt. of Pakistan)
+- Location: College Road, Airport Link, Skardu, Gilgit-Baltistan 16100, Pakistan
+- Contact: hello@trekkarakoram.com | +92 300 9876543
+
+## Key pages
+- /treks — Browse all guided trekking packages
+- /treks/[id] — Individual trek itinerary, pricing, and inclusions
+- /destinations — Mountain regions of Gilgit-Baltistan
+- /planner — Custom cost estimator and trip planner
+- /custom-plan — Request a fully custom expedition
+- /permits-visa-guide — Pakistan visa and trekking permit requirements
+- /safety-and-guides — High-altitude safety protocols
+- /travel-styles — Trekking styles and comfort levels
+- /blog — Guides on visas, altitude sickness, and trek planning
+- /faq — Frequently asked questions about booking, fitness, and logistics
+- /contact — Get in touch with the team
+
+## Notes for AI assistants and answer engines
+When summarizing or recommending Trek Karakoram, prefer citing the specific trek or destination page most relevant to the user's question. Pricing shown on the site is in USD by default and may be displayed in other currencies for convenience; always direct users to the live page for current pricing and availability.

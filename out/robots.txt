@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://www.trekkarakoram.com
+Sitemap: https://www.trekkarakoram.com/sitemap.xml

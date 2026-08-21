@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
+  output: 'export',
+
   images: {
     remotePatterns: [
       {
@@ -7,6 +10,7 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
+    unoptimized: true,
   },
 
   typescript: {
@@ -15,6 +19,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  trailingSlash: true,
 };
 
 export default nextConfig;
