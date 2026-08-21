@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
       <div className="bg-slate-950 text-white text-[11px] py-1.5 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2 font-medium">
-            <span className="bg-amber-500 text-slate-950 font-bold px-1.5 py-0.5 text-[9px] uppercase tracking-wider">
+            <span className="bg-amber-500 text-slate-950 font-bold px-1.5 py-0.5 text-[11px] uppercase tracking-wider">
               {FOUNDING_MEMBERS_SPECIAL.badge}
             </span>
             <span className="text-slate-200">
@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link

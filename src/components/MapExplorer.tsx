@@ -123,7 +123,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
 
   return (
     <section id="interactive-map-section" className="py-14 bg-slate-900 text-white border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="max-w-2xl mb-8">
           <span className="text-xs font-bold uppercase tracking-wider text-sky-400">

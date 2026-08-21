@@ -7,7 +7,7 @@ export const TrustSection: React.FC = () => {
 
   return (
     <section id="trust-safety-section" className="py-14 bg-slate-900 text-white border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Visual Media with Play Badge */}
           <div className="lg:col-span-5 relative">

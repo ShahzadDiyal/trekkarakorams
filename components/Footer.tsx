@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-slate-950 text-slate-300">
       {/* Top Banner – simplified */}
       <div className="bg-slate-900 text-slate-100 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
             <div>
               <span className="text-[11px] sm:text-[13px] font-bold uppercase tracking-widest text-sky-400">
@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Main Footer – 3 columns */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {/* Column 1: Brand */}
           <div className="space-y-4">
@@ -167,8 +167,8 @@ export const Footer: React.FC = () => {
 
             {/* Affiliations */}
             <div className="mt-4 pt-4 border-t border-slate-800/60">
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Affiliations</p>
-              <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-slate-500">
+              <p className="text-[10px] font-bold text-slate-200 uppercase tracking-wider mb-2">Affiliations</p>
+              <div className="flex flex-wrap gap-x-3 gap-y-1 text-[12px] text-slate-300">
                 <span>Alpine Club of Pakistan</span>
                 <span>•</span>
                 <span>PTDC</span>
@@ -203,7 +203,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 pt-6 border-t border-slate-800 text-[11px] text-slate-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="mt-8 pt-6 border-t border-slate-700 text-[11px] text-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             <span>© {new Date().getFullYear()} Trek Karakoram. All rights reserved.</span>
             <span className="hidden sm:inline">•</span>

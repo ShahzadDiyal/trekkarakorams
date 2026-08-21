@@ -1,40 +1,33 @@
+// pages/_app.tsx
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
-import { BookingModal } from './components/BookingModal';
-import { CostEstimatorModal } from './components/CostEstimatorModal';
-import { CustomPlanModal } from './components/CustomPlanModal';
-import { Currency } from './types';
+import { useRouter } from 'next/router';
+import type { AppProps } from 'next/app';
 
-// Pages
-import { HomePage } from './pages/HomePage';
-import { TreksPage } from './pages/TreksPage';
-import { TrekDetailPage } from './pages/TrekDetailPage';
-import { DestinationsPage } from './pages/DestinationsPage';
-import { RoutesMapPage } from './pages/RoutesMapPage';
-import { PlannerPage } from './pages/PlannerPage';
-import { SafetyGuidesPage } from './pages/SafetyGuidesPage';
-import { PermitsVisaGuidePage } from './pages/PermitsVisaGuidePage';
-import { TravelStylesPage } from './pages/TravelStylesPage';
-import { BlogPage } from './pages/BlogPage';
-import { BlogPostPage } from './pages/BlogPostPage';
-import { FAQPage } from './pages/FAQPage';
-import { ContactPage } from './pages/ContactPage';
-import { CustomPlanPage } from './pages/CustomPlanPage';
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import { BookingModal } from '../components/BookingModal';
+import { CostEstimatorModal } from '../components/CostEstimatorModal';
+import { CustomPlanModal } from '../components/CustomPlanModal';
+import { Currency } from '../types';
 
-// Scroll to top on route change helper
-function ScrollToTop() {
-  const { pathname } = useLocation();
+// Remove all page imports – they are handled by Next.js file system
+
+// Helper: scroll to top on route change
+function useScrollToTop() {
+  const router = useRouter();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
+    const handleRouteChange = () => {
+      window.scrollTo(0, 0);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 }
 
-export function App() {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const [currency, setCurrency] = useState<Currency>('USD');
   const [bookingModalData, setBookingModalData] = useState<{
     isOpen: boolean;
@@ -43,10 +36,12 @@ export function App() {
     totalPerPerson?: number;
     notes?: string;
   }>({
-    isOpen: false
+    isOpen: false,
   });
   const [costEstimatorOpen, setCostEstimatorOpen] = useState(false);
   const [customPlanOpen, setCustomPlanOpen] = useState(false);
+
+  useScrollToTop();
 
   const handleOpenBooking = (details: {
     trekTitle: string;
@@ -56,88 +51,26 @@ export function App() {
   }) => {
     setBookingModalData({
       isOpen: true,
-      ...details
+      ...details,
     });
   };
 
+  // Inject the onOpenBooking and currency props into every page
+  const enhancedPageProps = {
+    ...pageProps,
+    currency,
+    onOpenBooking: handleOpenBooking,
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-sky-500 selection:text-slate-950">
-      <ScrollToTop />
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-sky-500 selection:text-slate-950">
+      <Navbar />
 
-
-
-      {/* Primary Sticky Header */}
-      <Navbar
-
-      />
-
-      {/* Main Content Router */}
       <main className="flex-grow">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                currency={currency}
-                onOpenBooking={handleOpenBooking}
-
-
-              />
-            }
-          />
-          <Route
-            path="/treks"
-            element={
-              <TreksPage
-                currency={currency}
-                onOpenBooking={handleOpenBooking}
-              />
-            }
-          />
-          <Route
-            path="/treks/:id"
-            element={
-              <TrekDetailPage
-                currency={currency}
-                onOpenBooking={handleOpenBooking}
-              />
-            }
-          />
-          <Route
-            path="/destinations"
-            element={<DestinationsPage currency={currency} />}
-          />
-          <Route path="/routes-map" element={<RoutesMapPage />} />
-          <Route
-            path="/planner"
-            element={
-              <PlannerPage
-                currency={currency}
-                onOpenBooking={handleOpenBooking}
-              />
-            }
-          />
-          <Route path="/safety-and-guides" element={<SafetyGuidesPage />} />
-          <Route path="/permits-visa-guide" element={<PermitsVisaGuidePage />} />
-          <Route
-            path="/travel-styles"
-            element={
-              <TravelStylesPage
-                currency={currency}
-                onOpenBooking={handleOpenBooking}
-              />
-            }
-          />
-          <Route path="/custom-plan" element={<CustomPlanPage />} />
-
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+        {/* Next.js renders the current page here */}
+        <Component {...enhancedPageProps} />
       </main>
 
-      {/* Footer */}
       <Footer />
 
       {/* Global Modals */}
@@ -163,5 +96,3 @@ export function App() {
     </div>
   );
 }
-
-export default App;

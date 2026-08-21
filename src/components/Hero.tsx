@@ -48,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
         <div className="max-w-4xl">
           {/* Top badges - refined spacing */}
           <div className="flex flex-wrap items-center gap-3 mb-6">

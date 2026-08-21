@@ -347,7 +347,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
 
                     {/* Standard (Most Popular) */}
                     <div className={`p-4 border-2 relative transition-all ${selectedTier === 'standard' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
-                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[9px] font-bold uppercase px-2 py-0.5">
+                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[11px] font-bold uppercase px-2 py-0.5">
                         Most Popular
                       </div>
                       <div className="flex justify-between items-center mb-2">

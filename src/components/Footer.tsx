@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-slate-950 text-slate-300">
       {/* Top Banner – simplified */}
       <div className="bg-slate-900 text-slate-100 py-4 ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="text-center md:text-left">
             <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
               {BRAND_INFO.tagline}
@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Main Footer – 3 columns */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Column 1: Brand */}
           <div className="space-y-4">

@@ -40,7 +40,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
 
   return (
     <section id="popular-packages-section" className="py-14 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>

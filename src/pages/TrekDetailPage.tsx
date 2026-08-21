@@ -78,7 +78,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
   return (
     <div className="bg-slate-50 min-h-screen py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap">
           <Link href="/" className="hover:text-sky-600">Home</Link>
@@ -347,7 +347,7 @@ export const TrekDetailPage: React.FC<TrekDetailPageProps> = ({ currency, onOpen
 
                     {/* Standard (Most Popular) */}
                     <div className={`p-4 border-2 relative transition-all ${selectedTier === 'standard' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
-                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[9px] font-bold uppercase px-2 py-0.5">
+                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[11px] font-bold uppercase px-2 py-0.5">
                         Most Popular
                       </div>
                       <div className="flex justify-between items-center mb-2">

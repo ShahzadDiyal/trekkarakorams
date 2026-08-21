@@ -39,26 +39,26 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
     <section id="hero-section" className="relative bg-slate-900 overflow-hidden min-h-[600px] flex items-center">
       {/* Background with improved overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=85"
-          alt="K2 and Karakoram mountain range in Pakistan"
+        <video
+          src="/videos/k2-base-video.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover object-center"
-          loading="eager"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-900/50 to-slate-950/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
-        <div className="">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 text-left md:text-center">
+        <div className="max-w-7xl mx-auto">
           {/* Top badges - refined spacing */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-600/20 text-sky-200  text-[13px] font-bold uppercase tracking-wider rounded-sm">
+          <div className="flex flex-wrap items-center gap-3 mb-6 justify-start md:justify-center">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-600/20 text-sky-200 text-[13px] font-bold uppercase tracking-wider rounded-sm">
               <Award className="w-3.5 h-3.5 text-sky-400" />
               Official Pakistan Trekking Operator
             </span>
-
           </div>
 
           {/* Heading - tightened spacing */}
@@ -69,15 +69,12 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
             {BRAND_INFO.tagline}
           </p>
 
-          <p className="text-slate-200 text-[16px] sm:text-[16px] lg:text-lg mb-6 leading-relaxed max-w-2xl">
+          <p className="text-slate-200 text-[14px] sm:text-[16px] lg:text-lg mb-6 leading-relaxed max-w-2xl mx-auto md:mx-auto">
             {BRAND_INFO.uspOneLiner} Guided expeditions to K2 Base Camp, Concordia, Fairy Meadows, and Snow Lake with certified local Balti leaders.
           </p>
 
-          {/* Founding Member Banner - more compact and elegant */}
-
-
           {/* Search Engine Bar - refined styling */}
-          <div className="bg-white/95 backdrop-blur-sm p-4 rounded-sm border border-white/20">
+          <div className="bg-white/95 backdrop-blur-sm p-4 rounded-sm border border-white/20 max-w-5xl mx-auto">
             <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
               {/* Search Input */}
               <div className="lg:col-span-2 relative flex items-center border-2 border-slate-200 px-3 py-2.5 bg-white focus-within:border-sky-500 transition-colors">
@@ -139,8 +136,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
           </div>
 
           {/* Quick Tag Pills - refined */}
-          <div className="hidden md:flex flex flex-wrap items-center gap-2 mt-6">
-            <span className="text-[13px] font-bold text-slate-300 uppercase tracking-wider mr-1">Popular Routes:</span>
+          <div className="hidden md:flex flex-wrap items-center gap-2 mt-6 justify-center">
             {quickTags.map((tag) => (
               <button
                 key={tag}

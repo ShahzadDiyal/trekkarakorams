@@ -28,7 +28,7 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({ onSelectStyle
 
   return (
     <section id="travel-styles-section" className="py-14 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading - concise */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-sky-600">

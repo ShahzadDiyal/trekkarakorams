@@ -63,7 +63,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
 
   return (
     <section id="cost-estimator-section" className="py-10 sm:py-14 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="max-w-3xl mb-6 sm:mb-8">
           <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">

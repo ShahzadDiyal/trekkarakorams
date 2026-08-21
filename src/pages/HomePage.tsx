@@ -79,7 +79,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
 
       {/* Trust & Accreditation Strip Banner */}
       <section className="bg-slate-950 text-slate-200 py-3.5 border-y border-slate-800 text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-sky-400 shrink-0" />
             <span>Govt. DTS License: <strong>ID-2891</strong></span>
@@ -101,7 +101,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
 
       {/* 2. Brand Story & Founding Member Inception Special Section */}
       <section className="py-12 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-sky-600">
@@ -170,7 +170,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
 
       {/* 3. The 8 Core Values of Trek Karakoram */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-widest text-sky-600">
               OUR GUIDING PRINCIPLES
@@ -237,7 +237,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
 
       {/* 6. Who We Guide - Target Explorers Profiles & Personas */}
       <section className="py-14 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-widest text-sky-600">
               CRAFTED FOR EVERY EXPLORER
@@ -301,7 +301,7 @@ export const HomePage: React.FC<HomePageProps> = ({ currency, onOpenBooking }) =
 
     {/* Bottom Conversion CTA Strip */}
 <section className="bg-sky-600 text-white py-8 sm:py-10 border-t border-sky-700">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
       
       {/* Left: Text Content */}

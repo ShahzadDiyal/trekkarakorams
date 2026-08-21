@@ -65,7 +65,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({ currency, onOpenBo
 
 return (
     <section id="cost-estimator-section" className="py-10 sm:py-14 bg-white border-b border-slate-200">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Heading - concise */}
             <div className="max-w-3xl mb-6 sm:mb-8">
                 <div className="flex items-center gap-1.5 text-[11px] sm:text-[13px] font-bold uppercase tracking-wider text-sky-600 mb-1">
@@ -239,7 +239,7 @@ return (
                         <span className="text-[11px] sm:text-[13px] font-bold text-sky-400 uppercase tracking-wider">
                             Cost Breakdown
                         </span>
-                        <span className="bg-sky-500 text-slate-950 text-[9px] sm:text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full">
+                        <span className="bg-sky-500 text-slate-950 text-[11px] sm:text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full">
                             Instant Quote
                         </span>
                     </div>
@@ -302,7 +302,7 @@ return (
                         </a>
                     </div>
 
-                    <div className="mt-3 text-[9px] sm:text-[10px] text-slate-400 text-center leading-relaxed">
+                    <div className="mt-3 text-[11px] sm:text-[10px] text-slate-400 text-center leading-relaxed">
                         ✓ Price is guaranteed upon deposit. No hidden fees or surprise fuel surcharges.
                     </div>
                 </div>

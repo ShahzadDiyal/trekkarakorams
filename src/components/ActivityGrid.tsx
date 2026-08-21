@@ -8,7 +8,7 @@ interface ActivityGridProps {
 export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) => {
   return (
     <section id="popular-activities-section" className="py-14 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading - concise */}
         <div className="mb-8">
           <span className="text-xs font-bold uppercase tracking-wider text-sky-600">

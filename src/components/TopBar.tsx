@@ -15,7 +15,7 @@ export const TopBar: React.FC<TopBarProps> = ({
 }) => {
   return (
     <div id="top-contact-bar" className="bg-sky-950 text-sky-100 text-xs border-b border-sky-900/60 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col md:flex-row items-center justify-between gap-2">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col md:flex-row items-center justify-between gap-2">
         {/* Left: Contact Info & Gov License */}
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6">
           <a
