@@ -3,12 +3,36 @@ import './globals.css';
 import { AppProviders } from '@/lib/context/AppContext';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Trek Karakoram | Discover the Spirit of the Mountains',
     template: '%s',
   },
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  manifest: '/manifest.webmanifest',
   description:
     'Trek Karakoram invites you into the soul of Northern Pakistan. End-to-end guided expeditions to K2 Base Camp, Nanga Parbat, Rakaposhi, Baltoro Glacier, and Fairy Meadows with certified Balti mountaineers.',
   keywords: [
@@ -53,9 +77,12 @@ export const viewport: Viewport = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TravelAgency',
+  '@id': `${SITE_URL}/#organization`,
   name: 'Trek Karakoram',
+  url: SITE_URL,
   slogan: 'Discover the Spirit of the Mountains',
   image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa',
+  logo: `${SITE_URL}/images/trekkarakorams.png`,
   description:
     'Full-service adventure travel partner specializing in end-to-end, soulful mountain expeditions across the Karakoram, Himalaya, and Hindukush ranges in Pakistan.',
   address: {
@@ -72,6 +99,7 @@ const jsonLd = {
     longitude: 75.5528,
   },
   telephone: '+92-300-9876543',
+  email: 'hello@trekkarakoram.com',
   priceRange: '$$$',
   areaServed: [
     { '@type': 'AdministrativeArea', name: 'Gilgit-Baltistan, Pakistan' },
@@ -80,6 +108,20 @@ const jsonLd = {
     { '@type': 'Place', name: 'Nanga Parbat' },
     { '@type': 'Place', name: 'Rakaposhi' },
   ],
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: 'Trek Karakoram',
+  publisher: { '@id': `${SITE_URL}/#organization` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/treks?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

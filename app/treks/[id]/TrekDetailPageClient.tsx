@@ -678,7 +678,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 className="bg-white  p-4 hover:border-sky-500 cursor-pointer transition-colors"
               >
                 <div className="h-36 overflow-hidden mb-3 bg-slate-100">
-                  <img src={t.image} alt={t.title} className="w-full h-full object-cover" />
+                  <img src={t.image} alt={t.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 </div>
                 <span className="text-[10px] font-bold text-sky-600 uppercase">{t.region}</span>
                 <h3 className="font-bold text-[13px] sm:text-[16px] text-slate-900 ">{t.title}</h3>

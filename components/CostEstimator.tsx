@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { Sparkles, Calculator, Check, Users, Shield, Plane, ArrowRight, MessageSquare } from 'lucide-react';
 import { TREK_PACKAGES } from '@/data/treks';
-import { Currency } from '@/types';
-import { formatPrice } from '@/utils/currency';
+import { Currency } from '../types';
+import { formatPrice } from '../utils/currency';
 
 interface CostEstimatorProps {
   currency: Currency;

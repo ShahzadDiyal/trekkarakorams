@@ -117,6 +117,8 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                   src={img}
                   alt={`${trek.title} photo ${i + 2}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}

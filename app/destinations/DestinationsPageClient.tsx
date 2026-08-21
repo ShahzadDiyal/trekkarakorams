@@ -179,6 +179,8 @@ export const DestinationsPageClient: React.FC = () => {
                 src={activeRegion.image}
                 alt={activeRegion.name}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -278,7 +280,7 @@ export const DestinationsPageClient: React.FC = () => {
               >
                 <div>
                   <div className="h-40 overflow-hidden mb-3 bg-slate-100">
-                    <img src={r.image} alt={r.name} className="w-full h-full object-cover" />
+                    <img src={r.image} alt={r.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   </div>
                   <span className="text-[10px] font-bold text-sky-600 uppercase tracking-wider">{r.mountainRange}</span>
                   <h3 className="text-[16px] font-bold text-slate-900 mt-0.5">{r.name}</h3>

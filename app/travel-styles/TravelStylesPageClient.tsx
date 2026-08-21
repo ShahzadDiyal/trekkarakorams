@@ -58,6 +58,8 @@ export const TravelStylesPageClient: React.FC = () => {
                       src={style.image}
                       alt={style.title}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                     <div className="absolute bottom-3 left-3 bg-sky-500 text-slate-950 font-bold text-[11px] px-2 py-0.5 uppercase tracking-wider">

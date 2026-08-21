@@ -123,6 +123,8 @@ export const TrustSection: React.FC = () => {
                 src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80"
                 alt="Baltoro Glacier footage thumbnail"
                 className="w-full h-full object-cover opacity-60"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <Play className="w-12 h-12 text-sky-400 mb-2" />

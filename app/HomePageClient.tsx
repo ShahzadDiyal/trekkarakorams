@@ -14,7 +14,6 @@ import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { BlogSection } from '@/components/BlogSection';
 import { FAQSection } from '@/components/FAQSection';
 import { TREK_PACKAGES, BRAND_INFO, BRAND_VALUES, AUDIENCE_PERSONAS, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
-import { TrekPackage, Currency } from '@/types';
 import {
   ShieldCheck,
   Mountain,

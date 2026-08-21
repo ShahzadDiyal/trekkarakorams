@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Star, Clock, Mountain, ArrowUpRight, Compass, ShieldCheck } from 'lucide-react';
-import { TrekPackage, Currency } from '@/types';
+import { Currency, TrekPackage } from '@/types';
 import { formatPrice } from '@/utils/currency';
 
 interface PackageCardProps {

@@ -71,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
               title="Trek Karakoram Home"
             >
               <img
-                src="/images/trekkarakorams.png"
+                src="/trekkarakoram-logo.png"
                 alt="Trek Karakoram Logo"
                 className="w-[120px] md:w-[160px] object-contain transition-transform duration-300 group-hover:scale-105"
                 loading="eager"
