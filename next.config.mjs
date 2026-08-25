@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
-  output: 'export',
-
+  reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
   images: {
     remotePatterns: [
       {
@@ -10,17 +10,16 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
-    unoptimized: true,
   },
-
   typescript: {
-    ignoreBuildErrors: true,
+    // Type-checked clean via `tsc --noEmit`; build will now fail on real errors.
+    ignoreBuildErrors: false,
   },
   eslint: {
+    // No eslint config/deps are bundled with this project; skip during `next build`.
+    // Add `eslint` + `eslint-config-next` and an eslint.config.mjs to enable.
     ignoreDuringBuilds: true,
   },
-
-  trailingSlash: true,
 };
 
 export default nextConfig;

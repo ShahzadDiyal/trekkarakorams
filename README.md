@@ -3,6 +3,39 @@
 This is the original Vite + React Router SPA converted to **Next.js 15 (App Router)**,
 using real **file-based routing** and a genuine **Server / Client Component split**.
 
+## Cleanup notes (production package)
+
+This zip has been pruned down to *only* the Next.js project — the legacy Vite/React
+Router source (`src/`, `index.html`, `vite.config.ts`), the AI Studio export
+metadata (`metadata.json`, `assets/.aistudio`), and the duplicate `bun.lock` were
+all removed since they weren't used by the Next.js app (confirmed via import-graph
+check — every `@/...` import resolves to the root `app/`, `components/`, `data/`,
+`lib/`, `utils/`, `types.ts`).
+
+Also done:
+- `public/sitemap.xml` and `public/robots.txt` → replaced with native
+  `app/sitemap.ts` / `app/robots.ts`. They're generated from `TREK_PACKAGES` /
+  `BLOG_POSTS` at build time, so new treks/posts are always included automatically
+  instead of relying on someone remembering to hand-edit a static XML file.
+  `public/llms.txt` stays static since it isn't a Next.js convention.
+- Added `metadataBase`, `alternates.canonical`, and explicit
+  `robots: { index: true, follow: true, ... }` to root metadata for correct
+  canonical/OG URL resolution and crawlability.
+- Fixed the one real TypeScript error (`pathname` possibly `null` in
+  `Navbar.tsx`) and turned **off** `typescript.ignoreBuildErrors` in
+  `next.config.mjs` so the build fails loudly on real type errors instead of
+  silently shipping them. `eslint.ignoreDuringBuilds` stays on only because no
+  eslint config/deps ship with this project — add `eslint-config-next` +
+  `eslint.config.mjs` to enable linting in CI.
+- Regenerated `package-lock.json` from scratch (the original was missing the
+  platform-specific `@next/swc` entries, which triggers a "patching lockfile"
+  warning/slowdown on install — regenerating it avoids that on every fresh
+  `npm ci` in production/CI).
+- Verified with a real `next build`: **every route is fully static or SSG**
+  (`○`/`●`, no server-rendered `ƒ` routes), so there's no request-time
+  rendering, no server cache to misconfigure, and pages serve at static-file
+  speed from a CDN/edge network.
+
 ## Getting started
 
 ```bash

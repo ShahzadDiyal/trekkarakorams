@@ -1,31 +1,19 @@
-import type { Currency } from '@/types';
+import { Currency } from '../types';
 
-/** Approximate USD conversion rates. Base currency stored across the app is USD. */
-const EXCHANGE_RATES: Record<Currency, number> = {
-  USD: 1,
-  EUR: 0.92,
-  GBP: 0.79,
-  PKR: 278,
-  AUD: 1.52,
+const RATES: Record<Currency, { symbol: string; rate: number }> = {
+  USD: { symbol: '$', rate: 1.0 },
+  EUR: { symbol: '€', rate: 0.92 },
+  GBP: { symbol: '£', rate: 0.79 },
+  AUD: { symbol: 'A$', rate: 1.54 },
+  PKR: { symbol: 'PKR ', rate: 278.5 }
 };
 
-const CURRENCY_SYMBOLS: Record<Currency, string> = {
-  USD: '$',
-  EUR: '€',
-  GBP: '£',
-  PKR: 'Rs ',
-  AUD: 'A$',
-};
-
-/**
- * Formats a USD amount into the given display currency.
- * Accepts either a Currency enum value or a plain string (some call sites pass 'USD' literally).
- */
-export function formatPrice(amountUSD: number, currency: string): string {
-  const key = (currency in EXCHANGE_RATES ? currency : 'USD') as Currency;
-  const rate = EXCHANGE_RATES[key];
-  const symbol = CURRENCY_SYMBOLS[key];
+export function formatPrice(amountUSD: number, currency: Currency): string {
+  const { symbol, rate } = RATES[currency] || RATES.USD;
   const converted = Math.round(amountUSD * rate);
-
+  
+  if (currency === 'PKR') {
+    return `${symbol} ${converted.toLocaleString('en-US')}`;
+  }
   return `${symbol}${converted.toLocaleString('en-US')}`;
 }

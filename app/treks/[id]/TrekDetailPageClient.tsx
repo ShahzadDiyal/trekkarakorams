@@ -347,7 +347,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
 
                     {/* Standard (Most Popular) */}
                     <div className={`p-4 border-2 relative transition-all ${selectedTier === 'standard' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
-                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[11px] font-bold uppercase px-2 py-0.5">
+                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[9px] font-bold uppercase px-2 py-0.5">
                         Most Popular
                       </div>
                       <div className="flex justify-between items-center mb-2">
@@ -678,7 +678,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 className="bg-white  p-4 hover:border-sky-500 cursor-pointer transition-colors"
               >
                 <div className="h-36 overflow-hidden mb-3 bg-slate-100">
-                  <img src={t.image} alt={t.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                  <img src={t.image} alt={t.title} className="w-full h-full object-cover" />
                 </div>
                 <span className="text-[10px] font-bold text-sky-600 uppercase">{t.region}</span>
                 <h3 className="font-bold text-[13px] sm:text-[16px] text-slate-900 ">{t.title}</h3>

@@ -38,7 +38,7 @@ export const BlogPostPageClient: React.FC<BlogPostPageProps> = ({ post }) => {
 
   return (
     <div className="bg-slate-50 min-h-screen py-10">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-6 flex-wrap">
           <Link href="/" className="hover:text-sky-600">Home</Link>
@@ -88,8 +88,6 @@ export const BlogPostPageClient: React.FC<BlogPostPageProps> = ({ post }) => {
               src={post.image}
               alt={post.title}
               className="w-full h-full object-cover"
-              loading="eager"
-              decoding="async"
             />
           </div>
 

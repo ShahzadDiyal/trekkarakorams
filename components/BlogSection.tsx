@@ -122,8 +122,6 @@ export const BlogSection: React.FC = () => {
                 src={selectedPost.image}
                 alt={selectedPost.title}
                 className="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
               />
             </div>
 
