@@ -36,32 +36,42 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
   ];
 
   return (
-    <section id="hero-section" className="relative bg-slate-900 overflow-hidden min-h-[600px] flex items-center">
-      {/* Background with improved overlay */}
+    <section id="hero-section" className="relative bg-slate-900 overflow-hidden min-h-[600px] flex items-center justify-center">
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=85"
-          alt="K2 and Karakoram mountain range in Pakistan"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover object-center"
-          loading="eager"
-          referrerPolicy="no-referrer"
-        />
+        >
+          <source
+            src="/videos/trekkarakoram-video.mp4"
+            type="video/mp4"
+          />
+          {/* Fallback image if video doesn't load */}
+          <img
+            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=85"
+            alt="K2 and Karakoram mountain range in Pakistan"
+            className="w-full h-full object-cover object-center"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-900/50 to-slate-950/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
-        <div className="">
-          {/* Top badges - refined spacing */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-600/20 text-sky-200  text-[13px] font-bold uppercase tracking-wider rounded-sm">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+        <div className="flex flex-col items-center text-center">
+          {/* Top badges - centered */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-600/20 text-sky-200 text-[13px] font-bold uppercase tracking-wider rounded-sm">
               <Award className="w-3.5 h-3.5 text-sky-400" />
               Official Pakistan Trekking Operator
             </span>
-
           </div>
 
-          {/* Heading - tightened spacing */}
+          {/* Heading - centered */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-2">
             TREK KARAKORAM
           </h1>
@@ -73,11 +83,8 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
             {BRAND_INFO.uspOneLiner} Guided expeditions to K2 Base Camp, Concordia, Fairy Meadows, and Snow Lake with certified local Balti leaders.
           </p>
 
-          {/* Founding Member Banner - more compact and elegant */}
-
-
-          {/* Search Engine Bar - refined styling */}
-          <div className="bg-white/95 backdrop-blur-sm p-4 rounded-sm border border-white/20">
+          {/* Search Engine Bar - centered */}
+          <div className="w-full max-w-5xl bg-white/95 backdrop-blur-sm p-4 rounded-sm border border-white/20">
             <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
               {/* Search Input */}
               <div className="lg:col-span-2 relative flex items-center border-2 border-slate-200 px-3 py-2.5 bg-white focus-within:border-sky-500 transition-colors">
@@ -138,9 +145,8 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
             </form>
           </div>
 
-          {/* Quick Tag Pills - refined */}
-          <div className="hidden md:flex flex flex-wrap items-center gap-2 mt-6">
-            <span className="text-[13px] font-bold text-slate-300 uppercase tracking-wider mr-1">Popular Routes:</span>
+          {/* Quick Tag Pills - centered */}
+          <div className="hidden md:flex flex-wrap items-center justify-center gap-2 mt-6">
             {quickTags.map((tag) => (
               <button
                 key={tag}
