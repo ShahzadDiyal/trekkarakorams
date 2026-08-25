@@ -239,7 +239,7 @@ return (
                         <span className="text-[11px] sm:text-[13px] font-bold text-sky-400 uppercase tracking-wider">
                             Cost Breakdown
                         </span>
-                        <span className="bg-sky-500 text-slate-950 text-[9px] sm:text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full">
+                        <span className="bg-sky-500 text-slate-950 text-[11px] sm:text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full">
                             Instant Quote
                         </span>
                     </div>
@@ -302,7 +302,7 @@ return (
                         </a>
                     </div>
 
-                    <div className="mt-3 text-[9px] sm:text-[10px] text-slate-400 text-center leading-relaxed">
+                    <div className="mt-3 text-[11px] sm:text-[10px] text-slate-400 text-center leading-relaxed">
                         ✓ Price is guaranteed upon deposit. No hidden fees or surprise fuel surcharges.
                     </div>
                 </div>
