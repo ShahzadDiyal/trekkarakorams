@@ -3,9 +3,13 @@
 import React, { useState } from 'react';
 import { Calendar, User, Clock, ArrowRight, BookOpen, X } from 'lucide-react';
 import { BLOG_POSTS } from '@/data/treks';
+import { useRouter } from 'next/navigation';
+
 
 export const BlogSection: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<typeof BLOG_POSTS[0] | null>(null);
+  const router = useRouter();
+
 
   return (
     <section id="blog-section" className="py-14 bg-slate-50 border-b border-slate-200">
@@ -65,7 +69,7 @@ export const BlogSection: React.FC = () => {
                   </div>
 
                   <h3
-                    onClick={() => setSelectedPost(post)}
+                    onClick={() => router.push(`/blog/${post.slug}`)}
                     className="text-[16px] font-bold text-slate-900 line-clamp-2 hover:text-sky-600 cursor-pointer transition-colors"
                   >
                     {post.title}
@@ -79,7 +83,7 @@ export const BlogSection: React.FC = () => {
 
               <div className="p-5 pt-0">
                 <button
-                  onClick={() => setSelectedPost(post)}
+                  onClick={() => router.push(`/blog/${post.slug}`)}
                   className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[14px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <span>Read Full Guide</span>

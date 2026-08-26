@@ -297,14 +297,16 @@ export const HomePageClient: React.FC = () => {
       {/* 8. Trust Section & 4 Key Stat Metric Blocks */}
       <TrustSection />
 
+      {/* 11. Verified Trekkers Testimonials */}
+      <TestimonialsSection />
+
       {/* 9. Interactive Custom Cost Estimator & Group Calculator */}
       <CostEstimator currency={currency} onOpenBooking={onOpenBooking} />
 
       {/* 10. Interactive Map Explorer */}
       <MapExplorer onSelectTrekById={(id) => router.push(`/treks/${id}`)} />
 
-      {/* 11. Verified Trekkers Testimonials */}
-      <TestimonialsSection />
+
 
       {/* 12. Latest Mountain Guides & Articles */}
       <BlogSection />
@@ -312,47 +314,47 @@ export const HomePageClient: React.FC = () => {
       {/* 13. FAQ Section */}
       <FAQSection />
 
-     {/* Bottom Conversion CTA Strip */}
-<section className="bg-sky-600 text-white py-8 sm:py-10 border-t border-sky-700 overflow-hidden">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-      
-      {/* Left: Text Content */}
-      <div className="text-center md:text-left w-full md:w-auto">
-        <span className="text-[11px] sm:text-[13px] font-bold uppercase tracking-widest text-sky-100">
-          {BRAND_INFO.tagline}
-        </span>
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-0.5 leading-tight">
-          Secure Your 2026 Karakoram Permit
-        </h2>
-        <p className="text-[13px] sm:text-[14px] text-sky-100 mt-1 max-w-xl mx-auto md:mx-0 leading-relaxed">
-          Restricted area permits for K2 Base Camp, Concordia, and Baltoro are allocated strictly on a quota basis. Connect with our Skardu operations HQ.
-        </p>
-      </div>
+      {/* Bottom Conversion CTA Strip */}
+      <section className="bg-sky-600 text-white py-8 sm:py-10 border-t border-sky-700 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
 
-      {/* Right: Buttons */}
-      <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-        <button
-          onClick={() => router.push('/planner')}
-          className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl border border-slate-800/30 rounded-sm"
-        >
-          <span>Calculate Custom Quote</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
+            {/* Left: Text Content */}
+            <div className="text-center md:text-left w-full md:w-auto">
+              <span className="text-[11px] sm:text-[13px] font-bold uppercase tracking-widest text-sky-100">
+                {BRAND_INFO.tagline}
+              </span>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-0.5 leading-tight">
+                Secure Your 2026 Karakoram Permit
+              </h2>
+              <p className="text-[13px] sm:text-[14px] text-sky-100 mt-1 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                Restricted area permits for K2 Base Camp, Concordia, and Baltoro are allocated strictly on a quota basis. Connect with our Skardu operations HQ.
+              </p>
+            </div>
 
-        <a
-          href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full sm:w-auto bg-white hover:bg-slate-100 text-sky-900 font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-lg hover:shadow-xl border border-white/20 rounded-sm"
-        >
-          <PhoneCall className="w-4 h-4" />
-          <span>WhatsApp Direct Hotline</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+            {/* Right: Buttons */}
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+              <button
+                onClick={() => router.push('/planner')}
+                className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl border border-slate-800/30 rounded-sm"
+              >
+                <span>Calculate Custom Quote</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <a
+                href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-white hover:bg-slate-100 text-sky-900 font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-lg hover:shadow-xl border border-white/20 rounded-sm"
+              >
+                <PhoneCall className="w-4 h-4" />
+                <span>WhatsApp Direct Hotline</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

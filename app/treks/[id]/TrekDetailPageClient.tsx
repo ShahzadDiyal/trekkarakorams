@@ -223,8 +223,8 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 <button
                   onClick={() => setActiveTab('itinerary')}
                   className={`px-4 py-2.5 text-[14px] font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'itinerary'
-                      ? 'border-sky-600 text-sky-700 bg-sky-50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                    ? 'border-sky-600 text-sky-700 bg-sky-50'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
                     }`}
                 >
                   Day-by-Day Itinerary ({trek.itinerary.length} Days)
@@ -233,8 +233,8 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 <button
                   onClick={() => setActiveTab('packages')}
                   className={`px-4 py-2.5 text-[14px] font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'packages'
-                      ? 'border-sky-600 text-sky-700 bg-sky-50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                    ? 'border-sky-600 text-sky-700 bg-sky-50'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
                     }`}
                 >
                   Package Tiers (Basic / Standard / Premium)
@@ -243,8 +243,8 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 <button
                   onClick={() => setActiveTab('inclusions')}
                   className={`px-4 py-2.5 text-[14px] font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'inclusions'
-                      ? 'border-sky-600 text-sky-700 bg-sky-50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                    ? 'border-sky-600 text-sky-700 bg-sky-50'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
                     }`}
                 >
                   Inclusions & Exclusions
@@ -253,8 +253,8 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 <button
                   onClick={() => setActiveTab('gear')}
                   className={`px-4 py-2.5 text-[14px] font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'gear'
-                      ? 'border-sky-600 text-sky-700 bg-sky-50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                    ? 'border-sky-600 text-sky-700 bg-sky-50'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
                     }`}
                 >
                   Gear Checklist
@@ -263,8 +263,8 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 <button
                   onClick={() => setActiveTab('permits')}
                   className={`px-4 py-2.5 text-[14px] font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'permits'
-                      ? 'border-sky-600 text-sky-700 bg-sky-50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                    ? 'border-sky-600 text-sky-700 bg-sky-50'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
                     }`}
                 >
                   Visa & Permit Rules
@@ -273,8 +273,8 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 <button
                   onClick={() => setActiveTab('weather')}
                   className={`px-4 py-2.5 text-[14px] font-bold transition-colors cursor-pointer border-b-2 ${activeTab === 'weather'
-                      ? 'border-sky-600 text-sky-700 bg-sky-50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                    ? 'border-sky-600 text-sky-700 bg-sky-50'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
                     }`}
                 >
                   Weather & Season
@@ -636,7 +636,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
             </div>
 
             {/* Assistance Box */}
-            <div className="bg-slate-900 text-white p-5 border border-slate-800 text-[13px]">
+            {/* <div className="bg-slate-900 text-white p-5 border border-slate-800 text-[13px]">
               <h4 className="font-bold text-sky-400 mb-1 text-[14px] uppercase tracking-wider">
                 Need Help Deciding?
               </h4>
@@ -652,7 +652,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 <PhoneCall className="w-3.5 h-3.5" />
                 <span>Speak with an Expedition Leader</span>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -677,7 +677,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 }}
                 className="bg-white  p-4 hover:border-sky-500 cursor-pointer transition-colors"
               >
-                <div className="h-36 overflow-hidden mb-3 bg-slate-100">
+                <div className="h-[300px] overflow-hidden mb-3 bg-slate-100">
                   <img src={t.image} alt={t.title} className="w-full h-full object-cover" />
                 </div>
                 <span className="text-[10px] font-bold text-sky-600 uppercase">{t.region}</span>
