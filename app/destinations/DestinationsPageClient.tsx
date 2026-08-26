@@ -294,7 +294,7 @@ export const DestinationsPageClient: React.FC = () => {
                 className="bg-white  p-5 flex flex-col justify-between hover:border-sky-500 transition-colors"
               >
                 <div>
-                  <div className="h-40 overflow-hidden mb-3 bg-slate-100">
+                  <div className="h-[300px] overflow-hidden mb-3 bg-slate-100">
                     <img src={r.image} alt={r.name} className="w-full h-full object-cover" />
                   </div>
                   <span className="text-[10px] font-bold text-sky-600 uppercase tracking-wider">{r.mountainRange}</span>

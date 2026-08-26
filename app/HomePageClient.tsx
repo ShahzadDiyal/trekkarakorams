@@ -129,20 +129,21 @@ export const HomePageClient: React.FC = () => {
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
-                <button
-                  onClick={() => router.push('/treks')}
-                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-medium text-[14px] uppercase tracking-wider transition-colors flex items-center gap-2 rounded-sm cursor-pointer"
-                >
-                  <span>Explore 2026 Expeditions</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => router.push('/destinations')}
-                  className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[14px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer"
-                >
-                  Learn About The Regions
-                </button>
-              </div>
+  <button
+    onClick={() => router.push('/treks')}
+    className="w-full md:w-auto px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-medium text-[14px] uppercase tracking-wider transition-colors flex items-center justify-center gap-2 rounded-sm cursor-pointer"
+  >
+    <span>Explore 2026 Expeditions</span>
+    <ArrowRight className="w-4 h-4" />
+  </button>
+
+  <button
+    onClick={() => router.push('/destinations')}
+    className="w-full md:w-auto px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[14px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer"
+  >
+    Learn About The Regions
+  </button>
+</div>
             </div>
 
             {/* Founding Members Special Box */}
@@ -314,47 +315,53 @@ export const HomePageClient: React.FC = () => {
       {/* 13. FAQ Section */}
       <FAQSection />
 
-      {/* Bottom Conversion CTA Strip */}
-      <section className="bg-sky-600 text-white py-8 sm:py-10 border-t border-sky-700 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+     {/* Bottom Conversion CTA Strip */}
+<section className="bg-sky-600 text-white py-8 sm:py-10 lg:py-12 border-t border-sky-700 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
 
-            {/* Left: Text Content */}
-            <div className="text-center md:text-left w-full md:w-auto">
-              <span className="text-[11px] sm:text-[13px] font-bold uppercase tracking-widest text-sky-100">
-                {BRAND_INFO.tagline}
-              </span>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-0.5 leading-tight">
-                Secure Your 2026 Karakoram Permit
-              </h2>
-              <p className="text-[13px] sm:text-[14px] text-sky-100 mt-1 max-w-xl mx-auto md:mx-0 leading-relaxed">
-                Restricted area permits for K2 Base Camp, Concordia, and Baltoro are allocated strictly on a quota basis. Connect with our Skardu operations HQ.
-              </p>
-            </div>
+      {/* Left: Text Content */}
+      <div className="w-full lg:flex-1 text-center lg:text-left">
+        <span className="inline-block text-[10px] sm:text-[11px] lg:text-[13px] font-bold uppercase tracking-[0.14em] text-sky-100">
+          {BRAND_INFO.tagline}
+        </span>
 
-            {/* Right: Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-              <button
-                onClick={() => router.push('/planner')}
-                className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl border border-slate-800/30 rounded-sm"
-              >
-                <span>Calculate Custom Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-1 leading-tight">
+          Secure Your 2026 Karakoram Permit
+        </h2>
 
-              <a
-                href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-white hover:bg-slate-100 text-sky-900 font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-lg hover:shadow-xl border border-white/20 rounded-sm"
-              >
-                <PhoneCall className="w-4 h-4" />
-                <span>WhatsApp Direct Hotline</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+        <p className="text-[12px] sm:text-[13px] lg:text-[14px] text-sky-100 mt-2 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          Restricted area permits for K2 Base Camp, Concordia, and Baltoro
+          are allocated strictly on a quota basis. Connect with our Skardu
+          operations HQ.
+        </p>
+      </div>
+
+      {/* Right: Buttons */}
+      <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+
+        <button
+          onClick={() => router.push('/planner')}
+          className="w-full sm:w-auto min-h-[48px] bg-slate-950 hover:bg-slate-900 text-white font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg border border-slate-800/30 rounded-sm"
+        >
+          <span>Calculate Custom Quote</span>
+          <ArrowRight className="w-4 h-4 shrink-0" />
+        </button>
+
+        <a
+          href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full sm:w-auto min-h-[48px] bg-white hover:bg-slate-100 text-sky-900 font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg border border-white/20 rounded-sm"
+        >
+          <PhoneCall className="w-4 h-4 shrink-0" />
+          <span>WhatsApp Direct Hotline</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
     </main>
   );
 };

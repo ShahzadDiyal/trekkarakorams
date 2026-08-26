@@ -70,25 +70,58 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
           </div>
         </div>
 
-        {/* Tab Filters */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 border-b border-slate-200 pb-4">
-          {filterTabs.map((tab) => {
-            const isActive = activeRegionFilter === tab.value;
-            return (
-              <button
-                key={tab.label}
-                onClick={() => onFilterChange(tab.value)}
-                className={`px-3.5 py-1.5 text-[14px] sm:text-[16px] font-bold transition-colors cursor-pointer border ${
-                  isActive
-                    ? 'bg-sky-600 text-white border-sky-600'
-                    : 'bg-white text-slate-700 border-slate-200 hover:border-sky-400 hover:text-sky-600'
-                }`}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
+       {/* Tab Filters */}
+<div className="mb-8 border-b border-slate-200 pb-4">
+  {/* Below md: Dropdown */}
+  <div className="md:hidden relative">
+    <select
+      value={activeRegionFilter}
+      onChange={(e) => onFilterChange(e.target.value)}
+      className="w-full appearance-none px-3.5 py-2.5 pr-10 text-[14px] font-bold bg-white text-slate-700 border border-slate-200 focus:outline-none focus:border-sky-400 cursor-pointer"
+    >
+      {filterTabs.map((tab) => (
+        <option key={tab.label} value={tab.value}>
+          {tab.label}
+        </option>
+      ))}
+    </select>
+
+    <svg
+      className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </div>
+
+  {/* md and above: Existing tabs */}
+  <div className="hidden md:flex flex-wrap items-center gap-2">
+    {filterTabs.map((tab) => {
+      const isActive = activeRegionFilter === tab.value;
+
+      return (
+        <button
+          key={tab.label}
+          onClick={() => onFilterChange(tab.value)}
+          className={`px-3.5 py-1.5 text-[14px] sm:text-[16px] font-bold transition-colors cursor-pointer border ${
+            isActive
+              ? 'bg-sky-600 text-white border-sky-600'
+              : 'bg-white text-slate-700 border-slate-200 hover:border-sky-400 hover:text-sky-600'
+          }`}
+        >
+          {tab.label}
+        </button>
+      );
+    })}
+  </div>
+</div>
 
         {/* Package Grid */}
         {filteredTreks.length > 0 ? (

@@ -635,24 +635,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
               </div>
             </div>
 
-            {/* Assistance Box */}
-            {/* <div className="bg-slate-900 text-white p-5 border border-slate-800 text-[13px]">
-              <h4 className="font-bold text-sky-400 mb-1 text-[14px] uppercase tracking-wider">
-                Need Help Deciding?
-              </h4>
-              <p className="text-slate-300 text-[11px] leading-relaxed mb-3 font-story">
-                Our mountain director in Skardu can assess your acclimatization history and gear checklist over a 15-minute call.
-              </p>
-              <a
-                href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20speak%20with%20an%20expedition%20leader"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sky-300 font-bold hover:underline flex items-center gap-1 text-[13px]"
-              >
-                <PhoneCall className="w-3.5 h-3.5" />
-                <span>Speak with an Expedition Leader</span>
-              </a>
-            </div> */}
+           
           </div>
         </div>
 

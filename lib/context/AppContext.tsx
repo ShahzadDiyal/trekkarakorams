@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Currency } from '@/types';
 import { BookingModal } from '@/components/BookingModal';
@@ -37,6 +37,7 @@ function ScrollToTop() {
 }
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const [currency, setCurrency] = useState<Currency>('USD');
   const [bookingModalData, setBookingModalData] = useState<{
     isOpen: boolean;
@@ -49,8 +50,14 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
   const [customPlanOpen, setCustomPlanOpen] = useState(false);
 
   const onOpenBooking = useCallback((details: BookingDetails) => {
-    setBookingModalData({ isOpen: true, ...details });
-  }, []);
+    // Instead of opening the modal, redirect to the booking page
+    const params = new URLSearchParams();
+    if (details.trekTitle) params.set('trek', details.trekTitle);
+    if (details.groupSize) params.set('group', details.groupSize.toString());
+    if (details.notes) params.set('notes', details.notes);
+    
+    router.push(`/booking?${params.toString()}`);
+  }, [router]);
 
   const openCostEstimator = useCallback(() => setCostEstimatorOpen(true), []);
   const openCustomPlan = useCallback(() => setCustomPlanOpen(true), []);

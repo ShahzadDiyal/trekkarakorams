@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="px-4 bg-gray-50 border-t border-gray-200">
       {/* Top Banner - Trust Bar */}
       <div className="bg-white border-b border-gray-200 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
