@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { 
@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 import { TREK_PACKAGES, BRAND_INFO } from '@/data/treks';
 
-export default function BookingPage() {
+// Component that uses useSearchParams - wrapped in Suspense
+function BookingForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -379,5 +380,21 @@ export default function BookingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Main export - wraps the form in Suspense
+export default function BookingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-600 mx-auto"></div>
+          <p className="mt-4 text-slate-600">Loading booking form...</p>
+        </div>
+      </div>
+    }>
+      <BookingForm />
+    </Suspense>
   );
 }
