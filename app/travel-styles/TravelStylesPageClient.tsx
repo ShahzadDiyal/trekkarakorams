@@ -6,7 +6,22 @@ import { useRouter } from 'next/navigation';
 import { TREK_STYLES, TREK_PACKAGES } from '@/data/treks';
 import { useApp } from '@/lib/context/AppContext';
 import { formatPrice } from '@/utils/currency';
+import { facetUrl, isKnownActivity } from '@/lib/trek-facets';
 import { Mountain, Plane, Users, Compass, Camera, Sparkles, ArrowRight } from 'lucide-react';
+
+// Maps each editorial "travel style" card to the closest real activityType
+// in the trek dataset, so the CTA always lands on a real, non-empty facet
+// page instead of guessing from the card title (which doesn't reliably
+// match the underlying data and could dead-end on a 404 or empty results).
+const STYLE_ID_TO_ACTIVITY: Record<string, string> = {
+  'high-altitude': 'Pass Crossing',
+  'heli-treks': 'Heli Trek',
+  'climbing-peaks': 'Expedition',
+  'family-moderate': 'Cultural Trek',
+  'photography-tours': 'Trekking',
+  // 'jeep-safari' has no matching activity in the current catalog yet,
+  // so it intentionally falls back to the full catalog below.
+};
 
 export const TravelStylesPageClient: React.FC = () => {
   const router = useRouter();
@@ -98,7 +113,10 @@ export const TravelStylesPageClient: React.FC = () => {
 
                     <div className="pt-2 flex justify-end">
                       <button
-                        onClick={() => router.push(`/treks?activity=${encodeURIComponent(style.title.split(' ')[0])}`)}
+                        onClick={() => {
+                          const activity = STYLE_ID_TO_ACTIVITY[style.id];
+                          router.push(activity && isKnownActivity(activity) ? facetUrl('activity', activity) : '/treks');
+                        }}
                         className="bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-4 py-2 flex items-center gap-1 transition-colors cursor-pointer"
                       >
                         <span>Explore All {style.title}</span>

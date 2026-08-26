@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: TrekDetailRouteParams): Promi
   return {
     title: `${trek.title} | Trek Karakoram`,
     description: trek.tagline || trek.overview,
+    alternates: { canonical: `/treks/${trek.id}` },
     openGraph: {
       title: trek.title,
       description: trek.tagline || trek.overview,

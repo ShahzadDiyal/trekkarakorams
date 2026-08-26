@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'High-Altitude Safety & Guide Protocols | Trek Karakoram',
   description:
     'At Trek Karakoram, trekker safety and porter welfare take absolute precedence. Learn about our medical equipment, satellite monitoring, and Askari helicopter dispatch protocols.',
+  alternates: { canonical: '/safety-and-guides' },
 };
 
 export default function SafetyGuidesPage() {

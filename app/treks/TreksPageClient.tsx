@@ -1,57 +1,67 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { TREK_PACKAGES } from '@/data/treks';
 import { PackageCard } from '@/components/PackageCard';
 import { useApp } from '@/lib/context/AppContext';
 import {
-  Filter,
+  ACTIVITY_FACETS,
+  REGION_FACETS,
+  DIFFICULTY_FACETS,
+  facetUrl,
+  type FacetType,
+} from '@/lib/trek-facets';
+import {
   Search,
-  SlidersHorizontal,
   RotateCcw,
   Mountain,
-  Compass,
-  Calendar,
-  Sparkles,
-  Award,
-  CheckCircle2
 } from 'lucide-react';
 
-export const TreksPageClient: React.FC = () => {
-const searchParams = useSearchParams();
+interface LockedFacet {
+  type: FacetType;
+  value: string;
+}
+
+interface TreksPageClientProps {
+  /**
+   * When set, this page is a dedicated SEO route (e.g. /treks/activity/trekking)
+   * and this facet is hard-applied server-side via the URL — it is never written
+   * back out as a query string. Any further refinement below (search text, sort,
+   * duration, or picking a *different* facet type) stays purely client-side state
+   * so we never generate combinatorial, duplicate-content query-string URLs.
+   */
+  lockedFacet?: LockedFacet;
+  /** Optional prefill for the free-text search box (from a noindexed ?q= link). */
+  initialQuery?: string;
+}
+
+export const TreksPageClient: React.FC<TreksPageClientProps> = ({ lockedFacet, initialQuery = '' }) => {
   const router = useRouter();
   const { currency, onOpenBooking } = useApp();
 
-  // Search & Filter state derived from query params
-const initialQuery = searchParams?.get('q') || '';
-const initialRegion = searchParams?.get('region') || '';
-const initialDifficulty = searchParams?.get('difficulty') || '';
-const initialActivity = searchParams?.get('activity') || '';
-
   const [query, setQuery] = useState(initialQuery);
-  const [selectedRegion, setSelectedRegion] = useState(initialRegion);
-  const [selectedDifficulty, setSelectedDifficulty] = useState(initialDifficulty);
-  const [selectedActivity, setSelectedActivity] = useState(initialActivity);
   const [selectedDurationRange, setSelectedDurationRange] = useState<string>('ALL');
   const [sortBy, setSortBy] = useState<'recommended' | 'price-asc' | 'price-desc' | 'altitude' | 'duration'>('recommended');
 
-  const regions = [
-    'Central Karakoram',
-    'Western Himalayas',
-    'Biafo & Hispar',
-    'Nagar Valley',
-    'Hunza & Shimshal',
-    'Deosai & Astore'
-  ];
+  const selectedRegion = lockedFacet?.type === 'region' ? lockedFacet.value : '';
+  const selectedDifficulty = lockedFacet?.type === 'difficulty' ? lockedFacet.value : '';
+  const selectedActivity = lockedFacet?.type === 'activity' ? lockedFacet.value : '';
 
-  const difficulties = ['Moderate', 'Strenuous', 'Technical Alpine'];
-  const activities = ['Trekking', 'Pass Crossing', 'Heli Trek', 'Expedition'];
+  // Selecting a facet always navigates to its clean, canonical URL
+  // (e.g. /treks/region/karakoram) instead of pushing a query string.
+  const navigateToFacet = (type: FacetType, value: string) => {
+    if (!value) {
+      router.push('/treks');
+      return;
+    }
+    router.push(facetUrl(type, value));
+  };
 
   // Filter logic
   const filteredTreks = useMemo(() => {
     return TREK_PACKAGES.filter((t) => {
-      // Keyword match
+      // Keyword match (client-side refinement only, never part of the URL on facet pages)
       if (query.trim()) {
         const q = query.toLowerCase();
         const matchesTitle = t.title.toLowerCase().includes(q) || t.shortTitle.toLowerCase().includes(q);
@@ -61,20 +71,9 @@ const initialActivity = searchParams?.get('activity') || '';
         if (!matchesTitle && !matchesOverview && !matchesHighlights && !matchesRegion) return false;
       }
 
-      // Region match
-      if (selectedRegion && t.region !== selectedRegion) {
-        return false;
-      }
-
-      // Difficulty match
-      if (selectedDifficulty && t.difficulty !== selectedDifficulty) {
-        return false;
-      }
-
-      // Activity match
-      if (selectedActivity && t.activityType !== selectedActivity) {
-        return false;
-      }
+      if (selectedRegion && t.region !== selectedRegion) return false;
+      if (selectedDifficulty && t.difficulty !== selectedDifficulty) return false;
+      if (selectedActivity && t.activityType !== selectedActivity) return false;
 
       // Duration match
       if (selectedDurationRange === 'short' && t.durationDays > 10) return false;
@@ -96,13 +95,18 @@ const initialActivity = searchParams?.get('activity') || '';
 
   const resetAllFilters = () => {
     setQuery('');
-    setSelectedRegion('');
-    setSelectedDifficulty('');
-    setSelectedActivity('');
     setSelectedDurationRange('ALL');
     setSortBy('recommended');
     router.push('/treks');
   };
+
+  const pageHeading = lockedFacet
+    ? (lockedFacet.type === 'activity' ? `${lockedFacet.value} in Pakistan` : `${lockedFacet.value} Treks`)
+    : 'Pakistan Trekking Packages';
+
+  const pageSubheading = lockedFacet
+    ? `Government-licensed ${lockedFacet.value.toLowerCase()} itineraries with permits, certified Balti mountain guides, and full basecamp logistics included.`
+    : 'Explore government-licensed guided treks across the Karakoram, Western Himalayas, and Hindukush ranges. Includes permits, domestic flights, certified Balti mountain guides, and full basecamp logistics.';
 
   return (
     <div className="bg-slate-50 min-h-screen py-10">
@@ -111,7 +115,15 @@ const initialActivity = searchParams?.get('activity') || '';
         <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <button onClick={() => router.push('/')} className="hover:text-sky-600">Home</button>
           <span>/</span>
-          <span className="font-semibold text-slate-900">All Pakistan Trekking Expeditions</span>
+          <button onClick={() => router.push('/treks')} className="hover:text-sky-600">
+            All Pakistan Trekking Expeditions
+          </button>
+          {lockedFacet && (
+            <>
+              <span>/</span>
+              <span className="font-semibold text-slate-900">{lockedFacet.value}</span>
+            </>
+          )}
         </div>
 
         {/* Page Header */}
@@ -122,10 +134,10 @@ const initialActivity = searchParams?.get('activity') || '';
                 2026 Guaranteed Departures
               </span>
               <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
-                Pakistan Trekking Packages
+                {pageHeading}
               </h1>
               <p className="text-[13px] sm:text-[16px] text-slate-300 mt-2 max-w-2xl leading-relaxed">
-                Explore government-licensed guided treks across the Karakoram, Western Himalayas, and Hindukush ranges. Includes permits, domestic flights, certified Balti mountain guides, and full basecamp logistics.
+                {pageSubheading}
               </p>
             </div>
 
@@ -190,12 +202,12 @@ const initialActivity = searchParams?.get('activity') || '';
               </label>
               <select
                 value={selectedRegion}
-                onChange={(e) => setSelectedRegion(e.target.value)}
+                onChange={(e) => navigateToFacet('region', e.target.value)}
                 className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
               >
                 <option value="">All Regions</option>
-                {regions.map((r) => (
-                  <option key={r} value={r}>{r}</option>
+                {REGION_FACETS.map((r) => (
+                  <option key={r.slug} value={r.value}>{r.value} ({r.count})</option>
                 ))}
               </select>
             </div>
@@ -207,12 +219,12 @@ const initialActivity = searchParams?.get('activity') || '';
               </label>
               <select
                 value={selectedDifficulty}
-                onChange={(e) => setSelectedDifficulty(e.target.value)}
+                onChange={(e) => navigateToFacet('difficulty', e.target.value)}
                 className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
               >
                 <option value="">All Difficulties</option>
-                {difficulties.map((d) => (
-                  <option key={d} value={d}>{d}</option>
+                {DIFFICULTY_FACETS.map((d) => (
+                  <option key={d.slug} value={d.value}>{d.value} ({d.count})</option>
                 ))}
               </select>
             </div>
@@ -224,12 +236,12 @@ const initialActivity = searchParams?.get('activity') || '';
               </label>
               <select
                 value={selectedActivity}
-                onChange={(e) => setSelectedActivity(e.target.value)}
+                onChange={(e) => navigateToFacet('activity', e.target.value)}
                 className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
               >
                 <option value="">All Activities</option>
-                {activities.map((a) => (
-                  <option key={a} value={a}>{a}</option>
+                {ACTIVITY_FACETS.map((a) => (
+                  <option key={a.slug} value={a.value}>{a.value} ({a.count})</option>
                 ))}
               </select>
             </div>

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Request A Custom Expedition Plan | Trek Karakoram',
   description:
     'Tell us your dream Karakoram itinerary and our mountain planners will design a fully custom trekking expedition for you.',
+  alternates: { canonical: '/custom-plan' },
 };
 
 export default function CustomPlanPage() {

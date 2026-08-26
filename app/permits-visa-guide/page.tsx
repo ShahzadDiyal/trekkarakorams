@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Pakistan Trekking Visa & Permits Guide | Trek Karakoram',
   description:
     'Everything you need to know about the Pakistan Online E-Visa system, Letter of Invitation (LOI), restricted area trekking permits for K2 Base Camp, and Gilgit-Baltistan government clearances.',
+  alternates: { canonical: '/permits-visa-guide' },
 };
 
 export default function PermitsVisaGuidePage() {

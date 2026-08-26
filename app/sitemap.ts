@@ -1,5 +1,11 @@
 import type { MetadataRoute } from 'next';
 import { TREK_PACKAGES, BLOG_POSTS } from '@/data/treks';
+import {
+  ACTIVITY_FACETS,
+  REGION_FACETS,
+  DIFFICULTY_FACETS,
+  BLOG_CATEGORY_FACETS,
+} from '@/lib/trek-facets';
 
 export const SITE_URL = 'https://karakoramexpeditions.com';
 
@@ -34,6 +40,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  // Clean, crawlable facet catalog pages (replaces the old /treks?activity=...
+  // style query-string URLs). Only generated for facet values that actually
+  // have matching treks, so there are never any thin/empty listing pages.
+  const activityFacetRoutes: MetadataRoute.Sitemap = ACTIVITY_FACETS.map((f) => ({
+    url: `${SITE_URL}/treks/activity/${f.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  const regionFacetRoutes: MetadataRoute.Sitemap = REGION_FACETS.map((f) => ({
+    url: `${SITE_URL}/treks/region/${f.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  const difficultyFacetRoutes: MetadataRoute.Sitemap = DIFFICULTY_FACETS.map((f) => ({
+    url: `${SITE_URL}/treks/difficulty/${f.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
   const blogRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: now,
@@ -41,5 +71,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...trekRoutes, ...blogRoutes];
+  const blogCategoryRoutes: MetadataRoute.Sitemap = BLOG_CATEGORY_FACETS.map((f) => ({
+    url: `${SITE_URL}/blog/category/${f.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.55,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...trekRoutes,
+    ...activityFacetRoutes,
+    ...regionFacetRoutes,
+    ...difficultyFacetRoutes,
+    ...blogRoutes,
+    ...blogCategoryRoutes,
+  ];
 }

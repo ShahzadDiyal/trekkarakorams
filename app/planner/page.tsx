@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Custom Cost Estimator & Trip Planner | Trek Karakoram',
   description:
     'Calculate a custom Karakoram expedition quote based on trek, group size, and comfort tier, then book directly with our mountain planners.',
+  alternates: { canonical: '/planner' },
 };
 
 export default function PlannerPage() {

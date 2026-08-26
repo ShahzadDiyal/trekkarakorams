@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Trek Karakoram | Discover the Spirit of the Mountains',
   description:
     "Trek Karakoram invites you into the soul of Northern Pakistan. End-to-end guided expeditions to K2 Base Camp, Nanga Parbat, Rakaposhi, Baltoro Glacier, and Fairy Meadows with certified Balti mountaineers.",
+  alternates: { canonical: '/' },
 };
 
 export default function HomePage() {

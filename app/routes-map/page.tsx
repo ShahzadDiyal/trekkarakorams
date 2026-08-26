@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Interactive Route Map | Trek Karakoram',
   description:
     'Navigate the high glaciers, technical alpine passes, and mountain massifs of Gilgit-Baltistan with our interactive geographic cartography explorer.',
+  alternates: { canonical: '/routes-map' },
 };
 
 export default function RoutesMapPage() {

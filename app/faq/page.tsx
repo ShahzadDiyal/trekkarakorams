@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Pakistan Trekking FAQs & Answers | Trek Karakoram',
   description:
     'Direct, transparent answers regarding mountain logistics, E-Visas, altitude sickness prevention, meal sanitation, porter welfare, and booking guarantees.',
+  alternates: { canonical: '/faq' },
 };
 
 export default function FAQPage() {

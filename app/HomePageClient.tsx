@@ -15,6 +15,7 @@ import { BlogSection } from '@/components/BlogSection';
 import { FAQSection } from '@/components/FAQSection';
 import { TREK_PACKAGES, BRAND_INFO, BRAND_VALUES, AUDIENCE_PERSONAS, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
 import { TrekPackage, Currency } from '@/types';
+import { facetUrl, isKnownActivity, isKnownRegion } from '@/lib/trek-facets';
 import {
   ShieldCheck,
   Mountain,
@@ -39,11 +40,24 @@ export const HomePageClient: React.FC = () => {
   const { currency, onOpenBooking } = useApp();
 
   const handleHeroSearch = (filters: { query: string; region: string; duration: string; difficulty: string }) => {
-    const params = new URLSearchParams();
-    if (filters.query) params.set('q', filters.query);
-    if (filters.region) params.set('region', filters.region);
-    if (filters.difficulty) params.set('difficulty', filters.difficulty);
-    router.push(`/treks?${params.toString()}`);
+    // A single facet (region or difficulty) maps to a clean, canonical URL;
+    // any free-text query rides along as a non-indexed ?q= refinement.
+    // (Duration isn't a crawlable facet — it's applied client-side only.)
+    if (filters.region && isKnownRegion(filters.region)) {
+      const url = facetUrl('region', filters.region);
+      router.push(filters.query ? `${url}?q=${encodeURIComponent(filters.query)}` : url);
+      return;
+    }
+    if (filters.difficulty) {
+      const url = facetUrl('difficulty', filters.difficulty);
+      router.push(filters.query ? `${url}?q=${encodeURIComponent(filters.query)}` : url);
+      return;
+    }
+    if (filters.query) {
+      router.push(`/treks?q=${encodeURIComponent(filters.query)}`);
+      return;
+    }
+    router.push('/treks');
   };
 
   const handleTagClick = (tag: string) => {
@@ -51,7 +65,9 @@ export const HomePageClient: React.FC = () => {
   };
 
   const handleActivitySelect = (activity: string) => {
-    router.push(`/treks?activity=${encodeURIComponent(activity)}`);
+    // Only navigate to a dedicated facet page when it actually has inventory —
+    // otherwise fall back to the full, unfiltered catalog instead of a 404.
+    router.push(isKnownActivity(activity) ? facetUrl('activity', activity) : '/treks');
   };
 
   const handleStyleSelect = (styleId: string) => {
@@ -216,7 +232,9 @@ export const HomePageClient: React.FC = () => {
         currency={currency}
         activeRegionFilter=""
         onFilterChange={(region) => {
-          if (region) router.push(`/treks?region=${encodeURIComponent(region)}`);
+          if (region) {
+            router.push(isKnownRegion(region) ? facetUrl('region', region) : '/treks');
+          }
         }}
         onViewDetail={(trek) => router.push(`/treks/${trek.id}`)}
         onBookNow={(trek) => {

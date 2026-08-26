@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: BlogPostRouteParams): Promise
   return {
     title: `${post.title} | Trek Karakoram`,
     description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,

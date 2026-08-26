@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Travel Styles That Match Your Ambition | Trek Karakoram',
   description:
     'From classic teahouse trekking to remote wilderness expeditions, find the Karakoram travel style that matches your ambition and comfort level.',
+  alternates: { canonical: '/travel-styles' },
 };
 
 export default function TravelStylesPage() {

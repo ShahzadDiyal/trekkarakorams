@@ -6,6 +6,20 @@ import { useRouter } from 'next/navigation';
 import { Mountain, MapPin, Compass, ArrowRight, Sun, Calendar, Sparkles, CheckCircle2 } from 'lucide-react';
 import { TREK_PACKAGES } from '@/data/treks';
 import { useApp } from '@/lib/context/AppContext';
+import { facetUrl, isKnownRegion } from '@/lib/trek-facets';
+
+// Maps each editorial destination region to the real `region` value used on
+// TrekPackage records, so "Browse Treks" always lands on a real, non-empty
+// facet page instead of a name that only exists in this page's copy.
+const DESTINATION_ID_TO_TREK_REGION: Record<string, string> = {
+  karakoram: 'Karakoram',
+  'hunza-nagar': 'Hunza & Nagar',
+  'himalayas-nanga-parbat': 'Himalayas',
+  deosai: 'Deosai & Astore',
+  // 'shimshal' has no dedicated region tag of its own in the current catalog;
+  // its treks are grouped under Hunza & Nagar.
+  shimshal: 'Hunza & Nagar',
+};
 
 interface DestinationRegion {
   id: string;
@@ -254,7 +268,10 @@ export const DestinationsPageClient: React.FC = () => {
                   Ready to trek in <strong>{activeRegion.name}</strong>?
                 </div>
                 <button
-                  onClick={() => router.push(`/treks?region=${encodeURIComponent(activeRegion.name)}`)}
+                  onClick={() => {
+                    const trekRegion = DESTINATION_ID_TO_TREK_REGION[activeRegion.id];
+                    router.push(trekRegion && isKnownRegion(trekRegion) ? facetUrl('region', trekRegion) : '/treks');
+                  }}
                   className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-[14px] px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Browse {activeRegion.name.split(' ')[0]} Treks</span>
