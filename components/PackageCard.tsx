@@ -50,7 +50,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
         />
 
         {/* Top-Left Duration Badge (matching screenshot green/sky pills) */}
-        <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-sky-600 text-white text-[13px] font-bold px-2.5 py-1">
+        <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-sky-600 text-white text-[14px] font-bold px-2.5 py-1">
           <Clock className="w-3.5 h-3.5" />
           <span>{trek.durationDays} Days</span>
         </div>
@@ -101,7 +101,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
           </h3>
 
           {/* Quick Details Chips */}
-          <div className="mt-3 grid grid-cols-2 gap-2 text-[13px] text-slate-600 bg-slate-50 p-2.5 border border-slate-100">
+          <div className="mt-3 grid grid-cols-2 gap-2 text-[14px] text-slate-600 bg-slate-50 p-2.5 border border-slate-100">
             <div className="flex items-center gap-1.5">
               <Mountain className="w-3.5 h-3.5 text-sky-600 shrink-0" />
               <span className="truncate">Max {trek.maxAltitude.toLocaleString()}m</span>
@@ -132,7 +132,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => onViewDetail(trek)}
-              className="bg-sky-50 hover:bg-sky-500 hover:text-white text-sky-700 border border-sky-300 font-bold text-[13px] px-3 py-2 transition-colors cursor-pointer"
+              className="bg-sky-50 hover:bg-sky-500 hover:text-white text-sky-700 border border-sky-300 font-bold text-[14px] px-3 py-2 transition-colors rounded-sm cursor-pointer"
             >
               VIEW DETAIL
             </button>

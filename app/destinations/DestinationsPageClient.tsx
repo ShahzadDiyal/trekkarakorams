@@ -131,7 +131,7 @@ export const DestinationsPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Northern Pakistan Trekking Destinations</span>
@@ -203,7 +203,7 @@ export const DestinationsPageClient: React.FC = () => {
               </div>
 
               {/* Facts Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-[13px] text-slate-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-[14px] text-slate-700">
                 <div className="p-3 bg-slate-50">
                   <span className="font-bold text-slate-900 block mb-0.5">Primary Hub:</span>
                   <span>{activeRegion.hubCity}</span>
@@ -221,7 +221,7 @@ export const DestinationsPageClient: React.FC = () => {
               {/* Highlights & Peaks */}
               <div className="space-y-3 pt-2">
                 <div>
-                  <span className="font-bold text-[13px] text-slate-900 uppercase tracking-wider block mb-1.5">
+                  <span className="font-bold text-[14px] text-slate-900 uppercase tracking-wider block mb-1.5">
                     Notable Peaks & Spires:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -234,10 +234,10 @@ export const DestinationsPageClient: React.FC = () => {
                 </div>
 
                 <div>
-                  <span className="font-bold text-[13px] text-slate-900 uppercase tracking-wider block mb-1.5">
+                  <span className="font-bold text-[14px] text-slate-900 uppercase tracking-wider block mb-1.5">
                     Top Geographical Highlights:
                   </span>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[13px] text-slate-700">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[14px] text-slate-700">
                     {activeRegion.highlights.map((hl, i) => (
                       <li key={i} className="flex items-start gap-1.5">
                         <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" />
@@ -255,7 +255,7 @@ export const DestinationsPageClient: React.FC = () => {
                 </div>
                 <button
                   onClick={() => router.push(`/treks?region=${encodeURIComponent(activeRegion.name)}`)}
-                  className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-[13px] px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-[14px] px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Browse {activeRegion.name.split(' ')[0]} Treks</span>
                   <ArrowRight className="w-4 h-4" />
@@ -291,7 +291,7 @@ export const DestinationsPageClient: React.FC = () => {
                       setSelectedRegionId(r.id);
                       window.scrollTo({ top: 200, behavior: 'smooth' });
                     }}
-                    className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[13px] py-2 px-3  hover:border-sky-500 transition-colors"
+                    className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[14px] py-2 px-3  hover:border-sky-500 transition-colors"
                   >
                     View Destination Details
                   </button>

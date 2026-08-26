@@ -16,7 +16,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   onOpenCustomPlan
 }) => {
   return (
-    <div id="top-contact-bar" className="bg-sky-950 text-sky-100 text-[13px] border-b border-sky-900/60 transition-colors">
+    <div id="top-contact-bar" className="bg-sky-950 text-sky-100 text-[14px] border-b border-sky-900/60 transition-colors">
       <div className="mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col md:flex-row items-center justify-between gap-2">
         {/* Left: Contact Info & Gov License */}
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6">
@@ -69,7 +69,7 @@ export const TopBar: React.FC<TopBarProps> = ({
             <select
               value={currentCurrency}
               onChange={(e) => onCurrencyChange(e.target.value as Currency)}
-              className="bg-transparent text-white font-semibold text-[13px] focus:outline-none cursor-pointer"
+              className="bg-transparent text-white font-semibold text-[14px] focus:outline-none cursor-pointer"
               aria-label="Select Currency"
             >
               <option value="USD" className="bg-slate-900 text-white">USD ($)</option>
@@ -83,7 +83,7 @@ export const TopBar: React.FC<TopBarProps> = ({
           <button
             onClick={onOpenCustomPlan}
             id="top-plan-trip-btn"
-            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1 text-[13px] uppercase tracking-wider transition-colors cursor-pointer"
+            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1 text-[14px] uppercase tracking-wider transition-colors cursor-pointer"
           >
             Plan A Custom Trek
           </button>

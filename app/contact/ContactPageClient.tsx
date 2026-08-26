@@ -37,7 +37,7 @@ export const ContactPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Contact Karakoram Expeditions Pakistan</span>
@@ -64,7 +64,7 @@ export const ContactPageClient: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-4 text-[13px]">
                 <div>
                   <h2 className="text-lg font-bold text-slate-900 mb-1">Send Us a Direct Message</h2>
-                  <p className="text-slate-600 text-[13px] mb-4">We reply to all inquiries within 12 hours with customized itineraries.</p>
+                  <p className="text-slate-600 text-[14px] mb-4">We reply to all inquiries within 12 hours with customized itineraries.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -76,7 +76,7 @@ export const ContactPageClient: React.FC = () => {
                       placeholder="e.g. John Doe"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                     />
                   </div>
 
@@ -88,7 +88,7 @@ export const ContactPageClient: React.FC = () => {
                       placeholder="e.g. john@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export const ContactPageClient: React.FC = () => {
                       placeholder="+1 234 567 8900"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                     />
                   </div>
 
@@ -113,7 +113,7 @@ export const ContactPageClient: React.FC = () => {
                       placeholder="e.g. United Kingdom, USA, Germany"
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export const ContactPageClient: React.FC = () => {
                   <select
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none"
                   >
                     <option value="K2 Base Camp & Gondogoro La 2026">K2 Base Camp & Gondogoro La (2026)</option>
                     <option value="Classic Baltoro Glacier Trek">Classic Baltoro Glacier Trek</option>
@@ -143,14 +143,14 @@ export const ContactPageClient: React.FC = () => {
                     placeholder="Tell us about your previous trekking experience, preferred travel dates, group size, and any special requests..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                   />
                 </div>
 
                 <div className="pt-2 flex flex-col sm:flex-row gap-3">
                   <button
                     type="submit"
-                    className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                    className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
                     <span>Send Expedition Inquiry</span>
@@ -160,7 +160,7 @@ export const ContactPageClient: React.FC = () => {
                     href={whatsappInquiryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[13px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>Chat on WhatsApp</span>
@@ -178,7 +178,7 @@ export const ContactPageClient: React.FC = () => {
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[13px] px-4 py-2"
+                  className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[14px] px-4 py-2"
                 >
                   Send Another Inquiry
                 </button>
@@ -189,7 +189,7 @@ export const ContactPageClient: React.FC = () => {
           {/* Right: Offices & Emergency Contact Details (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Skardu Basecamp HQ */}
-            <div className="bg-white  p-6 space-y-3 text-[13px] text-slate-700">
+            <div className="bg-white  p-6 space-y-3 text-[14px] text-slate-700">
               <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                 <Mountain className="w-5 h-5 text-sky-600 shrink-0" />
                 <div>
@@ -212,7 +212,7 @@ export const ContactPageClient: React.FC = () => {
             </div>
 
             {/* Islamabad Liaison Office */}
-            <div className="bg-white  p-6 space-y-3 text-[13px] text-slate-700">
+            <div className="bg-white  p-6 space-y-3 text-[14px] text-slate-700">
               <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                 <ShieldCheck className="w-5 h-5 text-sky-600 shrink-0" />
                 <div>

@@ -14,13 +14,22 @@ export const TrustSection: React.FC = () => {
           {/* Left Column: Visual Media with Play Badge */}
           <div className="lg:col-span-5 relative">
             <div className="relative h-96 sm:h-[680px] overflow-hidden border border-slate-700">
-              <img
-                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80"
-                alt="Trek Karakoram expedition team at Concordia K2"
+              {/* Video Element - Autoplay muted loop */}
+              <video
                 className="w-full h-full object-cover"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80"
+              >
+                <source
+                  src="/videos/trekkarakoram-video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+              
               <div className="absolute inset-0 bg-slate-950/30" />
 
               {/* Play Video Trigger Overlay */}
@@ -34,14 +43,14 @@ export const TrustSection: React.FC = () => {
               </button>
 
               {/* Experience Badge */}
-              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/95  p-3.5 flex items-center gap-3">
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/95 p-3.5 flex items-center gap-3">
                 <Mountain className="w-8 h-8 text-sky-400 shrink-0" />
                 <div>
                   <div className="text-[13px] font-bold uppercase text-white tracking-wider">
                     {BRAND_INFO.storyTitle}
                   </div>
                   <div className="text-[11px] text-slate-400 font-story">
-                    "When the mountains call, we don’t just answer we listen."
+                    "When the mountains call, we don't just answer we listen."
                   </div>
                 </div>
               </div>
@@ -66,8 +75,8 @@ export const TrustSection: React.FC = () => {
             {/* Differentiators Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               {BRAND_INFO.uspDifferentiators.map((diff) => (
-                <div key={diff.title} className="bg-slate-800/80 p-3 ">
-                  <div className="flex items-center gap-2 font-bold text-[13px] text-white mb-1">
+                <div key={diff.title} className="bg-slate-800/80 p-3">
+                  <div className="flex items-center gap-2 font-bold text-[14px] text-white mb-1">
                     <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                     <span>{diff.title}</span>
                   </div>
@@ -119,17 +128,18 @@ export const TrustSection: React.FC = () => {
               Expedition Reel: The Heart of the Karakoram
             </h3>
             <div className="relative aspect-video bg-black flex items-center justify-center border border-slate-700">
-              <img
-                src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80"
-                alt="Baltoro Glacier footage thumbnail"
-                className="w-full h-full object-cover opacity-60"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <Play className="w-12 h-12 text-sky-400 mb-2" />
-                <p className="text-[16px] font-bold text-white max-w-md">
-                  Experience the silence of Baltoro Glacier, Concordia, and the warmth of Balti campfire songs.
-                </p>
-              </div>
+              <video
+                className="w-full h-full"
+                controls
+                autoPlay
+                poster="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80"
+              >
+                <source
+                  src="/videos/trekkarakoram-video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>

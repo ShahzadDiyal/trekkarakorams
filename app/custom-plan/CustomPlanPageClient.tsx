@@ -43,7 +43,7 @@ export const CustomPlanPageClient: React.FC = () => {
           {!submitted ? (
             <>
               <div className="flex items-center gap-2 mb-2">
-                <span className="bg-sky-500 text-slate-950 text-[13px] font-bold px-2 py-0.5 uppercase tracking-wider">
+                <span className="bg-sky-500 text-slate-950 text-[14px] font-bold px-2 py-0.5 uppercase tracking-wider">
                   Expedition Booking
                 </span>
                 <span className="text-[13px] text-emerald-700 font-bold flex items-center gap-1">
@@ -59,7 +59,7 @@ export const CustomPlanPageClient: React.FC = () => {
                 Fill out this quick form. Our certified expedition leader will review your route and reply within 12 hours with permit availability.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4 text-[13px] sm:text-[16px]">
+              <form onSubmit={handleSubmit} className="space-y-4 text-[14px] sm:text-[16px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className="block font-bold text-slate-800 uppercase mb-1 text-[13px]">
@@ -204,7 +204,7 @@ export const CustomPlanPageClient: React.FC = () => {
                 <div className="pt-2 flex flex-col sm:flex-row gap-2">
                   <button
                     type="submit"
-                    className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                    className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
                     <span>Submit Expedition Inquiry</span>
@@ -214,7 +214,7 @@ export const CustomPlanPageClient: React.FC = () => {
                     href={whatsappInquiryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[13px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>Send via WhatsApp</span>
@@ -238,7 +238,7 @@ export const CustomPlanPageClient: React.FC = () => {
 
               <button
                 onClick={() => router.push('/')}
-                className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[13px] px-6 py-2.5 transition-colors cursor-pointer"
+                className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[14px] px-6 py-2.5 transition-colors cursor-pointer"
               >
                 Return to Home
               </button>

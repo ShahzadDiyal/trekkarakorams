@@ -77,7 +77,7 @@ export const HomePageClient: React.FC = () => {
       <Hero onSearch={handleHeroSearch} onTagClick={handleTagClick} />
 
       {/* Trust & Accreditation Strip Banner */}
-      <section className="bg-slate-950 text-slate-200 py-3.5 border-y border-slate-800 text-[13px]">
+      <section className="bg-slate-950 text-slate-200 py-3.5 border-y border-slate-800 text-[14px] font-bold">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Mountain className="w-4 h-4 text-sky-400 shrink-0" />
@@ -99,7 +99,7 @@ export const HomePageClient: React.FC = () => {
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
-              <span className="text-[13px] font-bold uppercase tracking-widest text-sky-600">
+              <span className="text-[14px] font-bold uppercase tracking-widest text-sky-600">
                 THE SOUL OF GILGIT-BALTISTAN
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
@@ -108,21 +108,21 @@ export const HomePageClient: React.FC = () => {
               <p className="text-slate-700 text-[16px] sm:text-[16px] leading-relaxed font-story">
                 {BRAND_INFO.story[0]}
               </p>
-              <p className="text-slate-600 text-[13px] sm:text-[16px] leading-relaxed">
+              <p className="text-slate-600 text-[14px] sm:text-[16px] leading-relaxed">
                 {BRAND_INFO.story[1]}
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => router.push('/treks')}
-                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-medium text-[13px] uppercase tracking-wider transition-colors flex items-center gap-2"
+                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-medium text-[14px] uppercase tracking-wider transition-colors flex items-center gap-2 rounded-sm cursor-pointer"
                 >
                   <span>Explore 2026 Expeditions</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => router.push('/destinations')}
-                  className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[13px] uppercase tracking-wider transition-colors"
+                  className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[14px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer"
                 >
                   Learn About The Regions
                 </button>
@@ -130,30 +130,30 @@ export const HomePageClient: React.FC = () => {
             </div>
 
             {/* Founding Members Special Box */}
-            <div className="lg:col-span-5 bg-slate-900 p-6 sm:p-7 text-white relative">
+            <div className="lg:col-span-5 bg-slate-900 p-6 sm:p-7 text-white relative rounded-sm">
               <div className="flex items-center gap-2 mb-3">
                 <Gift className="w-5 h-5 text-amber-400" />
                 <span className="text-[13px] font-bold uppercase tracking-wider text-amber-400">
                   {FOUNDING_MEMBERS_SPECIAL.title}
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">
+              <h3 className="text-[18px] font-bold text-white mb-2">
                 Join As A Founding Explorer
               </h3>
               <p className="text-[13px] text-slate-300 mb-4 leading-relaxed">
                 Be among the first explorers to journey with Trek Karakoram and receive lifetime privileges:
               </p>
-              <ul className="space-y-2 text-[13px] text-slate-200 mb-6">
+              <ul className="space-y-2 text-[14px] text-slate-200 mb-6">
                 {FOUNDING_MEMBERS_SPECIAL.perks.map((perk, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5 font-bold" />
                     <span>{perk}</span>
                   </li>
                 ))}
               </ul>
               <button
                 onClick={() => router.push('/planner')}
-                className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[13px] uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+                className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[14px] rounded-sm cursor-pointer uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
               >
                 <span>Claim 20% Founding Discount</span>
                 <ArrowRight className="w-4 h-4" />
@@ -167,7 +167,7 @@ export const HomePageClient: React.FC = () => {
       <section className="py-14 bg-slate-50 border-b border-slate-200">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[13px] font-bold uppercase tracking-widest text-sky-600">
+            <span className="text-[14px] font-bold uppercase tracking-widest text-sky-600">
               OUR GUIDING PRINCIPLES
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
@@ -189,12 +189,12 @@ export const HomePageClient: React.FC = () => {
                     <div className="p-2 bg-slate-100 border border-slate-200">
                       {renderValueIcon(val.iconName)}
                     </div>
-                    <span className="text-[13px] font-bold text-slate-400">0{val.number}</span>
+                    <span className="text-[20px] font-bold text-slate-400">0{val.number}</span>
                   </div>
-                  <h3 className="text-[16px] font-bold text-slate-900 tracking-tight mb-0.5">
+                  <h3 className="text-[16px] md:text-[20px] font-bold text-slate-900 tracking-tight mb-0.5">
                     {val.title}
                   </h3>
-                  <div className="text-[11px] font-bold text-sky-600 mb-2">
+                  <div className="text-[12px] md:text-[14px] font-bold text-sky-600 mb-2">
                     {val.subtitle}
                   </div>
                   <p className="text-[13px] text-slate-600 leading-relaxed">
@@ -258,7 +258,7 @@ export const HomePageClient: React.FC = () => {
                   <p className="text-[13px] text-slate-600 mb-4 leading-relaxed">
                     <strong>Motivation:</strong> {persona.motivation}
                   </p>
-                  <div className="bg-white p-3  text-[13px] text-slate-700 mb-4">
+                  <div className="bg-white p-3  text-[14px] text-slate-700 mb-4">
                     <span className="font-bold text-slate-900 block mb-0.5">How We Help:</span>
                     {persona.howWeHelp}
                   </div>
@@ -316,7 +316,7 @@ export const HomePageClient: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
         <button
           onClick={() => router.push('/planner')}
-          className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-medium text-[13px] sm:text-[14px] px-6 py-3.5 sm:py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl border border-slate-800/30 rounded-lg sm:rounded-none"
+          className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl border border-slate-800/30 rounded-sm"
         >
           <span>Calculate Custom Quote</span>
           <ArrowRight className="w-4 h-4" />
@@ -326,7 +326,7 @@ export const HomePageClient: React.FC = () => {
           href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full sm:w-auto bg-white hover:bg-slate-100 text-sky-900 font-medium text-[13px] sm:text-[14px] px-6 py-3.5 sm:py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-lg hover:shadow-xl border border-white/20 rounded-lg sm:rounded-none"
+          className="w-full sm:w-auto bg-white hover:bg-slate-100 text-sky-900 font-medium text-[14px] sm:text-[14px] px-6 py-3.5 sm:py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-lg hover:shadow-xl border border-white/20 rounded-sm"
         >
           <PhoneCall className="w-4 h-4" />
           <span>WhatsApp Direct Hotline</span>

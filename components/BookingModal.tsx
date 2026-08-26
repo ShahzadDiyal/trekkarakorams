@@ -57,7 +57,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         {!submitted ? (
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="bg-sky-500 text-slate-950 text-[13px] font-bold px-2 py-0.5 uppercase tracking-wider">
+              <span className="bg-sky-500 text-slate-950 text-[14px] font-bold px-2 py-0.5 uppercase tracking-wider">
                 Expedition Reservation
               </span>
               <span className="text-[13px] text-emerald-700 font-bold flex items-center gap-1">
@@ -83,7 +83,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     placeholder="e.g. Marcus Vance"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                   />
                 </div>
 
@@ -95,7 +95,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     placeholder="e.g. marcus@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -109,7 +109,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     placeholder="+1 555 123 4567"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                   />
                 </div>
 
@@ -121,7 +121,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     placeholder="e.g. USA, UK, Germany"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -132,7 +132,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <select
                     value={selectedTrek}
                     onChange={(e) => setSelectedTrek(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none"
                   >
                     {TREK_PACKAGES.map((t) => (
                       <option key={t.id} value={t.title}>
@@ -150,7 +150,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     max={25}
                     value={groupCount}
                     onChange={(e) => setGroupCount(Number(e.target.value))}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -160,7 +160,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <select
                   value={departureMonth}
                   onChange={(e) => setDepartureMonth(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none"
                 >
                   <option value="June 2026">June 2026 (Early Summer)</option>
                   <option value="July 2026">July 2026 (Peak Season)</option>
@@ -178,14 +178,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   placeholder="Previous high-altitude experience, dietary requirements, single tent preference..."
                   value={userNotes}
                   onChange={(e) => setUserNotes(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 p-2 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
                 />
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <button
                   type="submit"
-                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Reservation Request</span>
@@ -195,7 +195,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   href={whatsappInquiryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[13px] flex items-center justify-center gap-1.5 transition-colors"
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>Fast WhatsApp Direct</span>
@@ -215,7 +215,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             <div className="pt-2">
               <button
                 onClick={onClose}
-                className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[13px] px-6 py-2.5 transition-colors"
+                className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[14px] px-6 py-2.5 transition-colors"
               >
                 Close & Return
               </button>

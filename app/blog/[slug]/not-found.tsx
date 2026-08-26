@@ -12,7 +12,7 @@ export default function BlogPostNotFound() {
         </p>
         <Link
           href="/blog"
-          className="inline-block mt-6 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[13px] px-5 py-2.5 uppercase tracking-wider transition-colors"
+          className="inline-block mt-6 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-5 py-2.5 uppercase tracking-wider transition-colors"
         >
           Browse All Guides
         </Link>

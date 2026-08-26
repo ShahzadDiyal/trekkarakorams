@@ -160,7 +160,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
                       <div className={`p-1.5 ${isSelected ? 'bg-sky-500 text-slate-950' : 'bg-slate-700 text-sky-400'}`}>
                         <Mountain className="w-3.5 h-3.5" />
                       </div>
-                      <span className="font-bold text-[13px] sm:text-[16px] text-white">
+                      <span className="font-bold text-[14px] sm:text-[16px] text-white">
                         {wp.name}
                       </span>
                     </div>
@@ -180,7 +180,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
           <div className="lg:col-span-7 bg-slate-950 p-5 sm:p-7">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="bg-sky-500 text-slate-950 font-bold text-[13px] px-2.5 py-0.5 uppercase tracking-wider">
+                <span className="bg-sky-500 text-slate-950 font-bold text-[14px] px-2.5 py-0.5 uppercase tracking-wider">
                   {activeWaypoint.type.toUpperCase()}
                 </span>
                 <span className="text-[13px] text-slate-400 font-medium">
@@ -221,7 +221,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) =>
               <button
                 type="button"
                 onClick={() => onSelectTrekById(activeWaypoint.matchedTrekId)}
-                className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium text-[13px] px-4 py-2.5 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium text-[14px] px-4 py-2.5 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>View Trek Package</span>
                 <ArrowRight className="w-3.5 h-3.5" />

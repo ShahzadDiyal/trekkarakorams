@@ -65,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
         <div className="flex flex-col items-center text-center">
           {/* Top badges - centered */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-600/20 text-sky-200 text-[13px] font-bold uppercase tracking-wider rounded-sm">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-600/20 text-sky-200 text-[14px] font-bold uppercase tracking-wider rounded-sm">
               <Award className="w-3.5 h-3.5 text-sky-400" />
               Official Pakistan Trekking Operator
             </span>
@@ -104,7 +104,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
                 <select
                   value={selectedRegion}
                   onChange={(e) => setSelectedRegion(e.target.value)}
-                  className="w-full bg-transparent text-[16px] text-slate-800 focus:outline-none cursor-pointer appearance-none"
+                  className="w-full bg-transparent text-[16px] px-2 text-slate-800 focus:outline-none cursor-pointer appearance-none"
                   aria-label="Filter by region"
                 >
                   <option value="">All Mountain Regions</option>
@@ -121,7 +121,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
                 <select
                   value={selectedDifficulty}
                   onChange={(e) => setSelectedDifficulty(e.target.value)}
-                  className="w-full bg-transparent text-[16px] text-slate-800 focus:outline-none cursor-pointer appearance-none"
+                  className="w-full bg-transparent text-[16px] text-slate-800 px-2 focus:outline-none cursor-pointer appearance-none"
                   aria-label="Filter by difficulty"
                 >
                   <option value="">All Difficulties</option>
@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
               <button
                 key={tag}
                 onClick={() => onTagClick(tag)}
-                className="px-3 py-1.5 bg-slate-800/70 hover:bg-sky-600 hover:text-white border border-slate-700 hover:border-sky-500 text-slate-200 text-[13px] font-medium transition-all duration-200 rounded-sm"
+                className="px-2 py-2 bg-slate-800/70 hover:bg-sky-600 hover:text-white border border-slate-700 hover:border-sky-500 text-slate-200 text-[14px] font-medium transition-all duration-200 rounded-sm cursor-pointer"
               >
                 {tag}
               </button>

@@ -23,7 +23,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Expedition Safety & Mountain Guide Standards</span>
@@ -123,7 +123,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
 
           {/* Porter Welfare Pledge */}
           <div className="bg-sky-50  p-6 sm:p-8">
-            <div className="flex items-center gap-2 text-sky-800 font-bold text-[13px] uppercase tracking-wider mb-2">
+            <div className="flex items-center gap-2 text-sky-800 font-bold text-[14px] uppercase tracking-wider mb-2">
               <Heart className="w-4 h-4 text-sky-600" />
               <span>Our Porter Welfare Pledge</span>
             </div>
@@ -133,7 +133,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
             <p className="text-[13px] sm:text-[16px] text-slate-700 leading-relaxed mb-4">
               The Balti porters are the true heroes of the Karakoram. Without their immense strength and cheerfulness, no expedition to K2 is possible. We provide our porter crews with high-quality warm jackets, windproof trousers, mountain boots, sunglasses, crampons, insulated sleeping mats, and comprehensive medical insurance.
             </p>
-            <div className="flex flex-wrap gap-4 text-[13px] font-bold text-slate-900">
+            <div className="flex flex-wrap gap-4 text-[14px] font-bold text-slate-900">
               <span>✓ Maximum 25kg load limit</span>
               <span>✓ Guaranteed heated shelter tents</span>
               <span>✓ Full high-altitude rescue coverage</span>
@@ -152,7 +152,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
             href="https://wa.me/923009876543?text=Hi%20Karakoram%20Expeditions%2C%20I%20have%20questions%20about%20high%20altitude%20safety"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[13px] px-4 py-2.5 flex items-center gap-2 transition-colors shrink-0"
+            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-2 transition-colors shrink-0"
           >
             <PhoneCall className="w-4 h-4" />
             <span>Consult Safety Director</span>

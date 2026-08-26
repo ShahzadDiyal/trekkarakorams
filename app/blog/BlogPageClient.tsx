@@ -26,7 +26,7 @@ export const BlogPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Pakistan Trekking Guides & Expedition Blog</span>
@@ -52,7 +52,7 @@ export const BlogPageClient: React.FC = () => {
               <button
                 key={c}
                 onClick={() => setSelectedCategory(c)}
-                className={`px-3 py-1.5 text-[13px] font-bold transition-colors cursor-pointer border ${
+                className={`px-3 py-1.5 text-[14px] font-bold transition-colors cursor-pointer border ${
                   selectedCategory === c
                     ? 'bg-sky-600 text-white border-sky-600'
                     : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-sky-400'
@@ -70,7 +70,7 @@ export const BlogPageClient: React.FC = () => {
               placeholder="Search articles..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300 pl-9 pr-3 py-1.5 text-[13px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-300 pl-9 pr-3 py-1.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
             />
           </div>
         </div>
@@ -122,7 +122,7 @@ export const BlogPageClient: React.FC = () => {
               <div className="p-5 pt-0">
                 <button
                   onClick={() => router.push(`/blog/${post.id}`)}
-                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[13px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[14px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <span>Read Complete Article</span>
                   <ArrowRight className="w-3.5 h-3.5" />

@@ -80,7 +80,7 @@ export const BlogSection: React.FC = () => {
               <div className="p-5 pt-0">
                 <button
                   onClick={() => setSelectedPost(post)}
-                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[13px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[14px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <span>Read Full Guide</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -110,7 +110,7 @@ export const BlogSection: React.FC = () => {
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 mt-2">
                 {selectedPost.title}
               </h2>
-              <div className="flex flex-wrap items-center gap-4 text-[13px] text-slate-500 mt-2 pb-3 border-b border-slate-200">
+              <div className="flex flex-wrap items-center gap-4 text-[14px] text-slate-500 mt-2 pb-3 border-b border-slate-200">
                 <span>By <strong>{selectedPost.author}</strong> ({selectedPost.authorRole})</span>
                 <span>• {selectedPost.date}</span>
                 <span>• {selectedPost.readTime}</span>
@@ -143,7 +143,7 @@ export const BlogSection: React.FC = () => {
             <div className="mt-6 pt-4 border-t border-slate-200 flex justify-end">
               <button
                 onClick={() => setSelectedPost(null)}
-                className="bg-slate-900 text-white font-bold text-[13px] px-4 py-2 hover:bg-slate-800 transition-colors"
+                className="bg-slate-900 text-white font-bold text-[14px] px-4 py-2 hover:bg-slate-800 transition-colors"
               >
                 Close Guide
               </button>

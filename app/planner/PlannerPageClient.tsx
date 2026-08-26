@@ -73,7 +73,7 @@ export const PlannerPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Custom Trek Planner & Cost Calculator</span>
@@ -109,7 +109,7 @@ export const PlannerPageClient: React.FC = () => {
               <select
                 value={selectedTrekId}
                 onChange={(e) => setSelectedTrekId(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 p-3 text-[13px] sm:text-[16px] font-semibold text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 p-3 text-[14px] sm:text-[16px] font-semibold text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
               >
                 {TREK_PACKAGES.map((t) => (
                   <option key={t.id} value={t.id}>
@@ -122,7 +122,7 @@ export const PlannerPageClient: React.FC = () => {
             {/* Step 2: Group Size & Month */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-[13px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+                <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
                   Step 2: Number of Trekkers ({groupSize})
                 </label>
                 <div className="flex items-center gap-2">
@@ -131,7 +131,7 @@ export const PlannerPageClient: React.FC = () => {
                       key={n}
                       type="button"
                       onClick={() => setGroupSize(n)}
-                      className={`flex-1 py-2 text-[13px] font-bold border transition-colors cursor-pointer ${groupSize === n
+                      className={`flex-1 py-2 text-[14px] font-bold border transition-colors cursor-pointer ${groupSize === n
                         ? 'bg-sky-600 text-white border-sky-600'
                         : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-sky-400'
                         }`}
@@ -146,13 +146,13 @@ export const PlannerPageClient: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-[13px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+                <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
                   Target Departure Month
                 </label>
                 <select
                   value={preferredMonth}
                   onChange={(e) => setPreferredMonth(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[13px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
                 >
                   <option value="June 2026">June 2026 (Early Summer)</option>
                   <option value="July 2026">July 2026 (Peak Season)</option>
@@ -166,7 +166,7 @@ export const PlannerPageClient: React.FC = () => {
 
             {/* Step 3: Service Comfort Tier */}
             <div>
-              <label className="block text-[13px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+              <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
                 Step 3: Expedition Comfort Tier
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -177,7 +177,7 @@ export const PlannerPageClient: React.FC = () => {
                     : 'bg-slate-50 border-slate-200 hover:border-slate-300'
                     }`}
                 >
-                  <div className="flex items-center justify-between font-bold text-[13px] text-slate-900">
+                  <div className="flex items-center justify-between font-bold text-[14px] text-slate-900">
                     <span>Standard</span>
                     <span className="text-[10px] text-sky-700">Included</span>
                   </div>
@@ -193,7 +193,7 @@ export const PlannerPageClient: React.FC = () => {
                     : 'bg-slate-50 border-slate-200 hover:border-slate-300'
                     }`}
                 >
-                  <div className="flex items-center justify-between font-bold text-[13px] text-slate-900">
+                  <div className="flex items-center justify-between font-bold text-[14px] text-slate-900">
                     <span>VIP Glamping</span>
                     <span className="text-[10px] text-sky-700">+ {formatPrice(450, currency)}</span>
                   </div>
@@ -209,7 +209,7 @@ export const PlannerPageClient: React.FC = () => {
                     : 'bg-slate-50 border-slate-200 hover:border-slate-300'
                     }`}
                 >
-                  <div className="flex items-center justify-between font-bold text-[13px] text-slate-900">
+                  <div className="flex items-center justify-between font-bold text-[14px] text-slate-900">
                     <span>Ultra Luxury</span>
                     <span className="text-[10px] text-sky-700">+ {formatPrice(950, currency)}</span>
                   </div>
@@ -222,7 +222,7 @@ export const PlannerPageClient: React.FC = () => {
 
             {/* Step 4: Add-ons & Equipment */}
             <div>
-              <label className="block text-[13px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+              <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
                 Step 4: Safety, Gear & Add-on Services
               </label>
               <div className="space-y-2">
@@ -326,7 +326,7 @@ export const PlannerPageClient: React.FC = () => {
                 {selectedTrek.durationDays} Days / {selectedTrek.durationNights} Nights • {selectedTrek.region}
               </div>
 
-              <div className="mt-4 pt-3 border-t border-sky-900/80 space-y-2 text-[13px] text-slate-300">
+              <div className="mt-4 pt-3 border-t border-sky-900/80 space-y-2 text-[14px] text-slate-300">
                 <div className="flex justify-between">
                   <span>Group Size:</span>
                   <span className="text-white font-bold">{groupSize} Person(s)</span>
@@ -366,7 +366,7 @@ export const PlannerPageClient: React.FC = () => {
               <button
                 type="button"
                 onClick={handleProceed}
-                className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 px-4 text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <span>Reserve Custom Plan</span>
                 <ArrowRight className="w-4 h-4" />
@@ -376,7 +376,7 @@ export const PlannerPageClient: React.FC = () => {
                 href={`https://wa.me/923009876543?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[13px] flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Discuss on WhatsApp</span>

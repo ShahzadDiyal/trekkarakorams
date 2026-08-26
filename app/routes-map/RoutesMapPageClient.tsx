@@ -13,7 +13,7 @@ export const RoutesMapPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Interactive Karakoram & Pakistan Route Map</span>
@@ -43,7 +43,7 @@ export const RoutesMapPageClient: React.FC = () => {
             Baltoro Glacier & K2 Expedition Waypoints
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 text-[13px] text-slate-700">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 text-[14px] text-slate-700">
             <div className="p-4 bg-slate-50 ">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>1. Askole Village (Trailhead)</span>
@@ -108,7 +108,7 @@ export const RoutesMapPageClient: React.FC = () => {
           <div className="pt-4 border-t border-slate-200 flex justify-end">
             <button
               onClick={() => router.push('/treks/k2-basecamp-gondogoro-la')}
-              className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-[13px] px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-[14px] px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <span>View K2 & Gondogoro La Trek Details</span>
               <ArrowRight className="w-4 h-4" />

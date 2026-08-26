@@ -61,7 +61,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
             {activeRegionFilter && (
               <button
                 onClick={onResetFilters}
-                className="flex items-center gap-1.5 text-[13px] font-semibold text-sky-700 bg-sky-100 hover:bg-sky-200 px-3 py-1.5 transition-colors"
+                className="flex items-center gap-1.5 text-[14px] font-semibold text-sky-700 bg-sky-100 hover:bg-sky-200 px-3 py-1.5 transition-colors"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
                 <span>Clear Filter: {activeRegionFilter}</span>
@@ -78,7 +78,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
               <button
                 key={tab.label}
                 onClick={() => onFilterChange(tab.value)}
-                className={`px-3.5 py-1.5 text-[13px] sm:text-[16px] font-bold transition-colors cursor-pointer border ${
+                className={`px-3.5 py-1.5 text-[14px] sm:text-[16px] font-bold transition-colors cursor-pointer border ${
                   isActive
                     ? 'bg-sky-600 text-white border-sky-600'
                     : 'bg-white text-slate-700 border-slate-200 hover:border-sky-400 hover:text-sky-600'
@@ -111,7 +111,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
             </p>
             <button
               onClick={onResetFilters}
-              className="bg-sky-600 text-white font-bold text-[13px] px-4 py-2 hover:bg-sky-500 transition-colors"
+              className="bg-sky-600 text-white font-bold text-[14px] px-4 py-2 hover:bg-sky-500 transition-colors"
             >
               Show All Trek Packages
             </button>

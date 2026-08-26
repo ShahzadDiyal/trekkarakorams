@@ -83,7 +83,7 @@ return (
             {/* Calculator Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
                 {/* Left Column: Form Controls (7 cols) */}
-                <div className="lg:col-span-7 bg-slate-50 p-4 sm:p-5 lg:p-6 space-y-4 sm:space-y-5 rounded-lg sm:rounded-none">
+                <div className="lg:col-span-7 space-y-4 sm:space-y-5 rounded-sm">
 
                     {/* 1. Select Expedition */}
                     <div>
@@ -139,7 +139,7 @@ return (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                             <div
                                 onClick={() => setTier('standard')}
-                                className={`p-3 sm:p-3.5 cursor-pointer transition-colors rounded-lg sm:rounded-none ${
+                                className={`p-3 sm:p-3.5 cursor-pointer transition-colors rounded-sm ${
                                     tier === 'standard'
                                         ? 'bg-sky-50 border-2 border-sky-500 shadow-sm'
                                         : 'bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50/80'
@@ -156,7 +156,7 @@ return (
 
                             <div
                                 onClick={() => setTier('deluxe')}
-                                className={`p-3 sm:p-3.5 cursor-pointer transition-colors rounded-lg sm:rounded-none ${
+                                className={`p-3 sm:p-3.5 cursor-pointer transition-colors rounded-sm ${
                                     tier === 'deluxe'
                                         ? 'bg-sky-50 border-2 border-sky-500 shadow-sm'
                                         : 'bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50/80'
@@ -179,7 +179,7 @@ return (
                             4. Add-ons & Safety Options
                         </label>
                         <div className="space-y-1.5 sm:space-y-2">
-                            <label className="flex items-center justify-between p-2.5 sm:p-3 bg-white border border-slate-200 rounded-lg sm:rounded-none cursor-pointer hover:border-sky-400 transition-colors">
+                            <label className="flex items-center justify-between p-2.5 sm:p-3 bg-white border border-slate-200 rounded-sm cursor-pointer hover:border-sky-400 transition-colors">
                                 <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                                     <input
                                         type="checkbox"
@@ -196,7 +196,7 @@ return (
                                 </span>
                             </label>
 
-                            <label className="flex items-center justify-between p-2.5 sm:p-3 bg-white border border-slate-200 rounded-lg sm:rounded-none cursor-pointer hover:border-sky-400 transition-colors">
+                            <label className="flex items-center justify-between p-2.5 sm:p-3 bg-white border border-slate-200 rounded-sm cursor-pointer hover:border-sky-400 transition-colors">
                                 <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                                     <input
                                         type="checkbox"
@@ -213,7 +213,7 @@ return (
                                 </span>
                             </label>
 
-                            <label className="flex items-center justify-between p-2.5 sm:p-3 bg-white border border-slate-200 rounded-lg sm:rounded-none cursor-pointer hover:border-sky-400 transition-colors">
+                            <label className="flex items-center justify-between p-2.5 sm:p-3 bg-white border border-slate-200 rounded-sm cursor-pointer hover:border-sky-400 transition-colors">
                                 <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                                     <input
                                         type="checkbox"
@@ -244,7 +244,7 @@ return (
                         </span>
                     </div>
 
-                    <div className="py-3 sm:py-4 space-y-2 text-[13px] sm:text-[13px]">
+                    <div className="py-3 sm:py-4 space-y-2 text-[14px] sm:text-[13px]">
                         <div className="font-bold text-[15px] sm:text-[16px] text-white leading-tight">{selectedTrek.title}</div>
                         <div className="text-sky-300 text-[12px] sm:text-[13px]">Duration: {selectedTrek.durationDays} Days / {selectedTrek.durationNights} Nights</div>
 
@@ -285,7 +285,7 @@ return (
                             type="button"
                             onClick={handleProceed}
                             id="cost-estimator-book-btn"
-                            className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium py-3 sm:py-3 px-4 text-[12px] sm:text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer rounded-lg sm:rounded-none shadow-md hover:shadow-lg"
+                            className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium py-3 sm:py-3 px-4 text-[12px] sm:text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer rounded-sm shadow-md hover:shadow-lg"
                         >
                             <span>Book This Custom Plan</span>
                             <ArrowRight className="w-4 h-4" />
@@ -295,7 +295,7 @@ return (
                             href={`https://wa.me/923009876543?text=${whatsappMessage}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 sm:py-2.5 px-4 text-[12px] sm:text-[13px] flex items-center justify-center gap-2 transition-colors rounded-lg sm:rounded-none shadow-md hover:shadow-lg"
+                            className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 sm:py-2.5 px-4 text-[12px] sm:text-[13px] flex items-center justify-center gap-2 transition-colors rounded-sm shadow-md hover:shadow-lg"
                         >
                             <MessageSquare className="w-4 h-4" />
                             <span>Inquire on WhatsApp</span>

@@ -26,7 +26,7 @@ export const FAQPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Pakistan Trekking FAQs & Knowledge Center</span>
@@ -54,7 +54,7 @@ export const FAQPageClient: React.FC = () => {
               placeholder="Search questions (e.g. visa LOI, altitude sickness, solo female, sleeping bags, showers, payments)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300 pl-9 pr-3 py-2.5 text-[13px] sm:text-[16px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-300 pl-9 pr-3 py-2.5 text-[14px] sm:text-[16px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
             />
           </div>
 
@@ -63,7 +63,7 @@ export const FAQPageClient: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1 text-[13px] font-bold transition-colors cursor-pointer border ${
+                className={`px-3 py-1 text-[14px] font-bold transition-colors cursor-pointer border ${
                   activeCategory === cat
                     ? 'bg-sky-600 text-white border-sky-600'
                     : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-sky-400'
@@ -95,7 +95,7 @@ export const FAQPageClient: React.FC = () => {
                     <span className="text-[10px] font-bold text-sky-700 bg-sky-100 px-1.5 py-0.5 shrink-0">
                       {faq.category}
                     </span>
-                    <span className="font-bold text-[13px] sm:text-[16px] text-slate-900">
+                    <span className="font-bold text-[14px] sm:text-[16px] text-slate-900">
                       {faq.question}
                     </span>
                   </div>
@@ -107,7 +107,7 @@ export const FAQPageClient: React.FC = () => {
                 </button>
 
                 {isExpanded && (
-                  <div className="px-4 sm:px-5 pb-5 pt-1 text-[13px] sm:text-[16px] text-slate-700 leading-relaxed border-t border-sky-100">
+                  <div className="px-4 sm:px-5 pb-5 pt-1 text-[14px] sm:text-[16px] text-slate-700 leading-relaxed border-t border-sky-100">
                     {faq.answer}
                   </div>
                 )}
@@ -127,7 +127,7 @@ export const FAQPageClient: React.FC = () => {
             href="https://wa.me/923009876543?text=Hi%20Karakoram%20Expeditions%2C%20I%20have%20a%20question%20about%20Pakistan%20trekking"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[13px] px-4 py-2.5 flex items-center gap-1.5 shrink-0 transition-colors"
+            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-1.5 shrink-0 transition-colors"
           >
             <MessageSquare className="w-4 h-4" />
             <span>Ask via WhatsApp</span>

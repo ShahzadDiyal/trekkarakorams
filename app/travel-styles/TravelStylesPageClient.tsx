@@ -16,7 +16,7 @@ export const TravelStylesPageClient: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
           <span className="font-semibold text-slate-900">Expedition Travel Styles in Pakistan</span>
@@ -87,7 +87,7 @@ export const TravelStylesPageClient: React.FC = () => {
                             className="p-3 bg-slate-50 hover:border-sky-500 cursor-pointer transition-colors"
                           >
                             <span className="text-[10px] font-bold text-sky-600 uppercase block">{t.region.split(' ')[0]}</span>
-                            <h4 className="font-bold text-[13px] text-slate-900  mt-0.5">{t.title}</h4>
+                            <h4 className="font-bold text-[14px] text-slate-900  mt-0.5">{t.title}</h4>
                             <div className="text-[11px] font-bold text-sky-700 mt-2">
                               {formatPrice(t.discountPriceUSD || t.priceUSD, currency)}
                             </div>
@@ -99,7 +99,7 @@ export const TravelStylesPageClient: React.FC = () => {
                     <div className="pt-2 flex justify-end">
                       <button
                         onClick={() => router.push(`/treks?activity=${encodeURIComponent(style.title.split(' ')[0])}`)}
-                        className="bg-sky-600 hover:bg-sky-500 text-white font-bold text-[13px] px-4 py-2 flex items-center gap-1 transition-colors cursor-pointer"
+                        className="bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-4 py-2 flex items-center gap-1 transition-colors cursor-pointer"
                       >
                         <span>Explore All {style.title}</span>
                         <ArrowRight className="w-3.5 h-3.5" />

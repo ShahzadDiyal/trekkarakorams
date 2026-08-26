@@ -108,7 +108,7 @@ const initialActivity = searchParams?.get('activity') || '';
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[13px] text-slate-500 mb-4">
+        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <button onClick={() => router.push('/')} className="hover:text-sky-600">Home</button>
           <span>/</span>
           <span className="font-semibold text-slate-900">All Pakistan Trekking Expeditions</span>
@@ -129,12 +129,12 @@ const initialActivity = searchParams?.get('activity') || '';
               </p>
             </div>
 
-            <div className="bg-slate-900  p-4 shrink-0 text-[13px] text-sky-200">
+            <div className="bg-slate-900  p-4 shrink-0 text-[14px] text-sky-200">
               <div className="font-bold text-white text-[16px]">Need Custom Dates?</div>
               <div className="text-[11px] text-slate-400 mt-0.5">Private bespoke groups welcome for any date.</div>
               <button
                 onClick={() => router.push('/planner')}
-                className="mt-3 w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium py-2 px-3 text-[13px] uppercase tracking-wider transition-colors cursor-pointer"
+                className="mt-3 w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium py-2 px-3 text-[14px] uppercase tracking-wider transition-colors cursor-pointer rounded-sm"
               >
                 Open Cost Planner
               </button>
@@ -143,7 +143,7 @@ const initialActivity = searchParams?.get('activity') || '';
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="bg-white p-4 sm:p-5 mb-8 space-y-4">
+        <div className="bg-white py-4 sm:py-5 mb-8 space-y-4">
           {/* Top Search & Reset Row */}
           <div className="flex flex-col md:flex-row items-center gap-3">
             <div className="relative flex-1 w-full">
@@ -153,7 +153,7 @@ const initialActivity = searchParams?.get('activity') || '';
                 placeholder="Search by mountain, glacier, region, or pass (e.g. K2, Concordia, Baltoro, Gondogoro, Fairy Meadows)..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 pl-9 pr-3 py-2 text-[13px] sm:text-[16px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 pl-9 pr-3 py-2 text-[14px] sm:text-[16px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
               />
             </div>
 
@@ -161,7 +161,7 @@ const initialActivity = searchParams?.get('activity') || '';
               <select
                 value={sortBy}
                 onChange={(e: any) => setSortBy(e.target.value)}
-                className="flex-1 md:flex-none bg-slate-50 border border-slate-300 px-3 py-2 text-[13px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none cursor-pointer"
+                className="flex-1 md:flex-none bg-slate-50 border border-slate-300 px-3 py-2 text-[14px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none cursor-pointer"
               >
                 <option value="recommended">Sort by: Recommended</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -172,7 +172,7 @@ const initialActivity = searchParams?.get('activity') || '';
 
               <button
                 onClick={resetAllFilters}
-                className="px-3 py-2 text-[13px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1 shrink-0 transition-colors"
+                className="px-3 py-2 text-[14px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1 shrink-0 transition-colors"
                 title="Reset all filters"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -191,7 +191,7 @@ const initialActivity = searchParams?.get('activity') || '';
               <select
                 value={selectedRegion}
                 onChange={(e) => setSelectedRegion(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 p-2 text-[13px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
               >
                 <option value="">All Regions</option>
                 {regions.map((r) => (
@@ -208,7 +208,7 @@ const initialActivity = searchParams?.get('activity') || '';
               <select
                 value={selectedDifficulty}
                 onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 p-2 text-[13px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
               >
                 <option value="">All Difficulties</option>
                 {difficulties.map((d) => (
@@ -225,7 +225,7 @@ const initialActivity = searchParams?.get('activity') || '';
               <select
                 value={selectedActivity}
                 onChange={(e) => setSelectedActivity(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 p-2 text-[13px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
               >
                 <option value="">All Activities</option>
                 {activities.map((a) => (
@@ -242,7 +242,7 @@ const initialActivity = searchParams?.get('activity') || '';
               <select
                 value={selectedDurationRange}
                 onChange={(e) => setSelectedDurationRange(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 p-2 text-[13px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-300 p-2 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
               >
                 <option value="ALL">All Durations</option>
                 <option value="short">Short (1 - 10 Days)</option>
@@ -259,7 +259,7 @@ const initialActivity = searchParams?.get('activity') || '';
             Showing <strong className="text-sky-700">{filteredTreks.length}</strong> Expedition Packages
           </div>
 
-          <div className="flex items-center gap-2 text-[13px] text-slate-500">
+          <div className="flex items-center gap-2 text-[14px] text-slate-500">
             <span className="w-2 h-2 bg-emerald-500 rounded-none inline-block"></span>
             <span>All packages include Gilgit-Baltistan permits & liaison support</span>
           </div>
@@ -295,13 +295,13 @@ const initialActivity = searchParams?.get('activity') || '';
             <div className="mt-4 flex justify-center gap-3">
               <button
                 onClick={resetAllFilters}
-                className="bg-sky-600 text-white font-bold text-[13px] px-4 py-2 hover:bg-sky-500 transition-colors"
+                className="bg-sky-600 text-white font-bold text-[14px] px-4 py-2 hover:bg-sky-500 transition-colors"
               >
                 Reset All Filters
               </button>
               <button
                 onClick={() => router.push('/planner')}
-                className="bg-slate-900 text-white font-bold text-[13px] px-4 py-2 hover:bg-slate-800 transition-colors"
+                className="bg-slate-900 text-white font-bold text-[14px] px-4 py-2 hover:bg-slate-800 transition-colors"
               >
                 Create Custom Route
               </button>
@@ -314,7 +314,7 @@ const initialActivity = searchParams?.get('activity') || '';
           <h2 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-200">
             Pakistan Trekking Seasonality & Best Months
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-[13px] text-slate-700 leading-relaxed">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-[14px] text-slate-700 leading-relaxed">
             <div className="p-4 bg-slate-50 ">
               <h3 className="font-bold text-slate-900 mb-1 text-[13px]">Peak Karakoram Summer (Mid-June - August)</h3>
               <p>

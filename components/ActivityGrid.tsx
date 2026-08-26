@@ -13,7 +13,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading - concise */}
         <div className="mb-8">
-          <span className="text-[13px] font-bold uppercase tracking-wider text-sky-600">
+          <span className="text-[14px] font-bold uppercase tracking-wider text-sky-600">
             Adventure Categories
           </span>
           <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
@@ -34,7 +34,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             <img
               src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80"
               alt="Trekking in Pakistan Karakoram"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
@@ -61,7 +61,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             <img
               src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1000&q=80"
               alt="Helicopter Tours in Gilgit Baltistan"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
