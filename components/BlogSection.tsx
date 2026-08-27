@@ -43,7 +43,7 @@ export const BlogSection: React.FC = () => {
               className="bg-white  flex flex-col justify-between group hover:border-sky-500 transition-colors"
             >
               <div>
-                <div className="relative h-48 overflow-hidden bg-slate-100">
+                <div className="relative h-[240px] md:h-[300px] overflow-hidden bg-slate-100">
                   <img
                     src={post.image}
                     alt={post.title}

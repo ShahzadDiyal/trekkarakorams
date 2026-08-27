@@ -256,13 +256,12 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "Late June to Early September",
     groupSize: "4 to 8 Trekkers (Intimate)",
     activityType: "Pass Crossing",
-    image:
-      "/images/k2-basecamp-gondogoro-la.jpg",
+    image: "/images/k2-basecamp-gondogoro-la.jpg",
     gallery: [
       "/images/k2-basecamp-gondogoro-la.jpg",
       "/images/k2-basecamp-gondogoro-laa.jpg",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1000&q=80",
+      "/images/k2-basecamp-gondogoro-la-trekkarakoram.jpg",
+      "/images/k2-basecamp-gondogoro-la-trek.jpg",
     ],
     overview:
       'The ultimate high-altitude mountain journey on Earth. Traverse the mighty 63km Baltoro Glacier through Paiju, Urdukas, and Goro II to arrive at Concordia the legendary "Throne Room of the Mountain Gods" surrounded by four 8,000m giants: K2 (8,611m), Broad Peak (8,051m), Gasherbrum I (8,080m), and Gasherbrum II (8,035m). Cap the expedition with a technical fixed-rope ascent over the glaciated Gondogoro La (5,585m) down into the lush green Hushe Valley.',
@@ -504,12 +503,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "June to September",
     groupSize: "4 to 8 Trekkers",
     activityType: "Trekking",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/K2 Base Camp & Concordia Classic Trek 02.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+      "/images/K2 Base Camp & Concordia Classic Trek.jpg",
+      "/images/K2 Base Camp & Concordia Classic Trek 03.jpg",
+      "/images/K2 Base Camp & Concordia Classic Trek 04.jpg",
     ],
     overview:
       "The classic non-pass crossing variation of the K2 journey. Perfect for high-altitude trekkers seeking to experience the awe-inspiring Baltoro Glacier, Trango Towers, and stand at K2 Base Camp without the technical steepness and harness descent of Gondogoro La. Retraces the majestic Baltoro moraine with more time for photography and pacing.",
@@ -713,11 +711,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "May to October",
     groupSize: "2 to 8 Trekkers",
     activityType: "Trekking",
-    image:
-      "https://images.unsplash.com/photo-1571401835393-8c5f35328320?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/Fairy Meadows & Nanga Parbat Base Camp Trek.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1571401835393-8c5f35328320?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+      "/images/Fairy Meadows & Nanga Parbat Base Camp Trek 02.jpg",
+      "/images/Fairy Meadows & Nanga Parbat Base Camp Trek 03.jpg",
+      "/images/Fairy Meadows & Nanga Parbat Base Camp Trek 04.jpg",
     ],
     overview:
       "A magical journey into the Western Himalayas. Walk through whispering pine forests to Fairy Meadows a plateau offering direct front-row panoramas of the gigantic 8,126m Nanga Parbat (the world’s 9th highest mountain) and its dramatic Raikot Glacier icefall.",
@@ -851,11 +849,10 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "July to August",
     groupSize: "4 to 8 Trekkers",
     activityType: "Pass Crossing",
-    image:
-      "/images/snow lake & biafo-hispar glacier traverse.jpg",
+    image: "/images/snow lake & biafo-hispar glacier traverse.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80",
+      "/images/snow lake and biafo-hispar glacier traverse.jpg",
+      "/images/snow lake & biafo-hispar glacier traverses.jpg",
     ],
     overview:
       "One of the most remote and untouched wilderness expeditions on Earth. Traverse the 100km ice highway connecting the Biafo and Hispar glaciers across the legendary Snow Lake (Lukpe Lawo) a 16km wide basin of perpetual snow and ice crossing Hispar La (5,151m) from Baltistan directly into the Nagar Valley.",
@@ -1095,10 +1092,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "May to October",
     groupSize: "2 to 8 Trekkers",
     activityType: "Trekking",
-    image:
-      "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/Rakaposhi & Diran Peak Base Camp Trek.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1000&q=80",
+      "/images/Rakaposhi & Diran Peak Base Camp Trek 02.jpg",
+      "/images/Rakaposhi & Diran Peak Base Camp Trek 03.jpg",
+      "/images/Rakaposhi & Diran Peak Base Camp Trek 04.jpg",
     ],
     overview:
       "Located in the Nagar Valley, this breathtaking trek takes you to Tagafari the base camp of Rakaposhi (7,788m) where the snow-covered mountain rises an unbroken 6,000 meters above the valley floor, creating the steepest single uninterrupted rise on Planet Earth.",
@@ -1229,11 +1227,10 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "July to August",
     groupSize: "2 to 6 Trekkers",
     activityType: "Heli Trek",
-    image:
-      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/K2 Base Camp VIP Helicopter-Assisted Trekkarakoram.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80",
+      "/images/K2 Base Camp VIP Helicopter-Assisted Trekk.jpg",
+      "/images/K2 Base Camp VIP Helicopter-Assisted Trek.jpg",
     ],
     overview:
       "The pinnacle luxury adventure in Pakistan. Experience the full glory of walking up the Baltoro Glacier to Concordia and K2 Base Camp, then skip the 6-day grueling walk back by boarding a private chartered helicopter from Concordia directly back to Skardu airport with bird’s-eye aerial views of K2, Trango, and Broad Peak.",
@@ -1389,10 +1386,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "June to September",
     groupSize: "2 to 8 Trekkers",
     activityType: "Trekking",
-    image:
-      "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/Rush Lake & Rush Peak (5,098m) Trek.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1000&q=80",
+      "/images/Rush Lake & Rush Peak (5,098m) Trek 02.jpg",
+      "/images/Rush Lake & Rush Peak (5,098m) Trek 03.jpg",
+      "/images/Rush Lake & Rush Peak (5,098m) Trek 04.jpg",
     ],
     overview:
       "Rush Lake (4,694m) is one of the highest alpine lakes on the planet. Situated in the Nagar Valley, the climb to Rush Peak (5,098m) offers a non-technical summit with a 360-degree panorama of Spantik, Malubiting, Ultar Sar, and K2 in the far distance.",
@@ -1544,10 +1542,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "July to September",
     groupSize: "2 to 8 Trekkers",
     activityType: "Expedition",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/Shimshal Pass & Minglik Sar (6,050m) Expedition.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80",
+      "/images/Shimshal Pass & Minglik Sar (6,050m) Expedition.jpg",
+      "/images/Shimshal Pass & Minglik Sar (6,050m) Expedition 02.jpg",
+      "/images/Shimshal Pass & Minglik Sar (6,050m) Expedition 03.jpg",
     ],
     overview:
       "Shimshal is the highest settlement in Hunza, home to Pakistan’s most famed high-altitude mountaineers. Trek through the dramatic Shimshal Gorge to the vast high pastures of Shimshal Pass (4,735m) and conquer Minglik Sar (6,050m) a straightforward non-technical trekking peak with zero crevasse hazards.",
@@ -1727,10 +1726,12 @@ export const TREK_PACKAGES: TrekPackage[] = [
     bestSeason: "July to September",
     groupSize: "2 to 8 Trekkers",
     activityType: "Cultural Trek",
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/Deosai High Plains & Sheosar Lake Wilderness Trek 03.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+      "/images/Deosai High Plains & Sheosar Lake Wilderness Trek.jpg",
+      "/images/Deosai High Plains & Sheosar Lake Wilderness Trek 02.jpg",
+      "/images/Deosai High Plains & Sheosar Lake Wilderness Trek 04.jpg",
+      "/images/Deosai High Plains & Sheosar Lake Wilderness Trek 05.jpg",
     ],
     overview:
       'Deosai National Park is an extraordinary rolling alpine plateau averaging 4,114 meters above sea level. Known as the "Land of the Giants," this protected wilderness is blanketed in millions of wildflowers and is the natural sanctuary of the endangered Himalayan Brown Bear.',
@@ -1965,8 +1966,7 @@ export const BLOG_POSTS = [
     author: "Ali Balti",
     authorRole: "Senior IFMGA Certified Lead Guide",
     date: "Jan 12, 2026",
-    image:
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
+    image: "/images/The Soul of the Karakoram.jpg",
     excerpt:
       "Discover the ancient trade paths, glacier moraines, acclimatization schedules, and what it truly feels like to stand in the Throne Room of the Mountain Gods.",
     content: [
@@ -1986,8 +1986,7 @@ export const BLOG_POSTS = [
     author: "Karim Ullah",
     authorRole: "Expedition Logistics & Government Liaison",
     date: "Feb 02, 2026",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    image: "/images/trekking-peaks-karakoram-pakistan.jpg",
     excerpt:
       "Step-by-step instructions on obtaining the Pakistan E-Visa under the Mountaineering & Trekking category, LOI requirements, and restricted zone NOC clearance.",
     content: [
@@ -2004,8 +2003,7 @@ export const BLOG_POSTS = [
     author: "Dr. Sarah Jennings",
     authorRole: "High-Altitude Wilderness Medical Advisor",
     date: "Feb 18, 2026",
-    image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
+    image: "/images/preventing-altitute.jpg",
     excerpt:
       "Doctor-approved acclimatization strategies, hydration standards, Diamox protocols, and daily pulse oximeter monitoring.",
     content: [
