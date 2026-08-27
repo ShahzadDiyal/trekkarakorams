@@ -15,7 +15,7 @@ export default function GlobalNotFound() {
     <div className="bg-slate-50 min-h-screen py-20 flex items-center justify-center">
       <div className="max-w-md mx-auto text-center px-4">
         <Mountain className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-        <h1 className="text-xl font-bold text-slate-900">404 — Page Not Found</h1>
+        <h1 className="text-xl font-bold text-slate-900">404   Page Not Found</h1>
         <p className="text-[16px] text-slate-600 mt-2">
           That page doesn't exist or may have moved. Try browsing our treks, or head back home.
         </p>

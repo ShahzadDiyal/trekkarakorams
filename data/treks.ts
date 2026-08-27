@@ -257,15 +257,15 @@ export const TREK_PACKAGES: TrekPackage[] = [
     groupSize: "4 to 8 Trekkers (Intimate)",
     activityType: "Pass Crossing",
     image:
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
+      "/images/k2-basecamp-gondogoro-la.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80",
+      "/images/k2-basecamp-gondogoro-la.jpg",
+      "/images/k2-basecamp-gondogoro-laa.jpg",
       "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1000&q=80",
     ],
     overview:
-      'The ultimate high-altitude mountain journey on Earth. Traverse the mighty 63km Baltoro Glacier through Paiju, Urdukas, and Goro II to arrive at Concordia—the legendary "Throne Room of the Mountain Gods"—surrounded by four 8,000m giants: K2 (8,611m), Broad Peak (8,051m), Gasherbrum I (8,080m), and Gasherbrum II (8,035m). Cap the expedition with a technical fixed-rope ascent over the glaciated Gondogoro La (5,585m) down into the lush green Hushe Valley.',
+      'The ultimate high-altitude mountain journey on Earth. Traverse the mighty 63km Baltoro Glacier through Paiju, Urdukas, and Goro II to arrive at Concordia the legendary "Throne Room of the Mountain Gods" surrounded by four 8,000m giants: K2 (8,611m), Broad Peak (8,051m), Gasherbrum I (8,080m), and Gasherbrum II (8,035m). Cap the expedition with a technical fixed-rope ascent over the glaciated Gondogoro La (5,585m) down into the lush green Hushe Valley.',
     highlights: [
       "360° panoramic amphitheater of four 8,000m peaks at Concordia",
       "Direct foot trek to K2 Base Camp (5,150m) and Art Gilkey Memorial",
@@ -301,7 +301,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
       {
         day: 4,
         title: "4x4 Jeep Drive to Askole",
-        desc: "Thrilling off-road drive through Shigar Valley, traversing rugged gorges along the Braldu River to Askole—the last inhabited village.",
+        desc: "Thrilling off-road drive through Shigar Valley, traversing rugged gorges along the Braldu River to Askole the last inhabited village.",
         altitude: "3,000m",
         stay: "Camp Askole",
         trekHours: "0 hrs (Jeep 6-7 hrs)",
@@ -362,7 +362,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
       {
         day: 11,
         title: "Goro II to Concordia",
-        desc: "Arrive at Concordia—the pinnacle junction of Baltoro & Godwin-Austen glaciers. Front-row vistas of K2 and Broad Peak.",
+        desc: "Arrive at Concordia the pinnacle junction of Baltoro & Godwin-Austen glaciers. Front-row vistas of K2 and Broad Peak.",
         altitude: "4,600m",
         stay: "Tent Concordia",
         trekHours: "5-6 hrs",
@@ -720,7 +720,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
     ],
     overview:
-      "A magical journey into the Western Himalayas. Walk through whispering pine forests to Fairy Meadows—a plateau offering direct front-row panoramas of the gigantic 8,126m Nanga Parbat (the world’s 9th highest mountain) and its dramatic Raikot Glacier icefall.",
+      "A magical journey into the Western Himalayas. Walk through whispering pine forests to Fairy Meadows a plateau offering direct front-row panoramas of the gigantic 8,126m Nanga Parbat (the world’s 9th highest mountain) and its dramatic Raikot Glacier icefall.",
     highlights: [
       "Unmatched views of Nanga Parbat (8,126m) Raikot Face",
       "Stay in cozy wooden log cabins in Fairy Meadows",
@@ -852,13 +852,13 @@ export const TREK_PACKAGES: TrekPackage[] = [
     groupSize: "4 to 8 Trekkers",
     activityType: "Pass Crossing",
     image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+      "/images/snow lake & biafo-hispar glacier traverse.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80",
     ],
     overview:
-      "One of the most remote and untouched wilderness expeditions on Earth. Traverse the 100km ice highway connecting the Biafo and Hispar glaciers across the legendary Snow Lake (Lukpe Lawo)—a 16km wide basin of perpetual snow and ice—crossing Hispar La (5,151m) from Baltistan directly into the Nagar Valley.",
+      "One of the most remote and untouched wilderness expeditions on Earth. Traverse the 100km ice highway connecting the Biafo and Hispar glaciers across the legendary Snow Lake (Lukpe Lawo) a 16km wide basin of perpetual snow and ice crossing Hispar La (5,151m) from Baltistan directly into the Nagar Valley.",
     highlights: [
       "Cross 100km of continuous glacier and perpetual ice sheets",
       "Camp in the surreal vastness of Snow Lake (Lukpe Lawo)",
@@ -1101,7 +1101,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
       "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1000&q=80",
     ],
     overview:
-      "Located in the Nagar Valley, this breathtaking trek takes you to Tagafari—the base camp of Rakaposhi (7,788m)—where the snow-covered mountain rises an unbroken 6,000 meters above the valley floor, creating the steepest single uninterrupted rise on Planet Earth.",
+      "Located in the Nagar Valley, this breathtaking trek takes you to Tagafari the base camp of Rakaposhi (7,788m) where the snow-covered mountain rises an unbroken 6,000 meters above the valley floor, creating the steepest single uninterrupted rise on Planet Earth.",
     highlights: [
       "Closest view of Rakaposhi (7,788m) and Diran Peak (7,266m)",
       "Cross the Minapin Glacier to Tagafari alpine meadows",
@@ -1550,7 +1550,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80",
     ],
     overview:
-      "Shimshal is the highest settlement in Hunza, home to Pakistan’s most famed high-altitude mountaineers. Trek through the dramatic Shimshal Gorge to the vast high pastures of Shimshal Pass (4,735m) and conquer Minglik Sar (6,050m)—a straightforward non-technical trekking peak with zero crevasse hazards.",
+      "Shimshal is the highest settlement in Hunza, home to Pakistan’s most famed high-altitude mountaineers. Trek through the dramatic Shimshal Gorge to the vast high pastures of Shimshal Pass (4,735m) and conquer Minglik Sar (6,050m) a straightforward non-technical trekking peak with zero crevasse hazards.",
     highlights: [
       "Climb your first 6,000m Karakoram peak: Minglik Sar (6,050m)",
       "Cross the scenic Shimshal Pass and turquoise alpine lakes",
@@ -1970,7 +1970,7 @@ export const BLOG_POSTS = [
     excerpt:
       "Discover the ancient trade paths, glacier moraines, acclimatization schedules, and what it truly feels like to stand in the Throne Room of the Mountain Gods.",
     content: [
-      "The journey to K2 Base Camp and Concordia is not merely a mountain trek—it is an initiation into the rawest, grandest geology on Earth.",
+      "The journey to K2 Base Camp and Concordia is not merely a mountain trek it is an initiation into the rawest, grandest geology on Earth.",
       "Beginning in the stone village of Askole, the route follows the roaring Braldu river before stepping onto the massive snout of the Baltoro Glacier at Paiju.",
       "At Concordia, four 8,000m summits tower above your sleeping tent: K2 (8,611m), Broad Peak (8,051m), Gasherbrum I (8,080m), and Gasherbrum II (8,035m).",
       "To journey safely, gradual acclimatization is paramount. With rest days at Paiju (3,450m) and Urdukas (4,050m), your body adapts steadily before you push over the 5,585m Gondogoro La.",

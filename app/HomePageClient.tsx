@@ -42,7 +42,7 @@ export const HomePageClient: React.FC = () => {
   const handleHeroSearch = (filters: { query: string; region: string; duration: string; difficulty: string }) => {
     // A single facet (region or difficulty) maps to a clean, canonical URL;
     // any free-text query rides along as a non-indexed ?q= refinement.
-    // (Duration isn't a crawlable facet — it's applied client-side only.)
+    // (Duration isn't a crawlable facet   it's applied client-side only.)
     if (filters.region && isKnownRegion(filters.region)) {
       const url = facetUrl('region', filters.region);
       router.push(filters.query ? `${url}?q=${encodeURIComponent(filters.query)}` : url);
@@ -65,7 +65,7 @@ export const HomePageClient: React.FC = () => {
   };
 
   const handleActivitySelect = (activity: string) => {
-    // Only navigate to a dedicated facet page when it actually has inventory —
+    // Only navigate to a dedicated facet page when it actually has inventory  
     // otherwise fall back to the full, unfiltered catalog instead of a 404.
     router.push(isKnownActivity(activity) ? facetUrl('activity', activity) : '/treks');
   };

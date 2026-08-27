@@ -13,7 +13,7 @@ interface RouteParams {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-/** Only pre-render slugs that actually have matching treks — no thin/empty pages. */
+/** Only pre-render slugs that actually have matching treks   no thin/empty pages. */
 export function generateStaticParams() {
   return ACTIVITY_FACETS.map((f) => ({ slug: f.slug }));
 }

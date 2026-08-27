@@ -5,11 +5,11 @@ using real **file-based routing** and a genuine **Server / Client Component spli
 
 ## Cleanup notes (production package)
 
-This zip has been pruned down to *only* the Next.js project — the legacy Vite/React
+This zip has been pruned down to *only* the Next.js project   the legacy Vite/React
 Router source (`src/`, `index.html`, `vite.config.ts`), the AI Studio export
 metadata (`metadata.json`, `assets/.aistudio`), and the duplicate `bun.lock` were
 all removed since they weren't used by the Next.js app (confirmed via import-graph
-check — every `@/...` import resolves to the root `app/`, `components/`, `data/`,
+check   every `@/...` import resolves to the root `app/`, `components/`, `data/`,
 `lib/`, `utils/`, `types.ts`).
 
 Also done:
@@ -25,11 +25,11 @@ Also done:
   `Navbar.tsx`) and turned **off** `typescript.ignoreBuildErrors` in
   `next.config.mjs` so the build fails loudly on real type errors instead of
   silently shipping them. `eslint.ignoreDuringBuilds` stays on only because no
-  eslint config/deps ship with this project — add `eslint-config-next` +
+  eslint config/deps ship with this project   add `eslint-config-next` +
   `eslint.config.mjs` to enable linting in CI.
 - Regenerated `package-lock.json` from scratch (the original was missing the
   platform-specific `@next/swc` entries, which triggers a "patching lockfile"
-  warning/slowdown on install — regenerating it avoids that on every fresh
+  warning/slowdown on install   regenerating it avoids that on every fresh
   `npm ci` in production/CI).
 - Verified with a real `next build`: **every route is fully static or SSG**
   (`○`/`●`, no server-rendered `ƒ` routes), so there's no request-time

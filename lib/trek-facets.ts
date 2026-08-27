@@ -3,12 +3,12 @@ import type { TrekPackage } from '@/types';
 
 /**
  * Central source of truth for turning trek facets (activity / region / difficulty)
- * into clean, crawlable URL slugs — and back again.
+ * into clean, crawlable URL slugs   and back again.
  *
  * Why this file exists:
  * Facet lists here are DERIVED from the real TREK_PACKAGES data instead of being
  * hand-typed, so a static route can never be generated for a facet value that has
- * zero matching treks (which would otherwise produce a thin/empty "0 results" page —
+ * zero matching treks (which would otherwise produce a thin/empty "0 results" page  
  * bad for SEO and a soft-404 risk). It also means a slug page can never silently
  * drift out of sync with the dataset.
  */
@@ -81,7 +81,7 @@ export function isKnownDifficulty(value: string) {
   return DIFFICULTY_FACETS.some((f) => f.value === value);
 }
 
-/** Canonical clean-URL builder — the ONLY place that should know the /treks/... shape. */
+/** Canonical clean-URL builder   the ONLY place that should know the /treks/... shape. */
 export function facetUrl(type: FacetType, value: string): string {
   return `/treks/${type}/${slugify(value)}`;
 }
@@ -98,7 +98,7 @@ const FACET_NOUN: Record<FacetType, string> = {
   difficulty: 'treks',
 };
 
-/** Human copy for <title>/<meta description> on a facet page — kept unique per value. */
+/** Human copy for <title>/<meta description> on a facet page   kept unique per value. */
 export function facetPageCopy(type: FacetType, value: string, count: number) {
   if (type === 'activity') {
     return {
@@ -135,7 +135,7 @@ export function filterTreksByFacet(
 }
 
 // ---------------------------------------------------------------------------
-// Blog category facets — same "derive from real data" principle as above, so
+// Blog category facets   same "derive from real data" principle as above, so
 // a /blog/category/[slug] page can never be generated for an empty category.
 // ---------------------------------------------------------------------------
 import { BLOG_POSTS } from '@/data/treks';

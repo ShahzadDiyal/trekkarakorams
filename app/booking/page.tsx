@@ -3,11 +3,11 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  CheckCircle2, 
-  Send, 
-  MessageSquare, 
-  ShieldCheck, 
+import {
+  CheckCircle2,
+  Send,
+  MessageSquare,
+  ShieldCheck,
   Mountain,
   ChevronRight,
   ArrowLeft,
@@ -24,7 +24,7 @@ import { TREK_PACKAGES, BRAND_INFO } from '@/data/treks';
 function BookingForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
   // Get query parameters
   const trekTitleParam = searchParams.get('trek') || '';
   const groupSizeParam = parseInt(searchParams.get('group') || '2');
@@ -47,10 +47,10 @@ function BookingForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     setSubmitted(true);
     setIsLoading(false);
   };
@@ -66,21 +66,21 @@ function BookingForm() {
           <div className="w-20 h-20 bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center mb-6">
             <CheckCircle2 className="w-10 h-10" />
           </div>
-          
+
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
             Reservation Request Confirmed!
           </h1>
-          
+
           <p className="text-[15px] text-slate-600 max-w-lg mx-auto leading-relaxed">
             Thank you <strong className="text-slate-900">{name}</strong>. We have registered your reservation for{' '}
             <strong className="text-slate-900">{selectedTrek}</strong> ({groupCount} persons in {departureMonth}).
           </p>
-          
+
           <div className="mt-4 p-4 bg-sky-50 border border-sky-200 text-left text-[14px] text-slate-700">
             <p className="font-medium text-sky-900 mb-1">📬 What happens next?</p>
             <p>Our Skardu operations team will email your official Letter of Invitation (LOI) to <strong>{email}</strong> within 24 hours.</p>
           </div>
-          
+
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/"
@@ -130,13 +130,13 @@ function BookingForm() {
                     <span>Zero Booking Surcharges</span>
                   </span>
                 </div>
-                
+
                 <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                   Reserve Your Karakoram Trek
                 </h1>
-                
+
                 <p className="text-[14px] text-slate-600 mt-2 max-w-2xl leading-relaxed">
-                  Fill out your details below to receive your official Pakistan E-Visa Letter of Invitation (LOI), 
+                  Fill out your details below to receive your official Pakistan E-Visa Letter of Invitation (LOI),
                   permit clearance paperwork, and detailed gear briefing.
                 </p>
               </div>

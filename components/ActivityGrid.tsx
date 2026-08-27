@@ -32,7 +32,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             className="md:col-span-2 lg:col-span-2 group relative h-72 sm:h-90 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
-              src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80"
+              src="/images/trekking-in-karakoram-and-himalayas.jpg"
               alt="Trekking in Pakistan Karakoram"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm"
               loading="lazy"
@@ -59,7 +59,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             className="md:col-span-1 lg:col-span-2 group relative h-72 sm:h-90 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
-              src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1000&q=80"
+              src="/images/helicopter-landing-on-snowy-mountain-in-karakoram.jpg"
               alt="Helicopter Tours in Gilgit Baltistan"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm"
               loading="lazy"
@@ -86,7 +86,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
-              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+              src="/images/4wd-jeep-safaris-karakoram-pakistan.jpg"
               alt="4WD Jeep Tours Pakistan"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
@@ -110,7 +110,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
-              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"
+              src="/images/high-pass-crossing-karakoram-pakistan.jpg"
               alt="High Pass Crossings Pakistan"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
@@ -134,7 +134,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+              src="/images/trekking-peaks-karakoram-pakistan.jpg"
               alt="Peak Climbing Karakoram"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
@@ -158,7 +158,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) 
             className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
           >
             <img
-              src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=600&q=80"
+              src="/images/cultural-and-family-hikes-trekkarakoram-pakistan.jpg"
               alt="Cultural & Family Treks Pakistan"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"

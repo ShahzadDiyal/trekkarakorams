@@ -161,7 +161,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
               >
                 {TREK_PACKAGES.map((trek) => (
                   <option key={trek.id} value={trek.id}>
-                    {trek.title} — {trek.durationDays} Days / Max{' '}
+                    {trek.title}   {trek.durationDays} Days / Max{' '}
                     {trek.maxAltitude}m
                   </option>
                 ))}

@@ -8,7 +8,7 @@ import { BLOG_CATEGORY_FACETS, blogCategoryUrl } from '@/lib/trek-facets';
 import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
 
 interface BlogPageClientProps {
-  /** Set only on /blog/category/[slug] routes — hard-applied via the URL, never a query string. */
+  /** Set only on /blog/category/[slug] routes   hard-applied via the URL, never a query string. */
   lockedCategory?: string;
 }
 

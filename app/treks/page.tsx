@@ -42,7 +42,7 @@ export default async function TreksPage({ searchParams }: TreksRouteProps) {
   // clean equivalents instead of rendering duplicate content at two URLs.
   // Priority when multiple facets are present at once (e.g. from the Hero
   // search bar): region, then difficulty, then activity. Only a single facet
-  // maps to a clean URL by design (see lib/trek-facets.ts) — this avoids
+  // maps to a clean URL by design (see lib/trek-facets.ts)   this avoids
   // generating combinatorial, near-duplicate indexable pages. Any leftover
   // free-text query is preserved as a non-indexed ?q= on the destination.
   const legacyActivity = typeof sp.activity === 'string' ? sp.activity : undefined;

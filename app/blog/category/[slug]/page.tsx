@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
   return {
     title: `${facet.value} | Trek Karakoram Blog`,
-    description: `${facet.count} in-depth ${facet.value.toLowerCase()} articles from certified Karakoram mountain leaders — guides, logistics, and practical advice for Pakistan trekking.`,
+    description: `${facet.count} in-depth ${facet.value.toLowerCase()} articles from certified Karakoram mountain leaders   guides, logistics, and practical advice for Pakistan trekking.`,
     alternates: {
       canonical: `/blog/category/${facet.slug}`,
     },

@@ -26,7 +26,7 @@ interface LockedFacet {
 interface TreksPageClientProps {
   /**
    * When set, this page is a dedicated SEO route (e.g. /treks/activity/trekking)
-   * and this facet is hard-applied server-side via the URL — it is never written
+   * and this facet is hard-applied server-side via the URL   it is never written
    * back out as a query string. Any further refinement below (search text, sort,
    * duration, or picking a *different* facet type) stays purely client-side state
    * so we never generate combinatorial, duplicate-content query-string URLs.
