@@ -211,68 +211,68 @@ export const HomePageClient: React.FC = () => {
 
 
 
-     
-{/* 3. What You Can Expect From Us */}
-<section className="bg-slate-50 border-b border-slate-200">
-  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+      {/* 3. What You Can Expect From Us */}
+      <section className="bg-slate-50 border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-      {/* Column 1 */}
-      <div className="py-8 md:py-0 md:px-8 first:pt-0 last:pb-0 md:first:pl-0 md:last:pr-0">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
-          Local Knowledge
-        </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
 
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-          We are from here.
-        </h2>
+            {/* Column 1 */}
+            <div className="py-8 md:py-0 md:px-8 first:pt-0 last:pb-0 md:first:pl-0 md:last:pr-0">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
+                Local Knowledge
+              </p>
 
-        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
-          Our guides grew up in Baltistan. They have walked these trails
-          their entire lives. When they point at a peak and say its name
-          in Balti, it is because they grew up looking at it every day.
-        </p>
-      </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                We are from here.
+              </h2>
 
-      {/* Column 2 */}
-      <div className="py-8 md:py-0 md:px-8">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
-          Everything Organised
-        </p>
+              <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+                Our guides grew up in Baltistan. They have walked these trails
+                their entire lives. When they point at a peak and say its name
+                in Balti, it is because they grew up looking at it every day.
+              </p>
+            </div>
 
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-          We handle everything.
-        </h2>
+            {/* Column 2 */}
+            <div className="py-8 md:py-0 md:px-8">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
+                Everything Organised
+              </p>
 
-        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
-          Airport pickup, accommodation, meals, guides, permits, transport
-          back. Every detail is sorted before you arrive. You focus on what
-          is in front of you. We take care of the rest.
-        </p>
-      </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                We handle everything.
+              </h2>
 
-      {/* Column 3 */}
-      <div className="py-8 md:py-0 md:px-8 last:pb-0">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
-          Responsible Travel
-        </p>
+              <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+                Airport pickup, accommodation, meals, guides, permits, transport
+                back. Every detail is sorted before you arrive. You focus on what
+                is in front of you. We take care of the rest.
+              </p>
+            </div>
 
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-          We travel carefully.
-        </h2>
+            {/* Column 3 */}
+            <div className="py-8 md:py-0 md:px-8 last:pb-0">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
+                Responsible Travel
+              </p>
 
-        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
-          No waste left on the trail. Fair wages for every porter and cook.
-          Respect for every village we walk through. This is not a policy.
-          This is just how we work.
-        </p>
-      </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                We travel carefully.
+              </h2>
 
-    </div>
-  </div>
-</section>
- 
+              <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+                No waste left on the trail. Fair wages for every porter and cook.
+                Respect for every village we walk through. This is not a policy.
+                This is just how we work.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* 4. Activity Grid Bento Layout */}
       <ActivityGrid onSelectActivity={handleActivitySelect} />
 
@@ -297,93 +297,93 @@ export const HomePageClient: React.FC = () => {
         }}
         onResetFilters={() => router.push('/treks')}
       />
- 
-{/* 6. Different Journeys, Same Care */}
-<section className="bg-white border-b border-slate-200">
-  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-    {/* Section Header */}
-    <div className="max-w-3xl mb-12">
-      <div className="mb-4 flex items-center gap-3">
-        <span className="h-px w-10 bg-sky-600" />
+      {/* 6. Different Journeys, Same Care */}
+      <section className="bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-        <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
-          Different Ways To Explore
-        </span>
-      </div>
+          {/* Section Header */}
+          <div className="max-w-3xl mb-12">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="h-px w-10 bg-sky-600" />
 
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-slate-900">
-        Not everyone comes for K2. Both journeys matter.
-      </h2>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+                Different Ways To Explore
+              </span>
+            </div>
 
-      <p className="mt-5 max-w-3xl text-base sm:text-lg leading-8 text-slate-600">
-        K2 Base Camp is our most well-known trek. But not everyone has two
-        weeks or wants to sleep on a glacier. Some people have five days.
-        Some are traveling with their family. Some just want to sit on the
-        Deosai plateau and watch the mountains change colour. We plan all
-        of those journeys with the same care.
-      </p>
-    </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-slate-900">
+              Not everyone comes for K2. Both journeys matter.
+            </h2>
 
-    {/* Journey Types */}
-    <div className="grid grid-cols-1 md:grid-cols-3 border-t border-slate-200">
+            <p className="mt-5 max-w-3xl text-base sm:text-lg leading-8 text-slate-600">
+              K2 Base Camp is our most well-known trek. But not everyone has two
+              weeks or wants to sleep on a glacier. Some people have five days.
+              Some are traveling with their family. Some just want to sit on the
+              Deosai plateau and watch the mountains change colour. We plan all
+              of those journeys with the same care.
+            </p>
+          </div>
 
-      {/* Column 1 */}
-      <div className="py-8 md:py-10 md:pr-8 lg:pr-10 md:border-r border-slate-200">
-        <span className="text-sm font-semibold text-sky-600">
-          01
-        </span>
+          {/* Journey Types */}
+          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-slate-200">
 
-        <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-          The big treks.
-        </h3>
+            {/* Column 1 */}
+            <div className="py-8 md:py-10 md:pr-8 lg:pr-10 md:border-r border-slate-200">
+              <span className="text-sm font-semibold text-sky-600">
+                01
+              </span>
 
-        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
-          K2 Base Camp, Nanga Parbat, Concordia, Biafo and Hispar. These are
-          the routes that take weeks and stay with you for years. We guide
-          them with experienced local teams who have done them many times
-          before.
-        </p>
-      </div>
+              <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                The big treks.
+              </h3>
 
-      {/* Column 2 */}
-      <div className="py-8 md:py-10 md:px-8 lg:px-10 md:border-r border-slate-200">
-        <span className="text-sm font-semibold text-sky-600">
-          02
-        </span>
+              <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+                K2 Base Camp, Nanga Parbat, Concordia, Biafo and Hispar. These are
+                the routes that take weeks and stay with you for years. We guide
+                them with experienced local teams who have done them many times
+                before.
+              </p>
+            </div>
 
-        <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-          The quieter places.
-        </h3>
+            {/* Column 2 */}
+            <div className="py-8 md:py-10 md:px-8 lg:px-10 md:border-r border-slate-200">
+              <span className="text-sm font-semibold text-sky-600">
+                02
+              </span>
 
-        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
-          Deosai at 4,000 metres. Kachura Lakes an hour from Skardu. Basho
-          Meadows. Shigar Fort. These places rarely appear on international
-          travel lists. They should. We take you there too.
-        </p>
-      </div>
+              <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                The quieter places.
+              </h3>
 
-      {/* Column 3 */}
-      <div className="py-8 md:py-10 md:pl-8 lg:pl-10">
-        <span className="text-sm font-semibold text-sky-600">
-          03
-        </span>
+              <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+                Deosai at 4,000 metres. Kachura Lakes an hour from Skardu. Basho
+                Meadows. Shigar Fort. These places rarely appear on international
+                travel lists. They should. We take you there too.
+              </p>
+            </div>
 
-        <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-          Your own journey.
-        </h3>
+            {/* Column 3 */}
+            <div className="py-8 md:py-10 md:pl-8 lg:pl-10">
+              <span className="text-sm font-semibold text-sky-600">
+                03
+              </span>
 
-        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
-          Different dates, a specific interest, traveling with children, a
-          photography goal, not much time. Tell us what you have in mind and
-          we will plan something that fits it properly.
-        </p>
-      </div>
+              <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                Your own journey.
+              </h3>
 
-    </div>
-  </div>
-</section>
- 
+              <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+                Different dates, a specific interest, traveling with children, a
+                photography goal, not much time. Tell us what you have in mind and
+                we will plan something that fits it properly.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
 
       {/* 7. Travel Styles */}
       <TravelStylesSection onSelectStyle={handleStyleSelect} />

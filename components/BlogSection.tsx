@@ -1,160 +1,232 @@
+
 'use client';
 
-import React, { useState } from 'react';
-import { Calendar, User, Clock, ArrowRight, BookOpen, X } from 'lucide-react';
+import React from 'react';
+import {
+  Calendar,
+  Clock,
+  ArrowUpRight,
+  BookOpen,
+  Sparkles,
+} from 'lucide-react';
 import { BLOG_POSTS } from '@/data/treks';
 import { useRouter } from 'next/navigation';
 
-
 export const BlogSection: React.FC = () => {
-  const [selectedPost, setSelectedPost] = useState<typeof BLOG_POSTS[0] | null>(null);
   const router = useRouter();
 
-
   return (
-    <section id="blog-section" className="py-14 bg-slate-50 border-b border-slate-200">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div>
-            <span className="text-[13px] font-bold uppercase tracking-wider text-sky-600">
-              Expert Insights & Advice
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
-              Latest Trekking Guides
+    <section
+      id="blog-section"
+      className="relative overflow-hidden border-b border-slate-200 bg-white py-16 sm:py-20 lg:py-24"
+    >
+      {/* Background atmosphere */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -right-40 top-0 h-96 w-96 rounded-full bg-sky-100/60 blur-3xl" />
+        <div className="absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-slate-100 blur-3xl" />
+
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* =====================================================
+            HEADER
+        ====================================================== */}
+        <div className="mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
+
+          <div className="max-w-3xl">
+
+            {/* Eyebrow */}
+            <div className="mb-4 flex items-center gap-3">
+              <span className="h-px w-10 bg-sky-500" />
+
+              <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-sky-600">
+                <BookOpen className="h-3.5 w-3.5" />
+                Field Notes
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Prepare for the
+              <span className="block text-sky-600">
+                Karakoram.
+              </span>
             </h2>
-            <p className="text-[16px] text-slate-600 mt-1">
-              Essential advice for trekking K2 Base Camp, obtaining visas, and mountain safety in Pakistan.
+
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+              Practical guides, route knowledge and expedition advice to help
+              you prepare properly for trekking in Pakistan's high mountains.
             </p>
           </div>
 
-          <div className="hidden sm:block">
-            <span className="text-[13px] font-bold text-sky-700 bg-sky-100 px-3 py-1.5 border border-sky-200">
-              Updated for 2026 Season
-            </span>
+          {/* Season badge */}
+          <div className="flex items-center gap-3 self-start border border-slate-200 bg-white px-4 py-3 shadow-sm lg:self-auto">
+            <div className="flex h-9 w-9 items-center justify-center bg-sky-50">
+              <Sparkles className="h-4 w-4 text-sky-600" />
+            </div>
+
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-sky-600">
+                Expedition Journal
+              </div>
+
+              <div className="mt-0.5 text-xs font-medium text-slate-600">
+                Updated for the 2026 season
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* 3-Column Blog Grid (Matching screenshot layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {BLOG_POSTS.map((post) => (
+        {/* =====================================================
+            BLOG GRID
+        ====================================================== */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {BLOG_POSTS.map((post, index) => (
             <article
               key={post.id}
-              className="bg-white  flex flex-col justify-between group hover:border-sky-500 transition-colors"
+              className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-slate-200/60"
             >
-              <div>
-                <div className="relative h-[240px] md:h-[300px] overflow-hidden bg-slate-100">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 left-3 bg-sky-600 text-white text-[11px] font-bold px-2 py-0.5">
+              {/* Image */}
+              <button
+                type="button"
+                onClick={() => router.push(`/blog/${post.slug}`)}
+                className="relative block h-[230px] w-full overflow-hidden bg-slate-100 text-left sm:h-[250px]"
+                aria-label={`Read ${post.title}`}
+              >
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  referrerPolicy="no-referrer"
+                />
+
+                {/* Image overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-70" />
+
+                {/* Category */}
+                <div className="absolute left-4 top-4">
+                  <span className="inline-flex items-center bg-sky-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white shadow-sm">
                     {post.category}
-                  </div>
+                  </span>
                 </div>
 
-                <div className="p-5">
-                  <div className="flex items-center gap-3 text-[11px] text-slate-500 mb-2">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3 text-sky-600" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-sky-600" />
-                      {post.readTime}
-                    </span>
-                  </div>
+                {/* Read icon */}
+                <div className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center border border-white/30 bg-slate-950/50 text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-sky-500 group-hover:text-slate-950">
+                  <ArrowUpRight className="h-4 w-4" />
+                </div>
+              </button>
 
-                  <h3
-                    onClick={() => router.push(`/blog/${post.slug}`)}
-                    className="text-[16px] font-bold text-slate-900 line-clamp-2 hover:text-sky-600 cursor-pointer transition-colors"
-                  >
+              {/* Content */}
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+
+                {/* Meta */}
+                <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] font-medium uppercase tracking-wider text-slate-400">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar className="h-3 w-3 text-sky-500" />
+                    {post.date}
+                  </span>
+
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="h-3 w-3 text-sky-500" />
+                    {post.readTime}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <button
+                  type="button"
+                  onClick={() => router.push(`/blog/${post.slug}`)}
+                  className="text-left"
+                >
+                  <h3 className="line-clamp-2 text-lg font-bold leading-7 tracking-tight text-slate-900 transition-colors duration-200 group-hover:text-sky-600">
                     {post.title}
                   </h3>
-
-                  <p className="text-[13px] text-slate-600 mt-2 line-clamp-3 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-5 pt-0">
-                <button
-                  onClick={() => router.push(`/blog/${post.slug}`)}
-                  className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[14px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
-                >
-                  <span>Read Full Guide</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
+
+                {/* Excerpt */}
+                <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-500">
+                  {post.excerpt}
+                </p>
+
+                {/* Bottom action */}
+                <div className="mt-auto pt-6">
+                  <div className="border-t border-slate-100 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => router.push(`/blog/${post.slug}`)}
+                      className="flex w-full items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-slate-700 transition-colors hover:text-sky-600"
+                    >
+                      <span>Read Field Guide</span>
+
+                      <span className="flex h-8 w-8 items-center justify-center border border-slate-200 transition-all duration-300 group-hover:border-sky-300 group-hover:bg-sky-50">
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </article>
           ))}
         </div>
-      </div>
 
-      {/* Article Detail Modal */}
-      {selectedPost && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">
-          <div className="bg-white border-2 border-sky-500 max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
-            <button
-              onClick={() => setSelectedPost(null)}
-              className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[13px]"
-              aria-label="Close article modal"
-            >
-              <X className="w-4 h-4" />
-            </button>
+        {/* =====================================================
+            BOTTOM CTA
+        ====================================================== */}
+        <div className="mt-10 flex flex-col items-center justify-between gap-5 border border-slate-200 bg-slate-50 px-5 py-5 sm:flex-row sm:px-6">
 
-            <div className="mb-4">
-              <span className="text-[13px] font-bold text-sky-600 uppercase tracking-wider bg-sky-50 px-2 py-0.5 border border-sky-200">
-                {selectedPost.category}
-              </span>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 mt-2">
-                {selectedPost.title}
-              </h2>
-              <div className="flex flex-wrap items-center gap-4 text-[14px] text-slate-500 mt-2 pb-3 border-b border-slate-200">
-                <span>By <strong>{selectedPost.author}</strong> ({selectedPost.authorRole})</span>
-                <span>• {selectedPost.date}</span>
-                <span>• {selectedPost.readTime}</span>
-              </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden h-10 w-10 items-center justify-center border border-sky-200 bg-white sm:flex">
+              <MountainIcon />
             </div>
 
-            <div className="relative h-60 mb-6 bg-slate-100  overflow-hidden">
-              <img
-                src={selectedPost.image}
-                alt={selectedPost.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <div>
+              <p className="text-sm font-semibold text-slate-900">
+                Planning your first Karakoram trek?
+              </p>
 
-            <div className="space-y-4 text-[16px] text-slate-700 leading-relaxed">
-              {selectedPost.content.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-
-              <div className="bg-sky-50 border border-sky-200 p-4 mt-6">
-                <h4 className="text-[13px] font-bold uppercase tracking-wider text-sky-800 mb-1">
-                  Need Personalized Advice?
-                </h4>
-                <p className="text-[13px] text-slate-700">
-                  Our licensed mountain expedition leaders can review your training routine and gear checklist over a free WhatsApp video consultation.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-200 flex justify-end">
-              <button
-                onClick={() => setSelectedPost(null)}
-                className="bg-slate-900 text-white font-bold text-[14px] px-4 py-2 hover:bg-slate-800 transition-colors"
-              >
-                Close Guide
-              </button>
+              <p className="mt-0.5 text-xs text-slate-500">
+                Start with the practical knowledge you need before you go.
+              </p>
             </div>
           </div>
+
+          <button
+            type="button"
+            onClick={() => router.push('/blog')}
+            className="flex min-h-[42px] w-full items-center justify-center gap-2 border border-slate-900 bg-slate-900 px-5 text-xs font-bold uppercase tracking-wider text-white transition-all duration-300 hover:border-sky-500 hover:bg-sky-500 hover:text-slate-950 sm:w-auto"
+          >
+            <span>Explore All Guides</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </button>
         </div>
-      )}
+      </div>
     </section>
   );
 };
+
+/* Small decorative mountain mark */
+const MountainIcon: React.FC = () => (
+  <svg
+    viewBox="0 0 24 24"
+    className="h-5 w-5 text-sky-600"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="m3 20 6.5-11 3.2 5 2-3L21 20H3Z" />
+    <path d="m9.5 9 1.5 2.5" />
+  </svg>
+);

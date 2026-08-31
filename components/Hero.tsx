@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-6">
         <div className="max-w-4xl">
 
           {/* Trust Badge */}
@@ -81,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
           </div>
 
           {/* Headline */}
-          <h1 className="max-w-4xl text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] text-white">
+          <h1 className="max-w-4xl text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase tracking-tight leading-[1.05] text-white">
             Trek deeper into the
             <span className="block text-sky-400">
               Karakoram Mountains.

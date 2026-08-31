@@ -14,7 +14,7 @@ export const BRAND_INFO = {
   originCity: "Skardu, Gilgit-Baltistan",
   licenseNo: "DTS License: ID-2891 (Govt. of Pakistan)",
   phone: "+92 300 9876543",
-  email: "hello@trekkarakoram.com",
+  email: "info@trekkarakoram.com",
   storyTitle: "Born from the Heart of the Karakoram",
   story: [
     "In the far reaches of northern Pakistan, where the mighty Karakoram Range meets the sky, Trek Karakoram was born not as a company, but as a calling.",

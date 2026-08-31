@@ -1,4 +1,4 @@
- 
+
 'use client';
 
 import React from 'react';
@@ -76,20 +76,18 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
                 rounded-md border p-5 text-left
                 transition-all duration-200
                 cursor-pointer
-                ${
-                  idx === 0
-                    ? 'border-sky-600 bg-sky-600 text-white hover:bg-sky-700'
-                    : 'border-slate-200 bg-white text-slate-900 hover:-translate-y-0.5 hover:border-sky-400 hover:shadow-md'
+                ${idx === 0
+                  ? 'border-sky-600 bg-sky-600 text-white hover:bg-sky-700'
+                  : 'border-slate-200 bg-white text-slate-900 hover:-translate-y-0.5 hover:border-sky-400 hover:shadow-md'
                 }
               `}
             >
               <div
                 className={`
                   flex h-10 w-10 items-center justify-center rounded-md
-                  ${
-                    idx === 0
-                      ? 'bg-sky-700/60 text-sky-100'
-                      : 'bg-slate-50 text-sky-600 group-hover:bg-sky-50'
+                  ${idx === 0
+                    ? 'bg-sky-700/60 text-sky-100'
+                    : 'bg-slate-50 text-sky-600 group-hover:bg-sky-50'
                   }
                 `}
               >
@@ -100,10 +98,9 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
                 <h3
                   className={`
                     text-sm sm:text-base font-bold leading-tight
-                    ${
-                      idx === 0
-                        ? 'text-white'
-                        : 'text-slate-900 group-hover:text-sky-700'
+                    ${idx === 0
+                      ? 'text-white'
+                      : 'text-slate-900 group-hover:text-sky-700'
                     }
                   `}
                 >
@@ -113,10 +110,9 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
                 <p
                   className={`
                     mt-1.5 text-xs
-                    ${
-                      idx === 0
-                        ? 'text-sky-100'
-                        : 'text-slate-500'
+                    ${idx === 0
+                      ? 'text-sky-100'
+                      : 'text-slate-500'
                     }
                   `}
                 >
@@ -140,4 +136,4 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
     </section>
   );
 };
- 
+

@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -10,22 +11,20 @@ import {
   ShieldCheck,
   Mountain,
   ChevronRight,
-  ArrowLeft,
   Users,
   Calendar,
   MapPin,
   Clock,
   Award,
-  Sparkles
+  Sparkles,
 } from 'lucide-react';
-import { TREK_PACKAGES, BRAND_INFO } from '@/data/treks';
+import { TREK_PACKAGES } from '@/data/treks';
 
 // Component that uses useSearchParams - wrapped in Suspense
 function BookingForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Get query parameters
   const trekTitleParam = searchParams.get('trek') || '';
   const groupSizeParam = parseInt(searchParams.get('group') || '2');
   const notesParam = searchParams.get('notes') || '';
@@ -34,218 +33,399 @@ function BookingForm() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
-  const [selectedTrek, setSelectedTrek] = useState(trekTitleParam || TREK_PACKAGES[0]?.title || '');
+  const [selectedTrek, setSelectedTrek] = useState(
+    trekTitleParam || TREK_PACKAGES[0]?.title || ''
+  );
   const [groupCount, setGroupCount] = useState(groupSizeParam || 2);
   const [departureMonth, setDepartureMonth] = useState('July 2026');
   const [userNotes, setUserNotes] = useState(notesParam || '');
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Find selected trek details
-  const selectedTrekDetails = TREK_PACKAGES.find(t => t.title === selectedTrek);
+  const selectedTrekDetails = TREK_PACKAGES.find(
+    (t) => t.title === selectedTrek
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setSubmitted(true);
     setIsLoading(false);
   };
 
   const whatsappInquiryUrl = `https://wa.me/923009876543?text=${encodeURIComponent(
-    `Hello Karakoram Expeditions! Booking inquiry from ${name || 'Treker'}. Trek: ${selectedTrek}, Group: ${groupCount}, Month: ${departureMonth}, Country: ${country || 'International'}, Notes: ${userNotes || 'None'}`
+    `Hello Trek Karakoram! Booking inquiry from ${
+      name || 'Treker'
+    }. Trek: ${selectedTrek}, Group: ${groupCount}, Month: ${departureMonth}, Country: ${
+      country || 'International'
+    }, Notes: ${userNotes || 'None'}`
   )}`;
 
+  /*
+   * ----------------------------------------
+   * SUCCESS STATE
+   * ----------------------------------------
+   */
   if (submitted) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-        <div className="bg-white max-w-2xl w-full p-8 sm:p-12 text-center">
-          <div className="w-20 h-20 bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center mb-6">
-            <CheckCircle2 className="w-10 h-10" />
-          </div>
+      <div className="min-h-screen bg-slate-50">
+        {/* Top Accent */}
+        <div className="h-1 bg-sky-600" />
 
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
-            Reservation Request Confirmed!
-          </h1>
-
-          <p className="text-[15px] text-slate-600 max-w-lg mx-auto leading-relaxed">
-            Thank you <strong className="text-slate-900">{name}</strong>. We have registered your reservation for{' '}
-            <strong className="text-slate-900">{selectedTrek}</strong> ({groupCount} persons in {departureMonth}).
-          </p>
-
-          <div className="mt-4 p-4 bg-sky-50 border border-sky-200 text-left text-[14px] text-slate-700">
-            <p className="font-medium text-sky-900 mb-1">📬 What happens next?</p>
-            <p>Our Skardu operations team will email your official Letter of Invitation (LOI) to <strong>{email}</strong> within 24 hours.</p>
-          </div>
-
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+          {/* Breadcrumb */}
+          <div className="mb-8 flex flex-wrap items-center gap-2 text-[13px] text-slate-500">
             <Link
               href="/"
-              className="bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-3 transition-colors"
+              className="transition-colors hover:text-sky-600"
             >
-              Return to Home
+              Home
             </Link>
-            <a
-              href={whatsappInquiryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-8 py-3 transition-colors flex items-center justify-center gap-2"
+
+            <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+
+            <Link
+              href="/treks"
+              className="transition-colors hover:text-sky-600"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>Chat on WhatsApp</span>
-            </a>
+              Trekking Packages
+            </Link>
+
+            <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+
+            <span className="font-semibold text-slate-900">
+              Reservation Confirmed
+            </span>
+          </div>
+
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+            {/* Success Header */}
+            <div className="relative overflow-hidden bg-slate-950 px-6 py-10 text-white sm:px-10">
+              {/* Decorative circles matching homepage visual language */}
+              <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full border border-sky-400/10" />
+              <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-sky-400/10" />
+
+              <div className="relative flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-emerald-500">
+                  <CheckCircle2 className="h-7 w-7 text-white" />
+                </div>
+
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-400">
+                    Trek Karakoram
+                  </span>
+
+                  <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
+                    Reservation Request Confirmed
+                  </h1>
+                </div>
+              </div>
+            </div>
+
+            {/* Success Content */}
+            <div className="p-6 sm:p-10">
+              <p className="text-[15px] leading-8 text-slate-600">
+                Thank you{' '}
+                <strong className="text-slate-900">{name}</strong>. We have
+                registered your reservation request for{' '}
+                <strong className="text-slate-900">{selectedTrek}</strong>{' '}
+                ({groupCount} {groupCount === 1 ? 'person' : 'people'}) in{' '}
+                <strong className="text-slate-900">{departureMonth}</strong>.
+              </p>
+
+              <div className="mt-7 rounded-md border border-sky-200 bg-sky-50 p-5">
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-sky-600">
+                    <Send className="h-4 w-4 text-white" />
+                  </div>
+
+                  <div>
+                    <h2 className="text-[12px] font-bold uppercase tracking-[0.16em] text-sky-950">
+                      What happens next?
+                    </h2>
+
+                    <p className="mt-2 text-[13px] leading-7 text-slate-600">
+                      Our Skardu operations team will contact you regarding
+                      your reservation and provide the next steps for your
+                      expedition.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/"
+                  className="flex-1 rounded-md bg-slate-950 px-6 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
+                >
+                  Return to Home
+                </Link>
+
+                <a
+                  href={whatsappInquiryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 rounded-md bg-emerald-600 px-6 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-500"
+                >
+                  <span className="inline-flex items-center justify-center gap-2">
+                    <MessageSquare className="h-4 w-4" />
+                    Chat on WhatsApp
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
+  /*
+   * ----------------------------------------
+   * BOOKING PAGE
+   * ----------------------------------------
+   */
   return (
-    <div className="min-h-screen bg-slate-50 py-8 sm:py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-slate-50">
+      {/* Top Accent */}
+      <div className="h-1 bg-sky-600" />
+
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-6 flex-wrap">
-          <Link href="/" className="hover:text-sky-600">Home</Link>
-          <ChevronRight className="w-3 h-3 text-slate-400" />
-          <Link href="/treks" className="hover:text-sky-600">Trekking Packages</Link>
-          <ChevronRight className="w-3 h-3 text-slate-400" />
-          <span className="font-semibold text-slate-900">Book Expedition</span>
+        <div className="mb-7 flex flex-wrap items-center gap-2 text-[13px] text-slate-500">
+          <Link
+            href="/"
+            className="transition-colors hover:text-sky-600"
+          >
+            Home
+          </Link>
+
+          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+
+          <Link
+            href="/treks"
+            className="transition-colors hover:text-sky-600"
+          >
+            Trekking Packages
+          </Link>
+
+          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+
+          <span className="font-semibold text-slate-900">
+            Book Expedition
+          </span>
         </div>
 
-        {/* Main Booking Card */}
-        <div className="bg-white border border-slate-200">
-          <div className="p-6 sm:p-8">
-            {/* Header */}
-            <div className="flex items-start justify-between gap-4 mb-6">
-              <div>
-                <div className="flex items-center gap-2 mb-2 flex-wrap">
-                  <span className="bg-sky-600 text-white text-[12px] font-bold px-3 py-1 uppercase tracking-wider">
-                    Expedition Reservation
-                  </span>
-                  <span className="text-[12px] text-emerald-700 font-bold flex items-center gap-1">
-                    <ShieldCheck className="w-4 h-4" />
-                    <span>Zero Booking Surcharges</span>
-                  </span>
-                </div>
+        {/* Page Header */}
+        <section className="mb-10">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="h-px w-10 bg-sky-600" />
 
-                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-                  Reserve Your Karakoram Trek
-                </h1>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+              Expedition Reservation
+            </span>
+          </div>
 
-                <p className="text-[14px] text-slate-600 mt-2 max-w-2xl leading-relaxed">
-                  Fill out your details below to receive your official Pakistan E-Visa Letter of Invitation (LOI),
-                  permit clearance paperwork, and detailed gear briefing.
-                </p>
-              </div>
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <h1 className="text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                Reserve Your Trek
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-[15px] leading-8 text-slate-600 sm:text-base">
+                Tell us about your trip and our Skardu team will help you
+                arrange your trekking experience, permits, transport and
+                expedition logistics.
+              </p>
             </div>
 
-            {/* Trek Summary Card */}
-            {selectedTrekDetails && (
-              <div className="mb-6 p-4 bg-sky-50 border border-sky-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <Link
+              href="/treks"
+              className="inline-flex shrink-0 items-center gap-2 self-start rounded-md border border-slate-300 bg-white px-5 py-3 text-[12px] font-bold uppercase tracking-[0.14em] text-slate-800 transition-all duration-200 hover:border-slate-400 hover:bg-slate-100 lg:self-end"
+            >
+              Browse Treks
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </section>
+
+        {/* Main Booking Card */}
+        <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+
+          {/* Selected Trek Summary */}
+          {selectedTrekDetails && (
+            <div className="border-b border-slate-200 bg-slate-50 px-5 py-6 sm:px-8 lg:px-10">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+
                 <div>
-                  <div className="flex items-center gap-2 text-sm text-slate-600">
-                    <Mountain className="w-4 h-4 text-sky-600" />
-                    <span className="font-medium text-slate-900">{selectedTrekDetails.title}</span>
+                  <div className="mb-2 flex items-center gap-2">
+                    <Mountain className="h-4 w-4 text-sky-600" />
+
+                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-600">
+                      Selected Expedition
+                    </span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-3 mt-1 text-xs text-slate-500">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
+
+                  <h2 className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
+                    {selectedTrekDetails.title}
+                  </h2>
+
+                  <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] text-slate-500">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="h-3.5 w-3.5 text-sky-600" />
                       {selectedTrekDetails.durationDays} Days
                     </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
+
+                    <span className="flex items-center gap-1.5">
+                      <MapPin className="h-3.5 w-3.5 text-sky-600" />
                       {selectedTrekDetails.region}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Award className="w-3 h-3" />
+
+                    <span className="flex items-center gap-1.5">
+                      <Award className="h-3.5 w-3.5 text-sky-600" />
                       {selectedTrekDetails.difficulty}
                     </span>
                   </div>
                 </div>
+
                 <Link
                   href={`/treks/${selectedTrekDetails.id}`}
-                  className="text-sm text-sky-600 hover:text-sky-700 font-medium flex items-center gap-1"
+                  className="inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-sky-600 transition-colors hover:text-sky-700"
                 >
-                  <span>View Trek Details</span>
-                  <ChevronRight className="w-3 h-3" />
+                  View Trek
+                  <ChevronRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
-            )}
+            </div>
+          )}
 
-            {/* Booking Form */}
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-9 p-5 sm:p-8 lg:p-10"
+          >
+
+            {/* Personal Information */}
+            <div>
+              <div className="mb-5 flex items-center gap-3 border-b border-slate-200 pb-4">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-sky-50 text-sky-600">
+                  <Users className="h-4 w-4" />
+                </div>
+
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
-                    Your Full Name *
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-600">
+                    Step 01
+                  </p>
+
+                  <h2 className="mt-0.5 text-[15px] font-bold uppercase tracking-wide text-slate-900">
+                    Your Details
+                  </h2>
+
+                  <p className="mt-0.5 text-[11px] text-slate-500">
+                    Tell us who will be joining the expedition.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                    Full Name *
                   </label>
+
                   <input
                     type="text"
                     required
                     placeholder="e.g. Marcus Vance"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none transition-colors"
+                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
+                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
                     Email Address *
                   </label>
+
                   <input
                     type="email"
                     required
                     placeholder="e.g. marcus@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none transition-colors"
+                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
+                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
                     WhatsApp / Phone *
                   </label>
+
                   <input
                     type="tel"
                     required
                     placeholder="+1 555 123 4567"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none transition-colors"
+                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
+                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
                     Country of Citizenship *
                   </label>
+
                   <input
                     type="text"
                     required
                     placeholder="e.g. USA, UK, Germany"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none transition-colors"
+                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                   />
                 </div>
               </div>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Expedition Details */}
+            <div>
+              <div className="mb-5 flex items-center gap-3 border-b border-slate-200 pb-4">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-sky-50 text-sky-600">
+                  <Mountain className="h-4 w-4" />
+                </div>
+
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-600">
+                    Step 02
+                  </p>
+
+                  <h2 className="mt-0.5 text-[15px] font-bold uppercase tracking-wide text-slate-900">
+                    Expedition Details
+                  </h2>
+
+                  <p className="mt-0.5 text-[11px] text-slate-500">
+                    Choose your trek, group size and preferred timing.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
                 <div className="sm:col-span-2">
-                  <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
+                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
                     Selected Trek
                   </label>
+
                   <select
                     value={selectedTrek}
                     onChange={(e) => setSelectedTrek(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none transition-colors"
+                    className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] font-semibold text-slate-900 outline-none transition-all duration-200 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                   >
                     {TREK_PACKAGES.map((t) => (
                       <option key={t.id} value={t.title}>
@@ -256,144 +436,239 @@ function BookingForm() {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
+                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
                     Group Size
                   </label>
+
                   <input
                     type="number"
                     min={1}
                     max={25}
                     value={groupCount}
                     onChange={(e) => setGroupCount(Number(e.target.value))}
-                    className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none transition-colors"
+                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
+              <div className="mt-5">
+                <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
                   Target Departure Month / Dates
                 </label>
+
                 <select
                   value={departureMonth}
                   onChange={(e) => setDepartureMonth(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] font-semibold text-slate-900 focus:border-sky-500 focus:outline-none transition-colors"
+                  className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] font-semibold text-slate-900 outline-none transition-all duration-200 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                 >
-                  <option value="June 2026">June 2026 (Early Summer)</option>
-                  <option value="July 2026">July 2026 (Peak Season)</option>
-                  <option value="August 2026">August 2026 (Peak Season)</option>
-                  <option value="September 2026">September 2026 (Autumn Clear Skies)</option>
-                  <option value="October 2026">October 2026 (Autumn Colors)</option>
-                  <option value="2027 Advance Dates">2027 Season - Advance Booking</option>
+                  <option value="June 2026">
+                    June 2026 (Early Summer)
+                  </option>
+
+                  <option value="July 2026">
+                    July 2026 (Peak Season)
+                  </option>
+
+                  <option value="August 2026">
+                    August 2026 (Peak Season)
+                  </option>
+
+                  <option value="September 2026">
+                    September 2026 (Autumn Clear Skies)
+                  </option>
+
+                  <option value="October 2026">
+                    October 2026 (Autumn Colors)
+                  </option>
+
+                  <option value="2027 Advance Dates">
+                    2027 Season - Advance Booking
+                  </option>
                 </select>
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-800 uppercase text-[12px] tracking-wider mb-1.5">
+              <div className="mt-5">
+                <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
                   Special Notes / Experience / Custom Requests
                 </label>
+
                 <textarea
-                  rows={3}
+                  rows={4}
                   placeholder="Previous high-altitude experience, dietary requirements, single tent preference, special requests..."
                   value={userNotes}
                   onChange={(e) => setUserNotes(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 p-3 text-[15px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none transition-colors resize-y"
+                  className="w-full resize-y rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                 />
               </div>
+            </div>
 
-              {/* Trust Signals */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="bg-slate-50 p-3 text-center border border-slate-200">
-                  <ShieldCheck className="w-5 h-5 text-sky-600 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600 font-medium uppercase">Govt. Licensed</div>
+            {/* Trust / Information */}
+            <div className="grid grid-cols-2 gap-3 border-y border-slate-200 py-6 sm:grid-cols-4">
+              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+                <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-sky-600" />
+
+                <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  Transparent
                 </div>
-                <div className="bg-slate-50 p-3 text-center border border-slate-200">
-                  <Users className="w-5 h-5 text-sky-600 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600 font-medium uppercase">Max 8 Trekkers</div>
-                </div>
-                <div className="bg-slate-50 p-3 text-center border border-slate-200">
-                  <Clock className="w-5 h-5 text-sky-600 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600 font-medium uppercase">24/7 Support</div>
-                </div>
-                <div className="bg-slate-50 p-3 text-center border border-slate-200">
-                  <Sparkles className="w-5 h-5 text-sky-600 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600 font-medium uppercase">100% Transparency</div>
+
+                <div className="mt-1 text-[10px] leading-relaxed text-slate-500">
+                  Clear pricing
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-4 flex flex-col sm:flex-row gap-3">
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="flex-1 bg-sky-600 hover:bg-sky-500 disabled:bg-sky-400 text-white font-medium py-3.5 px-6 text-[15px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                >
-                  {isLoading ? (
-                    <>
-                      <span className="animate-spin">⏳</span>
-                      <span>Submitting...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      <span>Submit Reservation Request</span>
-                    </>
-                  )}
-                </button>
+              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+                <Users className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
-                <a
-                  href={whatsappInquiryUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3.5 px-6 text-[15px] flex items-center justify-center gap-2 transition-colors"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Fast WhatsApp Direct</span>
-                </a>
+                <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  Small Groups
+                </div>
+
+                <div className="mt-1 text-[10px] leading-relaxed text-slate-500">
+                  Personal attention
+                </div>
               </div>
 
-              <div className="text-center text-[11px] text-slate-400 pt-2">
-                By submitting, you agree to our terms of service and privacy policy.
-                Your data is secure and will only be used for your expedition booking.
+              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+                <Clock className="mx-auto mb-2 h-5 w-5 text-sky-600" />
+
+                <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  Support
+                </div>
+
+                <div className="mt-1 text-[10px] leading-relaxed text-slate-500">
+                  Expedition assistance
+                </div>
               </div>
-            </form>
-          </div>
+
+              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+                <Sparkles className="mx-auto mb-2 h-5 w-5 text-sky-600" />
+
+                <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  Local Team
+                </div>
+
+                <div className="mt-1 text-[10px] leading-relaxed text-slate-500">
+                  Gilgit-Baltistan based
+                </div>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col gap-3 pt-1 sm:flex-row">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="flex min-h-[50px] flex-1 items-center justify-center gap-2 rounded-md bg-sky-600 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-md disabled:cursor-not-allowed disabled:bg-sky-400"
+              >
+                {isLoading ? (
+                  <>
+                    <span className="animate-spin">⏳</span>
+                    <span>Submitting...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" />
+                    <span>Submit Reservation Request</span>
+                  </>
+                )}
+              </button>
+
+              <a
+                href={whatsappInquiryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex min-h-[50px] items-center justify-center gap-2 rounded-md bg-emerald-600 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-md"
+              >
+                <MessageSquare className="h-4 w-4" />
+                <span>WhatsApp Direct</span>
+              </a>
+            </div>
+
+            {/* Disclaimer */}
+            <p className="text-center text-[10px] leading-relaxed text-slate-400">
+              By submitting this form, you agree to our terms of service and
+              privacy policy. Your information will only be used to respond
+              to your expedition enquiry.
+            </p>
+          </form>
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="bg-white p-4 border border-slate-200 text-center">
-            <div className="text-2xl mb-1">📄</div>
-            <div className="text-[12px] font-bold text-slate-900 uppercase">Letter of Invitation</div>
-            <div className="text-[11px] text-slate-500">Official LOI for Pakistan E-Visa</div>
+        {/* Additional Information */}
+        <section className="mt-12">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-px w-10 bg-sky-600" />
+
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+              What Happens Next
+            </span>
           </div>
-          <div className="bg-white p-4 border border-slate-200 text-center">
-            <div className="text-2xl mb-1">🏔️</div>
-            <div className="text-[12px] font-bold text-slate-900 uppercase">Permit Clearance</div>
-            <div className="text-[11px] text-slate-500">CKNP & Gilgit-Baltistan Permits</div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="rounded-md border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+                <Send className="h-4 w-4 text-sky-600" />
+              </div>
+
+              <h3 className="text-[12px] font-bold uppercase tracking-[0.12em] text-slate-900">
+                Booking Confirmation
+              </h3>
+
+              <p className="mt-2 text-[12px] leading-6 text-slate-500">
+                Receive confirmation and next steps from our expedition team.
+              </p>
+            </div>
+
+            <div className="rounded-md border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+                <Mountain className="h-4 w-4 text-sky-600" />
+              </div>
+
+              <h3 className="text-[12px] font-bold uppercase tracking-[0.12em] text-slate-900">
+                Trek Preparation
+              </h3>
+
+              <p className="mt-2 text-[12px] leading-6 text-slate-500">
+                Get itinerary information, preparation guidance and logistics
+                details.
+              </p>
+            </div>
+
+            <div className="rounded-md border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+                <MessageSquare className="h-4 w-4 text-sky-600" />
+              </div>
+
+              <h3 className="text-[12px] font-bold uppercase tracking-[0.12em] text-slate-900">
+                Direct Communication
+              </h3>
+
+              <p className="mt-2 text-[12px] leading-6 text-slate-500">
+                Have questions? Contact the team directly through WhatsApp.
+              </p>
+            </div>
           </div>
-          <div className="bg-white p-4 border border-slate-200 text-center">
-            <div className="text-2xl mb-1">🎒</div>
-            <div className="text-[12px] font-bold text-slate-900 uppercase">Gear Briefing</div>
-            <div className="text-[11px] text-slate-500">Complete equipment checklist</div>
-          </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
 
 // Main export - wraps the form in Suspense
 export default function BookingPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-600 mx-auto"></div>
-          <p className="mt-4 text-slate-600">Loading booking form...</p>
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-slate-50">
+          <div className="text-center">
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-slate-200 border-t-sky-600" />
+
+            <p className="mt-4 text-[13px] font-medium text-slate-500">
+              Loading booking form...
+            </p>
+          </div>
         </div>
-      </div>
-    }>
+      }
+    >
       <BookingForm />
     </Suspense>
   );

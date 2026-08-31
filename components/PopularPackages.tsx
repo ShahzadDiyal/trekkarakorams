@@ -132,11 +132,10 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
                 <button
                   key={tab.label}
                   onClick={() => onFilterChange(tab.value)}
-                  className={`rounded-md border px-4 py-2 text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                    isActive
+                  className={`rounded-md border px-4 py-2 text-sm font-semibold transition-all duration-200 cursor-pointer ${isActive
                       ? 'border-sky-600 bg-sky-600 text-white shadow-sm'
                       : 'border-slate-200 bg-white text-slate-700 hover:border-sky-400 hover:text-sky-600'
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>

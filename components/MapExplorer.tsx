@@ -1,8 +1,8 @@
+
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Mountain, Compass, Info, ArrowRight, Eye } from 'lucide-react';
-import { TrekPackage } from '@/types';
+import { Mountain, ArrowRight, MapPin } from 'lucide-react';
 
 interface Waypoint {
   id: string;
@@ -23,12 +23,12 @@ const WAYPOINTS: Waypoint[] = [
     name: 'K2 Summit & Base Camp',
     region: 'Central Karakoram',
     altitude: '5,150m (BC) / 8,611m',
-    desc: 'The Savage Mountain the second-highest and most demanding peak on Earth.',
+    desc: 'The Savage Mountain, the second-highest and most demanding peak on Earth.',
     lat: 35.88,
     lng: 76.51,
     highlight: 'Crown of Karakoram, Godwin-Austen Glacier',
     matchedTrekId: 'k2-basecamp-gondogoro-la',
-    type: 'peak'
+    type: 'peak',
   },
   {
     id: 'concordia',
@@ -40,7 +40,7 @@ const WAYPOINTS: Waypoint[] = [
     lng: 76.45,
     highlight: 'Front row views of K2, Broad Peak, Gasherbrum I-IV',
     matchedTrekId: 'k2-basecamp-classic',
-    type: 'camp'
+    type: 'camp',
   },
   {
     id: 'gondogoro-la',
@@ -52,7 +52,7 @@ const WAYPOINTS: Waypoint[] = [
     lng: 76.42,
     highlight: 'Fixed rope alpine crossing with crampons into Hushe',
     matchedTrekId: 'k2-basecamp-gondogoro-la',
-    type: 'pass'
+    type: 'pass',
   },
   {
     id: 'trango',
@@ -64,7 +64,7 @@ const WAYPOINTS: Waypoint[] = [
     lng: 76.15,
     highlight: 'Great Trango & Nameless Tower',
     matchedTrekId: 'k2-basecamp-classic',
-    type: 'peak'
+    type: 'peak',
   },
   {
     id: 'snow-lake',
@@ -76,7 +76,7 @@ const WAYPOINTS: Waypoint[] = [
     lng: 75.85,
     highlight: 'Hispar La pass (5,151m) linking Baltistan to Hunza',
     matchedTrekId: 'snow-lake-biafo-hispar',
-    type: 'glacier'
+    type: 'glacier',
   },
   {
     id: 'nanga-parbat',
@@ -88,7 +88,7 @@ const WAYPOINTS: Waypoint[] = [
     lng: 74.58,
     highlight: 'Fairy Meadows pine forests & Raikot Face Base Camp',
     matchedTrekId: 'fairy-meadows-nanga-parbat',
-    type: 'peak'
+    type: 'peak',
   },
   {
     id: 'rakaposhi',
@@ -100,7 +100,7 @@ const WAYPOINTS: Waypoint[] = [
     lng: 74.49,
     highlight: 'Tagafari Glacier Camp & Diran Base Camp',
     matchedTrekId: 'rakaposhi-diran-base-camp',
-    type: 'peak'
+    type: 'peak',
   },
   {
     id: 'deosai',
@@ -112,124 +112,207 @@ const WAYPOINTS: Waypoint[] = [
     lng: 75.48,
     highlight: 'Sheosar Lake & brown bear wilderness sanctuary',
     matchedTrekId: 'deosai-plains-burzil',
-    type: 'camp'
-  }
+    type: 'camp',
+  },
 ];
 
 interface MapExplorerProps {
   onSelectTrekById: (trekId: string) => void;
 }
 
-export const MapExplorer: React.FC<MapExplorerProps> = ({ onSelectTrekById }) => {
+export const MapExplorer: React.FC<MapExplorerProps> = ({
+  onSelectTrekById,
+}) => {
   const [activeWaypoint, setActiveWaypoint] = useState<Waypoint>(WAYPOINTS[0]);
 
   return (
-    <section id="interactive-map-section" className="py-14 bg-slate-900 text-white border-b border-slate-800">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <div className="max-w-2xl mb-8">
-          <span className="text-[13px] font-bold uppercase tracking-wider text-sky-400">
-            Interactive Route Explorer
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-tight mt-1">
-            Karakoram & Himalayan Peaks
+    <section
+      id="interactive-map-section"
+      className="border-b border-slate-800 bg-slate-950 py-16 sm:py-20 lg:py-24 text-white"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* Section Header */}
+        <div className="mb-10 max-w-3xl sm:mb-12">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="h-px w-8 bg-sky-400" />
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-sky-400">
+              Route Explorer
+            </span>
+          </div>
+
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-[42px]">
+            Explore the Karakoram & Himalayan Peaks
           </h2>
-          <p className="text-[16px] text-slate-300 mt-1">
-            Explore famous landmarks across Gilgit-Baltistan and discover associated trekking expeditions.
+
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base">
+            Discover legendary peaks, glaciers and high-altitude passes across
+            Gilgit-Baltistan, then explore the trekking expedition connected
+            to each destination.
           </p>
         </div>
 
-        {/* Map Explorer Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Waypoints List / Buttons (5 cols) */}
-          <div className="lg:col-span-5 space-y-2 overflow-y-auto pr-1">
-            {WAYPOINTS.map((wp) => {
-              const isSelected = activeWaypoint.id === wp.id;
-              return (
-                <div
-                  key={wp.id}
-                  onClick={() => setActiveWaypoint(wp)}
-                  className={`p-3.5 transition-all cursor-pointer ${
-                    isSelected
-                      ? 'bg-sky-950 border border-sky-400 text-white'
-                      : 'bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:border-slate-500'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className={`p-1.5 ${isSelected ? 'bg-sky-500 text-slate-950' : 'bg-slate-700 text-sky-400'}`}>
-                        <Mountain className="w-3.5 h-3.5" />
-                      </div>
-                      <span className="font-bold text-[14px] sm:text-[16px] text-white">
-                        {wp.name}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-bold text-sky-300 bg-sky-900/60 px-2 py-0.5 ">
-                      {wp.altitude}
-                    </span>
-                  </div>
-                  <p className="text-[13px] text-slate-400 mt-1 ">
-                    {wp.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+        {/* Explorer */}
+        <div className="grid gap-5 lg:grid-cols-12 lg:gap-6">
 
-          {/* Active Detail Spotlight Card (7 cols) */}
-          <div className="lg:col-span-7 bg-slate-950 p-5 sm:p-7">
-            <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
-              <div className="flex items-center gap-2">
-                <span className="bg-sky-500 text-slate-950 font-bold text-[14px] px-2.5 py-0.5 uppercase tracking-wider">
-                  {activeWaypoint.type.toUpperCase()}
-                </span>
-                <span className="text-[13px] text-slate-400 font-medium">
-                  {activeWaypoint.region}, Gilgit-Baltistan
-                </span>
-              </div>
-              <span className="text-[16px] font-medium text-amber-400">
-                Elev: {activeWaypoint.altitude}
+          {/* Waypoint Navigation */}
+          <div className="lg:col-span-5">
+            <div className="mb-3 flex items-center justify-between">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                Destinations
+              </span>
+
+              <span className="text-xs text-slate-500">
+                {WAYPOINTS.length} locations
               </span>
             </div>
 
-            <div className="py-4">
-              <h3 className="text-xl sm:text-2xl font-bold text-white">
-                {activeWaypoint.name}
-              </h3>
-              <p className="text-slate-300 text-[16px] mt-2 leading-relaxed">
-                {activeWaypoint.desc}
-              </p>
+            <div className="space-y-2">
+              {WAYPOINTS.map((wp) => {
+                const isSelected = activeWaypoint.id === wp.id;
 
-              {/* Geographic Coordinates & Highlight */}
-              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-900 p-3 text-[13px]">
-                <div>
-                  <span className="text-slate-400 block font-semibold">Key Geographical Feature:</span>
-                  <span className="text-sky-300 font-bold">{activeWaypoint.highlight}</span>
-                </div>
-                <div>
-                  <span className="text-slate-400 block font-semibold">Coordinates:</span>
-                  <span className="text-slate-200 font-mono">{activeWaypoint.lat}° N, {activeWaypoint.lng}° E</span>
-                </div>
-              </div>
-            </div>
+                return (
+                  <button
+                    key={wp.id}
+                    type="button"
+                    onClick={() => setActiveWaypoint(wp)}
+                    className={`group w-full border p-3.5 text-left transition-all duration-200 sm:p-4 ${
+                      isSelected
+                        ? 'border-sky-500/70 bg-sky-950/50'
+                        : 'border-slate-800 bg-slate-900/70 hover:border-slate-700 hover:bg-slate-900'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
 
-            {/* Action to View Associated Trek */}
-            <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="text-[13px] text-slate-400">
-                Featured on: <strong className="text-white">Active Guided Departures 2026</strong>
-              </div>
-              <button
-                type="button"
-                onClick={() => onSelectTrekById(activeWaypoint.matchedTrekId)}
-                className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium text-[14px] px-4 py-2.5 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <span>View Trek Package</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+                      {/* Icon */}
+                      <div
+                        className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center transition-colors ${
+                          isSelected
+                            ? 'bg-sky-500 text-slate-950'
+                            : 'bg-slate-800 text-sky-400 group-hover:bg-slate-700'
+                        }`}
+                      >
+                        <Mountain className="h-4 w-4" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+                          <h3 className="text-sm font-semibold leading-5 text-white sm:text-[15px]">
+                            {wp.name}
+                          </h3>
+
+                          <span className="w-fit shrink-0 bg-slate-800 px-2 py-1 text-[10px] font-bold tracking-wide text-sky-300">
+                            {wp.altitude}
+                          </span>
+                        </div>
+
+                        <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-slate-400 sm:text-[13px]">
+                          {wp.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
+
+          {/* Detail Panel */}
+          <div className="lg:col-span-7">
+            <div className="relative h-full overflow-hidden border border-slate-800 bg-slate-900/80">
+
+              {/* Subtle Top Accent */}
+              <div className="h-1 w-full bg-sky-500" />
+
+              <div className="p-5 sm:p-7 lg:p-8">
+
+                {/* Meta */}
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-950">
+                      {activeWaypoint.type}
+                    </span>
+
+                    <span className="flex items-center gap-1.5 text-xs font-medium text-slate-400">
+                      <MapPin className="h-3.5 w-3.5 text-sky-400" />
+                      {activeWaypoint.region}, Gilgit-Baltistan
+                    </span>
+                  </div>
+
+                  <span className="text-xs font-semibold text-amber-400">
+                    Elev. {activeWaypoint.altitude}
+                  </span>
+                </div>
+
+                {/* Main Content */}
+                <div className="py-6">
+                  <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                    {activeWaypoint.name}
+                  </h3>
+
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+                    {activeWaypoint.desc}
+                  </p>
+
+                  {/* Information Grid */}
+                  <div className="mt-6 grid gap-px overflow-hidden border border-slate-800 bg-slate-800 sm:grid-cols-2">
+
+                    <div className="bg-slate-950/80 p-4">
+                      <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                        Key Feature
+                      </span>
+
+                      <span className="mt-1.5 block text-sm font-medium leading-5 text-sky-300">
+                        {activeWaypoint.highlight}
+                      </span>
+                    </div>
+
+                    <div className="bg-slate-950/80 p-4">
+                      <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                        Coordinates
+                      </span>
+
+                      <span className="mt-1.5 block font-mono text-sm text-slate-200">
+                        {activeWaypoint.lat}° N, {activeWaypoint.lng}° E
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* Footer / CTA */}
+                <div className="flex flex-col gap-4 border-t border-slate-800 pt-5 sm:flex-row sm:items-center sm:justify-between">
+
+                  <div>
+                    <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                      Expedition
+                    </span>
+
+                    <span className="mt-1 block text-sm font-medium text-white">
+                      Guided departures 2026
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onSelectTrekById(activeWaypoint.matchedTrekId)
+                    }
+                    className="group flex w-full items-center justify-center gap-2 bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 sm:w-auto"
+                  >
+                    View Trek Package
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
   );
 };
+

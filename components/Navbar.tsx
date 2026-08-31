@@ -44,18 +44,34 @@ export const Navbar: React.FC<NavbarProps> = () => {
   return (
     <>
       {/* Top Notification Bar - NOT sticky */}
-      <div className="bg-slate-950 text-white text-[11px] py-1.5 px-4 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center gap-2 font-bold text-center">
-            <span className="hidden md:block bg-amber-500 text-slate-950 font-bold px-1.5 py-0.5 text-[11px] uppercase tracking-wider whitespace-nowrap">
-              {FOUNDING_MEMBERS_SPECIAL.badge}
-            </span>
-            <span className="text-slate-200 text-center">
-              Save 20% on any 2026/2027 trek with lifetime 10% loyalty privileges.
-            </span>
-          </div>
-        </div>
-      </div>
+   
+{/* Top Notification Bar - NOT sticky */}
+<div className="bg-slate-950 text-white text-[11px] py-2 px-4 border-b border-slate-800">
+  <div className="max-w-7xl mx-auto">
+    <Link
+      href="/founding-members"
+      className="group flex items-center justify-center gap-2 sm:gap-3 font-bold text-center hover:text-white transition-colors"
+    >
+      <span className="hidden md:block shrink-0 bg-amber-500 text-slate-950 font-bold px-2 py-0.5 text-[10px] uppercase tracking-wider whitespace-nowrap">
+        {FOUNDING_MEMBERS_SPECIAL.badge}
+      </span>
+
+      <span className="text-slate-200 leading-5">
+        <span className="text-amber-400">Founding Members Special.</span>{' '}
+        The first 10 guests get <span className="text-white">20% off</span>{' '}
+        their trek and a lifetime <span className="text-white">10% discount</span>{' '}
+        on all future bookings.
+        <span className="hidden sm:inline text-slate-400"> Only a few spots left.</span>
+      </span>
+
+      <span className="hidden lg:inline shrink-0 text-sky-400 group-hover:text-sky-300 transition-colors">
+        →
+      </span>
+    </Link>
+  </div>
+</div>
+
+
 
       {/* Main Header - STICKY */}
       <header className="sticky top-0 z-40 bg-white">

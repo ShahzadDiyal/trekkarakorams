@@ -1,4 +1,4 @@
- 
+
 'use client';
 
 import React from 'react';
@@ -234,4 +234,4 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
     </section>
   );
 };
- 
+

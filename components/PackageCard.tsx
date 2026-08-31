@@ -3,7 +3,6 @@
 
 import React from 'react';
 import {
-  Star,
   Clock,
   Mountain,
   ArrowUpRight,
@@ -98,31 +97,21 @@ export const PackageCard: React.FC<PackageCardProps> = ({
       {/* Content */}
       <div className="flex flex-1 flex-col p-5">
 
-        {/* Rating + Difficulty */}
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-1.5">
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-3.5 w-3.5 fill-amber-400 text-amber-400"
-                />
-              ))}
-            </div>
-
-            <span className="text-xs font-medium text-slate-500">
-              {trek.reviewsCount} reviews
-            </span>
-          </div>
-
+        {/* Difficulty */}
+        <div className="mb-3 flex items-center justify-end">
           <span
-            className={`
-              shrink-0 rounded-full border px-2.5 py-1
+            className="
+              shrink-0 rounded-full  px-2.5 py-1
               text-[10px] font-bold uppercase tracking-wide
-              ${getDifficultyColor(trek.difficulty)}
-            `}
+            "
           >
-            {trek.difficulty}
+            <span
+              className={`inline-block rounded-full border px-2.5 py-1 ${getDifficultyColor(
+                trek.difficulty
+              )}`}
+            >
+              {trek.difficulty}
+            </span>
           </span>
         </div>
 
@@ -134,13 +123,15 @@ export const PackageCard: React.FC<PackageCardProps> = ({
             text-left cursor-pointer
           "
         >
-          <h3 className="
-            line-clamp-2
-            text-lg font-bold leading-snug
-            tracking-tight text-slate-900
-            transition-colors duration-200
-            group-hover/title:text-sky-600
-          ">
+          <h3
+            className="
+              line-clamp-2
+              text-lg font-bold leading-snug
+              tracking-tight text-slate-900
+              transition-colors duration-200
+              group-hover/title:text-sky-600
+            "
+          >
             {trek.title}
           </h3>
 
@@ -189,7 +180,6 @@ export const PackageCard: React.FC<PackageCardProps> = ({
 
         {/* Bottom Area */}
         <div className="mt-auto pt-5">
-
           <div className="mb-4 h-px bg-slate-100" />
 
           <div className="flex items-end justify-between gap-3">
@@ -241,4 +231,3 @@ export const PackageCard: React.FC<PackageCardProps> = ({
     </article>
   );
 };
-
