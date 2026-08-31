@@ -1,99 +1,143 @@
+ 
 'use client';
 
 import React from 'react';
-import { Mountain, Plane, Flag, Compass, Users, Camera, ShieldCheck, HeartHandshake } from 'lucide-react';
+import {
+  Mountain,
+  Plane,
+  Flag,
+  Compass,
+  Users,
+  Camera,
+} from 'lucide-react';
 import { TREK_STYLES } from '@/data/treks';
 
 interface TravelStylesProps {
   onSelectStyle: (styleId: string) => void;
 }
 
-export const TravelStylesSection: React.FC<TravelStylesProps> = ({ onSelectStyle }) => {
+export const TravelStylesSection: React.FC<TravelStylesProps> = ({
+  onSelectStyle,
+}) => {
   const getIcon = (name: string) => {
     switch (name) {
       case 'Mountain':
-        return <Mountain className="w-7 h-7" />;
+        return <Mountain className="h-5 w-5" />;
       case 'Plane':
-        return <Plane className="w-7 h-7" />;
+        return <Plane className="h-5 w-5" />;
       case 'Flag':
-        return <Flag className="w-7 h-7" />;
+        return <Flag className="h-5 w-5" />;
       case 'Compass':
-        return <Compass className="w-7 h-7" />;
+        return <Compass className="h-5 w-5" />;
       case 'Users':
-        return <Users className="w-7 h-7" />;
+        return <Users className="h-5 w-5" />;
       case 'Camera':
-        return <Camera className="w-7 h-7" />;
+        return <Camera className="h-5 w-5" />;
       default:
-        return <Mountain className="w-7 h-7" />;
+        return <Mountain className="h-5 w-5" />;
     }
   };
 
   return (
-    <section id="travel-styles-section" className="py-14 bg-white border-b border-slate-200">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading - concise */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-[13px] font-bold uppercase tracking-wider text-sky-600">
-            Tailored Experiences
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
-            Travel Styles That Suit You
+    <section
+      id="travel-styles-section"
+      className="border-b border-slate-200 bg-slate-50"
+    >
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
+        {/* Section Header */}
+        <div className="mb-10 max-w-3xl">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="h-px w-10 bg-sky-600" />
+
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+              Find Your Way
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-slate-900">
+            Choose how you want to explore.
           </h2>
-          <p className="text-[16px] text-slate-600 mt-1">
-            Whether you want strenuous glacier passes or luxury heli drops, we tailor each journey to your pace.
+
+          <p className="mt-4 max-w-2xl text-base sm:text-lg leading-7 text-slate-600">
+            A long trek, a high pass, a family adventure or a few days in
+            the mountains. Start with the kind of journey you have in mind.
           </p>
         </div>
 
-        {/* Travel Style Badges Grid (matching the iconic screenshot bar) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {/* Travel Styles */}
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {TREK_STYLES.map((style, idx) => (
-            <div
+            <button
               key={style.id}
               onClick={() => onSelectStyle(style.id)}
-              className={`p-4 flex flex-col items-center text-center cursor-pointer transition-all ${
-                idx === 0
-                  ? 'bg-sky-600 text-white border-sky-600 hover:bg-sky-700'
-                  : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-sky-500 hover:bg-sky-50'
-              }`}
+              className={`
+                group flex min-h-[150px] flex-col items-start justify-between
+                rounded-md border p-5 text-left
+                transition-all duration-200
+                cursor-pointer
+                ${
+                  idx === 0
+                    ? 'border-sky-600 bg-sky-600 text-white hover:bg-sky-700'
+                    : 'border-slate-200 bg-white text-slate-900 hover:-translate-y-0.5 hover:border-sky-400 hover:shadow-md'
+                }
+              `}
             >
-              <div className={`mb-3 p-3 rounded-none ${idx === 0 ? 'text-sky-100 bg-sky-700/50' : 'text-sky-600 bg-white'}`}>
+              <div
+                className={`
+                  flex h-10 w-10 items-center justify-center rounded-md
+                  ${
+                    idx === 0
+                      ? 'bg-sky-700/60 text-sky-100'
+                      : 'bg-slate-50 text-sky-600 group-hover:bg-sky-50'
+                  }
+                `}
+              >
                 {getIcon(style.iconName)}
               </div>
-              <h3 className="text-[13px] sm:text-[16px] font-bold leading-tight">
-                {style.title}
-              </h3>
-              <span className={`text-[11px] mt-1 font-medium ${idx === 0 ? 'text-sky-200' : 'text-slate-500'}`}>
-                {style.count} Expeditions
-              </span>
-            </div>
+
+              <div className="mt-6">
+                <h3
+                  className={`
+                    text-sm sm:text-base font-bold leading-tight
+                    ${
+                      idx === 0
+                        ? 'text-white'
+                        : 'text-slate-900 group-hover:text-sky-700'
+                    }
+                  `}
+                >
+                  {style.title}
+                </h3>
+
+                <p
+                  className={`
+                    mt-1.5 text-xs
+                    ${
+                      idx === 0
+                        ? 'text-sky-100'
+                        : 'text-slate-500'
+                    }
+                  `}
+                >
+                  {style.count} expeditions
+                </p>
+              </div>
+            </button>
           ))}
         </div>
 
-        {/* Responsible Tourism & Porter Welfare Commitment */}
-        <div className="mt-8 bg-sky-50 p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-  <div className="flex items-start gap-3 w-full">
-    <div className="p-2.5 bg-sky-500 text-slate-950 font-bold shrink-0 rounded-sm">
-      <HeartHandshake className="w-5 h-5 text-white" />
-    </div>
+        {/* Quiet Responsible Travel Statement */}
+        <div className="mt-10 border-t border-slate-200 pt-6">
+          <p className="max-w-3xl text-sm leading-6 text-slate-500">
+            We believe the mountains should look the same after we leave.
+            Our trips are planned with respect for the trails, villages,
+            people and landscapes that make the Karakoram what it is.
+          </p>
+        </div>
 
-    <div className="min-w-0">
-      <h4 className="text-[15px] sm:text-[16px] font-bold text-slate-900 leading-snug">
-        Ethical Porter Welfare & Fair Wages Guaranteed
-      </h4>
-
-      <p className="mt-1 text-[13px] text-slate-600 leading-relaxed">
-        We strictly adhere to IPPG guidelines: 15kg load caps, high-altitude
-        gear provided, full life & rescue insurance for all Balti porters.
-      </p>
-    </div>
-  </div>
-
-  <div className="flex items-center gap-2 text-[13px] sm:text-[14px] font-bold text-sky-800 shrink-0 w-full md:w-auto pt-3 md:pt-0 border-t border-sky-100 md:border-0">
-    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-    <span>100% Certified Local Staff</span>
-  </div>
-</div>
       </div>
     </section>
   );
 };
+ 

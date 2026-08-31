@@ -1,3 +1,4 @@
+ 
 'use client';
 
 import React from 'react';
@@ -7,176 +8,230 @@ interface ActivityGridProps {
   onSelectActivity: (activity: string) => void;
 }
 
-export const ActivityGrid: React.FC<ActivityGridProps> = ({ onSelectActivity }) => {
+export const ActivityGrid: React.FC<ActivityGridProps> = ({
+  onSelectActivity,
+}) => {
   return (
-    <section id="popular-activities-section" className="py-14 bg-white border-b border-slate-200">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading - concise */}
-        <div className="mb-8">
-          <span className="text-[14px] font-bold uppercase tracking-wider text-sky-600">
-            Adventure Categories
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight mt-1">
-            Popular Activities in Pakistan
+    <section
+      id="popular-activities-section"
+      className="bg-white border-b border-slate-200"
+    >
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
+        {/* Section Heading */}
+        <div className="mb-10 max-w-2xl">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="h-px w-10 bg-sky-600" />
+
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+              The Karakoram
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
+            Where we take you.
           </h2>
-          <p className="text-[16px] text-slate-600 mt-1 max-w-2xl">
-            Choose from a wide variety of meticulously organized treks, heli-safaris, and high-altitude climbs.
+
+          <p className="mt-4 text-base sm:text-lg leading-7 text-slate-600">
+            Some routes take two weeks. Some take three days. All of them
+            are worth it.
           </p>
         </div>
 
-        {/* Bento / Asymmetric Grid matching reference */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {/* Main Large Trekking Card (Spans 2 cols on lg) */}
+        {/* Experiences Grid */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+
+          {/* Trekking */}
           <div
             onClick={() => onSelectActivity('Trekking')}
-            className="md:col-span-2 lg:col-span-2 group relative h-72 sm:h-90 overflow-hidden cursor-pointer border border-slate-200"
+            className="group relative h-[360px] cursor-pointer overflow-hidden rounded-md border border-slate-200 lg:col-span-2"
           >
             <img
               src="/images/trekking-in-karakoram-and-himalayas.jpg"
-              alt="Trekking in Pakistan Karakoram"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm"
+              alt="Trekking through the Karakoram mountains"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 text-white">
-              <span className="bg-sky-500 text-slate-950 text-[11px] font-bold px-2 py-0.5 uppercase tracking-wider mb-2 inline-block">
-                Top Highlight
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-300 transition-colors">
-                Trekking in Karakoram & Himalayas
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/30 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 text-white">
+              <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">
+                <Mountain className="h-4 w-4" />
+                Multi-day treks
+              </p>
+
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                K2, Baltoro & Concordia
               </h3>
-              <p className="text-[13px] text-slate-300 mt-1 flex items-center gap-1.5">
-                <Mountain className="w-3.5 h-3.5 text-sky-400" />
-                <span>32 Guided Itineraries • Baltoro, K2, Gondogoro, Fairy Meadows</span>
+
+              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
+                Follow some of the world's great mountain trails through
+                the heart of the Karakoram.
               </p>
             </div>
           </div>
 
-          {/* Helicopter Tour Card */}
+          {/* Helicopter */}
           <div
             onClick={() => onSelectActivity('Heli Trek')}
-            className="md:col-span-1 lg:col-span-2 group relative h-72 sm:h-90 overflow-hidden cursor-pointer border border-slate-200"
+            className="group relative h-[360px] cursor-pointer overflow-hidden rounded-md border border-slate-200 lg:col-span-2"
           >
             <img
               src="/images/helicopter-landing-on-snowy-mountain-in-karakoram.jpg"
-              alt="Helicopter Tours in Gilgit Baltistan"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm"
+              alt="Helicopter experience above the Karakoram mountains"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 text-white">
-              <span className="bg-amber-400 text-slate-950 text-[11px] font-bold px-2 py-0.5 uppercase tracking-wider mb-2 inline-block">
-                VIP Experience
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-300 transition-colors">
-                Helicopter Mountain Tours
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/30 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 text-white">
+              <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">
+                <Plane className="h-4 w-4" />
+                By air
+              </p>
+
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                See the Karakoram from above
               </h3>
-              <p className="text-[13px] text-slate-300 mt-1 flex items-center gap-1.5">
-                <Plane className="w-3.5 h-3.5 text-amber-300" />
-                <span>8 VIP Packages • Concordia & K2 Heli Drops</span>
+
+              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
+                Reach remote mountain landscapes and experience the scale
+                of the Karakoram from the air.
               </p>
             </div>
           </div>
 
-          {/* 4WD Jeep Safaris */}
+          {/* Jeep Safaris */}
           <div
             onClick={() => onSelectActivity('Jeep Safari')}
-            className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
           >
             <img
               src="/images/4wd-jeep-safaris-karakoram-pakistan.jpg"
-              alt="4WD Jeep Tours Pakistan"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              alt="4WD journey through the Karakoram"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h3 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
-                4WD Jeep Safaris
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/25 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+              <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
+                <Compass className="h-4 w-4" />
+                Remote roads
+              </p>
+
+              <h3 className="text-xl font-bold">
+                Deosai & Shimshal
               </h3>
-              <p className="text-[13px] text-slate-300 mt-0.5 flex items-center gap-1">
-                <Compass className="w-3 h-3 text-sky-400" />
-                <span>11 Routes • Deosai & Shimshal</span>
+
+              <p className="mt-1 text-sm text-slate-300">
+                4WD journeys into remote mountain country.
               </p>
             </div>
           </div>
 
-          {/* High Pass Crossings */}
+          {/* Pass Crossings */}
           <div
             onClick={() => onSelectActivity('Pass Crossing')}
-            className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
           >
             <img
               src="/images/high-pass-crossing-karakoram-pakistan.jpg"
-              alt="High Pass Crossings Pakistan"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              alt="High mountain pass crossing in the Karakoram"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h3 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
-                High Pass Crossings
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/25 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+              <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
+                <Mountain className="h-4 w-4" />
+                High passes
+              </p>
+
+              <h3 className="text-xl font-bold">
+                Gondogoro & Hispar
               </h3>
-              <p className="text-[13px] text-slate-300 mt-0.5 flex items-center gap-1">
-                <Mountain className="w-3 h-3 text-sky-400" />
-                <span>6 Passes • Gondogoro & Hispar</span>
+
+              <p className="mt-1 text-sm text-slate-300">
+                Cross some of the Karakoram's most dramatic passes.
               </p>
             </div>
           </div>
 
-          {/* 6000m Peak Climbing */}
+          {/* Trekking Peaks */}
           <div
             onClick={() => onSelectActivity('Expedition')}
-            className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
           >
             <img
               src="/images/trekking-peaks-karakoram-pakistan.jpg"
-              alt="Peak Climbing Karakoram"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              alt="High altitude trekking peaks in the Karakoram"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h3 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
-                Trekking Peaks
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/25 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+              <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
+                <Flag className="h-4 w-4" />
+                Higher ground
+              </p>
+
+              <h3 className="text-xl font-bold">
+                Minglik Sar & Spantik
               </h3>
-              <p className="text-[13px] text-slate-300 mt-0.5 flex items-center gap-1">
-                <Flag className="w-3 h-3 text-sky-400" />
-                <span>9 Peaks • Minglik Sar & Spantik</span>
+
+              <p className="mt-1 text-sm text-slate-300">
+                Take on the Karakoram's high trekking peaks.
               </p>
             </div>
           </div>
 
-          {/* Cultural & Family Walks */}
+          {/* Cultural / Family */}
           <div
             onClick={() => onSelectActivity('Cultural Trek')}
-            className="group relative h-60 overflow-hidden cursor-pointer border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
           >
             <img
               src="/images/cultural-and-family-hikes-trekkarakoram-pakistan.jpg"
-              alt="Cultural & Family Treks Pakistan"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              alt="Walking through villages and valleys of Gilgit-Baltistan"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h3 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
-                Cultural & Family Hikes
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/25 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+              <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
+                <Users className="h-4 w-4" />
+                Villages & valleys
+              </p>
+
+              <h3 className="text-xl font-bold">
+                Hunza & Nagar
               </h3>
-              <p className="text-[13px] text-slate-300 mt-0.5 flex items-center gap-1">
-                <Users className="w-3 h-3 text-sky-400" />
-                <span>7 Tours • Hunza & Nagar</span>
+
+              <p className="mt-1 text-sm text-slate-300">
+                Easier walks through villages, valleys and local life.
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 };
+ 

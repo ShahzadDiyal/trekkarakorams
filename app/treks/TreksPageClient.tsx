@@ -279,7 +279,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({ lockedFacet, i
 
         {/* Packages Grid */}
         {filteredTreks.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
             {filteredTreks.map((trek) => (
               <PackageCard
                 key={trek.id}

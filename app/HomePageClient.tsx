@@ -32,7 +32,8 @@ import {
   Users,
   Globe,
   Star,
-  Gift
+  Gift,
+  MapPin
 } from 'lucide-react';
 
 export const HomePageClient: React.FC = () => {
@@ -90,7 +91,7 @@ export const HomePageClient: React.FC = () => {
   return (
     <main className="flex-1">
       {/* 1. Hero Search Engine with Brand Tagline & Founding Member Promo */}
-      <Hero onSearch={handleHeroSearch} onTagClick={handleTagClick} />
+      <Hero onTagClick={handleTagClick} />
 
       {/* Trust & Accreditation Strip Banner */}
       <section className="bg-slate-950 text-slate-200 py-3.5 border-y border-slate-800 text-[14px] font-bold">
@@ -110,120 +111,168 @@ export const HomePageClient: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Brand Story & Founding Member Inception Special Section */}
-      <section className="py-12 bg-white border-b border-slate-200">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <span className="text-[14px] font-bold uppercase tracking-widest text-sky-600">
-                THE SOUL OF GILGIT-BALTISTAN
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-                {BRAND_INFO.storyTitle}
-              </h2>
-              <p className="text-slate-700 text-[16px] sm:text-[16px] leading-relaxed font-story">
-                {BRAND_INFO.story[0]}
-              </p>
-              <p className="text-slate-600 text-[14px] sm:text-[16px] leading-relaxed">
-                {BRAND_INFO.story[1]}
-              </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-  <button
-    onClick={() => router.push('/treks')}
-    className="w-full md:w-auto px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-medium text-[14px] uppercase tracking-wider transition-colors flex items-center justify-center gap-2 rounded-sm cursor-pointer"
-  >
-    <span>Explore 2026 Expeditions</span>
-    <ArrowRight className="w-4 h-4" />
-  </button>
+      {/* 2. Brand Story — We Come From Here */}
+      <section className="relative overflow-hidden bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
 
-  <button
-    onClick={() => router.push('/destinations')}
-    className="w-full md:w-auto px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[14px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer"
-  >
-    Learn About The Regions
-  </button>
-</div>
-            </div>
-
-            {/* Founding Members Special Box */}
-            <div className="lg:col-span-5 bg-slate-900 p-6 sm:p-7 text-white relative rounded-sm">
-              <div className="flex items-center gap-2 mb-3">
-                <Gift className="w-5 h-5 text-amber-400" />
-                <span className="text-[13px] font-bold uppercase tracking-wider text-amber-400">
-                  {FOUNDING_MEMBERS_SPECIAL.title}
+            {/* Story Content */}
+            <div className="lg:col-span-8">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-px w-10 bg-sky-600" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+                  Our Story
                 </span>
               </div>
-              <h3 className="text-[18px] font-bold text-white mb-2">
-                Join As A Founding Explorer
-              </h3>
-              <p className="text-[13px] text-slate-300 mb-4 leading-relaxed">
-                Be among the first explorers to journey with Trek Karakoram and receive lifetime privileges:
-              </p>
-              <ul className="space-y-2 text-[14px] text-slate-200 mb-6">
-                {FOUNDING_MEMBERS_SPECIAL.perks.map((perk, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5 font-bold" />
-                    <span>{perk}</span>
-                  </li>
-                ))}
-              </ul>
-              <button
-                onClick={() => router.push('/planner')}
-                className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[14px] rounded-sm cursor-pointer uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
-              >
-                <span>Claim 20% Founding Discount</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+
+              <h2 className="max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-slate-900">
+                We come from here.
+              </h2>
+
+              <div className="mt-7 max-w-3xl space-y-5">
+                <p className="text-base sm:text-lg leading-8 text-slate-700">
+                  Trek Karakoram was not built by people who discovered these
+                  mountains from the outside. It was built by people who grew up
+                  in Baltistan, with these peaks on the horizon every single day.
+                </p>
+
+                <p className="text-base sm:text-lg leading-8 text-slate-600">
+                  We started this company because we believe the best way to
+                  experience the Karakoram is with the people who actually live in
+                  it. Our guides know every trail, every change in the weather,
+                  and every family in these valleys. That kind of knowledge does
+                  not come from training. It comes from a lifetime of being here.
+                </p>
+              </div>
+
+              {/* Story CTA */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => router.push('/treks')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:bg-sky-700 hover:-translate-y-0.5"
+                >
+                  Explore Our Treks
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+
+                <button
+                  onClick={() => router.push('/destinations')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wider text-slate-800 transition-colors duration-200 hover:border-slate-400 hover:bg-slate-50"
+                >
+                  Explore the Regions
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 3. The 8 Core Values of Trek Karakoram */}
-      <section className="py-14 bg-slate-50 border-b border-slate-200">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[14px] font-bold uppercase tracking-widest text-sky-600">
-              OUR GUIDING PRINCIPLES
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-              The 8 Core Values of Trek Karakoram
-            </h2>
-            <p className="text-[13px] sm:text-[16px] text-slate-600 mt-2">
-              Every expedition is rooted in authenticity, environmental stewardship, and deep reverence for the mountain folk of Gilgit-Baltistan.
-            </p>
-          </div>
+            {/* Supporting Visual / Local Identity */}
+            <div className="lg:col-span-4">
+              <div className="relative overflow-hidden rounded-lg bg-slate-900 p-7 sm:p-8">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {BRAND_VALUES.map((val) => (
-              <div
-                key={val.number}
-                className="bg-white  p-5 hover:border-sky-500 transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="p-2 bg-slate-100 border border-slate-200">
-                      {renderValueIcon(val.iconName)}
-                    </div>
-                    <span className="text-[20px] font-bold text-slate-400">0{val.number}</span>
+                {/* Decorative element */}
+                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full border border-sky-400/20" />
+                <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full border border-sky-400/10" />
+
+                <div className="relative">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-sky-500/10">
+                    <Mountain className="h-6 w-6 text-sky-400" />
                   </div>
-                  <h3 className="text-[16px] md:text-[20px] font-bold text-slate-900 tracking-tight mb-0.5">
-                    {val.title}
-                  </h3>
-                  <div className="text-[12px] md:text-[14px] font-bold text-sky-600 mb-2">
-                    {val.subtitle}
-                  </div>
-                  <p className="text-[13px] text-slate-600 leading-relaxed">
-                    {val.description}
+
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-400">
+                    Northern Pakistan
                   </p>
+
+                  <h3 className="mt-3 text-2xl font-bold leading-tight text-white">
+                    The Karakoram is not just where we work.
+                    <span className="block text-sky-400">
+                      It is home.
+                    </span>
+                  </h3>
+
+                  <div className="mt-6 h-px w-full bg-white/10" />
+
+                  <p className="mt-5 text-sm leading-7 text-slate-300">
+                    From Skardu to the remote valleys beyond, our connection to
+                    these mountains is personal. We know the people, the trails,
+                    the seasons and the rhythm of life here.
+                  </p>
+
+                  <div className="mt-6 flex items-center gap-2 text-sm font-medium text-slate-200">
+                    <MapPin className="h-4 w-4 text-sky-400" />
+                    Skardu, Gilgit-Baltistan
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
+
           </div>
         </div>
       </section>
 
+
+
+     
+{/* 3. What You Can Expect From Us */}
+<section className="bg-slate-50 border-b border-slate-200">
+  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
+    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+
+      {/* Column 1 */}
+      <div className="py-8 md:py-0 md:px-8 first:pt-0 last:pb-0 md:first:pl-0 md:last:pr-0">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
+          Local Knowledge
+        </p>
+
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          We are from here.
+        </h2>
+
+        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+          Our guides grew up in Baltistan. They have walked these trails
+          their entire lives. When they point at a peak and say its name
+          in Balti, it is because they grew up looking at it every day.
+        </p>
+      </div>
+
+      {/* Column 2 */}
+      <div className="py-8 md:py-0 md:px-8">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
+          Everything Organised
+        </p>
+
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          We handle everything.
+        </h2>
+
+        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+          Airport pickup, accommodation, meals, guides, permits, transport
+          back. Every detail is sorted before you arrive. You focus on what
+          is in front of you. We take care of the rest.
+        </p>
+      </div>
+
+      {/* Column 3 */}
+      <div className="py-8 md:py-0 md:px-8 last:pb-0">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 mb-4">
+          Responsible Travel
+        </p>
+
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          We travel carefully.
+        </h2>
+
+        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+          No waste left on the trail. Fair wages for every porter and cook.
+          Respect for every village we walk through. This is not a policy.
+          This is just how we work.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+ 
       {/* 4. Activity Grid Bento Layout */}
       <ActivityGrid onSelectActivity={handleActivitySelect} />
 
@@ -248,49 +297,93 @@ export const HomePageClient: React.FC = () => {
         }}
         onResetFilters={() => router.push('/treks')}
       />
+ 
+{/* 6. Different Journeys, Same Care */}
+<section className="bg-white border-b border-slate-200">
+  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-      {/* 6. Who We Guide - Target Explorers Profiles & Personas */}
-      <section className="py-14 bg-white border-b border-slate-200">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[13px] font-bold uppercase tracking-widest text-sky-600">
-              CRAFTED FOR EVERY EXPLORER
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-              For Those Who Seek More Than Just A Destination
-            </h2>
-            <p className="text-[13px] sm:text-[16px] text-slate-600 mt-2 font-story">
-              Whether you are an international high-altitude trekker, Pakistani explorer, or wildlife filmmaker, our end-to-end logistics ensure total peace of mind.
-            </p>
-          </div>
+    {/* Section Header */}
+    <div className="max-w-3xl mb-12">
+      <div className="mb-4 flex items-center gap-3">
+        <span className="h-px w-10 bg-sky-600" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6">
-            {AUDIENCE_PERSONAS.slice(0, 3).map((persona) => (
-              <div key={persona.id} className="bg-slate-50 p-3 md:p-6 flex flex-col justify-between">
-                <div>
-                  <div className="inline-block bg-sky-100 text-sky-800 text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider mb-2">
-                    {persona.title}
-                  </div>
-                  <h3 className="text-[16px] font-bold text-slate-900 mb-2">
-                    {persona.profile}
-                  </h3>
-                  <p className="text-[13px] text-slate-600 mb-4 leading-relaxed">
-                    <strong>Motivation:</strong> {persona.motivation}
-                  </p>
-                  <div className="bg-white p-3  text-[14px] text-slate-700 mb-4">
-                    <span className="font-bold text-slate-900 block mb-0.5">How We Help:</span>
-                    {persona.howWeHelp}
-                  </div>
-                </div>
+        <span className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+          Different Ways To Explore
+        </span>
+      </div>
 
-                <div className="pt-3 border-t border-slate-200 text-[11px] text-slate-500 italic font-story">
-                  {persona.personaExample}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-slate-900">
+        Not everyone comes for K2. Both journeys matter.
+      </h2>
+
+      <p className="mt-5 max-w-3xl text-base sm:text-lg leading-8 text-slate-600">
+        K2 Base Camp is our most well-known trek. But not everyone has two
+        weeks or wants to sleep on a glacier. Some people have five days.
+        Some are traveling with their family. Some just want to sit on the
+        Deosai plateau and watch the mountains change colour. We plan all
+        of those journeys with the same care.
+      </p>
+    </div>
+
+    {/* Journey Types */}
+    <div className="grid grid-cols-1 md:grid-cols-3 border-t border-slate-200">
+
+      {/* Column 1 */}
+      <div className="py-8 md:py-10 md:pr-8 lg:pr-10 md:border-r border-slate-200">
+        <span className="text-sm font-semibold text-sky-600">
+          01
+        </span>
+
+        <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          The big treks.
+        </h3>
+
+        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+          K2 Base Camp, Nanga Parbat, Concordia, Biafo and Hispar. These are
+          the routes that take weeks and stay with you for years. We guide
+          them with experienced local teams who have done them many times
+          before.
+        </p>
+      </div>
+
+      {/* Column 2 */}
+      <div className="py-8 md:py-10 md:px-8 lg:px-10 md:border-r border-slate-200">
+        <span className="text-sm font-semibold text-sky-600">
+          02
+        </span>
+
+        <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          The quieter places.
+        </h3>
+
+        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+          Deosai at 4,000 metres. Kachura Lakes an hour from Skardu. Basho
+          Meadows. Shigar Fort. These places rarely appear on international
+          travel lists. They should. We take you there too.
+        </p>
+      </div>
+
+      {/* Column 3 */}
+      <div className="py-8 md:py-10 md:pl-8 lg:pl-10">
+        <span className="text-sm font-semibold text-sky-600">
+          03
+        </span>
+
+        <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          Your own journey.
+        </h3>
+
+        <p className="mt-5 text-[15px] sm:text-base leading-7 text-slate-600">
+          Different dates, a specific interest, traveling with children, a
+          photography goal, not much time. Tell us what you have in mind and
+          we will plan something that fits it properly.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+ 
 
       {/* 7. Travel Styles */}
       <TravelStylesSection onSelectStyle={handleStyleSelect} />
@@ -315,53 +408,53 @@ export const HomePageClient: React.FC = () => {
       {/* 13. FAQ Section */}
       <FAQSection />
 
-     {/* Bottom Conversion CTA Strip */}
-<section className="bg-sky-600 text-white py-8 sm:py-10 lg:py-12 border-t border-sky-700 overflow-hidden">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
+      {/* Bottom Conversion CTA Strip */}
+      <section className="bg-sky-600 text-white py-8 sm:py-10 lg:py-12 border-t border-sky-700 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
 
-      {/* Left: Text Content */}
-      <div className="w-full lg:flex-1 text-center lg:text-left">
-        <span className="inline-block text-[10px] sm:text-[11px] lg:text-[13px] font-bold uppercase tracking-[0.14em] text-sky-100">
-          {BRAND_INFO.tagline}
-        </span>
+            {/* Left: Text Content */}
+            <div className="w-full lg:flex-1 text-center lg:text-left">
+              <span className="inline-block text-[10px] sm:text-[11px] lg:text-[13px] font-bold uppercase tracking-[0.14em] text-sky-100">
+                {BRAND_INFO.tagline}
+              </span>
 
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-1 leading-tight">
-          Secure Your 2026 Karakoram Permit
-        </h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-1 leading-tight">
+                Secure Your 2026 Karakoram Permit
+              </h2>
 
-        <p className="text-[12px] sm:text-[13px] lg:text-[14px] text-sky-100 mt-2 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-          Restricted area permits for K2 Base Camp, Concordia, and Baltoro
-          are allocated strictly on a quota basis. Connect with our Skardu
-          operations HQ.
-        </p>
-      </div>
+              <p className="text-[12px] sm:text-[13px] lg:text-[14px] text-sky-100 mt-2 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Restricted area permits for K2 Base Camp, Concordia, and Baltoro
+                are allocated strictly on a quota basis. Connect with our Skardu
+                operations HQ.
+              </p>
+            </div>
 
-      {/* Right: Buttons */}
-      <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+            {/* Right: Buttons */}
+            <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
 
-        <button
-          onClick={() => router.push('/planner')}
-          className="w-full sm:w-auto min-h-[48px] bg-slate-950 hover:bg-slate-900 text-white font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg border border-slate-800/30 rounded-sm"
-        >
-          <span>Calculate Custom Quote</span>
-          <ArrowRight className="w-4 h-4 shrink-0" />
-        </button>
+              <button
+                onClick={() => router.push('/planner')}
+                className="w-full sm:w-auto min-h-[48px] bg-slate-950 hover:bg-slate-900 text-white font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg border border-slate-800/30 rounded-sm"
+              >
+                <span>Calculate Custom Quote</span>
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </button>
 
-        <a
-          href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full sm:w-auto min-h-[48px] bg-white hover:bg-slate-100 text-sky-900 font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg border border-white/20 rounded-sm"
-        >
-          <PhoneCall className="w-4 h-4 shrink-0" />
-          <span>WhatsApp Direct Hotline</span>
-        </a>
+              <a
+                href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto min-h-[48px] bg-white hover:bg-slate-100 text-sky-900 font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg border border-white/20 rounded-sm"
+              >
+                <PhoneCall className="w-4 h-4 shrink-0" />
+                <span>WhatsApp Direct Hotline</span>
+              </a>
 
-      </div>
-    </div>
-  </div>
-</section>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

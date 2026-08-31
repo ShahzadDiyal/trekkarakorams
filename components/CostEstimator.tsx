@@ -102,31 +102,44 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
     )}. Please provide booking availability and payment details.`
   );
 
+  const stepTitleClass =
+    'text-[11px] sm:text-xs font-bold uppercase tracking-[0.16em] text-slate-900';
+
   return (
     <section
       id="cost-estimator-section"
-      className="py-12 sm:py-16 lg:py-20 bg-white border-b border-slate-200"
+      className="relative overflow-hidden border-y border-slate-200 bg-slate-50 py-16 sm:py-20 lg:py-24"
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Subtle background decoration */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-32 top-20 h-72 w-72 rounded-full bg-sky-100/50 blur-3xl" />
+        <div className="absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-slate-200/50 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* =========================
             HEADER
         ========================== */}
 
-        <div className="max-w-3xl mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.14em] text-sky-600 mb-2">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Interactive Cost Estimator</span>
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+          <div className="mb-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-sky-600">
+            <span className="h-px w-6 bg-sky-500" />
+            <Sparkles className="h-3.5 w-3.5" />
+            <span>Plan Your Expedition</span>
+            <span className="h-px w-6 bg-sky-500" />
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-slate-950 leading-tight">
-            Build Your Expedition & See Your Price
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+            Build Your Expedition
+            <span className="block text-sky-600">
+              & See Your Price
+            </span>
           </h2>
 
-          <p className="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">
-            Select your route, group size and preferred comfort level.
-            Your estimated expedition cost updates instantly with no
-            obligation to book.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+            Choose your route, group size and preferred comfort level.
+            Your estimated expedition cost updates instantly.
           </p>
         </div>
 
@@ -134,74 +147,105 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
             MAIN CALCULATOR
         ========================== */}
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8">
 
           {/* =========================
               LEFT: OPTIONS
           ========================== */}
 
-          <div className="lg:col-span-7 space-y-6">
+          <div className="space-y-5 lg:col-span-7">
 
-            {/* Route */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="flex items-center justify-center w-6 h-6 bg-sky-100 text-sky-700 text-[11px] font-bold">
-                  1
+            {/* ROUTE */}
+            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-xs font-bold text-white">
+                  01
                 </span>
 
-                <label className="text-[12px] sm:text-[13px] font-bold text-slate-900 uppercase tracking-wider">
-                  Select Trekking Route
-                </label>
+                <div>
+                  <div className={stepTitleClass}>
+                    Select Trekking Route
+                  </div>
+
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    Choose your preferred expedition
+                  </p>
+                </div>
               </div>
 
-              <select
-                value={selectedTrekId}
-                onChange={(e) => setSelectedTrekId(e.target.value)}
-                className="w-full appearance-none bg-white border border-slate-300 px-4 py-3 text-sm sm:text-[15px] font-semibold text-slate-900 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100 cursor-pointer rounded-sm"
-              >
-                {TREK_PACKAGES.map((trek) => (
-                  <option key={trek.id} value={trek.id}>
-                    {trek.title}   {trek.durationDays} Days / Max{' '}
-                    {trek.maxAltitude}m
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={selectedTrekId}
+                  onChange={(e) => setSelectedTrekId(e.target.value)}
+                  className="w-full appearance-none rounded-none border border-slate-300 bg-slate-50 px-4 py-3.5 pr-10 text-sm font-semibold text-slate-900 outline-none transition-colors focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-100"
+                >
+                  {TREK_PACKAGES.map((trek) => (
+                    <option key={trek.id} value={trek.id}>
+                      {trek.title} — {trek.durationDays} Days / Max{' '}
+                      {trek.maxAltitude}m
+                    </option>
+                  ))}
+                </select>
+
+                <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 5L7 9L11 5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
 
-            {/* Group Size */}
-            <div>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="flex items-center justify-center w-6 h-6 bg-sky-100 text-sky-700 text-[11px] font-bold">
-                    2
+            {/* GROUP SIZE */}
+            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-xs font-bold text-white">
+                    02
                   </span>
 
-                  <span className="text-[12px] sm:text-[13px] font-bold text-slate-900 uppercase tracking-wider">
-                    Number of Trekkers
-                  </span>
+                  <div>
+                    <div className={stepTitleClass}>
+                      Number of Trekkers
+                    </div>
+
+                    <p className="mt-1 text-[11px] text-slate-500">
+                      Larger groups receive special rates
+                    </p>
+                  </div>
                 </div>
 
-                <span className="inline-flex items-center gap-1 self-start sm:self-auto bg-sky-50 border border-sky-100 px-2.5 py-1 text-[11px] font-bold text-sky-700">
-                  <Users className="w-3.5 h-3.5" />
+                <span className="inline-flex w-fit items-center gap-1.5 border border-sky-100 bg-sky-50 px-3 py-1.5 text-[11px] font-bold text-sky-700">
+                  <Users className="h-3.5 w-3.5" />
 
                   {groupSize === 1
                     ? 'Solo Trek'
                     : `${groupSize} Trekkers`}
 
-                  {groupSize >= 4 && ' · Group Discount'}
+                  {groupSize >= 4 && ' · Discount'}
                 </span>
               </div>
 
-              <div className="grid grid-cols-4 sm:flex sm:flex-wrap gap-2">
+              <div className="grid grid-cols-4 gap-2 sm:grid-cols-8">
                 {[1, 2, 3, 4, 6, 8, 10, 12].map((num) => (
                   <button
                     key={num}
                     type="button"
                     onClick={() => setGroupSize(num)}
-                    className={`min-h-[42px] sm:min-h-0 sm:min-w-[64px] px-3 py-2 text-[13px] font-bold border transition-all cursor-pointer ${
+                    className={`min-h-[44px] border text-sm font-bold transition-all ${
                       groupSize === num
-                        ? 'bg-sky-600 text-white border-sky-600'
-                        : 'bg-white text-slate-700 border-slate-200 hover:border-sky-400 hover:bg-sky-50'
+                        ? 'border-sky-600 bg-sky-600 text-white shadow-sm'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50'
                     }`}
                   >
                     {num}
@@ -210,198 +254,211 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
               </div>
 
               {groupSize >= 4 && (
-                <p className="mt-2 text-[11px] text-emerald-700 font-medium">
-                  ✓ Your group qualifies for a discounted per-person rate.
-                </p>
+                <div className="mt-3 flex items-center gap-2 text-[11px] font-semibold text-emerald-700">
+                  <Check className="h-3.5 w-3.5" />
+                  Your group qualifies for a discounted per-person rate.
+                </div>
               )}
             </div>
 
-            {/* Comfort Tier */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="flex items-center justify-center w-6 h-6 bg-sky-100 text-sky-700 text-[11px] font-bold">
-                  3
+            {/* COMFORT */}
+            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-xs font-bold text-white">
+                  03
                 </span>
 
-                <span className="text-[12px] sm:text-[13px] font-bold text-slate-900 uppercase tracking-wider">
-                  Expedition Comfort
-                </span>
+                <div>
+                  <div className={stepTitleClass}>
+                    Expedition Comfort
+                  </div>
+
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    Choose how you want to experience the mountains
+                  </p>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 
-                {/* Standard */}
+                {/* STANDARD */}
                 <button
                   type="button"
                   onClick={() => setTier('standard')}
-                  className={`text-left p-4 border transition-all cursor-pointer ${
+                  className={`group relative text-left ${
                     tier === 'standard'
                       ? 'border-sky-500 bg-sky-50 ring-1 ring-sky-500'
                       : 'border-slate-200 bg-white hover:border-slate-300'
-                  }`}
+                  } border p-5 transition-all`}
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <div className="font-bold text-sm text-slate-950">
-                        Standard Expedition
-                      </div>
+                  {tier === 'standard' && (
+                    <span className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center bg-sky-600 text-white">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                  )}
 
-                      <div className="text-[11px] text-slate-500 mt-1">
-                        Comfortable & practical
-                      </div>
+                  <div className="pr-8">
+                    <div className="text-sm font-bold text-slate-950">
+                      Standard Expedition
                     </div>
 
-                    {tier === 'standard' && (
-                      <Check className="w-4 h-4 text-sky-600 shrink-0" />
-                    )}
+                    <div className="mt-1 text-[11px] font-medium text-slate-500">
+                      Comfortable & practical
+                    </div>
                   </div>
 
-                  <p className="mt-3 text-[11px] text-slate-600 leading-relaxed">
+                  <p className="mt-4 text-[11px] leading-6 text-slate-600">
                     4-season tents, twin hotel sharing, expedition chef
                     and 1 porter per trekker.
                   </p>
 
-                  <div className="mt-3 text-[11px] font-bold text-sky-700">
-                    INCLUDED
+                  <div className="mt-4 text-[10px] font-bold uppercase tracking-wider text-sky-700">
+                    Included
                   </div>
                 </button>
 
-                {/* Deluxe */}
+                {/* DELUXE */}
                 <button
                   type="button"
                   onClick={() => setTier('deluxe')}
-                  className={`text-left p-4 border transition-all cursor-pointer ${
+                  className={`group relative text-left ${
                     tier === 'deluxe'
                       ? 'border-sky-500 bg-sky-50 ring-1 ring-sky-500'
                       : 'border-slate-200 bg-white hover:border-slate-300'
-                  }`}
+                  } border p-5 transition-all`}
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <div className="font-bold text-sm text-slate-950">
-                        VIP Glamping Tier
-                      </div>
+                  {tier === 'deluxe' && (
+                    <span className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center bg-sky-600 text-white">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                  )}
 
-                      <div className="text-[11px] text-slate-500 mt-1">
-                        Premium mountain comfort
-                      </div>
+                  <div className="pr-8">
+                    <div className="text-sm font-bold text-slate-950">
+                      VIP Glamping Tier
                     </div>
 
-                    {tier === 'deluxe' && (
-                      <Check className="w-4 h-4 text-sky-600 shrink-0" />
-                    )}
+                    <div className="mt-1 text-[11px] font-medium text-slate-500">
+                      Premium mountain comfort
+                    </div>
                   </div>
 
-                  <p className="mt-3 text-[11px] text-slate-600 leading-relaxed">
+                  <p className="mt-4 text-[11px] leading-6 text-slate-600">
                     Serena Hotel upgrades, heated glamping domes at
                     Concordia and satellite WiFi.
                   </p>
 
-                  <div className="mt-3 text-[11px] font-bold text-sky-700">
+                  <div className="mt-4 text-[10px] font-bold uppercase tracking-wider text-sky-700">
                     +{formatPrice(450, currency)}
                   </div>
                 </button>
               </div>
             </div>
 
-            {/* Add-ons */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="flex items-center justify-center w-6 h-6 bg-sky-100 text-sky-700 text-[11px] font-bold">
-                  4
+            {/* ADDONS */}
+            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-xs font-bold text-white">
+                  04
                 </span>
 
-                <span className="text-[12px] sm:text-[13px] font-bold text-slate-900 uppercase tracking-wider">
-                  Safety & Optional Add-ons
-                </span>
+                <div>
+                  <div className={stepTitleClass}>
+                    Safety & Optional Add-ons
+                  </div>
+
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    Add extra comfort or protection to your expedition
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2.5">
 
-                {/* Helicopter */}
-                <label className="flex items-center justify-between gap-3 p-3.5 border border-slate-200 hover:border-sky-300 transition-colors cursor-pointer">
-                  <div className="flex items-center gap-3 min-w-0">
+                {/* HELICOPTER */}
+                <label className="flex cursor-pointer items-center justify-between gap-4 border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
+                  <div className="flex min-w-0 items-center gap-3">
                     <input
                       type="checkbox"
                       checked={includeHeliInsurance}
                       onChange={(e) =>
                         setIncludeHeliInsurance(e.target.checked)
                       }
-                      className="w-4 h-4 accent-sky-600 shrink-0 cursor-pointer"
+                      className="h-4 w-4 shrink-0 cursor-pointer accent-sky-600"
                     />
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
 
-                        <span className="text-[12px] sm:text-[13px] font-semibold text-slate-800">
+                        <span className="text-xs font-semibold text-slate-800 sm:text-[13px]">
                           Helicopter Rescue Bond
                         </span>
                       </div>
 
-                      <p className="text-[10px] text-slate-500 mt-0.5 pl-5">
+                      <p className="mt-1 pl-5 text-[10px] leading-4 text-slate-500">
                         Additional emergency evacuation protection
                       </p>
                     </div>
                   </div>
 
-                  <span className="text-[12px] font-bold text-slate-700 shrink-0">
+                  <span className="shrink-0 text-xs font-bold text-slate-700">
                     +{formatPrice(120, currency)}
                   </span>
                 </label>
 
-                {/* Single Tent */}
-                <label className="flex items-center justify-between gap-3 p-3.5 border border-slate-200 hover:border-sky-300 transition-colors cursor-pointer">
-                  <div className="flex items-center gap-3 min-w-0">
+                {/* SINGLE TENT */}
+                <label className="flex cursor-pointer items-center justify-between gap-4 border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
+                  <div className="flex min-w-0 items-center gap-3">
                     <input
                       type="checkbox"
                       checked={includeSingleTent}
                       onChange={(e) =>
                         setIncludeSingleTent(e.target.checked)
                       }
-                      className="w-4 h-4 accent-sky-600 shrink-0 cursor-pointer"
+                      className="h-4 w-4 shrink-0 cursor-pointer accent-sky-600"
                     />
 
                     <div className="min-w-0">
-                      <span className="text-[12px] sm:text-[13px] font-semibold text-slate-800">
+                      <span className="text-xs font-semibold text-slate-800 sm:text-[13px]">
                         Private Solo Tent
                       </span>
 
-                      <p className="text-[10px] text-slate-500 mt-0.5">
+                      <p className="mt-1 text-[10px] leading-4 text-slate-500">
                         Your own tent throughout the trek
                       </p>
                     </div>
                   </div>
 
-                  <span className="text-[12px] font-bold text-slate-700 shrink-0">
+                  <span className="shrink-0 text-xs font-bold text-slate-700">
                     +{formatPrice(160, currency)}
                   </span>
                 </label>
 
-                {/* Extra Porter */}
-                <label className="flex items-center justify-between gap-3 p-3.5 border border-slate-200 hover:border-sky-300 transition-colors cursor-pointer">
-                  <div className="flex items-center gap-3 min-w-0">
+                {/* EXTRA PORTER */}
+                <label className="flex cursor-pointer items-center justify-between gap-4 border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
+                  <div className="flex min-w-0 items-center gap-3">
                     <input
                       type="checkbox"
                       checked={includeExtraPorter}
                       onChange={(e) =>
                         setIncludeExtraPorter(e.target.checked)
                       }
-                      className="w-4 h-4 accent-sky-600 shrink-0 cursor-pointer"
+                      className="h-4 w-4 shrink-0 cursor-pointer accent-sky-600"
                     />
 
                     <div className="min-w-0">
-                      <span className="text-[12px] sm:text-[13px] font-semibold text-slate-800">
+                      <span className="text-xs font-semibold text-slate-800 sm:text-[13px]">
                         Extra Porter
                       </span>
 
-                      <p className="text-[10px] text-slate-500 mt-0.5">
+                      <p className="mt-1 text-[10px] leading-4 text-slate-500">
                         Recommended for additional camera equipment
                       </p>
                     </div>
                   </div>
 
-                  <span className="text-[12px] font-bold text-slate-700 shrink-0">
+                  <span className="shrink-0 text-xs font-bold text-slate-700">
                     +{formatPrice(280, currency)}
                   </span>
                 </label>
@@ -414,156 +471,160 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
           ========================== */}
 
           <aside className="lg:col-span-5 lg:sticky lg:top-6">
+            <div className="overflow-hidden bg-slate-950 text-white shadow-xl">
 
-            <div className="bg-sky-950 text-white border border-sky-900">
-
-              {/* Summary Header */}
-              <div className="p-5 sm:p-6 border-b border-sky-800">
-                <div className="flex items-center justify-between gap-3">
+              {/* HEADER */}
+              <div className="border-b border-white/10 px-5 py-5 sm:px-6">
+                <div className="flex items-start justify-between gap-4">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-sky-300">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-sky-400">
                       Your Expedition Estimate
                     </div>
 
-                    <div className="text-[12px] text-sky-500 mt-1">
+                    <div className="mt-1 text-xs text-slate-400">
                       Live pricing · No obligation
                     </div>
                   </div>
 
-                  <div className="px-2.5 py-1 bg-sky-500 text-slate-950 text-[10px] font-bold uppercase tracking-wider">
+                  <span className="shrink-0 bg-sky-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-slate-950">
                     Instant Quote
-                  </div>
+                  </span>
                 </div>
               </div>
 
-              {/* Trek */}
               <div className="p-5 sm:p-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 bg-sky-900 flex items-center justify-center shrink-0">
-                    <Mountain className="w-4 h-4 text-sky-300" />
+
+                {/* SELECTED TREK */}
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-sky-900/80">
+                    <Mountain className="h-5 w-5 text-sky-300" />
                   </div>
 
                   <div className="min-w-0">
-                    <h3 className="text-sm sm:text-base font-bold leading-snug text-white">
+                    <h3 className="text-sm font-bold leading-6 text-white sm:text-base">
                       {selectedTrek.title}
                     </h3>
 
-                    <p className="text-[11px] text-sky-300 mt-1">
+                    <p className="mt-1 text-[11px] text-sky-300">
                       {selectedTrek.durationDays} Days /{' '}
                       {selectedTrek.durationNights} Nights
                     </p>
                   </div>
                 </div>
 
-                {/* Breakdown */}
-                <div className="mt-5 pt-4 border-t border-sky-900 space-y-2.5 text-[12px]">
-                  <div className="flex justify-between gap-4 text-slate-400">
-                    <span className="flex items-center gap-1.5">
-                      <Users className="w-3.5 h-3.5" />
+                {/* BREAKDOWN */}
+                <div className="mt-6 space-y-3 border-t border-white/10 pt-5 text-xs">
+                  <div className="flex justify-between gap-4">
+                    <span className="flex items-center gap-2 text-slate-400">
+                      <Users className="h-3.5 w-3.5" />
                       Group size
                     </span>
 
-                    <span className="text-white font-semibold">
+                    <span className="font-semibold text-white">
                       {groupSize} {groupSize === 1 ? 'person' : 'people'}
                     </span>
                   </div>
 
-                  <div className="flex justify-between gap-4 text-slate-400">
-                    <span>Comfort tier</span>
+                  <div className="flex justify-between gap-4">
+                    <span className="text-slate-400">
+                      Comfort tier
+                    </span>
 
-                    <span className="text-white font-semibold capitalize">
+                    <span className="font-semibold capitalize text-white">
                       {tier}
                     </span>
                   </div>
 
-                  <div className="flex justify-between gap-4 text-slate-400">
-                    <span>Permits & royalties</span>
+                  <div className="flex justify-between gap-4">
+                    <span className="text-slate-400">
+                      Permits & royalties
+                    </span>
 
-                    <span className="text-emerald-400 font-semibold">
+                    <span className="font-semibold text-emerald-400">
                       Included
                     </span>
                   </div>
 
-                  <div className="flex justify-between gap-4 text-slate-400">
-                    <span className="flex items-center gap-1.5">
-                      <Plane className="w-3.5 h-3.5" />
+                  <div className="flex justify-between gap-4">
+                    <span className="flex items-center gap-2 text-slate-400">
+                      <Plane className="h-3.5 w-3.5" />
                       Domestic flights
                     </span>
 
-                    <span className="text-emerald-400 font-semibold">
+                    <span className="font-semibold text-emerald-400">
                       Included
                     </span>
                   </div>
                 </div>
 
-                {/* Price */}
-                <div className="mt-5 pt-5 border-t border-sky-800">
-                  <div className="text-[10px] sm:text-[11px] uppercase tracking-wider text-sky-300 font-bold">
+                {/* PRICE */}
+                <div className="mt-6 border-t border-white/10 pt-6">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-sky-300">
                     Estimated Cost Per Person
                   </div>
 
-                  <div className="mt-1 text-3xl sm:text-4xl font-bold tracking-tight text-white">
+                  <div className="mt-1 text-4xl font-bold tracking-tight text-white sm:text-5xl">
                     {formatPrice(roundedPerPerson, currency)}
                   </div>
 
-                  <div className="mt-1 text-[11px] text-slate-400">
+                  <div className="mt-2 text-[11px] text-slate-400">
                     Estimated group total:{' '}
-                    <span className="text-sky-300 font-bold">
+                    <span className="font-bold text-sky-300">
                       {formatPrice(groupGrandTotal, currency)}
                     </span>
                   </div>
                 </div>
 
-                {/* Actions */}
-                <div className="mt-6 space-y-2.5">
+                {/* ACTIONS */}
+                <div className="mt-7 space-y-2.5">
                   <button
                     type="button"
                     onClick={handleProceed}
                     id="cost-estimator-book-btn"
-                    className="w-full min-h-[48px] bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-3 text-[12px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                    className="flex min-h-[50px] w-full items-center justify-center gap-2 bg-sky-500 px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-950 transition-colors hover:bg-sky-400"
                   >
                     <span>Book This Custom Plan</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="h-4 w-4" />
                   </button>
 
                   <a
                     href={`https://wa.me/923009876543?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full min-h-[46px] bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-3 text-[12px] flex items-center justify-center gap-2 transition-colors"
+                    className="flex min-h-[48px] w-full items-center justify-center gap-2 bg-emerald-600 px-4 py-3 text-xs font-bold text-white transition-colors hover:bg-emerald-500"
                   >
-                    <MessageSquare className="w-4 h-4" />
+                    <MessageSquare className="h-4 w-4" />
                     <span>Ask About Availability</span>
                   </a>
                 </div>
 
-                {/* Trust */}
-                <div className="mt-5 pt-4 border-t border-sky-900">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {/* TRUST */}
+                <div className="mt-6 border-t border-white/10 pt-5">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
-                    <div className="flex items-start gap-2">
-                      <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-2.5">
+                      <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
 
                       <div>
                         <div className="text-[11px] font-bold text-white">
                           Transparent Pricing
                         </div>
 
-                        <div className="text-[10px] text-slate-400 mt-0.5">
+                        <div className="mt-1 text-[10px] leading-4 text-slate-400">
                           No surprise travel charges
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-2.5">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
 
                       <div>
                         <div className="text-[11px] font-bold text-white">
                           Flexible Planning
                         </div>
 
-                        <div className="text-[10px] text-slate-400 mt-0.5">
+                        <div className="mt-1 text-[10px] leading-4 text-slate-400">
                           Confirm details before payment
                         </div>
                       </div>
@@ -576,12 +637,19 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
           </aside>
         </div>
 
-        {/* Bottom reassurance */}
-        <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2 sm:gap-6 text-center text-[10px] sm:text-[11px] text-slate-500">
+        {/* =========================
+            BOTTOM REASSURANCE
+        ========================== */}
+
+        <div className="mt-8 flex flex-col items-center justify-center gap-2 text-center text-[10px] font-medium text-slate-500 sm:flex-row sm:gap-5 sm:text-[11px]">
           <span>✓ Clear expedition pricing</span>
-          <span className="hidden sm:block">•</span>
+
+          <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
+
           <span>✓ Local expedition support</span>
-          <span className="hidden sm:block">•</span>
+
+          <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
+
           <span>✓ Confirm availability before booking</span>
         </div>
       </div>

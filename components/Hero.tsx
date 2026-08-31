@@ -1,164 +1,166 @@
+
 'use client';
 
-import React, { useState } from 'react';
-import { Search, MapPin, Calendar, Activity, ArrowRight, Award, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
-import { TrekRegion, TrekDifficulty } from '@/types';
-import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
+import React from 'react';
+import {
+  Award,
+  ArrowRight,
+  MapPin,
+  ShieldCheck,
+  Users,
+  Mountain,
+} from 'lucide-react';
+import Link from 'next/link';
 
 interface HeroProps {
-  onSearch: (filters: { query: string; region: string; duration: string; difficulty: string }) => void;
   onTagClick: (tag: string) => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onSearch, onTagClick }) => {
-  const [query, setQuery] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedDuration, setSelectedDuration] = useState('');
-  const [selectedDifficulty, setSelectedDifficulty] = useState('');
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSearch({
-      query,
-      region: selectedRegion,
-      duration: selectedDuration,
-      difficulty: selectedDifficulty
-    });
-  };
-
+export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
   const quickTags = [
     'K2 Base Camp Trek',
     'Gondogoro La Pass',
     'Fairy Meadows & Nanga Parbat',
-    'Snow Lake (Biafo Hispar)',
+    'Snow Lake',
     'Rakaposhi Base Camp',
-    'Minglik Sar 6,050m'
+    'Minglik Sar 6,050m',
+  ];
+
+  const trustItems = [
+    {
+      icon: MapPin,
+      title: 'Skardu Based',
+      subtitle: 'Local team in Gilgit-Baltistan',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Safety Focused',
+      subtitle: 'Experienced mountain guides',
+    },
+    {
+      icon: Users,
+      title: 'Small Groups',
+      subtitle: 'Personal trekking experience',
+    },
   ];
 
   return (
-    <section id="hero-section" className="relative bg-slate-900 overflow-hidden min-h-[600px] flex items-center justify-center">
+    <section
+      id="hero-section"
+      className="relative min-h-[720px] lg:min-h-[780px] overflow-hidden bg-slate-950 flex items-center"
+    >
       {/* Background Video */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-center"
+          poster="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=85"
+          className="h-full w-full object-cover object-center"
         >
-          <source
-            src="/videos/trekkarakoram-video.mp4"
-            type="video/mp4"
-          />
-          {/* Fallback image if video doesn't load */}
-          <img
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=85"
-            alt="K2 and Karakoram mountain range in Pakistan"
-            className="w-full h-full object-cover object-center"
-          />
+          <source src="/videos/trekkarakoram-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-900/50 to-slate-950/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+
+        {/* Dark cinematic overlays */}
+        <div className="absolute inset-0 bg-slate-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/65 to-slate-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/20" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
-        <div className="flex flex-col items-center text-center">
-          {/* Top badges - centered */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-600/20 text-sky-200 text-[14px] font-bold uppercase tracking-wider rounded-sm">
-              <Award className="w-3.5 h-3.5 text-sky-400" />
-              Official Pakistan Trekking Operator
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div className="max-w-4xl">
+
+          {/* Trust Badge */}
+          <div className="mb-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-semibold text-sky-100 backdrop-blur-md">
+              <Award className="h-4 w-4 text-sky-400" />
+              Local Pakistan Trekking & Expedition Team
             </span>
           </div>
 
-          {/* Heading - centered */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-2">
-            TREK KARAKORAM
+          {/* Headline */}
+          <h1 className="max-w-4xl text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] text-white">
+            Trek deeper into the
+            <span className="block text-sky-400">
+              Karakoram Mountains.
+            </span>
           </h1>
-          <p className="text-xl sm:text-2xl lg:text-3xl text-sky-300 font-story italic font-light mb-4">
-            {BRAND_INFO.tagline}
+
+          {/* Supporting copy */}
+          <p className="mt-6 max-w-3xl text-base sm:text-lg lg:text-xl leading-relaxed text-slate-200">
+            Explore K2, Concordia, Gondogoro La, Fairy Meadows and the
+            remote valleys of northern Pakistan with experienced local
+            guides who know these mountains as home.
           </p>
 
-          <p className="text-slate-200 text-[16px] sm:text-[16px] lg:text-lg mb-6 leading-relaxed max-w-2xl">
-            {BRAND_INFO.uspOneLiner} Guided expeditions to K2 Base Camp, Concordia, Fairy Meadows, and Snow Lake with certified local Balti leaders.
-          </p>
 
-          {/* Search Engine Bar - centered */}
-          <div className="w-full max-w-5xl bg-white/95 backdrop-blur-sm p-4 rounded-sm border border-white/20">
-            <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-              {/* Search Input */}
-              <div className="lg:col-span-2 relative flex items-center border-2 border-slate-200 px-3 py-2.5 bg-white focus-within:border-sky-500 transition-colors">
-                <Search className="w-4 h-4 text-slate-400 mr-2 shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Search K2, Baltoro, Fairy Meadows..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="w-full bg-transparent text-[16px] text-slate-900 placeholder:text-slate-400 focus:outline-none"
-                />
-              </div>
+          {/* CTA Buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Link
+              href="/treks"
+              className="group inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-sky-950/30 transition-all duration-200 hover:bg-sky-500 hover:-translate-y-0.5"
+            >
+              Explore Our Treks
+              <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+            </Link>
 
-              {/* Region Select */}
-              <div className="relative flex items-center border-2 border-slate-200 px-3 py-2.5 bg-white focus-within:border-sky-500 transition-colors">
-                <MapPin className="w-4 h-4 text-sky-500 mr-2 shrink-0" />
-                <select
-                  value={selectedRegion}
-                  onChange={(e) => setSelectedRegion(e.target.value)}
-                  className="w-full bg-transparent text-[16px] px-2 text-slate-800 focus:outline-none cursor-pointer appearance-none"
-                  aria-label="Filter by region"
-                >
-                  <option value="">All Mountain Regions</option>
-                  <option value="Karakoram">Karakoram (K2 / Baltoro)</option>
-                  <option value="Hunza & Nagar">Hunza & Nagar Valley</option>
-                  <option value="Himalayas">Himalayas (Nanga Parbat)</option>
-                  <option value="Deosai & Astore">Deosai & Astore Plains</option>
-                </select>
-              </div>
-
-              {/* Difficulty Select */}
-              <div className="relative flex items-center border-2 border-slate-200 px-3 py-2.5 bg-white focus-within:border-sky-500 transition-colors">
-                <Activity className="w-4 h-4 text-sky-500 mr-2 shrink-0" />
-                <select
-                  value={selectedDifficulty}
-                  onChange={(e) => setSelectedDifficulty(e.target.value)}
-                  className="w-full bg-transparent text-[16px] text-slate-800 px-2 focus:outline-none cursor-pointer appearance-none"
-                  aria-label="Filter by difficulty"
-                >
-                  <option value="">All Difficulties</option>
-                  <option value="Moderate">Moderate (Family Friendly)</option>
-                  <option value="Demanding">Demanding (Active Hikers)</option>
-                  <option value="Strenuous">Strenuous (Experienced)</option>
-                  <option value="Extreme">Extreme (High Pass / Glaciers)</option>
-                </select>
-              </div>
-
-              {/* Submit Button */}
-              <div>
-                <button
-                  type="submit"
-                  className="w-full h-full min-h-[48px] bg-sky-600 hover:bg-sky-700 text-white font-bold text-[16px] uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer rounded-sm"
-                >
-                  <span>FIND EXPEDITION</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </form>
+            <Link
+              href="/booking"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-200 hover:bg-white/15 hover:border-white/40"
+            >
+              Plan Your Journey
+            </Link>
           </div>
 
-          {/* Quick Tag Pills - centered */}
-          <div className="hidden md:flex flex-wrap items-center justify-center gap-2 mt-6">
-            {quickTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => onTagClick(tag)}
-                className="px-2 py-2 bg-slate-800/70 hover:bg-sky-600 hover:text-white border border-slate-700 hover:border-sky-500 text-slate-200 text-[14px] font-medium transition-all duration-200 rounded-sm cursor-pointer"
+          {/* Trust Indicators */}
+          <div className="mt-10 grid max-w-3xl grid-cols-1 sm:grid-cols-3 gap-3">
+            {trustItems.map(({ icon: Icon, title, subtitle }) => (
+              <div
+                key={title}
+                className="flex items-center gap-3 rounded-lg border border-white/10 bg-slate-950/35 px-4 py-3 backdrop-blur-md"
               >
-                {tag}
-              </button>
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-sky-500/10">
+                  <Icon className="h-5 w-5 text-sky-400" />
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold text-white">
+                    {title}
+                  </p>
+                  <p className="text-xs leading-relaxed text-slate-400">
+                    {subtitle}
+                  </p>
+                </div>
+              </div>
             ))}
+          </div>
+
+          {/* Trek Links */}
+          <div className="mt-8 hidden md:block">
+            <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <Mountain className="h-4 w-4 text-sky-400" />
+              Popular Adventures
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {quickTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => onTagClick(tag)}
+                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-200 hover:border-sky-400/40 hover:bg-sky-500/15 hover:text-sky-100"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom subtle divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-500/30 to-transparent" />
     </section>
   );
 };
