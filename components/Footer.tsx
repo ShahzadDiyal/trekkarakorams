@@ -9,7 +9,6 @@ import {
   MapPin,
   MessageSquare,
   ArrowUp,
-  Sparkles,
   ShieldCheck,
   Award,
   Lock,
@@ -18,6 +17,7 @@ import {
   Instagram,
   Youtube,
   ArrowRight,
+  Crown,
 } from 'lucide-react';
 import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
@@ -414,7 +414,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
 
             <div className="flex items-start gap-3 sm:items-center">
-              <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-amber-500 sm:mt-0" />
+              <Crown className="mt-0.5 h-5 w-5 shrink-0 text-amber-500 sm:mt-0" strokeWidth={2.5} />
 
               <div>
                 <span className="block text-sm font-bold uppercase tracking-wider text-amber-600">

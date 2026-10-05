@@ -5,11 +5,12 @@ import {
   ArrowRight,
   Check,
   Mountain,
-  Sparkles,
   ShieldCheck,
   Compass,
   Users,
   Gift,
+  Crown,
+  BadgePercent,
 } from 'lucide-react';
 import { FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
 
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 
 const BENEFITS = [
   {
-    icon: Sparkles,
+    icon: BadgePercent,
     title: '20% Off 2026 / 2027 Treks',
     description:
       'Founding members receive 20% off eligible Trek Karakoram expeditions during our first two seasons.',
@@ -270,7 +271,7 @@ export default function FoundingMembersPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
               <div className="flex items-start gap-3">
-                <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-amber-400" />
+                <Crown className="mt-0.5 h-5 w-5 shrink-0 text-amber-400" strokeWidth={2.5} />
 
                 <div>
                   <p className="text-sm font-bold text-white">

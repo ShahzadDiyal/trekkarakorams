@@ -12,6 +12,7 @@ import { CostEstimator } from '@/components/CostEstimator';
 import { MapExplorer } from '@/components/MapExplorer';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { TeamSection } from '@/components/TeamSection';
+import { Reveal } from '@/components/Reveal';
 import { BlogSection } from '@/components/BlogSection';
 import { FAQSection } from '@/components/FAQSection';
 import { TREK_PACKAGES, BRAND_INFO, BRAND_VALUES, AUDIENCE_PERSONAS, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
@@ -20,8 +21,6 @@ import { facetUrl, isKnownActivity, isKnownRegion } from '@/lib/trek-facets';
 import {
   ShieldCheck,
   Mountain,
-  Plane,
-  Award,
   Compass,
   ArrowRight,
   CheckCircle2,
@@ -34,7 +33,8 @@ import {
   Globe,
   Star,
   Gift,
-  MapPin
+  MapPin,
+  BadgeCheck,
 } from 'lucide-react';
 import { whatsappLink } from '@/lib/site';
 
@@ -99,15 +99,15 @@ export const HomePageClient: React.FC = () => {
       <section className="bg-slate-950 text-slate-200 py-3.5 border-y border-slate-800 text-[14px] font-bold">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Mountain className="w-4 h-4 text-sky-400 shrink-0" />
+            <BadgeCheck className="w-5 h-5 text-sky-400 shrink-0" strokeWidth={2.5} />
             <span>Alpine Club of Pakistan Accredited</span>
           </div>
           <div className="flex items-center gap-2">
-            <Plane className="w-4 h-4 text-sky-400 shrink-0" />
-            <span>Askari Military Helicopter Rescue Bond Guaranteed</span>
+            <ShieldCheck className="w-5 h-5 text-sky-400 shrink-0" strokeWidth={2.5} />
+            <span>Govt. Licensed Tour Operator (DTS ID-2891)</span>
           </div>
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-sky-400 shrink-0" />
+            <Users className="w-5 h-5 text-sky-400 shrink-0" strokeWidth={2.5} />
             <span>Max 8 Trekkers / Small Group Focus</span>
           </div>
         </div>
@@ -388,16 +388,24 @@ export const HomePageClient: React.FC = () => {
 
 
       {/* 7. Travel Styles */}
-      <TravelStylesSection onSelectStyle={handleStyleSelect} />
+      <Reveal>
+        <TravelStylesSection onSelectStyle={handleStyleSelect} />
+      </Reveal>
 
       {/* 8. Trust Section & 4 Key Stat Metric Blocks */}
-      <TrustSection />
+      <Reveal>
+        <TrustSection />
+      </Reveal>
 
       {/* 11. Verified Trekkers Testimonials */}
-      <TestimonialsSection />
+      <Reveal>
+        <TestimonialsSection />
+      </Reveal>
 
       {/* 11b. Meet Our Team */}
-      <TeamSection />
+      <Reveal>
+        <TeamSection />
+      </Reveal>
 
       {/* 9. Interactive Custom Cost Estimator & Group Calculator */}
       <CostEstimator currency={currency} onOpenBooking={onOpenBooking} />
@@ -408,7 +416,9 @@ export const HomePageClient: React.FC = () => {
 
 
       {/* 12. Latest Mountain Guides & Articles */}
-      <BlogSection />
+      <Reveal>
+        <BlogSection />
+      </Reveal>
 
       {/* 13. FAQ Section */}
       <FAQSection />

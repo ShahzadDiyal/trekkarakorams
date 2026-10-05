@@ -7,7 +7,7 @@ import {
   Menu,
   X,
   ChevronDown,
-  Sparkles,
+  Compass,
 } from 'lucide-react';
 import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
 
@@ -153,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 href="/custom-plan"
                 className="px-4 py-2.5 rounded-sm bg-sky-600 hover:bg-sky-700 text-white font-bold text-[15px] uppercase tracking-wider transition-colors flex items-center gap-1.5"
               >
-                <Sparkles className="w-4 h-4 text-amber-300" />
+                <Compass className="w-4 h-4 text-white" strokeWidth={2.5} />
                 <span>CUSTOM PLAN</span>
               </Link>
             </div>
@@ -193,7 +193,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 bg-sky-600 text-white font-bold text-[14px] uppercase tracking-wider flex items-center justify-center gap-2"
               >
-                <Sparkles className="w-5 h-5 text-amber-300" />
+                <Compass className="w-5 h-5 text-white" strokeWidth={2.5} />
                 <span>REQUEST CUSTOM EXPEDITION</span>
               </Link>
             </div>

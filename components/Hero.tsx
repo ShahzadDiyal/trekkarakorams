@@ -73,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
         <div className="max-w-4xl">
 
           {/* Trust Badge */}
-          <div className="mb-6">
+          <div className="mb-6 animate-hero-rise animate-hero-rise-1">
             <span className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-semibold text-sky-100 backdrop-blur-md">
               <Award className="h-4 w-4 text-sky-400" />
               Local Pakistan Trekking & Expedition Team
@@ -81,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
           </div>
 
           {/* Headline */}
-          <h1 className="max-w-4xl text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase tracking-tight leading-[1.05] text-white">
+          <h1 className="max-w-4xl text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase tracking-tight leading-[1.05] text-white animate-hero-rise animate-hero-rise-2">
             Trek deeper into the
             <span className="block text-sky-400">
               Karakoram Mountains.
@@ -89,7 +89,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
           </h1>
 
           {/* Supporting copy */}
-          <p className="mt-6 max-w-3xl text-base sm:text-lg lg:text-xl leading-relaxed text-slate-200">
+          <p className="mt-6 max-w-3xl text-base sm:text-lg lg:text-xl leading-relaxed text-slate-200 animate-hero-rise animate-hero-rise-3">
             Explore K2, Concordia, Gondogoro La, Fairy Meadows and the
             remote valleys of northern Pakistan with experienced local
             guides who know these mountains as home.
@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
 
 
           {/* CTA Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 animate-hero-rise animate-hero-rise-3">
             <Link
               href="/treks"
               className="group inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-sky-950/30 transition-all duration-200 hover:bg-sky-500 hover:-translate-y-0.5"

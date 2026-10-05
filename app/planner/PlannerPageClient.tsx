@@ -241,8 +241,8 @@ export const PlannerPageClient: React.FC = () => {
                       className="accent-sky-600 h-4 w-4"
                     />
                     <div>
-                      <div className="text-[13px] font-bold text-slate-900">Askari Aviation Military Heli Evacuation Bond</div>
-                      <div className="text-[10px] text-slate-500">Immediate military helicopter dispatch guarantee in emergency</div>
+                      <div className="text-[13px] font-bold text-slate-900">Emergency Helicopter Evacuation Support</div>
+                      <div className="text-[10px] text-slate-500">Coordinated helicopter evacuation support in emergencies</div>
                     </div>
                   </div>
                   <span className="text-[13px] font-bold text-sky-700">+{formatPrice(120, currency)}</span>

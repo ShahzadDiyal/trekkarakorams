@@ -21,7 +21,7 @@ function MemberCard({ member }: { member: TeamMember }) {
     : '';
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-lg">
+    <article className="card-lift group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-lg">
       {/* Photo / initials avatar */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-sky-100 via-slate-100 to-slate-200">
         {member.image ? (

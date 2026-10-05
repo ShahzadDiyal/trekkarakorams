@@ -42,7 +42,7 @@ export const BRAND_INFO = {
     },
     {
       title: "Emergency Medical & Heli Evacuation",
-      desc: "Askari Aviation military helicopter guarantee bond, portable Gamow hyperbaric chambers, and medical oxygen on pass crossings.",
+      desc: "Coordinated emergency helicopter evacuation support, portable Gamow hyperbaric chambers, and medical oxygen on pass crossings.",
     },
     {
       title: "Certified Local Balti Leaders (5+ Years)",
@@ -448,7 +448,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
       "Porters for all personal gear (up to 20kg per trekker) and camp supplies",
       "Gondogoro La rescue team support and fixed ropes with safety carabiners",
       "Gamow hyperbaric bag, pulse oximeter, and emergency oxygen bottles",
-      "Askari Aviation military helicopter rescue bond guarantee",
+      "Emergency helicopter evacuation coordination",
     ],
     exclusions: [
       "International airfares to/from Islamabad",

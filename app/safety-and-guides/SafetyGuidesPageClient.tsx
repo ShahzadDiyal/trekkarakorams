@@ -40,7 +40,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
             High-Altitude Safety & Guide Protocols
           </h1>
           <p className="text-[13px] sm:text-[16px] text-slate-300 mt-2 max-w-2xl leading-relaxed">
-            At Trek Karakoram, trekker safety and porter welfare take absolute precedence. Learn about our medical equipment, satellite monitoring, and Askari helicopter dispatch protocols.
+            At Trek Karakoram, trekker safety and porter welfare take absolute precedence. Learn about our medical equipment, satellite monitoring, and coordinated emergency evacuation support.
           </p>
         </div>
 
@@ -50,9 +50,9 @@ export const SafetyGuidesPageClient: React.FC = () => {
             <div className="w-10 h-10 bg-sky-500 text-slate-950 flex items-center justify-center font-bold mb-3">
               <Plane className="w-5 h-5 text-white" />
             </div>
-            <h3 className="font-bold text-[16px] text-slate-900 mb-1">Askari Heli Evac Bond</h3>
+            <h3 className="font-bold text-[16px] text-slate-900 mb-1">Emergency Heli Evacuation</h3>
             <p className="text-[13px] text-slate-600 leading-relaxed">
-              We arrange direct military helicopter evacuation guarantee bonds with Askari Aviation for immediate medevac dispatch in emergency situations across Baltoro and high passes.
+              We coordinate emergency helicopter evacuation support for immediate medevac dispatch in critical situations across the Baltoro and high passes.
             </p>
           </div>
 
