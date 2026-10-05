@@ -6,15 +6,17 @@ import { useRouter } from 'next/navigation';
 import {
   ShieldCheck,
   Award,
-  Heart,
+  HeartHandshake,
   Plane,
   Mountain,
   Users,
-  Activity,
+  HeartPulse,
   CheckCircle2,
   PhoneCall,
-  ArrowRight
+  ArrowRight,
+  Check
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 
 export const SafetyGuidesPageClient: React.FC = () => {
   const router = useRouter();
@@ -38,7 +40,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
             High-Altitude Safety & Guide Protocols
           </h1>
           <p className="text-[13px] sm:text-[16px] text-slate-300 mt-2 max-w-2xl leading-relaxed">
-            At Karakoram Expeditions, trekker safety and porter welfare take absolute precedence. Learn about our medical equipment, satellite monitoring, and Askari helicopter dispatch protocols.
+            At Trek Karakoram, trekker safety and porter welfare take absolute precedence. Learn about our medical equipment, satellite monitoring, and Askari helicopter dispatch protocols.
           </p>
         </div>
 
@@ -56,7 +58,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
 
           <div className="bg-white  p-5">
             <div className="w-10 h-10 bg-sky-500 text-slate-950 flex items-center justify-center font-bold mb-3">
-              <Activity className="w-5 h-5 text-white" />
+              <HeartPulse className="w-5 h-5 text-white" />
             </div>
             <h3 className="font-bold text-[16px] text-slate-900 mb-1">Gamow Bag & O2 Onsite</h3>
             <p className="text-[13px] text-slate-600 leading-relaxed">
@@ -76,7 +78,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
 
           <div className="bg-white  p-5">
             <div className="w-10 h-10 bg-sky-500 text-slate-950 flex items-center justify-center font-bold mb-3">
-              <Heart className="w-5 h-5 text-white" />
+              <HeartHandshake className="w-5 h-5 text-white" />
             </div>
             <h3 className="font-bold text-[16px] text-slate-900 mb-1">Porter Welfare (IPPG)</h3>
             <p className="text-[13px] text-slate-600 leading-relaxed">
@@ -117,14 +119,14 @@ export const SafetyGuidesPageClient: React.FC = () => {
               Garmin InReach Satellite Communications & 24/7 Dispatch
             </h2>
             <p className="text-[13px] sm:text-[16px] text-slate-700 leading-relaxed">
-              Every Karakoram Expeditions group carries two redundant Garmin InReach satellite devices transmitting 10-minute GPS tracking breadcrumbs directly to our operational command centers in Skardu and Islamabad. Families at home can follow live trek progress on a private satellite tracking dashboard.
+              Every Trek Karakoram group carries two redundant Garmin InReach satellite devices transmitting 10-minute GPS tracking breadcrumbs directly to our operational command centers in Skardu and Islamabad. Families at home can follow live trek progress on a private satellite tracking dashboard.
             </p>
           </div>
 
           {/* Porter Welfare Pledge */}
           <div className="bg-sky-50  p-6 sm:p-8">
             <div className="flex items-center gap-2 text-sky-800 font-bold text-[14px] uppercase tracking-wider mb-2">
-              <Heart className="w-4 h-4 text-sky-600" />
+              <HeartHandshake className="w-4 h-4 text-sky-600" />
               <span>Our Porter Welfare Pledge</span>
             </div>
             <h2 className="text-lg font-bold text-slate-900 mb-2">
@@ -134,10 +136,10 @@ export const SafetyGuidesPageClient: React.FC = () => {
               The Balti porters are the true heroes of the Karakoram. Without their immense strength and cheerfulness, no expedition to K2 is possible. We provide our porter crews with high-quality warm jackets, windproof trousers, mountain boots, sunglasses, crampons, insulated sleeping mats, and comprehensive medical insurance.
             </p>
             <div className="flex flex-wrap gap-4 text-[14px] font-bold text-slate-900">
-              <span>✓ Maximum 25kg load limit</span>
-              <span>✓ Guaranteed heated shelter tents</span>
-              <span>✓ Full high-altitude rescue coverage</span>
-              <span>✓ 20% higher base pay than industry averages</span>
+              <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Maximum 25kg load limit</span></span>
+              <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Guaranteed heated shelter tents</span></span>
+              <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Full high-altitude rescue coverage</span></span>
+              <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>20% higher base pay than industry averages</span></span>
             </div>
           </div>
         </div>
@@ -149,7 +151,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
             <p className="text-[13px] text-slate-400 mt-0.5">Talk to our certified medical and expedition directors directly.</p>
           </div>
           <a
-            href="https://wa.me/923009876543?text=Hi%20Karakoram%20Expeditions%2C%20I%20have%20questions%20about%20high%20altitude%20safety"
+            href={whatsappLink("Hi Trek Karakoram, I have questions about high altitude safety")}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-2 transition-colors shrink-0"

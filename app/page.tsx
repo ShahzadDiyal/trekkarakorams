@@ -2,9 +2,17 @@ import type { Metadata } from 'next';
 import { HomePageClient } from './HomePageClient';
 
 export const metadata: Metadata = {
-  title: 'Trek Karakoram | Discover the Spirit of the Mountains',
+  title: 'K2 Base Camp Treks & Karakoram Expeditions 2026 | Trek Karakoram',
   description:
-    "Trek Karakoram invites you into the soul of Northern Pakistan. End-to-end guided expeditions to K2 Base Camp, Nanga Parbat, Rakaposhi, Baltoro Glacier, and Fairy Meadows with certified Balti mountaineers.",
+    "Guided K2 Base Camp, Gondogoro La, Nanga Parbat & Rakaposhi treks in Pakistan 2026 — guaranteed departures, transparent pricing from $1,350, certified Balti guides, permits handled.",
+  keywords: [
+    'K2 Base Camp trek',
+    'Karakoram trekking Pakistan',
+    'Pakistan trekking company',
+    'Gondogoro La trek',
+    'Nanga Parbat base camp trek',
+    'guided expeditions Pakistan',
+  ],
   alternates: { canonical: '/' },
 };
 

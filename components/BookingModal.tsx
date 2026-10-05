@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { X, MessageSquare, ShieldCheck } from 'lucide-react';
+import { X, MessageSquare, ShieldCheck,
+  ClipboardList
+} from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 import { TREK_PACKAGES } from '@/data/treks';
 
 interface BookingModalProps {
@@ -36,9 +39,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     router.push(`/booking?${params.toString()}`);
   };
 
-  const whatsappInquiryUrl = `https://wa.me/923009876543?text=${encodeURIComponent(
-    `Hello Karakoram Expeditions! I'm interested in booking: ${trekTitle || 'a trek'}, Group: ${groupSize}, Notes: ${notes || 'None'}`
-  )}`;
+  const whatsappInquiryUrl = whatsappLink(
+    `Hello ${SITE_NAME}! I'm interested in booking: ${trekTitle || 'a trek'}, Group: ${groupSize}, Notes: ${notes || 'None'}`
+  );
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/80 overflow-y-auto p-4 flex items-center justify-center">
@@ -77,7 +80,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
           <div className="space-y-4">
             <div className="bg-sky-50 border border-sky-200 p-4 text-[14px] text-slate-700">
-              <p className="font-medium text-sky-900 mb-1">📋 What's included in the process:</p>
+              <p className="font-medium text-sky-900 mb-1 flex items-center gap-1.5"><ClipboardList className="w-4 h-4" /> What's included in the process:</p>
               <ul className="space-y-1 text-[13px]">
                 <li>• Official Pakistan E-Visa Letter of Invitation (LOI)</li>
                 <li>• Complete permit clearance paperwork</li>
@@ -108,6 +111,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
             <div className="text-center text-[11px] text-slate-400 pt-2">
               You'll be redirected to our secure booking page to complete your reservation.
+              <br />
+              By booking you agree to our{' '}
+              <a href="/terms" className="underline hover:text-sky-600">
+                deposit &amp; cancellation terms
+              </a>
+              .
             </div>
           </div>
         </div>

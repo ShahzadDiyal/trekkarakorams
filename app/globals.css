@@ -48,3 +48,26 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #0369a1;
 }
+
+/* Print stylesheet — "Download Itinerary (PDF)" on trek detail pages.
+   Prints only the day-by-day itinerary card; nav, footer, booking panel,
+   tabs, gallery, and related treks are hidden. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #trek-itinerary-print,
+  #trek-itinerary-print * {
+    visibility: visible;
+  }
+  #trek-itinerary-print {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+  }
+  #trek-itinerary-print .print\:hidden {
+    display: none !important;
+  }
+}

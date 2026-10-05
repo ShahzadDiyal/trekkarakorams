@@ -16,6 +16,7 @@ import {
   PhoneCall,
   MessageSquare
 } from 'lucide-react';
+import { whatsappLink } from '@/lib/site';
 
 type BlogPost = (typeof BLOG_POSTS)[number];
 
@@ -107,7 +108,7 @@ export const BlogPostPageClient: React.FC<BlogPostPageProps> = ({ post }) => {
               Our high-altitude guides and logistics managers in Skardu can provide up-to-the-minute weather, snow depth on passes, and customized gear reviews over WhatsApp.
             </p>
             <a
-              href="https://wa.me/923009876543?text=Hi%20Karakoram%20Expeditions%2C%20I%20read%20your%20blog%20guide%20and%20have%20questions"
+              href={whatsappLink("Hi Trek Karakoram, I read your blog guide and have questions")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-4 py-2 transition-colors"

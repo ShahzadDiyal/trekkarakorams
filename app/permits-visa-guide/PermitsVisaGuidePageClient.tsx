@@ -14,6 +14,7 @@ import {
   PhoneCall,
   Clock
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 
 export const PermitsVisaGuidePageClient: React.FC = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ export const PermitsVisaGuidePageClient: React.FC = () => {
             <span className="bg-sky-600 text-white font-bold text-[14px] px-2.5 py-0.5">STEP 1</span>
             <h3 className="text-[16px] font-bold text-slate-900 mt-2">Book & Receive LOI</h3>
             <p className="text-[13px] text-slate-600 mt-2 leading-relaxed">
-              Upon placing a 20% deposit on your chosen trek, Karakoram Expeditions issues your official <strong>Letter of Invitation (LOI)</strong>, stamped itinerary, and operator license copy within 24 hours.
+              Upon placing a 20% deposit on your chosen trek, Trek Karakoram issues your official <strong>Letter of Invitation (LOI)</strong>, stamped itinerary, and operator license copy within 24 hours.
             </p>
           </div>
 
@@ -97,7 +98,7 @@ export const PermitsVisaGuidePageClient: React.FC = () => {
                 <li className="flex items-start gap-2.5 p-2.5 bg-slate-50 border border-slate-200">
                   <CheckCircle2 className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong>Official Letter of Invitation (LOI):</strong> Provided directly by Karakoram Expeditions with government DTS License # ID-2891 stamp.
+                    <strong>Official Letter of Invitation (LOI):</strong> Provided directly by Trek Karakoram with government DTS License # ID-2891 stamp.
                   </div>
                 </li>
 
@@ -126,7 +127,7 @@ export const PermitsVisaGuidePageClient: React.FC = () => {
                 <div className="p-4 bg-amber-50/70 border border-amber-200">
                   <h4 className="font-bold text-amber-900 mb-1">Restricted Zones (Govt. Group Permit & Briefing Mandatory)</h4>
                   <p>
-                    Treks inside Central Karakoram National Park near international borders (e.g. <strong>K2 Base Camp, Baltoro Glacier, Gondogoro La, Snow Lake/Hispar La</strong>) are classified as Restricted Zones. Under Ministry of Tourism regulations, independent solo trekking without a licensed local agency is strictly illegal. Karakoram Expeditions arranges all required royalty clearances, liaison officer assignments, and environmental waste management bonds on your behalf.
+                    Treks inside Central Karakoram National Park near international borders (e.g. <strong>K2 Base Camp, Baltoro Glacier, Gondogoro La, Snow Lake/Hispar La</strong>) are classified as Restricted Zones. Under Ministry of Tourism regulations, independent solo trekking without a licensed local agency is strictly illegal. Trek Karakoram arranges all required royalty clearances, liaison officer assignments, and environmental waste management bonds on your behalf.
                   </p>
                 </div>
               </div>
@@ -167,7 +168,7 @@ export const PermitsVisaGuidePageClient: React.FC = () => {
                 Our visa specialists in Islamabad guide all booked trekkers step-by-step through the NADRA online forms to ensure 100% approval rates.
               </p>
               <a
-                href="https://wa.me/923009876543?text=Hi%20Karakoram%20Expeditions%2C%20I%20need%20help%20with%20my%20Pakistan%20Trekking%20Visa"
+                href={whatsappLink("Hi Trek Karakoram, I need help with my Pakistan Trekking Visa")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-3 flex items-center justify-center gap-1.5 transition-colors"

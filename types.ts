@@ -25,6 +25,21 @@ export interface ItineraryDay {
   distanceKm?: number;
 }
 
+/** Live availability state for a fixed group departure. */
+export type DepartureStatus = 'guaranteed' | 'available' | 'limited' | 'soldout';
+
+export interface DepartureOption {
+  date: string;
+  status: DepartureStatus;
+}
+
+export const DEPARTURE_STATUS_LABEL: Record<DepartureStatus, string> = {
+  guaranteed: 'Guaranteed',
+  available: 'Available',
+  limited: 'Limited Seats',
+  soldout: 'Sold Out',
+};
+
 export interface TrekPackage {
   id: string;
   title: string;
@@ -58,7 +73,9 @@ export interface TrekPackage {
   gearChecklist: string[];
   permitRequirements: string;
   fitnessLevel: string;
-  departureDates: string[];
+  departures: DepartureOption[];
+  /** Single-room / single-tent supplement in USD (optional; derived when absent). */
+  singleSupplementUSD?: number;
 }
 
 export interface BlogArticle {

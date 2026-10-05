@@ -35,6 +35,7 @@ import {
   Gift,
   MapPin
 } from 'lucide-react';
+import { whatsappLink } from '@/lib/site';
 
 export const HomePageClient: React.FC = () => {
   const router = useRouter();
@@ -442,7 +443,7 @@ export const HomePageClient: React.FC = () => {
               </button>
 
               <a
-                href="https://wa.me/923009876543?text=Hi%20Trek%20Karakoram%2C%20I%20want%20to%20inquire%20about%202026%20trekking%20permits"
+                href={whatsappLink("Hi Trek Karakoram, I want to inquire about 2026 trekking permits")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto min-h-[48px] bg-white hover:bg-slate-100 text-sky-900 font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg border border-white/20 rounded-sm"

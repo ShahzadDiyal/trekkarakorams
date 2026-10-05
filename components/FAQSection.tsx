@@ -5,11 +5,13 @@ import {
   Search,
   MessageSquare,
   Mountain,
-  Clock,
+  LifeBuoy,
   Shield,
-  Users,
+  CreditCard,
   ArrowRight,
+  Check
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 import { FAQ_ITEMS } from '../data/treks';
 
 export const FAQSection: React.FC = () => {
@@ -41,8 +43,8 @@ export const FAQSection: React.FC = () => {
     const icons: Record<string, JSX.Element> = {
       'Visa & Permits': <Shield className="h-3.5 w-3.5" />,
       'Fitness & Altitude': <Mountain className="h-3.5 w-3.5" />,
-      'Logistics & Safety': <Clock className="h-3.5 w-3.5" />,
-      'Booking & Payment': <Users className="h-3.5 w-3.5" />,
+      'Logistics & Safety': <LifeBuoy className="h-3.5 w-3.5" />,
+      'Booking & Payment': <CreditCard className="h-3.5 w-3.5" />,
     };
 
     return icons[category] || <HelpCircle className="h-3.5 w-3.5" />;
@@ -380,7 +382,7 @@ export const FAQSection: React.FC = () => {
             </div>
 
             <a
-              href="https://wa.me/923009876543?text=Hi%2C%20I%20have%20a%20question%20about%20trekking%20in%20Pakistan"
+              href={whatsappLink("Hi, I have a question about trekking in Pakistan")}
               target="_blank"
               rel="noopener noreferrer"
               className="
@@ -401,11 +403,11 @@ export const FAQSection: React.FC = () => {
 
         {/* Bottom reassurance */}
         <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10px] font-medium uppercase tracking-wider text-slate-400">
-          <span>✓ Local expedition team</span>
+          <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Local expedition team</span></span>
           <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
-          <span>✓ Practical advice</span>
+          <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Practical advice</span></span>
           <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
-          <span>✓ No-pressure guidance</span>
+          <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>No-pressure guidance</span></span>
         </div>
       </div>
     </section>

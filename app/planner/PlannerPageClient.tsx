@@ -18,8 +18,10 @@ import {
   MessageSquare,
   FileDown,
   Info,
-  Calendar
+  Calendar,
+  Check
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 
 export const PlannerPageClient: React.FC = () => {
   const router = useRouter();
@@ -66,7 +68,7 @@ export const PlannerPageClient: React.FC = () => {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Karakoram Expeditions! I used your online Custom Trek Planner for "${selectedTrek.title}" for a group of ${groupSize} in ${preferredMonth}. Estimated per person: ${formatPrice(perPersonTotal, 'USD')}. Please send formal quote and permit availability.`
+    `Hello Trek Karakoram! I used your online Custom Trek Planner for "${selectedTrek.title}" for a group of ${groupSize} in ${preferredMonth}. Estimated per person: ${formatPrice(perPersonTotal, 'USD')}. Please send formal quote and permit availability.`
   );
 
   return (
@@ -141,7 +143,11 @@ export const PlannerPageClient: React.FC = () => {
                   ))}
                 </div>
                 <div className="text-[11px] text-slate-500 mt-1">
-                  {groupSize >= 4 ? '✓ 8%-15% Group Discount applied' : groupSize === 1 ? 'Solo traveler surcharge (+25%)' : 'Standard 2-3 person rate'}
+                  {groupSize >= 4 ? (
+                    <span className="inline-flex items-center gap-1 text-emerald-600 font-semibold">
+                      <Check className="w-3.5 h-3.5" /> 8%-15% Group Discount applied
+                    </span>
+                  ) : groupSize === 1 ? 'Solo traveler surcharge (+25%)' : 'Standard 2-3 person rate'}
                 </div>
               </div>
 
@@ -373,7 +379,7 @@ export const PlannerPageClient: React.FC = () => {
               </button>
 
               <a
-                href={`https://wa.me/923009876543?text=${whatsappMessage}`}
+                href={whatsappLink(decodeURIComponent(whatsappMessage))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
@@ -384,7 +390,7 @@ export const PlannerPageClient: React.FC = () => {
             </div>
 
             <div className="text-[11px] text-slate-400 text-center pt-2 border-t border-sky-900">
-              ✓ 100% price lock guaranteed once 20% deposit is secured.
+              <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>100% price lock guaranteed once 20% deposit is secured.</span></span>
             </div>
           </div>
         </div>

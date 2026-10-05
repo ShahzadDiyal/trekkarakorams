@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FAQ_ITEMS } from '@/data/treks';
 import { HelpCircle, ChevronDown, Search, MessageSquare, PhoneCall, ShieldCheck } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 
 export const FAQPageClient: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
@@ -124,7 +125,7 @@ export const FAQPageClient: React.FC = () => {
           </div>
 
           <a
-            href="https://wa.me/923009876543?text=Hi%20Karakoram%20Expeditions%2C%20I%20have%20a%20question%20about%20Pakistan%20trekking"
+            href={whatsappLink("Hi Trek Karakoram, I have a question about Pakistan trekking")}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-1.5 shrink-0 transition-colors"

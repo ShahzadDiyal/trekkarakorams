@@ -19,6 +19,7 @@ import {
   Youtube,
   ArrowRight,
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
 
 export const Footer: React.FC = () => {
@@ -68,7 +69,7 @@ export const Footer: React.FC = () => {
 
             <div className="flex items-center gap-2">
               <a
-                href="https://wa.me/923009876543?text=Hello%20Trek%20Karakoram"
+                href={whatsappLink("Hello Trek Karakoram")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
@@ -316,6 +317,15 @@ export const Footer: React.FC = () => {
                   className="text-gray-600 transition-colors hover:text-sky-600"
                 >
                   About Us
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/terms"
+                  className="text-gray-600 transition-colors hover:text-sky-600"
+                >
+                  Booking Terms
                 </Link>
               </li>
             </ul>

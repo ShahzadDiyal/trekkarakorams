@@ -18,9 +18,11 @@ import {
   Activity,
   Heart,
   Share2,
-  Sparkles
+  Sparkles,
+  Check
 } from 'lucide-react';
-import { TrekPackage, Currency } from '@/types';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
+import { TrekPackage, Currency, DEPARTURE_STATUS_LABEL } from '@/types';
 import { formatPrice } from '@/utils/currency';
 
 interface TrekDetailModalProps {
@@ -53,7 +55,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Karakoram Expeditions! I am inquiring about "${trek.title}" (${trek.durationDays} Days) for ${travelersCount} traveler(s). Date preferred: ${selectedDate || 'Upcoming 2026 departure'}. Please confirm permit slots.`
+    `Hello Trek Karakoram! I am inquiring about "${trek.title}" (${trek.durationDays} Days) for ${travelersCount} traveler(s). Date preferred: ${selectedDate || 'Upcoming 2026 departure'}. Please confirm permit slots.`
   );
 
   return (
@@ -275,7 +277,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                   <ul className="space-y-2 text-[14px] text-slate-700">
                     {trek.inclusions.map((inc, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="text-emerald-600 font-bold">✓</span>
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{inc}</span>
                       </li>
                     ))}
@@ -290,7 +292,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                   <ul className="space-y-2 text-[14px] text-slate-700">
                     {trek.exclusions.map((exc, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="text-rose-600 font-bold">✕</span>
+                        <XCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
                         <span>{exc}</span>
                       </li>
                     ))}
@@ -372,8 +374,10 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
                     className="w-full bg-white border border-slate-300 p-2 text-[14px] font-semibold focus:border-sky-500 focus:outline-none"
                   >
                     <option value="">Select departure date...</option>
-                    {trek.departureDates.map((date) => (
-                      <option key={date} value={date}>{date} (Guaranteed)</option>
+                    {trek.departures.map((dep) => (
+                      <option key={dep.date} value={dep.date} disabled={dep.status === 'soldout'}>
+                        {dep.date} ({DEPARTURE_STATUS_LABEL[dep.status]})
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -421,7 +425,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
               </button>
 
               <a
-                href={`https://wa.me/923009876543?text=${whatsappMessage}`}
+                href={whatsappLink(decodeURIComponent(whatsappMessage))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
@@ -431,7 +435,7 @@ export const TrekDetailModal: React.FC<TrekDetailModalProps> = ({
               </a>
 
               <div className="text-[10px] text-slate-500 text-center pt-1">
-                ✓ Free cancellation & date changes up to 60 days before start.
+                Free cancellation & date changes up to 60 days before start.
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from './sitemap';
+import { SITE_URL } from '@/lib/site';
 
 /**
  * Native Next.js robots file (App Router convention).

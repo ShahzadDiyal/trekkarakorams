@@ -6,6 +6,7 @@ import {
   BrandValue,
   AudiencePersona,
 } from "../types";
+import { PHONE_DISPLAY } from "../lib/site";
 
 export const BRAND_INFO = {
   name: "Trek Karakoram",
@@ -13,7 +14,7 @@ export const BRAND_INFO = {
   shortName: "Trek Karakoram",
   originCity: "Skardu, Gilgit-Baltistan",
   licenseNo: "DTS License: ID-2891 (Govt. of Pakistan)",
-  phone: "+92 300 9876543",
+  phone: PHONE_DISPLAY,
   email: "info@trekkarakoram.com",
   storyTitle: "Born from the Heart of the Karakoram",
   story: [
@@ -245,6 +246,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Extreme",
     maxAltitude: 5585,
     priceUSD: 2450,
+    singleSupplementUSD: 350,
     discountPriceUSD: 1960, // 20% Founding Member Discount
     basicPriceUSD: 1850,
     standardPriceUSD: 2450,
@@ -471,12 +473,12 @@ export const TREK_PACKAGES: TrekPackage[] = [
       "Requires Ministry of Tourism Trekking Permit and Central Karakoram National Park (CKNP) fee. Trek Karakoram processes 100% of the permits.",
     fitnessLevel:
       "High endurance required. Trekkers should have previous multi-day backpacking experience above 3,500m.",
-    departureDates: [
-      "June 15, 2026",
-      "July 01, 2026",
-      "July 15, 2026",
-      "August 01, 2026",
-      "August 15, 2026",
+    departures: [
+      { date: "June 15, 2026", status: "guaranteed" },
+      { date: "July 01, 2026", status: "available" },
+      { date: "July 15, 2026", status: "limited" },
+      { date: "August 01, 2026", status: "available" },
+      { date: "August 15, 2026", status: "available" },
     ],
   },
   {
@@ -492,6 +494,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Strenuous",
     maxAltitude: 5150,
     priceUSD: 2150,
+    singleSupplementUSD: 300,
     discountPriceUSD: 1720,
     basicPriceUSD: 1650,
     standardPriceUSD: 2150,
@@ -680,11 +683,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     permitRequirements: "Restricted area permit processed by Trek Karakoram.",
     fitnessLevel:
       "Good stamina for 6-7 hours walking per day over glacial terrain.",
-    departureDates: [
-      "June 20, 2026",
-      "July 05, 2026",
-      "July 20, 2026",
-      "August 05, 2026",
+    departures: [
+      { date: "June 20, 2026", status: "guaranteed" },
+      { date: "July 05, 2026", status: "limited" },
+      { date: "July 20, 2026", status: "available" },
+      { date: "August 05, 2026", status: "available" },
     ],
   },
   {
@@ -700,6 +703,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Moderate",
     maxAltitude: 4100,
     priceUSD: 1150,
+    singleSupplementUSD: 150,
     discountPriceUSD: 920,
     basicPriceUSD: 850,
     standardPriceUSD: 1150,
@@ -821,8 +825,8 @@ export const TREK_PACKAGES: TrekPackage[] = [
     permitRequirements: "Standard Pakistan Tourist E-Visa (Open Zone).",
     fitnessLevel:
       "Moderate. Suitable for first-time mountain trekkers and families.",
-    departureDates: [
-      "Weekly Departures every Saturday from May 15 to October 15, 2026",
+    departures: [
+      { date: "Weekly Departures every Saturday from May 15 to October 15, 2026", status: "available" },
     ],
   },
   {
@@ -838,6 +842,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Extreme",
     maxAltitude: 5151,
     priceUSD: 2750,
+    singleSupplementUSD: 400,
     discountPriceUSD: 2200,
     basicPriceUSD: 2100,
     standardPriceUSD: 2750,
@@ -1066,7 +1071,10 @@ export const TREK_PACKAGES: TrekPackage[] = [
       "Special wilderness permit processed by Trek Karakoram.",
     fitnessLevel:
       "Extreme. Only for experienced high-altitude backpackers comfortable with roped glacier travel.",
-    departureDates: ["July 10, 2026", "August 01, 2026"],
+    departures: [
+      { date: "July 10, 2026", status: "guaranteed" },
+      { date: "August 01, 2026", status: "available" },
+    ],
   },
   {
     id: "rakaposhi-diran-base-camp",
@@ -1081,6 +1089,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Moderate",
     maxAltitude: 3900,
     priceUSD: 1250,
+    singleSupplementUSD: 200,
     discountPriceUSD: 1000,
     basicPriceUSD: 950,
     standardPriceUSD: 1250,
@@ -1201,7 +1210,9 @@ export const TREK_PACKAGES: TrekPackage[] = [
     ],
     permitRequirements: "Open Zone (No special permit required).",
     fitnessLevel: "Moderate. Suitable for active hikers.",
-    departureDates: ["Every Sunday from June 01 to September 30, 2026"],
+    departures: [
+      { date: "Every Sunday from June 01 to September 30, 2026", status: "available" },
+    ],
   },
   {
     id: "k2-basecamp-heli-trek",
@@ -1216,6 +1227,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Demanding",
     maxAltitude: 5150,
     priceUSD: 4950,
+    singleSupplementUSD: 700,
     discountPriceUSD: 3960,
     basicPriceUSD: 3950,
     standardPriceUSD: 4950,
@@ -1360,7 +1372,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     ],
     permitRequirements: "Restricted area permit and aviation flight clearance.",
     fitnessLevel: "High endurance for the ascent phase.",
-    departureDates: ["July 05, 2026", "July 20, 2026", "August 05, 2026"],
+    departures: [
+      { date: "July 05, 2026", status: "guaranteed" },
+      { date: "July 20, 2026", status: "limited" },
+      { date: "August 05, 2026", status: "available" },
+    ],
   },
   {
     id: "rush-lake-and-peak",
@@ -1375,6 +1391,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Demanding",
     maxAltitude: 5098,
     priceUSD: 1350,
+    singleSupplementUSD: 200,
     discountPriceUSD: 1080,
     basicPriceUSD: 1050,
     standardPriceUSD: 1350,
@@ -1511,11 +1528,11 @@ export const TREK_PACKAGES: TrekPackage[] = [
     permitRequirements: "Open Zone.",
     fitnessLevel:
       "Demanding steep ascent. Good cardiovascular conditioning required.",
-    departureDates: [
-      "June 15, 2026",
-      "July 01, 2026",
-      "July 20, 2026",
-      "August 10, 2026",
+    departures: [
+      { date: "June 15, 2026", status: "available" },
+      { date: "July 01, 2026", status: "limited" },
+      { date: "July 20, 2026", status: "available" },
+      { date: "August 10, 2026", status: "available" },
     ],
   },
   {
@@ -1531,6 +1548,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Strenuous",
     maxAltitude: 6050,
     priceUSD: 1850,
+    singleSupplementUSD: 250,
     discountPriceUSD: 1480,
     basicPriceUSD: 1450,
     standardPriceUSD: 1850,
@@ -1700,7 +1718,10 @@ export const TREK_PACKAGES: TrekPackage[] = [
     ],
     permitRequirements: "Trekking peak permit processed by Trek Karakoram.",
     fitnessLevel: "Strenuous. Good cardiovascular endurance for 6,000m push.",
-    departureDates: ["July 15, 2026", "August 05, 2026"],
+    departures: [
+      { date: "July 15, 2026", status: "guaranteed" },
+      { date: "August 05, 2026", status: "available" },
+    ],
   },
   {
     id: "deosai-plains-burzil",
@@ -1715,6 +1736,7 @@ export const TREK_PACKAGES: TrekPackage[] = [
     difficulty: "Moderate",
     maxAltitude: 4114,
     priceUSD: 1100,
+    singleSupplementUSD: 150,
     discountPriceUSD: 880,
     basicPriceUSD: 800,
     standardPriceUSD: 1100,
@@ -1825,8 +1847,8 @@ export const TREK_PACKAGES: TrekPackage[] = [
     permitRequirements:
       "Deosai National Park Wildlife permit (arranged by Trek Karakoram).",
     fitnessLevel: "Moderate. High altitude camping experience recommended.",
-    departureDates: [
-      "Weekly Departures every Tuesday from July 01 to September 15, 2026",
+    departures: [
+      { date: "Weekly Departures every Tuesday from July 01 to September 15, 2026", status: "available" },
     ],
   },
 ];
@@ -1855,7 +1877,7 @@ export const TREK_STYLES: TrekStyle[] = [
   {
     id: "climbing-peaks",
     title: "6000m Trekking Peaks",
-    iconName: "Flag",
+    iconName: "MountainSnow",
     count: 8,
     description:
       "Non-technical alpine summits: Minglik Sar, Spantik, and Gondogoro Peak.",
@@ -1865,7 +1887,7 @@ export const TREK_STYLES: TrekStyle[] = [
   {
     id: "jeep-safari",
     title: "4WD Mountain Safaris",
-    iconName: "Compass",
+    iconName: "Car",
     count: 12,
     description:
       "Rugged jeep tracks through Deosai, Shimshal, and Karakoram Highway.",
@@ -2011,6 +2033,28 @@ export const BLOG_POSTS = [
       "Our itineraries include mandatory rest and acclimatization days at Paiju (3,450m) and Urdukas (4,050m) before pushing into Concordia (4,600m) and Gondogoro La (5,585m).",
     ],
   },
+  {
+    id: "k2-vs-everest-base-camp",
+    title:
+      "K2 Base Camp vs Everest Base Camp: Cost, Difficulty & Which Trek to Choose in 2026",
+    slug: "k2-vs-everest-base-camp",
+    category: "Expedition Guides",
+    readTime: "9 min read",
+    author: "Ali Balti",
+    authorRole: "Senior IFMGA Certified Lead Guide",
+    date: "Mar 02, 2026",
+    image: "/images/k2-basecamp-gondogoro-la-trek.jpg",
+    excerpt:
+      "The honest comparison: K2 vs Everest Base Camp on cost ($2,300 vs $1,800+), difficulty, crowds, scenery, and permits — so you can choose the right expedition.",
+    content: [
+      "Every serious trekker eventually faces the same question: K2 Base Camp in Pakistan or Everest Base Camp in Nepal? Both reach the foot of an 8,000m giant. Almost everything else is different.",
+      "Cost: a fully guided 20-day K2 Base Camp trek with a licensed Pakistani operator runs $1,800-$2,600 per person all-inclusive from Islamabad. A comparable 14-day Everest Base Camp trek runs $1,400-$2,200 from Kathmandu — but add Lukla flights ($400+), and the gap narrows. K2 delivers far more expedition for the money: longer, wilder, and fully supported with porters, cooks, and camping infrastructure.",
+      "Difficulty: K2 Base Camp is the harder trek, full stop. Expect 12-14 days of walking on glacier moraine and ice, 6-8 hours daily, with a max altitude of 5,150m at base camp (5,585m if you cross Gondogoro La). Everest Base Camp is a teahouse trek on established trails with lodges every night. K2 demands better fitness, but no technical climbing skills on either route.",
+      "Crowds and wilderness: Everest Base Camp sees tens of thousands of trekkers per season with busy trails and full lodges. The Baltoro sees a few thousand — you will share Concordia, the Throne Room of the Mountain Gods, with a handful of expeditions, not hundreds. Four 8,000m peaks (K2, Broad Peak, Gasherbrum I & II) surround you at once; Everest Base Camp shows you Everest itself behind a curtain of ridges.",
+      "Logistics and permits: Nepal is simpler — fly to Lukla and walk. Pakistan requires a trekking visa, a licensed operator, and restricted-zone permits for the Baltoro, which your operator arranges. The extra paperwork buys you something Nepal cannot: a true expedition, with a full support crew, satellite tracking, and the rawest mountain scenery on Earth.",
+      "Our verdict: choose Everest Base Camp for your first high-altitude trek or if you prefer lodges and infrastructure. Choose K2 Base Camp if you want the wilder, grander, more adventurous expedition — and the story nobody at home has already heard. Our 2026 guaranteed departures run June through September with max 8 trekkers per group.",
+    ],
+  },
 ];
 
 export const FAQ_ITEMS: FAQItem[] = [
@@ -2065,3 +2109,89 @@ export const FAQ_ITEMS: FAQItem[] = [
       "Mountain weather in the Karakoram can be unpredictable. We include 2 buffer days in our itineraries for domestic flight delays. If you need to cancel your booking more than 60 days before departure, your deposit is fully transferable to any future departure date within 24 months.",
   },
 ];
+
+/**
+ * Generic trek FAQs rendered on every trek detail page (and emitted as
+ * FAQPage JSON-LD). Targets the highest-volume question queries in the
+ * Karakoram trekking niche: cost, difficulty, best time, duration, permits,
+ * fitness requirements.
+ */
+export const TREK_FAQS: { question: string; answer: string }[] = [
+  {
+    question: "How much does this trek cost and what is included?",
+    answer:
+      "Prices are shown per person in USD and include all in-country logistics: airport pickup, hotels in Islamabad and Skardu, domestic transfers, government trekking permits and park fees, certified local guides, porters, cooks, all camping equipment, and three meals daily on the trail. International flights, Pakistan visa fees, personal gear, travel insurance, and tips are not included. A 20% deposit secures your seat; the balance is due 60 days before departure.",
+  },
+  {
+    question: "How difficult is this trek and what fitness level do I need?",
+    answer:
+      "Karakoram treks are graded from Moderate to Extreme. As a rule of thumb, you should be able to hike 6-8 hours a day with a daypack on consecutive days, and be comfortable above 4,000m. We recommend 8-12 weeks of cardio and hill training before departure. Our small groups (max 8) and slow acclimatization schedule make hard routes achievable for fit, determined trekkers — no technical climbing skills are required on any trekking route.",
+  },
+  {
+    question: "What is the best time of year for this trek?",
+    answer:
+      "The Karakoram trekking season runs from mid-June to mid-September. July and August offer the most stable weather and clearest views of K2 and the surrounding 8,000m peaks. June and September are quieter with fewer trekkers but carry a slightly higher chance of snow on high passes. Winter treks (December-February) are only possible on low-altitude cultural routes.",
+  },
+  {
+    question: "Do I need a visa and permits for trekking in Pakistan?",
+    answer:
+      "Yes. All foreign nationals need a Pakistan tourist or trekking visa, applied for online at visa.nadra.gov.pk (typically approved in 7-14 working days). Restricted zones like the Baltoro Glacier and K2 Base Camp additionally require trekking permits and a licensed local operator — Trek Karakoram issues your official Letter of Invitation (LOI) and processes 100% of the permits, park fees, and liaison requirements on your behalf.",
+  },
+  {
+    question: "How do your guaranteed departures and availability work?",
+    answer:
+      "Each fixed departure shows a live status: Guaranteed means the trip will run regardless of final numbers; Available means seats are open; Limited Seats means fewer than 4 places remain; Sold Out departures can be joined via waitlist. Private and custom-date departures are available year-round for groups of 2 or more — contact us for a tailored quote.",
+  },
+  {
+    question: "What gear can I rent in Skardu instead of bringing from home?",
+    answer:
+      "You do not need to buy everything before you fly. In Skardu you can rent expedition-grade sleeping bags (-20C), down jackets, trekking poles, crampons, and duffel bags for roughly $60-100 total for a full K2 trek — far cheaper than buying new. Our gear checklist marks every rentable item, and our team inspects all rental equipment before your trek begins.",
+  },
+];
+
+/** Skardu gear-rental price guide shown on the Gear Checklist tab. */
+export const GEAR_RENTAL_INFO = {
+  title: "Rent in Skardu — Don't Overpack",
+  intro:
+    "Flying with expedition gear is expensive and unnecessary. Our Skardu outfitter stocks inspected, expedition-grade equipment at a fraction of retail price.",
+  items: [
+    { item: "Expedition sleeping bag (-20C)", price: "$25 / trek" },
+    { item: "800-fill down jacket", price: "$20 / trek" },
+    { item: "Trekking poles (pair)", price: "$10 / trek" },
+    { item: "Crampons (for pass crossings)", price: "$15 / trek" },
+    { item: "90L expedition duffel", price: "$8 / trek" },
+    { item: "Sleeping mat (inflatable)", price: "$10 / trek" },
+  ],
+  note: "Full rental bundle for a K2 Base Camp trek: under $100. Reserve with your booking and your kit is inspected, packed, and waiting at your Skardu hotel.",
+};
+
+/** Deposit & cancellation policy — rendered on /terms and summarized at booking. */
+export const BOOKING_TERMS = {
+  deposit: {
+    title: "Deposit & Payment",
+    points: [
+      "A 20% non-refundable deposit per person secures your seat on any fixed departure (minimum $300).",
+      "The remaining balance is due 60 days before departure via bank transfer or secure card link.",
+      "Bookings made within 60 days of departure require full payment at the time of booking.",
+      "Single supplement (private room/tent) is charged at booking when requested and subject to availability.",
+    ],
+  },
+  cancellation: {
+    title: "Cancellation by You",
+    points: [
+      "60+ days before departure: deposit transferable to any future departure within 24 months, no penalty.",
+      "30-59 days before departure: 50% of total trip cost retained.",
+      "15-29 days before departure: 75% of total trip cost retained.",
+      "0-14 days before departure or no-show: 100% of total trip cost retained.",
+      "We strongly recommend comprehensive travel insurance covering trip cancellation and high-altitude evacuation.",
+    ],
+  },
+  operator: {
+    title: "Cancellation by Us",
+    points: [
+      "If we cancel a Guaranteed departure (extremely rare), you receive a 100% refund or free transfer to any future date.",
+      "If weather, permits, or safety force an itinerary change on the mountain, our guides reroute for the best possible experience; no refunds apply for unused services beyond our control.",
+      "Two buffer days are built into every expedition itinerary for domestic flight or weather delays.",
+    ],
+  },
+};

@@ -1,13 +1,12 @@
 import type { MetadataRoute } from 'next';
 import { TREK_PACKAGES, BLOG_POSTS } from '@/data/treks';
+import { SITE_URL } from '@/lib/site';
 import {
   ACTIVITY_FACETS,
   REGION_FACETS,
   DIFFICULTY_FACETS,
   BLOG_CATEGORY_FACETS,
 } from '@/lib/trek-facets';
-
-export const SITE_URL = 'https://karakoramexpeditions.com';
 
 /**
  * Native Next.js sitemap (App Router convention).
@@ -31,6 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE_URL}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: 'yearly', priority: 0.5 },
+    { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE_URL}/booking`, lastModified: now, changeFrequency: 'yearly', priority: 0.5 },
   ];
 
   const trekRoutes: MetadataRoute.Sitemap = TREK_PACKAGES.map((trek) => ({

@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useApp } from '@/lib/context/AppContext';
-import { TREK_PACKAGES, BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
-import { Currency, TrekPackage } from '@/types';
+import { TREK_PACKAGES, BRAND_INFO, FOUNDING_MEMBERS_SPECIAL, GEAR_RENTAL_INFO, TREK_FAQS } from '@/data/treks';
+import { Currency, TrekPackage, DEPARTURE_STATUS_LABEL } from '@/types';
 import { formatPrice } from '@/utils/currency';
 import {
   Mountain,
@@ -27,8 +27,12 @@ import {
   ChevronRight,
   PhoneCall,
   Sparkles,
-  Gift
+  Gift,
+  Check,
+  Printer,
+  ChevronDown,
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 
 interface TrekDetailPageProps {
   trek: TrekPackage;
@@ -40,9 +44,10 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
 
   const [activeTab, setActiveTab] = useState<'itinerary' | 'packages' | 'inclusions' | 'gear' | 'permits' | 'weather'>('itinerary');
   const [selectedTier, setSelectedTier] = useState<'basic' | 'standard' | 'premium'>('standard');
-  const [selectedDate, setSelectedDate] = useState<string>(trek.departureDates[0] || '');
+  const [selectedDate, setSelectedDate] = useState<string>(trek.departures[0]?.date || '');
   const [travelersCount, setTravelersCount] = useState<number>(2);
   const [copied, setCopied] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   // Price calculations based on tier
   const baseTierPrice =
@@ -59,6 +64,12 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
     navigator.clipboard?.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handlePrintItinerary = () => {
+    setActiveTab('itinerary');
+    // Wait a tick so the itinerary tab renders before the print dialog opens.
+    setTimeout(() => window.print(), 350);
   };
 
   const handleBook = () => {
@@ -283,7 +294,20 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
 
               {/* Tab 1: Detailed Itinerary */}
               {activeTab === 'itinerary' && (
-                <div className="space-y-4">
+                <div className="space-y-4" id="trek-itinerary-print">
+                  <div className="flex items-center justify-between print:hidden">
+                    <p className="text-[13px] text-slate-500">
+                      Day-by-day route with altitudes, walking times, and overnight stays.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={handlePrintItinerary}
+                      className="inline-flex items-center gap-1.5 border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-bold text-slate-700 hover:border-sky-500 hover:text-sky-700 transition-colors cursor-pointer"
+                    >
+                      <Printer className="w-4 h-4" />
+                      <span>Download Itinerary (PDF)</span>
+                    </button>
+                  </div>
                   {trek.itinerary.map((day) => (
                     <div
                       key={day.day}
@@ -332,10 +356,10 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                         For independent, budget-conscious international travelers seeking the pure authentic mountain walk.
                       </p>
                       <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
-                        <li>✓ Certified local guide</li>
-                        <li>✓ Standard dome camping</li>
-                        <li>✓ 3 camp meals daily</li>
-                        <li>✓ Essential mountain safety gear</li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Certified local guide</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Standard dome camping</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>3 camp meals daily</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Essential mountain safety gear</span></li>
                       </ul>
                       <button
                         onClick={() => setSelectedTier('basic')}
@@ -361,11 +385,11 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                         Complete end-to-end comfort with airport transfers, upgraded hotel lodging, and pre-trek coordinator.
                       </p>
                       <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
-                        <li>✓ All in Basic Package</li>
-                        <li>✓ Islamabad & Skardu Airport Transfers</li>
-                        <li>✓ 4-Star Hotel Accommodations</li>
-                        <li>✓ Pre-Trek Preparation Guide & Briefing</li>
-                        <li>✓ Porter Gear Allowance (20kg)</li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>All in Basic Package</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Islamabad & Skardu Airport Transfers</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>4-Star Hotel Accommodations</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Pre-Trek Preparation Guide & Briefing</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Porter Gear Allowance (20kg)</span></li>
                       </ul>
                       <button
                         onClick={() => setSelectedTier('standard')}
@@ -388,11 +412,11 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                         Luxury high-altitude comfort with private guide, heated dining domes, professional photos, and gourmet menus.
                       </p>
                       <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
-                        <li>✓ All in Standard Package</li>
-                        <li>✓ Dedicated Private Mountain Guide</li>
-                        <li>✓ Serena Hotel Luxury Stays</li>
-                        <li>✓ Heated Dining Dome & Espresso Bar</li>
-                        <li>✓ Professional High-Res Photo Sessions</li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>All in Standard Package</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Dedicated Private Mountain Guide</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Serena Hotel Luxury Stays</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Heated Dining Dome & Espresso Bar</span></li>
+                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Professional High-Res Photo Sessions</span></li>
                       </ul>
                       <button
                         onClick={() => setSelectedTier('premium')}
@@ -416,7 +440,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                     <ul className="space-y-2 text-[14px] text-slate-700">
                       {trek.inclusions.map((inc, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className="text-emerald-600 font-bold">✓</span>
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{inc}</span>
                         </li>
                       ))}
@@ -431,7 +455,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                     <ul className="space-y-2 text-[14px] text-slate-700">
                       {trek.exclusions.map((exc, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className="text-rose-600 font-bold">✕</span>
+                          <XCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
                           <span>{exc}</span>
                         </li>
                       ))}
@@ -459,7 +483,16 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                   </div>
 
                   <div className="p-4 bg-sky-50  text-[14px] text-slate-800">
-                    <strong>Skardu Basecamp Gear Room:</strong> Need last-minute rental crampons, mountaineering boots (size 38-48), down suits, or 4-season sleeping bags? Our Skardu gear facility stocks leading brands (The North Face, La Sportiva, Petzl, Grivel).
+                    <strong>{GEAR_RENTAL_INFO.title}:</strong> {GEAR_RENTAL_INFO.intro}
+                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {GEAR_RENTAL_INFO.items.map((r, i) => (
+                        <div key={i} className="flex items-center justify-between bg-white border border-sky-100 px-3 py-2">
+                          <span className="text-slate-700">{r.item}</span>
+                          <span className="font-bold text-sky-700">{r.price}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-3 text-[13px] text-slate-600">{GEAR_RENTAL_INFO.note}</p>
                   </div>
                 </div>
               )}
@@ -548,8 +581,14 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                   </span>
                   <span className="text-[13px] text-slate-500">/ person</span>
                 </div>
+                <div className="mt-1 text-[11px] text-slate-500">
+                  Single supplement (private room/tent):{' '}
+                  <span className="font-semibold text-slate-700">
+                    {formatPrice(trek.singleSupplementUSD || Math.round(displayPrice * 0.14), currency)}
+                  </span>
+                </div>
                 <div className="text-[11px] text-emerald-600 font-semibold mt-1">
-                  ✓ Founding Member 20% discount included.
+                  Founding Member 20% discount included.
                 </div>
               </div>
 
@@ -564,8 +603,10 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                     onChange={(e) => setSelectedDate(e.target.value)}
                     className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
                   >
-                    {trek.departureDates.map((date) => (
-                      <option key={date} value={date}>{date} (Guaranteed)</option>
+                    {trek.departures.map((dep) => (
+                      <option key={dep.date} value={dep.date} disabled={dep.status === 'soldout'}>
+                        {dep.date} ({DEPARTURE_STATUS_LABEL[dep.status]})
+                      </option>
                     ))}
                     <option value="Custom Group Date">Custom Group Request</option>
                   </select>
@@ -619,7 +660,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                 </button>
 
                 <a
-                  href={`https://wa.me/923009876543?text=${whatsappMessage}`}
+                  href={whatsappLink(decodeURIComponent(whatsappMessage))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
@@ -636,6 +677,38 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
             </div>
 
            
+          </div>
+        </div>
+
+        {/* Trek FAQs — targets cost / difficulty / best-time / visa question queries */}
+        <div className="mt-14 pt-8 border-t border-slate-200">
+          <h2 className="text-xl font-bold text-slate-900 mb-2">
+            {trek.shortTitle} — Frequently Asked Questions
+          </h2>
+          <p className="text-[13px] text-slate-500 mb-6">
+            Straight answers on cost, difficulty, best season, permits, and fitness.
+          </p>
+          <div className="space-y-3">
+            {TREK_FAQS.map((faq, i) => (
+              <div key={i} className="bg-white border border-slate-200">
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left cursor-pointer"
+                  aria-expanded={openFaq === i}
+                >
+                  <span className="font-bold text-[14px] sm:text-[15px] text-slate-900">{faq.question}</span>
+                  <ChevronDown
+                    className={`h-4 w-4 shrink-0 text-sky-600 transition-transform ${openFaq === i ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                {openFaq === i && (
+                  <div className="px-5 pb-5 text-[13px] sm:text-[14px] leading-relaxed text-slate-700">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 

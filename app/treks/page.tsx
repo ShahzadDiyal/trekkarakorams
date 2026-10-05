@@ -18,9 +18,9 @@ export async function generateMetadata({ searchParams }: TreksRouteProps): Promi
   const hasSearchQuery = typeof sp.q === 'string' && sp.q.trim().length > 0;
 
   return {
-    title: 'Pakistan Trekking Packages | Trek Karakoram',
+    title: 'Pakistan Trekking Packages 2026: Prices, Dates & Itineraries | Trek Karakoram',
     description:
-      'Explore government-licensed guided treks across the Karakoram, Western Himalayas, and Hindukush ranges. Includes permits, domestic flights, certified Balti mountain guides, and full basecamp logistics.',
+      'Compare guided Karakoram treks for 2026 — K2 Base Camp from $2,300, Fairy Meadows, Rakaposhi & more. Fixed departures with live availability, permits included, certified Balti guides.',
     alternates: {
       // Always canonicalize back to the clean, param-free catalog URL so an
       // in-page keyword search (?q=...) never gets treated as a separate page.

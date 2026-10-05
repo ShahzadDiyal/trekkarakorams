@@ -14,7 +14,9 @@ import {
   ArrowRight,
   Clock,
   Award,
+  Globe,
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY, EMAIL_PRIMARY } from '@/lib/site';
 
 export const ContactPageClient: React.FC = () => {
   const [name, setName] = useState('');
@@ -30,11 +32,9 @@ export const ContactPageClient: React.FC = () => {
     setSubmitted(true);
   };
 
-  const whatsappInquiryUrl = `https://wa.me/923009876543?text=${encodeURIComponent(
-    `Hello Karakoram Expeditions! My name is ${name || 'Treker'}. Subject: ${subject
-    }. I am from ${country || 'International'
-    }. Message: ${message || 'Inquiring about 2026 departures.'}`
-  )}`;
+  const whatsappInquiryUrl = whatsappLink(
+    `Hello ${SITE_NAME}! My name is ${name || 'Treker'}. Subject: ${subject}. I am from ${country || 'International'}. Message: ${message || 'Inquiring about 2026 departures.'}`
+  );
 
   return (
     <div className="min-h-screen bg-slate-50 py-8 sm:py-10 lg:py-12">
@@ -52,7 +52,7 @@ export const ContactPageClient: React.FC = () => {
           <span className="text-slate-300">/</span>
 
           <span className="font-semibold text-slate-900">
-            Contact Karakoram Expeditions
+            Contact {SITE_NAME}
           </span>
         </div>
 
@@ -359,7 +359,7 @@ export const ContactPageClient: React.FC = () => {
                             Contact our expedition coordinator directly on
                             WhatsApp at{' '}
                             <strong className="text-slate-900">
-                              +92 300 9876543
+                              {PHONE_DISPLAY}
                             </strong>
                             .
                           </p>
@@ -421,13 +421,13 @@ export const ContactPageClient: React.FC = () => {
 
                 <div className="flex items-center gap-2.5">
                   <Phone className="h-4 w-4 shrink-0 text-sky-600" />
-                  <span>+92 300 9876543 / +92 5815 452100</span>
+                  <span>{PHONE_DISPLAY} / +92 5815 452100</span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <Mail className="h-4 w-4 shrink-0 text-sky-600" />
                   <span className="break-all">
-                    info@karakoramexpeditions.com
+                    {EMAIL_PRIMARY}
                   </span>
                 </div>
               </div>
@@ -513,26 +513,28 @@ export const ContactPageClient: React.FC = () => {
 
               <div className="space-y-4 text-[11px]">
                 <div>
-                  <strong className="block text-[12px] text-white">
-                    🇺🇸 North America Liaison
+                  <strong className="flex items-center gap-1.5 text-[12px] text-white">
+                    <Globe className="h-3.5 w-3.5 text-sky-400" />
+                    North America Liaison
                   </strong>
 
                   <span className="mt-0.5 block leading-relaxed text-slate-400">
                     San Francisco · +1 415 800 3921
                     <br />
-                    support.na@karakoramexpeditions.com
+                    support.na@trekkarakoram.com
                   </span>
                 </div>
 
                 <div className="border-t border-white/10 pt-4">
-                  <strong className="block text-[12px] text-white">
-                    🇬🇧 Europe & UK Liaison
+                  <strong className="flex items-center gap-1.5 text-[12px] text-white">
+                    <Globe className="h-3.5 w-3.5 text-sky-400" />
+                    Europe & UK Liaison
                   </strong>
 
                   <span className="mt-0.5 block leading-relaxed text-slate-400">
                     London · +44 20 7946 0912
                     <br />
-                    europe@karakoramexpeditions.com
+                    europe@trekkarakoram.com
                   </span>
                 </div>
               </div>

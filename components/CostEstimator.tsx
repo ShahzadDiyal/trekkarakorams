@@ -11,6 +11,7 @@ import {
   Plane,
   Mountain,
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 import { TREK_PACKAGES } from '@/data/treks';
 import { Currency } from '@/types';
 import { formatPrice } from '@/utils/currency';
@@ -620,7 +621,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                   </button>
 
                   <a
-                    href={`https://wa.me/923009876543?text=${whatsappMessage}`}
+                    href={whatsappLink(decodeURIComponent(whatsappMessage))}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex min-h-[48px] w-full items-center justify-center gap-2 bg-emerald-600 px-4 py-3 text-xs font-bold text-white transition-colors hover:bg-emerald-500"
@@ -675,15 +676,15 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
         ========================== */}
 
         <div className="mt-8 flex flex-col items-center justify-center gap-2 text-center text-[10px] font-medium text-slate-500 sm:flex-row sm:gap-5 sm:text-[11px]">
-          <span>✓ Clear expedition pricing</span>
+          <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Clear expedition pricing</span></span>
 
           <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
 
-          <span>✓ Local expedition support</span>
+          <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Local expedition support</span></span>
 
           <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
 
-          <span>✓ Confirm availability before booking</span>
+          <span className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /><span>Confirm availability before booking</span></span>
         </div>
       </div>
     </section>

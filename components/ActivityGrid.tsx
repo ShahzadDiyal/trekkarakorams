@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { Mountain, Plane, Flag, Compass, Users } from 'lucide-react';
+import { Mountain, Plane, MountainSnow, Car, Route, Landmark } from 'lucide-react';
 
 interface ActivityGridProps {
   onSelectActivity: (activity: string) => void;
@@ -122,7 +122,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
 
             <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
               <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
-                <Compass className="h-4 w-4" />
+                <Car className="h-4 w-4" />
                 Remote roads
               </p>
 
@@ -153,7 +153,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
 
             <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
               <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
-                <Mountain className="h-4 w-4" />
+                <Route className="h-4 w-4" />
                 High passes
               </p>
 
@@ -184,7 +184,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
 
             <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
               <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
-                <Flag className="h-4 w-4" />
+                <MountainSnow className="h-4 w-4" />
                 Higher ground
               </p>
 
@@ -215,7 +215,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
 
             <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
               <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-300">
-                <Users className="h-4 w-4" />
+                <Landmark className="h-4 w-4" />
                 Villages & valleys
               </p>
 
@@ -234,4 +234,3 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
     </section>
   );
 };
-

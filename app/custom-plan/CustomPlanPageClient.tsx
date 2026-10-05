@@ -14,6 +14,7 @@ import {
   Utensils,
   Sparkles,
 } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 import { TREK_PACKAGES } from '@/data/treks';
 
 export const CustomPlanPageClient: React.FC = () => {
@@ -35,9 +36,9 @@ export const CustomPlanPageClient: React.FC = () => {
     setSubmitted(true);
   };
 
-  const whatsappInquiryUrl = `https://wa.me/923009876543?text=${encodeURIComponent(
-    `Hello Karakoram Expeditions! Name: ${name || 'Treker'}, Trek: ${trekTitle}, Group: ${groupSize}, Preferred: ${preferredMonth}, Country: ${country}. Looking for quote & permit availability.`
-  )}`;
+  const whatsappInquiryUrl = whatsappLink(
+    `Hello ${SITE_NAME}! Name: ${name || 'Treker'}, Trek: ${trekTitle}, Group: ${groupSize}, Preferred: ${preferredMonth}, Country: ${country}. Looking for quote & permit availability.`
+  );
 
   return (
     <main className="flex-1 bg-white">
@@ -726,7 +727,7 @@ export const CustomPlanPageClient: React.FC = () => {
                             Reach our high-altitude coordinator directly on
                             WhatsApp at{' '}
                             <strong className="text-slate-900">
-                              +92 300 9876543
+                              {PHONE_DISPLAY}
                             </strong>.
                           </p>
 

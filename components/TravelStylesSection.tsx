@@ -5,8 +5,8 @@ import React from 'react';
 import {
   Mountain,
   Plane,
-  Flag,
-  Compass,
+  MountainSnow,
+  Car,
   Users,
   Camera,
 } from 'lucide-react';
@@ -26,9 +26,9 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
       case 'Plane':
         return <Plane className="h-5 w-5" />;
       case 'Flag':
-        return <Flag className="h-5 w-5" />;
+        return <MountainSnow className="h-5 w-5" />;
       case 'Compass':
-        return <Compass className="h-5 w-5" />;
+        return <Car className="h-5 w-5" />;
       case 'Users':
         return <Users className="h-5 w-5" />;
       case 'Camera':

@@ -3,6 +3,7 @@
 import React from 'react';
 import { Mail, Phone, ShieldCheck, Award, MessageSquare } from 'lucide-react';
 import { Currency } from '@/types';
+import { whatsappLink, telLink, PHONE_DISPLAY, EMAIL_PRIMARY } from '@/lib/site';
 
 interface TopBarProps {
   currentCurrency: Currency;
@@ -21,18 +22,18 @@ export const TopBar: React.FC<TopBarProps> = ({
         {/* Left: Contact Info & Gov License */}
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6">
           <a
-            href="mailto:info@karakoramexpeditions.com"
+            href={`mailto:${EMAIL_PRIMARY}`}
             className="flex items-center gap-1.5 hover:text-sky-300 transition-colors"
           >
             <Mail className="w-3.5 h-3.5 text-sky-400" />
-            <span>info@karakoramexpeditions.com</span>
+            <span>{EMAIL_PRIMARY}</span>
           </a>
           <a
-            href="tel:+923009876543"
+            href={telLink()}
             className="flex items-center gap-1.5 hover:text-sky-300 transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-sky-400" />
-            <span>+92 300 9876543 (Skardu HQ)</span>
+            <span>{PHONE_DISPLAY} (Skardu HQ)</span>
           </a>
           <div className="hidden lg:flex items-center gap-1.5 text-sky-300">
             <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
@@ -51,7 +52,7 @@ export const TopBar: React.FC<TopBarProps> = ({
 
           {/* WhatsApp Direct */}
           <a
-            href="https://wa.me/923009876543?text=Hello%2C%20I%20am%20interested%20in%20trekking%20in%20Pakistan"
+            href={whatsappLink("Hello, I am interested in trekking in Pakistan")}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:text-emerald-400 transition-colors font-medium text-emerald-300"

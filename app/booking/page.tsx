@@ -18,6 +18,7 @@ import {
   Award,
   Sparkles,
 } from 'lucide-react';
+import { whatsappLink } from '@/lib/site';
 import { TREK_PACKAGES } from '@/data/treks';
 
 // Component that uses useSearchParams - wrapped in Suspense
@@ -56,13 +57,9 @@ function BookingForm() {
     setIsLoading(false);
   };
 
-  const whatsappInquiryUrl = `https://wa.me/923009876543?text=${encodeURIComponent(
-    `Hello Trek Karakoram! Booking inquiry from ${
-      name || 'Treker'
-    }. Trek: ${selectedTrek}, Group: ${groupCount}, Month: ${departureMonth}, Country: ${
-      country || 'International'
-    }, Notes: ${userNotes || 'None'}`
-  )}`;
+  const whatsappInquiryUrl = whatsappLink(
+    `Hello Trek Karakoram! Booking inquiry from ${name || 'Treker'}. Trek: ${selectedTrek}, Group: ${groupCount}, Month: ${departureMonth}, Country: ${country || 'International'}, Notes: ${userNotes || 'None'}`
+  );
 
   /*
    * ----------------------------------------

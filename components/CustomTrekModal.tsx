@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { X, CheckCircle2, Send, MessageSquare, ShieldCheck } from 'lucide-react';
+import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 import { TREK_PACKAGES } from '@/data/treks';
 
 interface CustomTrekModalProps {
@@ -35,9 +36,9 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
     setSubmitted(true);
   };
 
-  const whatsappInquiryUrl = `https://wa.me/923009876543?text=${encodeURIComponent(
-    `Hello Karakoram Expeditions! Name: ${name || 'Treker'}, Trek: ${trekTitle}, Group: ${groupSize}, Preferred: ${preferredMonth}, Country: ${country}. Looking for quote & permit availability.`
-  )}`;
+  const whatsappInquiryUrl = whatsappLink(
+    `Hello ${SITE_NAME}! Name: ${name || 'Treker'}, Trek: ${trekTitle}, Group: ${groupSize}, Preferred: ${preferredMonth}, Country: ${country}. Looking for quote & permit availability.`
+  );
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/85 p-4 flex items-center justify-center">
@@ -245,7 +246,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
             </p>
 
             <div className="p-4 bg-sky-50 text-[14px] text-slate-800 max-w-md mx-auto">
-              <strong>Need urgent assistance?</strong> Reach our high-altitude coordinator directly on WhatsApp at <strong>+92 300 9876543</strong>.
+              <strong>Need urgent assistance?</strong> Reach our high-altitude coordinator directly on WhatsApp at <strong>{PHONE_DISPLAY}</strong>.
             </div>
 
             <button

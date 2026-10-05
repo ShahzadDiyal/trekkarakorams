@@ -4,6 +4,7 @@ import { AppProviders } from '@/lib/context/AppContext';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Poppins } from 'next/font/google';
+import { SITE_NAME, SITE_TAGLINE, SITE_URL, PHONE_DISPLAY, EMAIL_PRIMARY } from '@/lib/site';
 
 // Configure Poppins font
 const poppins = Poppins({
@@ -14,7 +15,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://karakoramexpeditions.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Trek Karakoram | Discover the Spirit of the Mountains',
     template: '%s',
@@ -76,33 +77,48 @@ export const viewport: Viewport = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'TravelAgency',
-  name: 'Trek Karakoram',
-  slogan: 'Discover the Spirit of the Mountains',
-  image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa',
-  description:
-    'Full-service adventure travel partner specializing in end-to-end, soulful mountain expeditions across the Karakoram, Himalaya, and Hindukush ranges in Pakistan.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'College Road, Airport Link',
-    addressLocality: 'Skardu',
-    addressRegion: 'Gilgit-Baltistan',
-    postalCode: '16100',
-    addressCountry: 'PK',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 35.3204,
-    longitude: 75.5528,
-  },
-  telephone: '+92-300-9876543',
-  priceRange: '$$$',
-  areaServed: [
-    { '@type': 'AdministrativeArea', name: 'Gilgit-Baltistan, Pakistan' },
-    { '@type': 'Place', name: 'Karakoram Mountain Range' },
-    { '@type': 'Place', name: 'K2 Base Camp' },
-    { '@type': 'Place', name: 'Nanga Parbat' },
-    { '@type': 'Place', name: 'Rakaposhi' },
+  '@graph': [
+    {
+      '@type': 'TravelAgency',
+      '@id': `${SITE_URL}/#agency`,
+      name: SITE_NAME,
+      slogan: SITE_TAGLINE,
+      image: `${SITE_URL}/images/k2-basecamp-gondogoro-la-trek.jpg`,
+      description:
+        'Full-service adventure travel partner specializing in end-to-end, soulful mountain expeditions across the Karakoram, Himalaya, and Hindukush ranges in Pakistan.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'College Road, Airport Link',
+        addressLocality: 'Skardu',
+        addressRegion: 'Gilgit-Baltistan',
+        postalCode: '16100',
+        addressCountry: 'PK',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 35.3204,
+        longitude: 75.5528,
+      },
+      telephone: PHONE_DISPLAY,
+      email: EMAIL_PRIMARY,
+      url: SITE_URL,
+      priceRange: '$$',
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Gilgit-Baltistan, Pakistan' },
+        { '@type': 'Place', name: 'Karakoram Mountain Range' },
+        { '@type': 'Place', name: 'K2 Base Camp' },
+        { '@type': 'Place', name: 'Nanga Parbat' },
+        { '@type': 'Place', name: 'Rakaposhi' },
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: `${SITE_NAME} | ${SITE_TAGLINE}`,
+      publisher: { '@id': `${SITE_URL}/#agency` },
+      inLanguage: 'en',
+    },
   ],
 };
 
