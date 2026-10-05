@@ -11,6 +11,7 @@ import { TrustSection } from '@/components/TrustSection';
 import { CostEstimator } from '@/components/CostEstimator';
 import { MapExplorer } from '@/components/MapExplorer';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
+import { TeamSection } from '@/components/TeamSection';
 import { BlogSection } from '@/components/BlogSection';
 import { FAQSection } from '@/components/FAQSection';
 import { TREK_PACKAGES, BRAND_INFO, BRAND_VALUES, AUDIENCE_PERSONAS, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
@@ -394,6 +395,9 @@ export const HomePageClient: React.FC = () => {
 
       {/* 11. Verified Trekkers Testimonials */}
       <TestimonialsSection />
+
+      {/* 11b. Meet Our Team */}
+      <TeamSection />
 
       {/* 9. Interactive Custom Cost Estimator & Group Calculator */}
       <CostEstimator currency={currency} onOpenBooking={onOpenBooking} />
