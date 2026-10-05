@@ -1,0 +1,32 @@
+# Firestore Security Rules — Trek Karakoram admin panel
+#
+# Deploy: Firebase Console → Firestore Database → Rules → paste this file → Publish.
+# Or with the Firebase CLI: firebase deploy --only firestore:rules
+#
+# Model:
+#   • Anyone can READ content (so the public website can display it once wired up).
+#   • Only signed-in admins can CREATE / UPDATE / DELETE.
+#
+# First admin user: Firebase Console → Authentication → Users → Add user
+# (email + password), then sign in at https://trekkarakoram.com/admin/login
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: signed in?
+    function isAdmin() {
+      return request.auth != null;
+    }
+
+    // Content collections managed by the admin panel
+    match /{collection}/{docId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin()
+        && collection in [
+          'settings', 'hero', 'treks', 'blogs', 'team',
+          'testimonials', 'faqs', 'bookings', 'customers'
+        ];
+    }
+  }
+}

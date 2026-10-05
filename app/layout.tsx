@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { AppProviders } from '@/lib/context/AppContext';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { SiteChrome } from '@/components/SiteChrome';
 import { Poppins } from 'next/font/google';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL, PHONE_DISPLAY, EMAIL_PRIMARY } from '@/lib/site';
 
@@ -141,9 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased selection:bg-sky-500 selection:text-slate-950 ${poppins.className}`}>
         <AppProviders>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </AppProviders>
       </body>
     </html>
