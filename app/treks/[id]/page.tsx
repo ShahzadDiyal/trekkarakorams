@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { TREK_PACKAGES, TREK_FAQS } from '@/data/treks';
 import { DEPARTURE_STATUS_LABEL } from '@/types';
 import { SITE_URL, SITE_NAME } from '@/lib/site';
@@ -123,19 +122,20 @@ export default async function TrekDetailPage({ params }: TrekDetailRouteParams) 
   const { id } = await params;
   const trek = TREK_PACKAGES.find((t) => t.id === id);
 
-  // Server-side 404 for unknown trek ids, instead of silently falling back to TREK_PACKAGES[0]
-  if (!trek) {
-    notFound();
-  }
-
+  // Unknown ids (e.g. treks created in the admin panel after build) render
+  // client-side: the client resolves them from Firestore and shows a
+  // not-found state only if the database doesn't have them either.
+  // Static treks keep their server-rendered JSON-LD for rich results.
   return (
     <>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(trekJsonLd(trek)) }}
-      />
-      <TrekDetailPageClient trek={trek} />
+      {trek && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(trekJsonLd(trek)) }}
+        />
+      )}
+      <TrekDetailPageClient trekId={id} />
     </>
   );
 }

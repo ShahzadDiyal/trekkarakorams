@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { TrekPackage, Currency } from '@/types';
 import { PackageCard } from '@/components/PackageCard';
+import { TrekGridSkeleton } from '@/components/TrekSkeletons';
 import { RefreshCw } from 'lucide-react';
 
 interface PopularPackagesProps {
@@ -14,6 +15,7 @@ interface PopularPackagesProps {
   onViewDetail: (trek: TrekPackage) => void;
   onBookNow: (trek: TrekPackage) => void;
   onResetFilters: () => void;
+  loading?: boolean;
 }
 
 export const PopularPackages: React.FC<PopularPackagesProps> = ({
@@ -24,6 +26,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
   onViewDetail,
   onBookNow,
   onResetFilters,
+  loading = false,
 }) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('ALL');
 
@@ -145,7 +148,9 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
         </div>
 
         {/* Trek Grid */}
-        {filteredTreks.length > 0 ? (
+        {loading ? (
+          <TrekGridSkeleton count={6} />
+        ) : filteredTreks.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredTreks.map((trek) => (
               <PackageCard

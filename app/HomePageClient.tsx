@@ -15,8 +15,8 @@ import { TeamSection } from '@/components/TeamSection';
 import { Reveal } from '@/components/Reveal';
 import { BlogSection } from '@/components/BlogSection';
 import { FAQSection } from '@/components/FAQSection';
-import { TREK_PACKAGES, BRAND_INFO, BRAND_VALUES, AUDIENCE_PERSONAS, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
-import { TrekPackage, Currency } from '@/types';
+import { BRAND_INFO, BRAND_VALUES, AUDIENCE_PERSONAS, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
+import { useTreks } from '@/lib/content';
 import { facetUrl, isKnownActivity, isKnownRegion } from '@/lib/trek-facets';
 import {
   ShieldCheck,
@@ -41,6 +41,8 @@ import { whatsappLink } from '@/lib/site';
 export const HomePageClient: React.FC = () => {
   const router = useRouter();
   const { currency, onOpenBooking } = useApp();
+  // Live trek catalog from Firestore (static data only if the DB is unreachable).
+  const { treks, loading: treksLoading } = useTreks();
 
   const handleHeroSearch = (filters: { query: string; region: string; duration: string; difficulty: string }) => {
     // A single facet (region or difficulty) maps to a clean, canonical URL;
@@ -280,7 +282,8 @@ export const HomePageClient: React.FC = () => {
 
       {/* 5. Featured Trek Packages Catalog */}
       <PopularPackages
-        treks={TREK_PACKAGES}
+        treks={treks}
+        loading={treksLoading}
         currency={currency}
         activeRegionFilter=""
         onFilterChange={(region) => {

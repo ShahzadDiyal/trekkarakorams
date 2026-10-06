@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useApp } from '@/lib/context/AppContext';
-import { TREK_PACKAGES, BRAND_INFO, FOUNDING_MEMBERS_SPECIAL, GEAR_RENTAL_INFO, TREK_FAQS } from '@/data/treks';
-import { Currency, TrekPackage, DEPARTURE_STATUS_LABEL } from '@/types';
+import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL, GEAR_RENTAL_INFO } from '@/data/treks';
+import { DEPARTURE_STATUS_LABEL } from '@/types';
+import { useTreks, useFaqs, type PublicTrek } from '@/lib/content';
+import { TrekDetailSkeleton } from '@/components/TrekSkeletons';
 import { formatPrice } from '@/utils/currency';
 import {
   Mountain,
@@ -34,13 +36,43 @@ import {
 } from 'lucide-react';
 import { whatsappLink, SITE_NAME } from '@/lib/site';
 
-interface TrekDetailPageProps {
-  trek: TrekPackage;
-}
+/** Wrapper: resolves the trek from Firestore (static fallback), then renders. */
+export const TrekDetailPageClient: React.FC<{ trekId: string }> = ({ trekId }) => {
+  const { treks, loading } = useTreks();
+  const trek = treks.find((t) => t.id === trekId) ?? null;
 
-export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) => {
+  if (loading) return <TrekDetailSkeleton />;
+
+  if (!trek) {
+    return (
+      <div className="bg-slate-50 min-h-screen py-24">
+        <div className="mx-auto max-w-xl px-4 text-center">
+          <h1 className="text-2xl font-bold text-slate-900">Trek not found</h1>
+          <p className="mt-2 text-sm text-slate-600">
+            This trek doesn&apos;t exist or was removed.
+          </p>
+          <Link
+            href="/treks"
+            className="mt-6 inline-block bg-sky-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700"
+          >
+            View all treks
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return <TrekDetailView trek={trek} allTreks={treks} />;
+};
+
+const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = ({
+  trek,
+  allTreks,
+}) => {
   const router = useRouter();
   const { currency, onOpenBooking } = useApp();
+  // Global FAQs (Firestore `faqs` collection) — used when the trek has no own FAQs.
+  const { faqs: globalFaqs } = useFaqs();
 
   const [activeTab, setActiveTab] = useState<'itinerary' | 'packages' | 'inclusions' | 'gear' | 'permits' | 'weather'>('itinerary');
   const [selectedTier, setSelectedTier] = useState<'basic' | 'standard' | 'premium'>('standard');
@@ -85,7 +117,10 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
     `Hello Trek Karakoram! I am inquiring about "${trek.title}" (${selectedTier.toUpperCase()} tier, ${trek.durationDays} Days) for ${travelersCount} traveler(s). Target Date: ${selectedDate}. Please provide availability & permit guidance.`
   );
 
-  const otherTreks = TREK_PACKAGES.filter((t) => t.id !== trek.id).slice(0, 3);
+  const otherTreks = allTreks.filter((t) => t.id !== trek.id).slice(0, 3);
+
+  // Per-trek FAQs first; fall back to the global FAQ collection.
+  const faqs = trek.faqs.length > 0 ? trek.faqs : globalFaqs;
 
   return (
     <div className="bg-slate-50 min-h-screen py-8">
@@ -210,23 +245,25 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
             </div>
 
             {/* Photo Gallery Grid */}
-            <div className="bg-white  p-6">
-              <h2 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
-                Expedition Visual Gallery
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {trek.gallery.map((img, i) => (
-                  <div key={i} className="h-44 overflow-hidden  bg-slate-100">
-                    <img
-                      src={img}
-                      alt={`${trek.title} scenery ${i + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
+            {trek.gallery.length > 0 && (
+              <div className="bg-white  p-6">
+                <h2 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                  Expedition Visual Gallery
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {trek.gallery.map((img, i) => (
+                    <div key={i} className="h-44 overflow-hidden  bg-slate-100">
+                      <img
+                        src={img}
+                        alt={`${trek.title} scenery ${i + 1}`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Navigation Tabs */}
             <div className="bg-white  p-6">
@@ -322,14 +359,20 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
                             {day.title}
                           </h4>
                         </div>
-                        <div className="flex items-center gap-2 text-[14px] font-semibold text-slate-600">
-                          <span className="bg-white px-2 py-0.5  text-sky-700">
-                            Elev: {day.altitude}
-                          </span>
-                          <span className="bg-white px-2 py-0.5 border border-slate-200">
-                            {day.trekHours}
-                          </span>
-                        </div>
+                        {(day.altitude || day.trekHours) && (
+                          <div className="flex items-center gap-2 text-[14px] font-semibold text-slate-600">
+                            {day.altitude && (
+                              <span className="bg-white px-2 py-0.5 text-sky-700">
+                                Elev: {day.altitude}
+                              </span>
+                            )}
+                            {day.trekHours && (
+                              <span className="bg-white px-2 py-0.5 border border-slate-200">
+                                {day.trekHours}
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </div>
                       <p className="text-[13px] text-slate-700 leading-relaxed font-story">
                         {day.desc}
@@ -680,7 +723,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
           </div>
         </div>
 
-        {/* Trek FAQs — targets cost / difficulty / best-time / visa question queries */}
+        {/* Trek FAQs — per-trek FAQs when set, otherwise the global FAQ collection */}
         <div className="mt-14 pt-8 border-t border-slate-200">
           <h2 className="text-xl font-bold text-slate-900 mb-2">
             {trek.shortTitle} — Frequently Asked Questions
@@ -689,7 +732,7 @@ export const TrekDetailPageClient: React.FC<TrekDetailPageProps> = ({ trek }) =>
             Straight answers on cost, difficulty, best season, permits, and fitness.
           </p>
           <div className="space-y-3">
-            {TREK_FAQS.map((faq, i) => (
+            {faqs.map((faq, i) => (
               <div key={i} className="bg-white border border-slate-200">
                 <button
                   type="button"

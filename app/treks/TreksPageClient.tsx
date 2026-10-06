@@ -3,7 +3,8 @@
 
 import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { TREK_PACKAGES } from '@/data/treks';
+import { useTreks } from '@/lib/content';
+import { TrekGridSkeleton } from '@/components/TrekSkeletons';
 import { PackageCard } from '@/components/PackageCard';
 import { useApp } from '@/lib/context/AppContext';
 import {
@@ -38,6 +39,9 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
   const router = useRouter();
   const { currency, onOpenBooking } = useApp();
 
+  // Live trek catalog from Firestore (static data only if the DB is unreachable).
+  const { treks: allTreks, loading: treksLoading } = useTreks();
+
   const [query, setQuery] = useState(initialQuery);
   const [selectedDurationRange, setSelectedDurationRange] =
     useState<string>('ALL');
@@ -65,7 +69,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
   };
 
   const filteredTreks = useMemo(() => {
-    return TREK_PACKAGES.filter((trek) => {
+    return allTreks.filter((trek) => {
       if (query.trim()) {
         const q = query.toLowerCase().trim();
 
@@ -156,6 +160,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
       return b.rating - a.rating;
     });
   }, [
+    allTreks,
     query,
     selectedRegion,
     selectedDifficulty,
@@ -496,7 +501,9 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
           </div>
 
           {/* Cards */}
-          {filteredTreks.length > 0 ? (
+          {treksLoading ? (
+            <TrekGridSkeleton count={6} />
+          ) : filteredTreks.length > 0 ? (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
               {filteredTreks.map((trek) => (
