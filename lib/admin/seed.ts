@@ -8,6 +8,7 @@ import { db } from '@/lib/firebase';
 import { COLLECTIONS } from './db';
 import { TREK_PACKAGES, TESTIMONIALS, BLOG_POSTS, FAQ_ITEMS } from '@/data/treks';
 import { TEAM_MEMBERS } from '@/data/team';
+import { DESTINATION_REGIONS } from '@/data/destinations';
 import type {
   WebsiteSettings,
   HeroContent,
@@ -16,6 +17,7 @@ import type {
   AdminTeamMember,
   AdminTestimonial,
   AdminFaq,
+  AdminDestination,
 } from './types';
 
 async function upsert<T extends object>(collectionName: string, id: string, data: T) {
@@ -265,6 +267,30 @@ export async function seedFaqs(): Promise<void> {
   }
 }
 
+export async function seedDestinations(): Promise<void> {
+  for (let i = 0; i < DESTINATION_REGIONS.length; i++) {
+    const r = DESTINATION_REGIONS[i];
+    const data: AdminDestination = {
+      id: r.id,
+      slug: r.id,
+      name: r.name,
+      mountainRange: r.mountainRange,
+      tagline: r.tagline,
+      image: r.image,
+      overview: r.overview,
+      keyPeaks: r.keyPeaks,
+      bestMonths: r.bestMonths,
+      hubCity: r.hubCity,
+      accessAirport: r.accessAirport,
+      highlights: r.highlights,
+      matchedTrekIds: r.matchedTrekIds,
+      published: true,
+      order: i,
+    };
+    await upsert(COLLECTIONS.destinations, r.id, data);
+  }
+}
+
 export async function seedAll(): Promise<void> {
   await seedSettings();
   await seedHero();
@@ -273,4 +299,5 @@ export async function seedAll(): Promise<void> {
   await seedTeam();
   await seedTestimonials();
   await seedFaqs();
+  await seedDestinations();
 }

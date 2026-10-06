@@ -63,12 +63,12 @@ service cloud.firestore {
     match /{collection}/{docId} {
       allow read: if collection in [
         'settings', 'hero', 'treks', 'blogs', 'team',
-        'testimonials', 'faqs'
+        'testimonials', 'faqs', 'destinations'
       ];
       allow create, update, delete: if isAdmin()
         && collection in [
           'settings', 'hero', 'treks', 'blogs', 'team',
-          'testimonials', 'faqs', 'bookings', 'customers'
+          'testimonials', 'faqs', 'destinations', 'bookings', 'customers'
         ];
     }
 

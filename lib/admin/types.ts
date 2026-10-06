@@ -218,6 +218,26 @@ export interface AdminBlog {
   published: boolean;
 }
 
+export interface AdminDestination {
+  id: string;
+  /** URL slug for /destinations/{slug}. */
+  slug: string;
+  name: string;
+  mountainRange: string;
+  tagline: string;
+  image: string;
+  overview: string;
+  keyPeaks: string[];
+  bestMonths: string;
+  hubCity: string;
+  accessAirport: string;
+  highlights: string[];
+  /** Trek doc ids featured in this region. */
+  matchedTrekIds: string[];
+  published: boolean;
+  order: number;
+}
+
 export interface AdminTeamMember {
   id: string;
   name: string;

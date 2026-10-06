@@ -5,11 +5,13 @@ import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from './firebase';
 import { FAQ_ITEMS, TREK_PACKAGES, BLOG_POSTS } from '@/data/treks';
 import { TEAM_MEMBERS, type TeamMember } from '@/data/team';
+import { DESTINATION_REGIONS } from '@/data/destinations';
 import type {
   AdminTrek,
   AdminBlog,
   AdminTeamMember,
   AdminTestimonial,
+  AdminDestination,
   TrekFaq,
   PricingTier,
 } from './admin/types';
@@ -519,4 +521,99 @@ export function useTestimonials(): {
     };
   }, []);
   return { testimonials, loading };
+}
+
+/* ------------------------------------------------------------------ */
+/* Destinations                                                        */
+/* ------------------------------------------------------------------ */
+
+export interface PublicDestination {
+  id: string;
+  slug: string;
+  name: string;
+  mountainRange: string;
+  tagline: string;
+  image: string;
+  overview: string;
+  keyPeaks: string[];
+  bestMonths: string;
+  hubCity: string;
+  accessAirport: string;
+  highlights: string[];
+  matchedTrekIds: string[];
+}
+
+function toPublicDestination(doc: AdminDestination & { id: string }): PublicDestination {
+  return {
+    id: doc.id,
+    slug: doc.slug || doc.id,
+    name: doc.name,
+    mountainRange: doc.mountainRange,
+    tagline: doc.tagline,
+    image: doc.image,
+    overview: doc.overview,
+    keyPeaks: doc.keyPeaks ?? [],
+    bestMonths: doc.bestMonths,
+    hubCity: doc.hubCity,
+    accessAirport: doc.accessAirport,
+    highlights: doc.highlights ?? [],
+    matchedTrekIds: doc.matchedTrekIds ?? [],
+  };
+}
+
+/**
+ * Database-first destination regions (published, admin order), with the
+ * built-in region list as fallback when Firestore can't be reached.
+ */
+export async function getDestinations(): Promise<PublicDestination[]> {
+  try {
+    const snap = await getDocs(
+      query(collection(db, 'destinations'), orderBy('createdAt', 'asc'))
+    );
+    const docs = snap.docs.map((d) => {
+      const data = d.data() as AdminDestination;
+      return { ...data, id: d.id };
+    });
+    const published = docs.filter((d) => d.published !== false);
+    if (published.length === 0) return staticDestinations();
+    return published
+      .map(toPublicDestination)
+      .sort(
+        (a, b) =>
+          (docs.find((d) => d.id === a.id)?.order ?? 0) -
+          (docs.find((d) => d.id === b.id)?.order ?? 0)
+      );
+  } catch {
+    return staticDestinations();
+  }
+}
+
+function staticDestinations(): PublicDestination[] {
+  return DESTINATION_REGIONS.map((r) => ({ ...r, slug: r.id }));
+}
+
+/** React hook for the public destinations page. */
+export function useDestinations(): {
+  destinations: PublicDestination[];
+  loading: boolean;
+} {
+  const [destinations, setDestinations] = useState<PublicDestination[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let cancelled = false;
+    getDestinations()
+      .then((d) => {
+        if (!cancelled) {
+          setDestinations(d);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return { destinations, loading };
 }
