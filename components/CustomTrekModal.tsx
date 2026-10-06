@@ -77,7 +77,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
             <form onSubmit={handleSubmit} className="space-y-4 text-[13px]">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     Your Full Name *
                   </label>
                   <input
@@ -86,12 +86,12 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                     placeholder="e.g. John Doe"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="field-input"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     Email Address *
                   </label>
                   <input
@@ -100,14 +100,14 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                     placeholder="e.g. john@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="field-input"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     WhatsApp / Phone Number
                   </label>
                   <input
@@ -115,12 +115,12 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                     placeholder="+1 234 567 8900"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="field-input"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     Country of Citizenship *
                   </label>
                   <input
@@ -129,14 +129,14 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                     placeholder="e.g. United Kingdom, USA, Germany"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                    className="field-input"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="sm:col-span-2">
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     Selected Trek / Route *
                   </label>
                   <select
@@ -152,7 +152,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     Group Size
                   </label>
                   <input
@@ -168,7 +168,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     Target Month / Season
                   </label>
                   <select
@@ -186,7 +186,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-800 uppercase mb-1">
+                  <label className="field-label">
                     Dietary Requirements
                   </label>
                   <select
@@ -204,7 +204,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
               </div>
 
               <div>
-                <label className="block font-bold text-slate-800 uppercase mb-1">
+                <label className="field-label">
                   Additional Notes or Questions
                 </label>
                 <textarea
@@ -212,7 +212,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                   placeholder="Tell us about previous high-altitude experience, equipment needs, or helicopter requests..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                  className="field-input"
                 />
               </div>
 

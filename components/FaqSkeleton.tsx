@@ -35,7 +35,7 @@ export function FaqPageSkeleton({ count = 6 }: { count?: number }) {
   return (
     <div className="mb-10 space-y-3" aria-label="Loading FAQs">
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="border border-slate-200 bg-white">
+        <div key={i} className="rounded-2xl border border-slate-200 bg-white">
           <div className="flex w-full items-center justify-between gap-3 p-4 sm:p-5">
             <div className="flex flex-1 items-center gap-2.5">
               <Shimmer className="h-5 w-24 shrink-0 !rounded-sm" />

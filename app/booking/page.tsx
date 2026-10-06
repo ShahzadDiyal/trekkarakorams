@@ -357,7 +357,7 @@ function BookingForm() {
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  <label className="field-label">
                     Full Name *
                   </label>
 
@@ -367,12 +367,12 @@ function BookingForm() {
                     placeholder="e.g. Marcus Vance"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                    className="field-input"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  <label className="field-label">
                     Email Address *
                   </label>
 
@@ -382,12 +382,12 @@ function BookingForm() {
                     placeholder="e.g. marcus@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                    className="field-input"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  <label className="field-label">
                     WhatsApp / Phone *
                   </label>
 
@@ -397,12 +397,12 @@ function BookingForm() {
                     placeholder="+1 555 123 4567"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                    className="field-input"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  <label className="field-label">
                     Country of Citizenship *
                   </label>
 
@@ -412,7 +412,7 @@ function BookingForm() {
                     placeholder="e.g. USA, UK, Germany"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                    className="field-input"
                   />
                 </div>
               </div>
@@ -442,14 +442,14 @@ function BookingForm() {
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  <label className="field-label">
                     Selected Trek
                   </label>
 
                   <select
                     value={selectedTrek}
                     onChange={(e) => setSelectedTrek(e.target.value)}
-                    className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] font-semibold text-slate-900 outline-none transition-all duration-200 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                    className="field-select"
                   >
                     {treks.map((t) => (
                       <option key={t.id} value={t.title}>
@@ -460,7 +460,7 @@ function BookingForm() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                  <label className="field-label">
                     Group Size
                   </label>
 
@@ -470,20 +470,20 @@ function BookingForm() {
                     max={25}
                     value={groupCount}
                     onChange={(e) => setGroupCount(Number(e.target.value))}
-                    className="w-full rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                    className="field-input"
                   />
                 </div>
               </div>
 
               <div className="mt-5">
-                <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                <label className="field-label">
                   Target Departure Month / Dates
                 </label>
 
                 <select
                   value={departureMonth}
                   onChange={(e) => setDepartureMonth(e.target.value)}
-                  className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] font-semibold text-slate-900 outline-none transition-all duration-200 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                  className="field-select"
                 >
                   <option value="June 2026">
                     June 2026 (Early Summer)
@@ -512,7 +512,7 @@ function BookingForm() {
               </div>
 
               <div className="mt-5">
-                <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                <label className="field-label">
                   Special Notes / Experience / Custom Requests
                 </label>
 
@@ -521,7 +521,7 @@ function BookingForm() {
                   placeholder="Previous high-altitude experience, dietary requirements, single tent preference, special requests..."
                   value={userNotes}
                   onChange={(e) => setUserNotes(e.target.value)}
-                  className="w-full resize-y rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                  className="field-textarea"
                 />
               </div>
             </div>

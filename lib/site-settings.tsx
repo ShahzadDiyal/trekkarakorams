@@ -9,6 +9,8 @@ import type {
   FooterColumn,
   HeroSettings,
   GearRentalInfo,
+  FooterNewsletterSettings,
+  FooterFoundingSettings,
 } from './admin/types';
 import {
   SITE_NAME,
@@ -48,6 +50,9 @@ export interface ResolvedSiteSettings {
   gearRental: GearRentalInfo;
   visaSteps: string[];
   defaultWeatherInfo: string;
+  footerNewsletter: FooterNewsletterSettings;
+  footerFounding: FooterFoundingSettings;
+  footerCopyright: string;
   /** true once Firestore has responded (or failed) — data is final. */
   loaded: boolean;
 }
@@ -142,6 +147,27 @@ const DEFAULT_VISA_STEPS: string[] = [
 const DEFAULT_WEATHER_INFO =
   'During the summer climbing season (June to late August), daytime temperatures at lower altitudes (Skardu/Askole) range from 24°C to 30°C. Above 4,000m (Concordia/Ali Camp), daytime temperatures are 10°C to 18°C, dropping to -5°C to -12°C at night. Gondogoro La pass crossings are scheduled at 1:00 AM when snow crust is firm.';
 
+const DEFAULT_FOOTER_NEWSLETTER: FooterNewsletterSettings = {
+  enabled: true,
+  eyebrow: 'From the trail',
+  title: 'Stories from the mountains.',
+  description:
+    'Occasional updates from the trail. New routes, seasonal guides, and honest writing from Baltistan. No spam.',
+  placeholder: 'Your email address',
+  buttonLabel: 'Subscribe',
+};
+
+const DEFAULT_FOOTER_FOUNDING: FooterFoundingSettings = {
+  enabled: true,
+  title: 'Founding Members Special (2026 Inception)',
+  description:
+    '20% off 2026/2027 treks + lifetime 10% loyalty & free merchandise.',
+  ctaLabel: 'Claim Your Benefits',
+  ctaHref: '/planner',
+};
+
+const DEFAULT_FOOTER_COPYRIGHT = '© {year} Trek Karakoram. All rights reserved.';
+
 const DEFAULT_HERO: HeroSettings = {
   mediaType: 'video',
   imageUrl:
@@ -184,6 +210,9 @@ const DEFAULTS: ResolvedSiteSettings = {
   gearRental: DEFAULT_GEAR_RENTAL,
   visaSteps: DEFAULT_VISA_STEPS,
   defaultWeatherInfo: DEFAULT_WEATHER_INFO,
+  footerNewsletter: DEFAULT_FOOTER_NEWSLETTER,
+  footerFounding: DEFAULT_FOOTER_FOUNDING,
+  footerCopyright: DEFAULT_FOOTER_COPYRIGHT,
   loaded: false,
 };
 
@@ -231,6 +260,9 @@ export function mergeSettings(doc: WebsiteSettings | null): ResolvedSiteSettings
     },
     visaSteps: pickList<string>(doc.visaSteps, DEFAULT_VISA_STEPS),
     defaultWeatherInfo: pick(doc.defaultWeatherInfo, DEFAULT_WEATHER_INFO),
+    footerNewsletter: { ...DEFAULT_FOOTER_NEWSLETTER, ...(doc.footerNewsletter ?? {}) },
+    footerFounding: { ...DEFAULT_FOOTER_FOUNDING, ...(doc.footerFounding ?? {}) },
+    footerCopyright: pick(doc.footerCopyright, DEFAULT_FOOTER_COPYRIGHT),
     loaded: true,
   };
 }

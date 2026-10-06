@@ -580,7 +580,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
 
-              <div className="border border-slate-200 bg-white p-5">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-sky-600">
                   June — August
                 </span>
@@ -594,7 +594,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                 </p>
               </div>
 
-              <div className="border border-slate-200 bg-white p-5">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600">
                   September — October
                 </span>
@@ -608,7 +608,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                 </p>
               </div>
 
-              <div className="border border-slate-200 bg-white p-5">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">
                   April — May
                 </span>

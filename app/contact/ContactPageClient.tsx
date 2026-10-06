@@ -106,7 +106,7 @@ export const ContactPageClient: React.FC = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-7">
-            <div className="border border-slate-200 bg-white shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
 
               {!submitted ? (
                 <form
@@ -154,7 +154,7 @@ export const ContactPageClient: React.FC = () => {
                           placeholder="e.g. John Doe"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full border border-slate-300 bg-slate-50 px-3.5 py-3 text-[14px] text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white"
+                          className="field-input"
                         />
                       </div>
 
@@ -170,7 +170,7 @@ export const ContactPageClient: React.FC = () => {
                           placeholder="e.g. john@example.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full border border-slate-300 bg-slate-50 px-3.5 py-3 text-[14px] text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white"
+                          className="field-input"
                         />
                       </div>
 
@@ -185,7 +185,7 @@ export const ContactPageClient: React.FC = () => {
                           placeholder="+1 234 567 8900"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="w-full border border-slate-300 bg-slate-50 px-3.5 py-3 text-[14px] text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white"
+                          className="field-input"
                         />
                       </div>
 
@@ -201,7 +201,7 @@ export const ContactPageClient: React.FC = () => {
                           placeholder="e.g. United Kingdom, USA"
                           value={country}
                           onChange={(e) => setCountry(e.target.value)}
-                          className="w-full border border-slate-300 bg-slate-50 px-3.5 py-3 text-[14px] text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white"
+                          className="field-input"
                         />
                       </div>
                     </div>
@@ -215,7 +215,7 @@ export const ContactPageClient: React.FC = () => {
                       <select
                         value={subject}
                         onChange={(e) => setSubject(e.target.value)}
-                        className="w-full cursor-pointer border border-slate-300 bg-slate-50 px-3.5 py-3 text-[14px] font-semibold text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white"
+                        className="field-select"
                       >
                         <option value="K2 Base Camp & Gondogoro La 2026">
                           K2 Base Camp & Gondogoro La (2026)
@@ -253,7 +253,7 @@ export const ContactPageClient: React.FC = () => {
                         placeholder="Tell us about your preferred travel dates, group size, trekking experience, and any special requests..."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        className="w-full resize-y border border-slate-300 bg-slate-50 px-3.5 py-3 text-[14px] text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white"
+                        className="field-textarea"
                       />
                     </div>
                   </div>

@@ -260,6 +260,53 @@ export default function AdminSettingsPage() {
             </div>
             <FooterColumnsEditor columns={form.footerColumns} onChange={(c) => set('footerColumns', c)} />
           </Card>
+          <Card className="space-y-4 p-5">
+            <div>
+              <h2 className="font-bold text-slate-900">Newsletter block</h2>
+              <p className="text-xs text-slate-500">
+                The “From the trail” signup above the footer links.
+              </p>
+            </div>
+            <Toggle
+              label="Show newsletter block"
+              checked={form.footerNewsletter.enabled}
+              onChange={(v) => set('footerNewsletter', { ...form.footerNewsletter, enabled: v })}
+            />
+            <TextField label="Eyebrow" value={form.footerNewsletter.eyebrow} onChange={(e) => set('footerNewsletter', { ...form.footerNewsletter, eyebrow: e.target.value })} />
+            <TextField label="Title" value={form.footerNewsletter.title} onChange={(e) => set('footerNewsletter', { ...form.footerNewsletter, title: e.target.value })} />
+            <TextArea label="Description" rows={3} value={form.footerNewsletter.description} onChange={(e) => set('footerNewsletter', { ...form.footerNewsletter, description: e.target.value })} />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <TextField label="Email placeholder" value={form.footerNewsletter.placeholder} onChange={(e) => set('footerNewsletter', { ...form.footerNewsletter, placeholder: e.target.value })} />
+              <TextField label="Button label" value={form.footerNewsletter.buttonLabel} onChange={(e) => set('footerNewsletter', { ...form.footerNewsletter, buttonLabel: e.target.value })} />
+            </div>
+          </Card>
+          <Card className="space-y-4 p-5">
+            <div>
+              <h2 className="font-bold text-slate-900">Founding members promo</h2>
+              <p className="text-xs text-slate-500">
+                The promo banner above the footer bottom bar.
+              </p>
+            </div>
+            <Toggle
+              label="Show promo banner"
+              checked={form.footerFounding.enabled}
+              onChange={(v) => set('footerFounding', { ...form.footerFounding, enabled: v })}
+            />
+            <TextField label="Title" value={form.footerFounding.title} onChange={(e) => set('footerFounding', { ...form.footerFounding, title: e.target.value })} />
+            <TextArea label="Description" rows={2} value={form.footerFounding.description} onChange={(e) => set('footerFounding', { ...form.footerFounding, description: e.target.value })} />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <TextField label="Button label" value={form.footerFounding.ctaLabel} onChange={(e) => set('footerFounding', { ...form.footerFounding, ctaLabel: e.target.value })} />
+              <TextField label="Button link" value={form.footerFounding.ctaHref} onChange={(e) => set('footerFounding', { ...form.footerFounding, ctaHref: e.target.value })} />
+            </div>
+          </Card>
+          <Card className="space-y-4 p-5">
+            <h2 className="font-bold text-slate-900">Copyright line</h2>
+            <TextField
+              label="Copyright (use {year} for the current year)"
+              value={form.footerCopyright}
+              onChange={(e) => set('footerCopyright', e.target.value)}
+            />
+          </Card>
         </div>
       )}
 

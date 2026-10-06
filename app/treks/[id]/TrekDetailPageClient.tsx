@@ -152,7 +152,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                 <span className="bg-sky-600 text-white font-bold text-[14px] px-3 py-1 uppercase tracking-wider">
                   {trek.region}
                 </span>
-                <span className="bg-slate-900/90 border border-slate-700 text-sky-300 font-bold text-[14px] px-3 py-1">
+                <span className="rounded-md bg-slate-900/90 border border-slate-700 text-sky-300 font-bold text-[14px] px-3 py-1">
                   {trek.activityType}
                 </span>
               </div>
@@ -368,7 +368,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                               </span>
                             )}
                             {day.trekHours && (
-                              <span className="bg-white px-2 py-0.5 border border-slate-200">
+                              <span className="rounded-md bg-white px-2 py-0.5 border border-slate-200">
                                 {day.trekHours}
                               </span>
                             )}
@@ -440,7 +440,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
               {/* Tab 3: Inclusions & Exclusions */}
               {activeTab === 'inclusions' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="p-5 bg-emerald-50/70 border border-emerald-200">
+                  <div className="p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200">
                     <h4 className="font-bold text-[14px] uppercase tracking-wider text-emerald-900 mb-3 flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                       <span>Complete Inclusions</span>
@@ -455,7 +455,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                     </ul>
                   </div>
 
-                  <div className="p-5 bg-rose-50/70 border border-rose-200">
+                  <div className="p-5 rounded-2xl bg-rose-50/70 border border-rose-200">
                     <h4 className="font-bold text-[14px] uppercase tracking-wider text-rose-900 mb-3 flex items-center gap-1.5">
                       <XCircle className="w-4 h-4 text-rose-600" />
                       <span>Exclusions</span>
@@ -482,7 +482,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px] text-slate-700">
                       {trek.gearChecklist.map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 p-2 bg-white border border-slate-200">
+                        <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200">
                           <span className="w-2 h-2 bg-sky-500 rounded-none shrink-0" />
                           <span>{item}</span>
                         </div>
@@ -702,7 +702,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
           </p>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200">
+              <div key={i} className="rounded-xl bg-white border border-slate-200">
                 <button
                   type="button"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}

@@ -176,7 +176,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                     key={wp.id}
                     type="button"
                     onClick={() => setActiveWaypoint(wp)}
-                    className={`group w-full border p-3.5 text-left transition-all duration-200 sm:p-4 ${
+                    className={`group w-full rounded-xl border p-3.5 text-left transition-all duration-200 sm:p-4 ${
                       isSelected
                         ? 'border-sky-500/70 bg-sky-950/50'
                         : 'border-slate-800 bg-slate-900/70 hover:border-slate-700 hover:bg-slate-900'
@@ -186,7 +186,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
 
                       {/* Icon */}
                       <div
-                        className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center transition-colors ${
+                        className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
                           isSelected
                             ? 'bg-sky-500 text-slate-950'
                             : 'bg-slate-800 text-sky-400 group-hover:bg-slate-700'
@@ -202,7 +202,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                             {wp.name}
                           </h3>
 
-                          <span className="w-fit shrink-0 bg-slate-800 px-2 py-1 text-[10px] font-bold tracking-wide text-sky-300">
+                          <span className="w-fit shrink-0 rounded-md bg-slate-800 px-2 py-1 text-[10px] font-bold tracking-wide text-sky-300">
                             {wp.altitude}
                           </span>
                         </div>
@@ -220,7 +220,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
 
           {/* Detail Panel */}
           <div className="lg:col-span-7">
-            <div className="relative h-full overflow-hidden border border-slate-800 bg-slate-900/80">
+            <div className="relative h-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80">
 
               {/* Subtle Top Accent */}
               <div className="h-1 w-full bg-sky-500" />
@@ -230,7 +230,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                 {/* Meta */}
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-950">
+                    <span className="rounded-md bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-950">
                       {activeWaypoint.type}
                     </span>
 
@@ -256,7 +256,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                   </p>
 
                   {/* Information Grid */}
-                  <div className="mt-6 grid gap-px overflow-hidden border border-slate-800 bg-slate-800 sm:grid-cols-2">
+                  <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-slate-800 bg-slate-800 sm:grid-cols-2">
 
                     <div className="bg-slate-950/80 p-4">
                       <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500">
@@ -299,7 +299,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                     onClick={() =>
                       onSelectTrekById(activeWaypoint.matchedTrekId)
                     }
-                    className="group flex w-full items-center justify-center gap-2 bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 sm:w-auto"
+                    className="group flex w-full items-center justify-center gap-2 rounded-lg bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 sm:w-auto"
                   >
                     View Trek Package
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

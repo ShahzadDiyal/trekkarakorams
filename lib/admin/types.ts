@@ -33,6 +33,12 @@ export interface WebsiteSettings {
   visaSteps: string[];
   /** Default Weather & Season paragraph (per-trek override wins). */
   defaultWeatherInfo: string;
+  /** Footer newsletter block (toggle + copy). */
+  footerNewsletter: FooterNewsletterSettings;
+  /** Footer founding-members promo block (toggle + copy). */
+  footerFounding: FooterFoundingSettings;
+  /** Footer copyright line. */
+  footerCopyright: string;
 }
 
 export interface GearRentalItem {
@@ -45,6 +51,23 @@ export interface GearRentalInfo {
   intro: string;
   items: GearRentalItem[];
   note: string;
+}
+
+export interface FooterNewsletterSettings {
+  enabled: boolean;
+  eyebrow: string;
+  title: string;
+  description: string;
+  placeholder: string;
+  buttonLabel: string;
+}
+
+export interface FooterFoundingSettings {
+  enabled: boolean;
+  title: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
 }
 
 /** One header nav item; `children` renders as a dropdown sub-menu. */

@@ -47,7 +47,7 @@ export const TrustSection: React.FC = () => {
 
           {/* Video */}
           <div className="lg:col-span-7">
-            <div className="relative aspect-video overflow-hidden border border-slate-700 bg-slate-800">
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-slate-700 bg-slate-800">
 
               <video
                 className="absolute inset-0 h-full w-full object-cover"
@@ -187,7 +187,7 @@ export const TrustSection: React.FC = () => {
             </div>
 
             {/* Simple Trust Note */}
-            <div className="mt-6 border border-slate-700 bg-slate-800/50 p-5">
+            <div className="mt-6 rounded-2xl border border-slate-700 bg-slate-800/50 p-5">
               <p className="text-sm leading-6 text-slate-300">
                 Based in <span className="font-semibold text-white">Skardu</span>.
                 Working with local teams across Baltistan and the wider

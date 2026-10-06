@@ -111,7 +111,7 @@ const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
           </div>
 
           {/* Featured Image */}
-          <div className="my-6 h-72 sm:h-96 overflow-hidden bg-slate-100 border border-slate-200">
+          <div className="my-6 h-72 sm:h-96 overflow-hidden rounded-2xl bg-slate-100 border border-slate-200">
             <img
               src={post.image}
               alt={post.title}
@@ -157,7 +157,7 @@ const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
                   router.push(`/blog/${p.slug}`);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="p-4 bg-white  hover:border-sky-500 cursor-pointer transition-colors"
+                className="p-4 rounded-xl bg-white border border-slate-200 hover:border-sky-500 cursor-pointer transition-colors"
               >
                 <span className="text-[10px] font-bold text-sky-600 uppercase">{p.category}</span>
                 <h4 className="font-bold text-[14px] sm:text-[16px] text-slate-900 mt-1 line-clamp-2">{p.title}</h4>

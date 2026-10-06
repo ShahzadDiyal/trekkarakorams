@@ -99,7 +99,7 @@ export const BlogSection: React.FC = () => {
             {posts.map((post, index) => (
             <article
               key={post.id}
-              className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-slate-200/60"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-slate-200/60"
             >
               {/* Image */}
               <button
@@ -189,7 +189,7 @@ export const BlogSection: React.FC = () => {
         {/* =====================================================
             BOTTOM CTA
         ====================================================== */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-5 border border-slate-200 bg-slate-50 px-5 py-5 sm:flex-row sm:px-6">
+        <div className="mt-10 flex flex-col items-center justify-between gap-5 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-5 sm:flex-row sm:px-6">
 
           <div className="flex items-center gap-4">
             <div className="hidden h-10 w-10 items-center justify-center border border-sky-200 bg-white sm:flex">

@@ -12,7 +12,7 @@ import {
   Mountain,
 } from 'lucide-react';
 import { whatsappLink, SITE_NAME } from '@/lib/site';
-import { TREK_PACKAGES } from '@/data/treks';
+import { useTreks } from '@/lib/content';
 import { Currency } from '@/types';
 import { formatPrice } from '@/utils/currency';
 
@@ -30,19 +30,26 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
   currency,
   onOpenBooking,
 }) => {
-  const [selectedTrekId, setSelectedTrekId] = useState(TREK_PACKAGES[0].id);
+  // Live published treks (static fallback if the DB is unreachable).
+  const { treks } = useTreks();
+  const [selectedTrekId, setSelectedTrekId] = useState('');
   const [groupSize, setGroupSize] = useState(2);
   const [tier, setTier] = useState<'standard' | 'deluxe'>('standard');
   const [includeExtraPorter, setIncludeExtraPorter] = useState(false);
   const [includeSingleTent, setIncludeSingleTent] = useState(false);
   const [includeHeliInsurance, setIncludeHeliInsurance] = useState(true);
 
-  const selectedTrek =
-    TREK_PACKAGES.find((trek) => trek.id === selectedTrekId) ||
-    TREK_PACKAGES[0];
+  // Default to the first live trek once loaded.
+  React.useEffect(() => {
+    if (!selectedTrekId && treks.length > 0) setSelectedTrekId(treks[0].id);
+  }, [treks, selectedTrekId]);
 
-  const basePrice =
-    selectedTrek.discountPriceUSD || selectedTrek.priceUSD;
+  const selectedTrek =
+    treks.find((trek) => trek.id === selectedTrekId) || treks[0];
+
+  if (!selectedTrek) return null;
+
+  const basePrice = selectedTrek.priceUSD;
 
   /* =========================
      PRICING
@@ -166,10 +173,10 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
 
             {/* ROUTE */}
 
-            <div className="border border-slate-200 bg-white shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-[11px] font-bold text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
                     01
                   </span>
 
@@ -184,49 +191,30 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                   </div>
                 </div>
 
-                <div className="relative">
-                  <select
+                <select
                     value={selectedTrekId}
                     onChange={(event) =>
                       setSelectedTrekId(event.target.value)
                     }
-                    className="w-full appearance-none border border-slate-300 bg-slate-50 px-4 py-3.5 pr-10 text-sm font-semibold text-slate-900 outline-none transition-colors focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-100"
+                    className="field-select"
                   >
-                    {TREK_PACKAGES.map((trek) => (
+                    {treks.map((trek) => (
                       <option key={trek.id} value={trek.id}>
                         {trek.title} — {trek.durationDays} Days / Max{' '}
                         {trek.maxAltitude}m
                       </option>
                     ))}
                   </select>
-
-                  <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                    >
-                      <path
-                        d="M3 5L7 9L11 5"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* GROUP SIZE */}
 
-            <div className="border border-slate-200 bg-white shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-[11px] font-bold text-white">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
                       02
                     </span>
 
@@ -258,7 +246,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                       key={number}
                       type="button"
                       onClick={() => setGroupSize(number)}
-                      className={`min-h-[44px] border text-sm font-bold transition-all ${
+                      className={`min-h-[44px] rounded-lg border text-sm font-bold transition-all ${
                         groupSize === number
                           ? 'border-sky-600 bg-sky-600 text-white shadow-sm'
                           : 'border-slate-200 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50'
@@ -280,10 +268,10 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
 
             {/* COMFORT */}
 
-            <div className="border border-slate-200 bg-white shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-[11px] font-bold text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
                     03
                   </span>
 
@@ -379,10 +367,10 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
 
             {/* ADD-ONS */}
 
-            <div className="border border-slate-200 bg-white shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600 text-[11px] font-bold text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
                     04
                   </span>
 
@@ -401,7 +389,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
 
                   {/* HELICOPTER */}
 
-                  <label className="flex cursor-pointer items-center justify-between gap-4 border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
+                  <label className="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
                     <div className="flex min-w-0 items-center gap-3">
                       <input
                         type="checkbox"
@@ -434,7 +422,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
 
                   {/* SINGLE TENT */}
 
-                  <label className="flex cursor-pointer items-center justify-between gap-4 border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
+                  <label className="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
                     <div className="flex min-w-0 items-center gap-3">
                       <input
                         type="checkbox"
@@ -463,7 +451,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
 
                   {/* EXTRA PORTER */}
 
-                  <label className="flex cursor-pointer items-center justify-between gap-4 border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
+                  <label className="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-slate-200 p-4 transition-colors hover:border-sky-300 hover:bg-sky-50/30">
                     <div className="flex min-w-0 items-center gap-3">
                       <input
                         type="checkbox"
@@ -499,7 +487,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
           ========================== */}
 
           <aside className="lg:sticky lg:top-6 lg:col-span-5">
-            <div className="overflow-hidden bg-slate-950 text-white shadow-xl">
+            <div className="overflow-hidden rounded-2xl bg-slate-950 text-white shadow-xl">
 
               {/* HEADER */}
 
@@ -515,7 +503,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                     </div>
                   </div>
 
-                  <span className="shrink-0 bg-sky-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-slate-950">
+                  <span className="shrink-0 rounded-md bg-sky-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-slate-950">
                     Instant Quote
                   </span>
                 </div>
@@ -526,7 +514,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                 {/* SELECTED TREK */}
 
                 <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-sky-900/80">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-900/80">
                     <Mountain className="h-5 w-5 text-sky-300" />
                   </div>
 

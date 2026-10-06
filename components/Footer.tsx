@@ -20,7 +20,7 @@ import {
   Crown,
 } from 'lucide-react';
 import { useSiteSettings, useWhatsappLink } from '@/lib/site-settings';
-import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
+import { BRAND_INFO } from '@/data/treks';
 import { saveNewsletterSubscriber } from '@/lib/lead-capture';
 
 export const Footer: React.FC = () => {
@@ -217,7 +217,8 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Newsletter */}
+        {/* Newsletter — copy + visibility managed in Website Settings */}
+        {settings.footerNewsletter.enabled && (
         <div className="mt-12 py-10">
           <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
 
@@ -227,17 +228,16 @@ export const Footer: React.FC = () => {
                 <Mail className="h-4 w-4 text-sky-600" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.16em] text-sky-600">
-                  From the trail
+                  {settings.footerNewsletter.eyebrow}
                 </span>
               </div>
 
               <h3 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
-                Stories from the mountains.
+                {settings.footerNewsletter.title}
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-gray-600 sm:text-base">
-                Occasional updates from the trail. New routes, seasonal
-                guides, and honest writing from Baltistan. No spam.
+                {settings.footerNewsletter.description}
               </p>
             </div>
 
@@ -257,16 +257,16 @@ export const Footer: React.FC = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
+                  placeholder={settings.footerNewsletter.placeholder}
                   required
-                  className="min-w-0 flex-1 border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                  className="field-input min-w-0 flex-1"
                 />
 
                 <button
                   type="submit"
                   className="group flex items-center justify-center gap-2 bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
                 >
-                  Subscribe
+                  {settings.footerNewsletter.buttonLabel}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
 
@@ -286,8 +286,10 @@ export const Footer: React.FC = () => {
 
           </div>
         </div>
+        )}
 
-        {/* Founding Member Special */}
+        {/* Founding Member Special — copy + visibility managed in Website Settings */}
+        {settings.footerFounding.enabled && (
         <div className="mt-8 rounded-lg border border-sky-200 bg-sky-50 p-4">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
 
@@ -296,31 +298,31 @@ export const Footer: React.FC = () => {
 
               <div>
                 <span className="block text-sm font-bold uppercase tracking-wider text-amber-600">
-                  {FOUNDING_MEMBERS_SPECIAL.title}
+                  {settings.footerFounding.title}
                 </span>
 
                 <p className="text-sm text-gray-700">
-                  20% off 2026/2027 treks + lifetime 10% loyalty & free
-                  merchandise.
+                  {settings.footerFounding.description}
                 </p>
               </div>
             </div>
 
             <Link
-              href="/planner"
+              href={settings.footerFounding.ctaHref || '/planner'}
               className="whitespace-nowrap rounded-md bg-sky-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
             >
-              Claim Your Benefits
+              {settings.footerFounding.ctaLabel}
             </Link>
 
           </div>
         </div>
+        )}
 
         {/* Bottom Bar */}
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-gray-200 pt-6 text-xs text-gray-500 sm:flex-row">
 
           <span>
-            © {new Date().getFullYear()} Trek Karakoram. All rights reserved.
+            {settings.footerCopyright.replace('{year}', String(new Date().getFullYear()))}
           </span>
 
           <div className="flex items-center gap-4">

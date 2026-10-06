@@ -72,6 +72,24 @@ export async function seedSettings(): Promise<void> {
     ],
     defaultWeatherInfo:
       'During the summer climbing season (June to late August), daytime temperatures at lower altitudes (Skardu/Askole) range from 24°C to 30°C. Above 4,000m (Concordia/Ali Camp), daytime temperatures are 10°C to 18°C, dropping to -5°C to -12°C at night. Gondogoro La pass crossings are scheduled at 1:00 AM when snow crust is firm.',
+    footerNewsletter: {
+      enabled: true,
+      eyebrow: 'From the trail',
+      title: 'Stories from the mountains.',
+      description:
+        'Occasional updates from the trail. New routes, seasonal guides, and honest writing from Baltistan. No spam.',
+      placeholder: 'Your email address',
+      buttonLabel: 'Subscribe',
+    },
+    footerFounding: {
+      enabled: true,
+      title: 'Founding Members Special (2026 Inception)',
+      description:
+        '20% off 2026/2027 treks + lifetime 10% loyalty & free merchandise.',
+      ctaLabel: 'Claim Your Benefits',
+      ctaHref: '/planner',
+    },
+    footerCopyright: '© {year} Trek Karakoram. All rights reserved.',
     hero: {
       mediaType: 'video',
       imageUrl: '',

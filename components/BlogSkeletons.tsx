@@ -10,7 +10,7 @@ function Shimmer({ className = '' }: { className?: string }) {
 /** Matches the blog card layout (homepage grid + /blog catalog). */
 export function BlogCardSkeleton() {
   return (
-    <div className="flex h-full flex-col overflow-hidden border border-slate-200 bg-white">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white">
       <Shimmer className="h-48 !rounded-none sm:h-[230px]" />
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="mb-3 flex gap-4">

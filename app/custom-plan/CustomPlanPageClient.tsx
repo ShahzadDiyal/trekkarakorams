@@ -239,7 +239,7 @@ export const CustomPlanPageClient: React.FC = () => {
 
                         {/* Name */}
                         <div>
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             Your Full Name *
                           </label>
 
@@ -249,13 +249,13 @@ export const CustomPlanPageClient: React.FC = () => {
                             placeholder="e.g. John Doe"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="field-input"
                           />
                         </div>
 
                         {/* Email */}
                         <div>
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             Email Address *
                           </label>
 
@@ -265,13 +265,13 @@ export const CustomPlanPageClient: React.FC = () => {
                             placeholder="e.g. john@example.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="field-input"
                           />
                         </div>
 
                         {/* Phone */}
                         <div>
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             WhatsApp / Phone Number
                           </label>
 
@@ -280,13 +280,13 @@ export const CustomPlanPageClient: React.FC = () => {
                             placeholder="+1 234 567 8900"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
-                            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="field-input"
                           />
                         </div>
 
                         {/* Country */}
                         <div>
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             Country of Citizenship *
                           </label>
 
@@ -296,7 +296,7 @@ export const CustomPlanPageClient: React.FC = () => {
                             placeholder="e.g. United Kingdom, USA, Germany"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
-                            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="field-input"
                           />
                         </div>
 
@@ -333,7 +333,7 @@ export const CustomPlanPageClient: React.FC = () => {
                         {/* Trek */}
                         <div className="sm:col-span-2">
 
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             Selected Trek / Route *
                           </label>
 
@@ -359,7 +359,7 @@ export const CustomPlanPageClient: React.FC = () => {
                         {/* Group */}
                         <div>
 
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             Group Size
                           </label>
 
@@ -384,7 +384,7 @@ export const CustomPlanPageClient: React.FC = () => {
                         {/* Month */}
                         <div>
 
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             Target Month / Season
                           </label>
 
@@ -426,7 +426,7 @@ export const CustomPlanPageClient: React.FC = () => {
                         {/* Diet */}
                         <div>
 
-                          <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                          <label className="field-label">
                             Dietary Requirements
                           </label>
 
@@ -464,7 +464,7 @@ export const CustomPlanPageClient: React.FC = () => {
                       {/* Notes */}
                       <div className="mt-5">
 
-                        <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+                        <label className="field-label">
                           Additional Notes or Questions
                         </label>
 

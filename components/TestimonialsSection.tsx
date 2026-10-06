@@ -8,7 +8,7 @@ import { useTestimonials, type PublicTestimonial } from '@/lib/content';
 function TestimonialSkeleton() {
   return (
     <div
-      className="flex flex-col border border-slate-700 bg-slate-800/70 p-6"
+      className="flex flex-col rounded-2xl border border-slate-700 bg-slate-800/70 p-6"
       aria-label="Loading review"
     >
       <div className="skeleton-shimmer h-4 w-full rounded" aria-hidden="true" />
@@ -45,7 +45,7 @@ function Stars({ rating }: { rating: number }) {
 
 function TestimonialCard({ t }: { t: PublicTestimonial }) {
   return (
-    <figure className="flex flex-col border border-slate-700 bg-slate-800/70 p-6">
+    <figure className="flex flex-col rounded-2xl border border-slate-700 bg-slate-800/70 p-6">
       <Quote className="h-6 w-6 text-sky-400" aria-hidden="true" />
       <div className="mt-3">
         <Stars rating={t.rating || 5} />
@@ -180,7 +180,7 @@ export const TestimonialsSection: React.FC = () => {
             <div className="mt-10 text-center">
               <Link
                 href="/founding-members"
-                className="group inline-flex items-center justify-center gap-2 border border-slate-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:text-sky-300"
+                className="group inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:text-sky-300"
               >
                 Trek With Us
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
