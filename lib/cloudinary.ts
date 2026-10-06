@@ -11,9 +11,9 @@
  *
  * Uploads go straight from the browser to Cloudinary — no CORS setup needed.
  */
-export const CLOUDINARY_CLOUD_NAME = '';
+export const CLOUDINARY_CLOUD_NAME = 'cbxpmerj';
 
-export const CLOUDINARY_UPLOAD_PRESET = '';
+export const CLOUDINARY_UPLOAD_PRESET = 'trekkarakoram_unsigned';
 
 export function isCloudinaryConfigured(): boolean {
   return CLOUDINARY_CLOUD_NAME.trim() !== '' && CLOUDINARY_UPLOAD_PRESET.trim() !== '';
