@@ -42,7 +42,7 @@ interface DestinationRegion {
   matchedTrekIds: string[];
 }
 
-const DESTINATION_REGIONS: DestinationRegion[] = [
+export const DESTINATION_REGIONS: DestinationRegion[] = [
   {
     id: 'karakoram',
     name: 'Central Karakoram & Baltoro',
@@ -191,12 +191,14 @@ const DESTINATION_REGIONS: DestinationRegion[] = [
   },
 ];
 
-export const DestinationsPageClient: React.FC = () => {
+export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
+  initialRegionId,
+}) => {
   const router = useRouter();
   const { currency } = useApp();
 
   const [selectedRegionId, setSelectedRegionId] = useState<string>(
-    DESTINATION_REGIONS[0].id
+    initialRegionId || DESTINATION_REGIONS[0].id
   );
 
   const activeRegion =
@@ -278,10 +280,11 @@ export const DestinationsPageClient: React.FC = () => {
               const isSelected = region.id === selectedRegionId;
 
               return (
-                <button
+                <Link
                   key={region.id}
+                  href={`/destinations/${region.id}`}
                   onClick={() => setSelectedRegionId(region.id)}
-                  className={`group min-h-[82px] cursor-pointer border p-3 text-left transition-all duration-200 sm:p-4 ${
+                  className={`group flex min-h-[82px] cursor-pointer flex-col justify-center rounded-xl border p-3 text-left transition-all duration-200 sm:p-4 ${
                     isSelected
                       ? 'border-sky-600 bg-sky-600 text-white'
                       : 'border-slate-200 bg-white text-slate-700 hover:border-sky-400 hover:bg-white'
@@ -306,7 +309,7 @@ export const DestinationsPageClient: React.FC = () => {
                   >
                     {region.name}
                   </div>
-                </button>
+                </Link>
               );
             })}
           </div>
@@ -571,7 +574,7 @@ export const DestinationsPageClient: React.FC = () => {
             {DESTINATION_REGIONS.map((region) => (
               <article
                 key={region.id}
-                className="group flex flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-sky-300"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-sky-300"
               >
 
                 {/* Image */}
@@ -613,21 +616,14 @@ export const DestinationsPageClient: React.FC = () => {
                   </div>
 
 
-                  <button
-                    onClick={() => {
-                      setSelectedRegionId(region.id);
-
-                      window.scrollTo({
-                        top: 200,
-                        behavior: 'smooth',
-                      });
-                    }}
-                    className="mt-5 flex w-full items-center justify-center gap-2 border border-slate-300 bg-white px-4 py-3 text-[12px] font-semibold uppercase tracking-wider text-slate-800 transition-all duration-200 hover:border-sky-600 hover:bg-sky-600 hover:text-white"
+                  <Link
+                    href={`/destinations/${region.id}`}
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-[12px] font-semibold uppercase tracking-wider text-slate-800 transition-all duration-200 hover:border-sky-600 hover:bg-sky-600 hover:text-white"
                   >
                     <span>View Destination Details</span>
 
                     <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
+                  </Link>
 
                 </div>
 

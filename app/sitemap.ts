@@ -7,6 +7,7 @@ import {
   DIFFICULTY_FACETS,
   BLOG_CATEGORY_FACETS,
 } from '@/lib/trek-facets';
+import { DESTINATION_REGIONS } from './destinations/DestinationsPageClient';
 
 /**
  * Native Next.js sitemap (App Router convention).
@@ -80,6 +81,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.55,
   }));
 
+  const destinationRegionRoutes: MetadataRoute.Sitemap = DESTINATION_REGIONS.map((r) => ({
+    url: `${SITE_URL}/destinations/${r.id}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
   return [
     ...staticRoutes,
     ...trekRoutes,
@@ -88,5 +96,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...difficultyFacetRoutes,
     ...blogRoutes,
     ...blogCategoryRoutes,
+    ...destinationRegionRoutes,
   ];
 }
