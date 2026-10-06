@@ -88,6 +88,8 @@ export function useFaqs(): { faqs: PublicFaq[]; loading: boolean } {
 export interface PublicTrek extends TrekPackage {
   faqs: TrekFaq[];
   pricingTiers: PricingTier[];
+  /** Per-trek weather paragraph override (global default otherwise). */
+  weatherInfo: string;
 }
 
 const VALID_REGIONS: TrekRegion[] = [
@@ -137,6 +139,36 @@ function toItineraryDay(
 }
 
 /**
+ * Build pricing tiers from legacy static price fields — used when a trek has
+ * no admin-managed tiers yet (and when Firestore is unreachable).
+ */
+export function synthTiersFromStatic(t: TrekPackage): PricingTier[] {
+  return [
+    {
+      name: 'Basic',
+      priceUSD: t.basicPriceUSD || Math.round(t.priceUSD * 0.75),
+      singleSupplementUSD: 0,
+      note: '',
+      features: [],
+    },
+    {
+      name: 'Standard',
+      priceUSD: t.discountPriceUSD || t.priceUSD,
+      singleSupplementUSD: t.singleSupplementUSD || 0,
+      note: '',
+      features: [],
+    },
+    {
+      name: 'Premium',
+      priceUSD: t.premiumPriceUSD || Math.round(t.priceUSD * 1.35),
+      singleSupplementUSD: 0,
+      note: '',
+      features: [],
+    },
+  ];
+}
+
+/**
  * Merge one admin trek doc into the shape the site renders.
  * Admin-managed fields come from the database; fields the admin panel
  * doesn't manage (gear checklist, departures, activity type) fall back to
@@ -144,9 +176,17 @@ function toItineraryDay(
  */
 function toPublicTrek(doc: AdminTrek & { id: string }): PublicTrek {
   const base = TREK_PACKAGES.find((t) => t.id === doc.id);
-  const tiers = doc.pricingTiers ?? [];
+  // Pricing is single-source: admin tiers win; otherwise synthesize from the
+  // static price fields so cards and the booking widget always have prices.
+  const tiers =
+    doc.pricingTiers && doc.pricingTiers.length > 0
+      ? doc.pricingTiers
+      : base
+        ? synthTiersFromStatic(base)
+        : [];
   const tierPrice = (name: string) =>
     tiers.find((t) => t.name.trim().toLowerCase() === name)?.priceUSD || 0;
+  const priced = tiers.filter((t) => t.priceUSD > 0).map((t) => t.priceUSD);
   const baseItinerary = base?.itinerary ?? [];
 
   const itinerary = (doc.itinerary ?? []).map((d, i) => {
@@ -174,8 +214,9 @@ function toPublicTrek(doc: AdminTrek & { id: string }): PublicTrek {
     durationNights: doc.durationNights || base?.durationNights || 0,
     difficulty: mapDifficulty(doc.difficulty || base?.difficulty || ''),
     maxAltitude: doc.maxAltitude || base?.maxAltitude || 0,
-    priceUSD: doc.priceUSD || base?.priceUSD || 0,
-    discountPriceUSD: doc.discountPriceUSD || base?.discountPriceUSD || undefined,
+    // "From" price = cheapest tier; the legacy single-price fields are retired.
+    priceUSD: priced.length > 0 ? Math.min(...priced) : base?.priceUSD || 0,
+    discountPriceUSD: undefined,
     basicPriceUSD: tierPrice('basic') || base?.basicPriceUSD || undefined,
     standardPriceUSD: tierPrice('standard') || base?.standardPriceUSD || undefined,
     premiumPriceUSD: tierPrice('premium') || base?.premiumPriceUSD || undefined,
@@ -196,22 +237,36 @@ function toPublicTrek(doc: AdminTrek & { id: string }): PublicTrek {
     itinerary,
     inclusions: doc.inclusions ?? base?.inclusions ?? [],
     exclusions: doc.exclusions ?? base?.exclusions ?? [],
-    gearChecklist: base?.gearChecklist ?? [],
+    gearChecklist:
+      doc.gearChecklist && doc.gearChecklist.length > 0
+        ? doc.gearChecklist
+        : (base?.gearChecklist ?? []),
     permitRequirements: doc.permitRequirements || base?.permitRequirements || '',
     fitnessLevel: doc.fitnessLevel || base?.fitnessLevel || '',
-    departures: base?.departures ?? [],
+    departures:
+      doc.departures && doc.departures.length > 0
+        ? doc.departures
+        : (base?.departures ?? []),
     faqs: doc.faqs ?? [],
     pricingTiers: tiers,
+    weatherInfo: doc.weatherInfo || '',
   };
 }
 
 /** A static trek lifted into the public shape (DB-unreachable fallback). */
 function staticTreks(): PublicTrek[] {
-  return TREK_PACKAGES.map((t) => ({
-    ...t,
-    faqs: [],
-    pricingTiers: [],
-  }));
+  return TREK_PACKAGES.map((t) => {
+    const tiers = synthTiersFromStatic(t);
+    const priced = tiers.map((x) => x.priceUSD).filter((p) => p > 0);
+    return {
+      ...t,
+      priceUSD: priced.length > 0 ? Math.min(...priced) : t.priceUSD,
+      discountPriceUSD: undefined,
+      faqs: [],
+      pricingTiers: tiers,
+      weatherInfo: '',
+    };
+  });
 }
 
 /** All published treks, live from the `treks` collection.

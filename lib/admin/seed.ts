@@ -50,6 +50,28 @@ export async function seedSettings(): Promise<void> {
     headerMenus: [],
     headerButtons: [],
     footerColumns: [],
+    gearRental: {
+      title: "Rent in Skardu — Don't Overpack",
+      intro:
+        'Flying with expedition gear is expensive and unnecessary. Our Skardu outfitter stocks inspected, expedition-grade equipment at a fraction of retail price.',
+      items: [
+        { item: 'Expedition sleeping bag (-20C)', price: '$25 / trek' },
+        { item: '800-fill down jacket', price: '$20 / trek' },
+        { item: 'Trekking poles (pair)', price: '$10 / trek' },
+        { item: 'Crampons (for pass crossings)', price: '$15 / trek' },
+        { item: '90L expedition duffel', price: '$8 / trek' },
+        { item: 'Sleeping mat (inflatable)', price: '$10 / trek' },
+      ],
+      note: 'Full rental bundle for a K2 Base Camp trek: under $100. Reserve with your booking and your kit is inspected, packed, and waiting at your Skardu hotel.',
+    },
+    visaSteps: [
+      'We issue your official Letter of Invitation (LOI) and Ministry of Tourism itinerary within 24h.',
+      'You apply online via the Pakistan Official E-Visa portal (category: Trekking & Mountaineering).',
+      'Our Skardu team files group permits with the Gilgit-Baltistan Home Department and Central Karakoram National Park (CKNP).',
+      'Government liaison officer briefing conducted in Islamabad / Skardu.',
+    ],
+    defaultWeatherInfo:
+      'During the summer climbing season (June to late August), daytime temperatures at lower altitudes (Skardu/Askole) range from 24°C to 30°C. Above 4,000m (Concordia/Ali Camp), daytime temperatures are 10°C to 18°C, dropping to -5°C to -12°C at night. Gondogoro La pass crossings are scheduled at 1:00 AM when snow crust is firm.',
     hero: {
       mediaType: 'video',
       imageUrl: '',
@@ -119,7 +141,32 @@ export async function seedTreks(): Promise<void> {
         timing: '',
       })),
       faqs: [],
-      pricingTiers: [],
+      pricingTiers: [
+        {
+          name: 'Basic',
+          priceUSD: t.basicPriceUSD || Math.round(t.priceUSD * 0.75),
+          singleSupplementUSD: 0,
+          note: '',
+          features: [],
+        },
+        {
+          name: 'Standard',
+          priceUSD: t.discountPriceUSD || t.priceUSD,
+          singleSupplementUSD: t.singleSupplementUSD || 0,
+          note: '',
+          features: [],
+        },
+        {
+          name: 'Premium',
+          priceUSD: t.premiumPriceUSD || Math.round(t.priceUSD * 1.35),
+          singleSupplementUSD: 0,
+          note: '',
+          features: [],
+        },
+      ],
+      departures: (t.departures ?? []).map((d) => ({ date: d.date, status: d.status })),
+      gearChecklist: t.gearChecklist ?? [],
+      weatherInfo: '',
       inclusions: t.inclusions ?? [],
       exclusions: t.exclusions ?? [],
       permitRequirements: t.permitRequirements ?? '',

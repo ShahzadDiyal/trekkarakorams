@@ -11,9 +11,12 @@ import {
   PanelTop,
   Image as ImageIcon,
   PanelBottom,
+  FileText,
+  Plus,
+  Trash2,
 } from 'lucide-react';
 import { getDocById, saveDoc, COLLECTIONS } from '@/lib/admin/db';
-import type { WebsiteSettings, HeroSettings } from '@/lib/admin/types';
+import type { WebsiteSettings, HeroSettings, GearRentalInfo } from '@/lib/admin/types';
 import { mergeSettings } from '@/lib/site-settings';
 import {
   Card,
@@ -23,6 +26,7 @@ import {
   TextArea,
   Toggle,
   Spinner,
+  ListEditor,
 } from '@/components/admin/ui';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import { MenuEditor } from '@/components/admin/settings/MenuEditor';
@@ -35,6 +39,7 @@ const TABS = [
   { id: 'header', label: 'Header', icon: PanelTop },
   { id: 'hero', label: 'Hero Section', icon: ImageIcon },
   { id: 'footer', label: 'Footer', icon: PanelBottom },
+  { id: 'content', label: 'Site Content', icon: FileText },
   { id: 'contact', label: 'Contact', icon: Phone },
   { id: 'social', label: 'Social', icon: Share2 },
 ] as const;
@@ -70,6 +75,9 @@ export default function AdminSettingsPage() {
 
   const setHero = <K extends keyof HeroSettings>(k: K, v: HeroSettings[K]) =>
     setForm((f) => ({ ...f, hero: { ...f.hero, [k]: v } }));
+
+  const setGearRental = <K extends keyof GearRentalInfo>(k: K, v: GearRentalInfo[K]) =>
+    setForm((f) => ({ ...f, gearRental: { ...f.gearRental, [k]: v } }));
 
   const save = async () => {
     setSaving(true);
@@ -252,6 +260,120 @@ export default function AdminSettingsPage() {
             </div>
             <FooterColumnsEditor columns={form.footerColumns} onChange={(c) => set('footerColumns', c)} />
           </Card>
+        </div>
+      )}
+
+      {tab === 'content' && (
+        <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+          <Card className="space-y-4 p-5">
+            <div>
+              <h2 className="font-bold text-slate-900">Gear rental box</h2>
+              <p className="text-xs text-slate-500">
+                Shown in the Gear tab on every trek detail page.
+              </p>
+            </div>
+            <TextField
+              label="Title"
+              value={form.gearRental.title}
+              onChange={(e) => setGearRental('title', e.target.value)}
+            />
+            <TextArea
+              label="Intro"
+              rows={3}
+              value={form.gearRental.intro}
+              onChange={(e) => setGearRental('intro', e.target.value)}
+            />
+            <div>
+              <span className="mb-1.5 block text-sm font-semibold text-slate-700">
+                Rental items
+              </span>
+              <div className="space-y-2">
+                {form.gearRental.items.map((ri, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <input
+                      className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                      placeholder="Item (e.g. Expedition sleeping bag (-20C))"
+                      value={ri.item}
+                      onChange={(e) => {
+                        const items = [...form.gearRental.items];
+                        items[i] = { ...items[i], item: e.target.value };
+                        setGearRental('items', items);
+                      }}
+                    />
+                    <input
+                      className="w-32 shrink-0 rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                      placeholder="$25 / trek"
+                      value={ri.price}
+                      onChange={(e) => {
+                        const items = [...form.gearRental.items];
+                        items[i] = { ...items[i], price: e.target.value };
+                        setGearRental('items', items);
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setGearRental(
+                          'items',
+                          form.gearRental.items.filter((_, j) => j !== i)
+                        )
+                      }
+                      className="shrink-0 rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-600"
+                      aria-label="Remove rental item"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setGearRental('items', [...form.gearRental.items, { item: '', price: '' }])
+                  }
+                  className="flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-800"
+                >
+                  <Plus className="h-3.5 w-3.5" /> Add rental item
+                </button>
+              </div>
+            </div>
+            <TextArea
+              label="Note"
+              rows={2}
+              value={form.gearRental.note}
+              onChange={(e) => setGearRental('note', e.target.value)}
+            />
+          </Card>
+
+          <div className="space-y-6">
+            <Card className="space-y-4 p-5">
+              <div>
+                <h2 className="font-bold text-slate-900">Visa & permit steps</h2>
+                <p className="text-xs text-slate-500">
+                  Step-by-step list shown in the Visa & Permit Rules tab on trek pages.
+                </p>
+              </div>
+              <ListEditor
+                label="Steps"
+                values={form.visaSteps}
+                onChange={(v) => set('visaSteps', v)}
+                placeholder="Describe a step…"
+              />
+            </Card>
+            <Card className="space-y-4 p-5">
+              <div>
+                <h2 className="font-bold text-slate-900">Default weather paragraph</h2>
+                <p className="text-xs text-slate-500">
+                  Used in the Weather tab when a trek doesn&apos;t set its own paragraph.
+                </p>
+              </div>
+              <TextArea
+                label="Weather & season text"
+                rows={5}
+                value={form.defaultWeatherInfo}
+                onChange={(e) => set('defaultWeatherInfo', e.target.value)}
+              />
+            </Card>
+          </div>
         </div>
       )}
 

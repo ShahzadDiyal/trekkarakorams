@@ -4,7 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Save, Loader2, Plus, Trash2 } from 'lucide-react';
 import { getDocById, createDoc, saveDoc, COLLECTIONS } from '@/lib/admin/db';
-import type { AdminTrek, PricingTier } from '@/lib/admin/types';
+import type { AdminTrek, PricingTier, TrekDeparture } from '@/lib/admin/types';
+import { synthTiersFromStatic } from '@/lib/content';
+import { TREK_PACKAGES } from '@/data/treks';
 import {
   Card,
   PageHeader,
@@ -21,9 +23,9 @@ import { ImageUpload } from '@/components/admin/ImageUpload';
 import { GalleryUpload } from '@/components/admin/GalleryUpload';
 
 const DEFAULT_TIERS: PricingTier[] = [
-  { name: 'Basic', priceUSD: 0, singleSupplementUSD: 0, note: '' },
-  { name: 'Standard', priceUSD: 0, singleSupplementUSD: 0, note: '' },
-  { name: 'Premium', priceUSD: 0, singleSupplementUSD: 0, note: '' },
+  { name: 'Basic', priceUSD: 0, singleSupplementUSD: 0, note: '', features: [] },
+  { name: 'Standard', priceUSD: 0, singleSupplementUSD: 0, note: '', features: [] },
+  { name: 'Premium', priceUSD: 0, singleSupplementUSD: 0, note: '', features: [] },
 ];
 
 const EMPTY: AdminTrek = {
@@ -57,6 +59,9 @@ const EMPTY: AdminTrek = {
   fitnessLevel: '',
   faqs: [],
   pricingTiers: DEFAULT_TIERS,
+  departures: [],
+  gearChecklist: [],
+  weatherInfo: '',
 };
 
 export default function TrekEditorPage({ params }: { params: Promise<{ id: string }> }) {
@@ -80,14 +85,34 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
     (async () => {
       const doc = await getDocById<AdminTrek>(COLLECTIONS.treks, resolved.id);
       if (doc) {
+        // Prefill from the curated static trek when the doc doesn't have its
+        // own values yet — the admin always sees what the website shows.
+        const staticBase = TREK_PACKAGES.find((t) => t.id === resolved.id);
+        const withFeatures = (tiers: PricingTier[]) =>
+          tiers.map((t) => ({ ...t, features: t.features ?? [] }));
         setForm({
           ...EMPTY,
           ...doc,
-          // Backfill fields added after the doc was created.
           itinerary: (doc.itinerary ?? []).map((d) => ({ ...d, timing: d.timing ?? '' })),
           faqs: doc.faqs ?? [],
           pricingTiers:
-            doc.pricingTiers && doc.pricingTiers.length > 0 ? doc.pricingTiers : DEFAULT_TIERS,
+            doc.pricingTiers && doc.pricingTiers.length > 0
+              ? withFeatures(doc.pricingTiers)
+              : staticBase
+                ? synthTiersFromStatic(staticBase)
+                : DEFAULT_TIERS,
+          departures:
+            doc.departures && doc.departures.length > 0
+              ? doc.departures
+              : (staticBase?.departures.map((d) => ({
+                  date: d.date,
+                  status: d.status as TrekDeparture['status'],
+                })) ?? []),
+          gearChecklist:
+            doc.gearChecklist && doc.gearChecklist.length > 0
+              ? doc.gearChecklist
+              : (staticBase?.gearChecklist ?? []),
+          weatherInfo: doc.weatherInfo ?? '',
         });
       }
       setLoading(false);
@@ -182,8 +207,6 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
               <TextField label="Duration (days)" type="number" value={form.durationDays} onChange={(e) => set('durationDays', Number(e.target.value))} />
               <TextField label="Nights" type="number" value={form.durationNights} onChange={(e) => set('durationNights', Number(e.target.value))} />
               <TextField label="Max altitude (m)" type="number" value={form.maxAltitude} onChange={(e) => set('maxAltitude', Number(e.target.value))} />
-              <TextField label="Price (USD)" type="number" value={form.priceUSD} onChange={(e) => set('priceUSD', Number(e.target.value))} />
-              <TextField label="Discount price (USD)" type="number" value={form.discountPriceUSD ?? 0} onChange={(e) => set('discountPriceUSD', Number(e.target.value))} />
               <TextField label="Rating" type="number" step="0.1" min="0" max="5" value={form.rating} onChange={(e) => set('rating', Number(e.target.value))} />
               <TextField label="Reviews count" type="number" value={form.reviewsCount} onChange={(e) => set('reviewsCount', Number(e.target.value))} />
             </div>
@@ -264,6 +287,55 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
                         set('pricingTiers', next);
                       }}
                     />
+                    <div className="mt-2">
+                      <span className="mb-1 block text-xs font-semibold text-slate-600">
+                        Tier checkpoints (shown as the checklist on the trek page)
+                      </span>
+                      <div className="space-y-1.5">
+                        {(t.features ?? []).map((f, fi) => (
+                          <div key={fi} className="flex items-center gap-2">
+                            <input
+                              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm"
+                              placeholder="e.g. Certified local guide"
+                              value={f}
+                              onChange={(e) => {
+                                const next = [...form.pricingTiers];
+                                const feats = [...(next[i].features ?? [])];
+                                feats[fi] = e.target.value;
+                                next[i] = { ...next[i], features: feats };
+                                set('pricingTiers', next);
+                              }}
+                            />
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const next = [...form.pricingTiers];
+                                next[i] = {
+                                  ...next[i],
+                                  features: (next[i].features ?? []).filter((_, j) => j !== fi),
+                                };
+                                set('pricingTiers', next);
+                              }}
+                              className="shrink-0 rounded-lg p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600"
+                              aria-label="Remove checkpoint"
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </button>
+                          </div>
+                        ))}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const next = [...form.pricingTiers];
+                            next[i] = { ...next[i], features: [...(next[i].features ?? []), ''] };
+                            set('pricingTiers', next);
+                          }}
+                          className="flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-800"
+                        >
+                          <Plus className="h-3.5 w-3.5" /> Add checkpoint
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 ))}
                 <button
@@ -271,7 +343,7 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
                   onClick={() =>
                     set('pricingTiers', [
                       ...form.pricingTiers,
-                      { name: '', priceUSD: 0, singleSupplementUSD: 0, note: '' },
+                      { name: '', priceUSD: 0, singleSupplementUSD: 0, note: '', features: [] },
                     ])
                   }
                   className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-600 hover:border-sky-400 hover:text-sky-700"
@@ -405,6 +477,28 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
             </div>
           </Card>
 
+          <Card className="p-5">
+            <h2 className="mb-1 font-bold text-slate-900">Gear checklist & weather</h2>
+            <p className="mb-4 text-xs text-slate-500">
+              Shown in the Gear and Weather tabs on the trek detail page.
+            </p>
+            <ListEditor
+              label="Gear checklist items"
+              values={form.gearChecklist}
+              onChange={(v) => set('gearChecklist', v)}
+              placeholder="e.g. Expedition sleeping bag (-20C)"
+            />
+            <div className="mt-4">
+              <TextArea
+                label="Weather & season paragraph (leave empty to use the site default)"
+                rows={4}
+                value={form.weatherInfo}
+                onChange={(e) => set('weatherInfo', e.target.value)}
+                placeholder="Describe the climate for this trek's region…"
+              />
+            </div>
+          </Card>
+
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <Card className="p-5">
               <ListEditor label="Highlights" values={form.highlights} onChange={(v) => set('highlights', v)} />
@@ -425,6 +519,59 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
           <Card className="p-5">
             <h2 className="mb-4 font-bold text-slate-900">Cover image</h2>
             <ImageUpload label="Main image" folder="treks" value={form.image} onChange={(u) => set('image', u)} />
+          </Card>
+          <Card className="p-5">
+            <h2 className="mb-1 font-bold text-slate-900">Departures</h2>
+            <p className="mb-3 text-xs text-slate-500">
+              Fixed group dates shown in the booking widget.
+            </p>
+            <div className="space-y-2">
+              {form.departures.map((d, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <input
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                    placeholder="June 20, 2026"
+                    value={d.date}
+                    onChange={(e) => {
+                      const next = [...form.departures];
+                      next[i] = { ...next[i], date: e.target.value };
+                      set('departures', next);
+                    }}
+                  />
+                  <select
+                    className="shrink-0 rounded-xl border border-slate-300 bg-white px-2 py-2 text-sm"
+                    value={d.status}
+                    onChange={(e) => {
+                      const next = [...form.departures];
+                      next[i] = { ...next[i], status: e.target.value as TrekDeparture['status'] };
+                      set('departures', next);
+                    }}
+                  >
+                    <option value="guaranteed">Guaranteed</option>
+                    <option value="available">Available</option>
+                    <option value="limited">Limited Seats</option>
+                    <option value="soldout">Sold Out</option>
+                  </select>
+                  <button
+                    type="button"
+                    onClick={() => set('departures', form.departures.filter((_, j) => j !== i))}
+                    className="shrink-0 rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-600"
+                    aria-label="Remove departure"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() =>
+                  set('departures', [...form.departures, { date: '', status: 'available' }])
+                }
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:border-sky-400 hover:text-sky-700"
+              >
+                <Plus className="h-4 w-4" /> Add departure date
+              </button>
+            </div>
           </Card>
           <Card className="p-5">
             <h2 className="mb-4 font-bold text-slate-900">Visibility</h2>

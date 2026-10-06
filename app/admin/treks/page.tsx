@@ -103,7 +103,16 @@ export default function AdminTreksPage() {
               <div className="p-4">
                 <h3 className="font-bold text-slate-900 line-clamp-1">{t.title}</h3>
                 <p className="mt-1 text-sm text-slate-500">
-                  {t.durationDays} days · {t.difficulty} · ${t.priceUSD.toLocaleString()}
+                  {t.durationDays} days · {t.difficulty} · $
+                  {(() => {
+                    const priced = (t.pricingTiers ?? [])
+                      .map((x) => x.priceUSD)
+                      .filter((p) => p > 0);
+                    return (priced.length > 0
+                      ? Math.min(...priced)
+                      : t.priceUSD
+                    ).toLocaleString();
+                  })()}
                 </p>
                 <div className="mt-4 flex items-center gap-2">
                   <Link href={`/admin/treks/${t.id}`} className="flex-1">

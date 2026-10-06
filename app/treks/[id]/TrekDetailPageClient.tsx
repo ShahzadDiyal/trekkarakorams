@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useApp } from '@/lib/context/AppContext';
-import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL, GEAR_RENTAL_INFO } from '@/data/treks';
+import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
+import { useSiteSettings } from '@/lib/site-settings';
 import { DEPARTURE_STATUS_LABEL } from '@/types';
 import { useTreks, useFaqs, type PublicTrek } from '@/lib/content';
 import { TrekDetailSkeleton } from '@/components/TrekSkeletons';
@@ -73,23 +74,23 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
   const { currency, onOpenBooking } = useApp();
   // Global FAQs (Firestore `faqs` collection) — used when the trek has no own FAQs.
   const { faqs: globalFaqs } = useFaqs();
+  // Global site content (gear rental box, visa steps, default weather).
+  const siteSettings = useSiteSettings();
 
   const [activeTab, setActiveTab] = useState<'itinerary' | 'packages' | 'inclusions' | 'gear' | 'permits' | 'weather'>('itinerary');
-  const [selectedTier, setSelectedTier] = useState<'basic' | 'standard' | 'premium'>('standard');
+  // Pricing tiers are fully admin-driven; the first tier is selected by default.
+  const [selectedTierName, setSelectedTierName] = useState<string>(
+    trek.pricingTiers[0]?.name ?? ''
+  );
+  const selectedTier =
+    trek.pricingTiers.find((t) => t.name === selectedTierName) ?? trek.pricingTiers[0];
   const [selectedDate, setSelectedDate] = useState<string>(trek.departures[0]?.date || '');
   const [travelersCount, setTravelersCount] = useState<number>(2);
   const [copied, setCopied] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Price calculations based on tier
-  const baseTierPrice =
-    selectedTier === 'basic'
-      ? (trek.basicPriceUSD || Math.round(trek.priceUSD * 0.75))
-      : selectedTier === 'premium'
-        ? (trek.premiumPriceUSD || Math.round(trek.priceUSD * 1.35))
-        : (trek.discountPriceUSD || trek.priceUSD);
-
-  const displayPrice = baseTierPrice;
+  // Price calculations based on the selected admin-defined tier.
+  const displayPrice = selectedTier?.priceUSD ?? 0;
   const totalPrice = displayPrice * travelersCount;
 
   const handleShare = () => {
@@ -106,15 +107,15 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
 
   const handleBook = () => {
     onOpenBooking({
-      trekTitle: `${trek.title} (${selectedTier.toUpperCase()} Package)`,
+      trekTitle: `${trek.title}${selectedTier ? ` (${selectedTier.name} Package)` : ''}`,
       groupSize: travelersCount,
       totalPerPerson: displayPrice,
-      notes: `Departure Date: ${selectedDate || '2026 Guaranteed Departure'}, Tier: ${selectedTier.toUpperCase()}`
+      notes: `Departure Date: ${selectedDate || '2026 Guaranteed Departure'}${selectedTier ? `, Tier: ${selectedTier.name}` : ''}`
     });
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Trek Karakoram! I am inquiring about "${trek.title}" (${selectedTier.toUpperCase()} tier, ${trek.durationDays} Days) for ${travelersCount} traveler(s). Target Date: ${selectedDate}. Please provide availability & permit guidance.`
+    `Hello Trek Karakoram! I am inquiring about "${trek.title}"${selectedTier ? ` (${selectedTier.name} tier` : ''}, ${trek.durationDays} Days) for ${travelersCount} traveler(s). Target Date: ${selectedDate}. Please provide availability & permit guidance.`
   );
 
   const otherTreks = allTreks.filter((t) => t.id !== trek.id).slice(0, 3);
@@ -285,7 +286,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                     : 'border-transparent text-slate-600 hover:text-slate-900'
                     }`}
                 >
-                  Package Tiers (Basic / Standard / Premium)
+                  Package Tiers ({trek.pricingTiers.map((t) => t.name).join(' / ')})
                 </button>
 
                 <button
@@ -382,92 +383,56 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                 </div>
               )}
 
-              {/* Tab 2: Package Tiers Comparison (From Section 18 of Dataset) */}
+              {/* Tab 2: Package Tiers — fully admin-driven (price, checkpoints, note) */}
               {activeTab === 'packages' && (
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Basic */}
-                    <div className={`p-4 border-2 transition-all ${selectedTier === 'basic' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-bold text-[14px] uppercase text-slate-900">Basic Package</span>
-                        <span className="text-[10px] font-bold bg-slate-100 px-2 py-0.5 text-slate-700">Budget Authentic</span>
-                      </div>
-                      <div className="text-lg font-bold text-slate-900 mb-2">
-                        {formatPrice(trek.basicPriceUSD || Math.round(trek.priceUSD * 0.75), currency)}
-                      </div>
-                      <p className="text-[11px] text-slate-600 mb-4">
-                        For independent, budget-conscious international travelers seeking the pure authentic mountain walk.
-                      </p>
-                      <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Certified local guide</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Standard dome camping</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>3 camp meals daily</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Essential mountain safety gear</span></li>
-                      </ul>
-                      <button
-                        onClick={() => setSelectedTier('basic')}
-                        className={`w-full py-2 text-[14px] font-bold uppercase tracking-wider ${selectedTier === 'basic' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-800'}`}
-                      >
-                        {selectedTier === 'basic' ? 'Selected' : 'Choose Basic'}
-                      </button>
-                    </div>
-
-                    {/* Standard (Most Popular) */}
-                    <div className={`p-4 border-2 relative transition-all ${selectedTier === 'standard' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
-                      <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[11px] font-bold uppercase px-2 py-0.5">
-                        Most Popular
-                      </div>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-bold text-[14px] uppercase text-slate-900">Standard Package</span>
-                        <span className="text-[10px] font-bold bg-sky-100 text-sky-800 px-2 py-0.5">Worry-Free Care</span>
-                      </div>
-                      <div className="text-lg font-bold text-slate-900 mb-2">
-                        {formatPrice(trek.discountPriceUSD || trek.priceUSD, currency)}
-                      </div>
-                      <p className="text-[11px] text-slate-600 mb-4">
-                        Complete end-to-end comfort with airport transfers, upgraded hotel lodging, and pre-trek coordinator.
-                      </p>
-                      <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>All in Basic Package</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Islamabad & Skardu Airport Transfers</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>4-Star Hotel Accommodations</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Pre-Trek Preparation Guide & Briefing</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Porter Gear Allowance (20kg)</span></li>
-                      </ul>
-                      <button
-                        onClick={() => setSelectedTier('standard')}
-                        className={`w-full py-2 text-[14px] font-bold uppercase tracking-wider ${selectedTier === 'standard' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-800'}`}
-                      >
-                        {selectedTier === 'standard' ? 'Selected' : 'Choose Standard'}
-                      </button>
-                    </div>
-
-                    {/* Premium */}
-                    <div className={`p-4 border-2 transition-all ${selectedTier === 'premium' ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-bold text-[14px] uppercase text-slate-900">Premium Package</span>
-                        <span className="text-[10px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5">VIP Alpine</span>
-                      </div>
-                      <div className="text-lg font-bold text-slate-900 mb-2">
-                        {formatPrice(trek.premiumPriceUSD || Math.round(trek.priceUSD * 1.35), currency)}
-                      </div>
-                      <p className="text-[11px] text-slate-600 mb-4">
-                        Luxury high-altitude comfort with private guide, heated dining domes, professional photos, and gourmet menus.
-                      </p>
-                      <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>All in Standard Package</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Dedicated Private Mountain Guide</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Serena Hotel Luxury Stays</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Heated Dining Dome & Espresso Bar</span></li>
-                        <li className="flex items-start gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" /><span>Professional High-Res Photo Sessions</span></li>
-                      </ul>
-                      <button
-                        onClick={() => setSelectedTier('premium')}
-                        className={`w-full py-2 text-[14px] font-bold uppercase tracking-wider ${selectedTier === 'premium' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-800'}`}
-                      >
-                        {selectedTier === 'premium' ? 'Selected' : 'Choose Premium'}
-                      </button>
-                    </div>
+                    {trek.pricingTiers.map((tier) => {
+                      const isSelected = selectedTierName === tier.name;
+                      const isPopular = tier.name.trim().toLowerCase() === 'standard';
+                      return (
+                        <div
+                          key={tier.name}
+                          className={`p-4 border-2 relative transition-all ${isSelected ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}
+                        >
+                          {isPopular && (
+                            <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[11px] font-bold uppercase px-2 py-0.5">
+                              Most Popular
+                            </div>
+                          )}
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-bold text-[14px] uppercase text-slate-900">{tier.name} Package</span>
+                          </div>
+                          <div className="text-lg font-bold text-slate-900 mb-2">
+                            {formatPrice(tier.priceUSD, currency)}
+                            {tier.singleSupplementUSD > 0 && (
+                              <span className="block text-[11px] font-normal text-slate-500">
+                                +{formatPrice(tier.singleSupplementUSD, currency)} single supplement
+                              </span>
+                            )}
+                          </div>
+                          {tier.note && (
+                            <p className="text-[11px] text-slate-600 mb-4">{tier.note}</p>
+                          )}
+                          {tier.features.length > 0 && (
+                            <ul className="space-y-1.5 text-[11px] text-slate-700 mb-4">
+                              {tier.features.map((f, fi) => (
+                                <li key={fi} className="flex items-start gap-1.5">
+                                  <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                                  <span>{f}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          <button
+                            onClick={() => setSelectedTierName(tier.name)}
+                            className={`w-full py-2 text-[14px] font-bold uppercase tracking-wider ${isSelected ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-800'}`}
+                          >
+                            {isSelected ? 'Selected' : `Choose ${tier.name}`}
+                          </button>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -526,16 +491,20 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                   </div>
 
                   <div className="p-4 bg-sky-50  text-[14px] text-slate-800">
-                    <strong>{GEAR_RENTAL_INFO.title}:</strong> {GEAR_RENTAL_INFO.intro}
-                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {GEAR_RENTAL_INFO.items.map((r, i) => (
-                        <div key={i} className="flex items-center justify-between bg-white border border-sky-100 px-3 py-2">
-                          <span className="text-slate-700">{r.item}</span>
-                          <span className="font-bold text-sky-700">{r.price}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="mt-3 text-[13px] text-slate-600">{GEAR_RENTAL_INFO.note}</p>
+                    <strong>{siteSettings.gearRental.title}:</strong> {siteSettings.gearRental.intro}
+                    {siteSettings.gearRental.items.length > 0 && (
+                      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {siteSettings.gearRental.items.map((r, i) => (
+                          <div key={i} className="flex items-center justify-between bg-white border border-sky-100 px-3 py-2">
+                            <span className="text-slate-700">{r.item}</span>
+                            <span className="font-bold text-sky-700">{r.price}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {siteSettings.gearRental.note && (
+                      <p className="mt-3 text-[13px] text-slate-600">{siteSettings.gearRental.note}</p>
+                    )}
                   </div>
                 </div>
               )}
@@ -550,13 +519,14 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                     </h4>
                     <p>{trek.permitRequirements}</p>
 
-                    <div className="bg-white p-3  space-y-1.5">
-                      <div className="font-bold text-slate-900">Step-by-step clearance process handled by Trek Karakoram:</div>
-                      <div>1. We issue your official <strong>Letter of Invitation (LOI)</strong> and Ministry of Tourism itinerary within 24h.</div>
-                      <div>2. You apply online via the Pakistan Official E-Visa portal (category: Trekking & Mountaineering).</div>
-                      <div>3. Our Skardu team files group permits with the Gilgit-Baltistan Home Department and Central Karakoram National Park (CKNP).</div>
-                      <div>4. Government liaison officer briefing conducted in Islamabad / Skardu.</div>
-                    </div>
+                    {siteSettings.visaSteps.length > 0 && (
+                      <div className="bg-white p-3  space-y-1.5">
+                        <div className="font-bold text-slate-900">Step-by-step clearance process handled by Trek Karakoram:</div>
+                        {siteSettings.visaSteps.map((step, i) => (
+                          <div key={i}>{i + 1}. {step}</div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -570,9 +540,11 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                   <p>
                     <strong>Best Months:</strong> {trek.bestSeason}
                   </p>
-                  <p className="font-story leading-relaxed">
-                    During the summer climbing season (June to late August), daytime temperatures at lower altitudes (Skardu/Askole) range from 24°C to 30°C. Above 4,000m (Concordia/Ali Camp), daytime temperatures are 10°C to 18°C, dropping to -5°C to -12°C at night. Gondogoro La pass crossings are scheduled at 1:00 AM when snow crust is firm.
-                  </p>
+                  {(trek.weatherInfo || siteSettings.defaultWeatherInfo) && (
+                    <p className="font-story leading-relaxed">
+                      {trek.weatherInfo || siteSettings.defaultWeatherInfo}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -590,49 +562,46 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                 </span>
               </div>
 
-              {/* Tier Selection in Booking Card */}
+              {/* Tier Selection in Booking Card — dynamic from admin tiers */}
               <div className="py-3 border-b border-slate-200">
                 <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1.5">Selected Tier</span>
-                <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1">
-                  <button
-                    onClick={() => setSelectedTier('basic')}
-                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'basic' ? 'bg-white text-sky-700 ' : 'text-slate-600'}`}
-                  >
-                    Basic
-                  </button>
-                  <button
-                    onClick={() => setSelectedTier('standard')}
-                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'standard' ? 'bg-white text-sky-700 ' : 'text-slate-600'}`}
-                  >
-                    Standard
-                  </button>
-                  <button
-                    onClick={() => setSelectedTier('premium')}
-                    className={`py-1 text-[11px] font-bold uppercase ${selectedTier === 'premium' ? 'bg-white text-sky-700 ' : 'text-slate-600'}`}
-                  >
-                    Premium
-                  </button>
+                <div className={`grid gap-1 bg-slate-100 p-1`} style={{ gridTemplateColumns: `repeat(${trek.pricingTiers.length}, minmax(0, 1fr))` }}>
+                  {trek.pricingTiers.map((tier) => (
+                    <button
+                      key={tier.name}
+                      onClick={() => setSelectedTierName(tier.name)}
+                      className={`py-1 text-[11px] font-bold uppercase ${selectedTierName === tier.name ? 'bg-white text-sky-700 ' : 'text-slate-600'}`}
+                    >
+                      {tier.name}
+                    </button>
+                  ))}
                 </div>
               </div>
 
               {/* Price */}
               <div className="py-4 border-b border-slate-200">
-                <span className="text-[11px] text-slate-500 uppercase font-bold block">Expedition Cost ({selectedTier.toUpperCase()})</span>
+                <span className="text-[11px] text-slate-500 uppercase font-bold block">
+                  Expedition Cost{selectedTier ? ` (${selectedTier.name})` : ''}
+                </span>
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-bold text-slate-900">
                     {formatPrice(displayPrice, currency)}
                   </span>
                   <span className="text-[13px] text-slate-500">/ person</span>
                 </div>
-                <div className="mt-1 text-[11px] text-slate-500">
-                  Single supplement (private room/tent):{' '}
-                  <span className="font-semibold text-slate-700">
-                    {formatPrice(trek.singleSupplementUSD || Math.round(displayPrice * 0.14), currency)}
-                  </span>
-                </div>
-                <div className="text-[11px] text-emerald-600 font-semibold mt-1">
-                  Founding Member 20% discount included.
-                </div>
+                {selectedTier && selectedTier.singleSupplementUSD > 0 && (
+                  <div className="mt-1 text-[11px] text-slate-500">
+                    Single supplement (private room/tent):{' '}
+                    <span className="font-semibold text-slate-700">
+                      {formatPrice(selectedTier.singleSupplementUSD, currency)}
+                    </span>
+                  </div>
+                )}
+                {selectedTier?.note && (
+                  <div className="text-[11px] text-emerald-600 font-semibold mt-1">
+                    {selectedTier.note}
+                  </div>
+                )}
               </div>
 
               {/* Booking Controls */}

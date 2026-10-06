@@ -27,6 +27,24 @@ export interface WebsiteSettings {
   footerColumns: FooterColumn[];
   /** Homepage hero section. */
   hero: HeroSettings;
+  /** Global gear-rental box shown on trek detail pages. */
+  gearRental: GearRentalInfo;
+  /** Global visa/permit step-by-step list shown on trek detail pages. */
+  visaSteps: string[];
+  /** Default Weather & Season paragraph (per-trek override wins). */
+  defaultWeatherInfo: string;
+}
+
+export interface GearRentalItem {
+  item: string;
+  price: string;
+}
+
+export interface GearRentalInfo {
+  title: string;
+  intro: string;
+  items: GearRentalItem[];
+  note: string;
 }
 
 /** One header nav item; `children` renders as a dropdown sub-menu. */
@@ -129,8 +147,14 @@ export interface AdminTrek {
   fitnessLevel: string;
   /** Per-trek FAQs (shown on the trek detail page). */
   faqs: TrekFaq[];
-  /** Pricing tiers (Basic / Standard / Premium…) — replaces the single price. */
+  /** Pricing tiers — the single source of pricing truth for the trek. */
   pricingTiers: PricingTier[];
+  /** Fixed group departures (managed in admin; static fallback when empty). */
+  departures: TrekDeparture[];
+  /** Gear checklist items (managed in admin; static fallback when empty). */
+  gearChecklist: string[];
+  /** Weather & season paragraph (per-trek override; global default otherwise). */
+  weatherInfo: string;
 }
 
 export interface TrekFaq {
@@ -144,6 +168,15 @@ export interface PricingTier {
   singleSupplementUSD: number;
   /** e.g. "Founding Member 20% discount included." */
   note: string;
+  /** Tier checklist ("checkpoints") shown on the trek detail page. */
+  features: string[];
+}
+
+export type DepartureStatus = 'guaranteed' | 'available' | 'limited' | 'soldout';
+
+export interface TrekDeparture {
+  date: string;
+  status: DepartureStatus;
 }
 
 export interface AdminBlog {
