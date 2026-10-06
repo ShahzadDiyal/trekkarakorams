@@ -14,7 +14,7 @@ import {
   PhoneCall,
   Clock
 } from 'lucide-react';
-import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
+import { whatsappLink, SITE_NAME } from '@/lib/site';
 
 export const PermitsVisaGuidePageClient: React.FC = () => {
   const router = useRouter();

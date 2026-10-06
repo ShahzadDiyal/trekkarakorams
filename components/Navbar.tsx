@@ -10,12 +10,14 @@ import {
   Compass,
 } from 'lucide-react';
 import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
+import { useSiteSettings } from '@/lib/site-settings';
 
 interface NavbarProps {
   // No longer need onOpenCustomPlan
 }
 
 export const Navbar: React.FC<NavbarProps> = () => {
+  const { logoUrl, siteName } = useSiteSettings();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [destinationsDropdown, setDestinationsDropdown] = useState(false);
   const pathname = usePathname() ?? '/';
@@ -84,8 +86,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
               title="Trek Karakoram Home"
             >
               <img
-                src="/images/trekkarakoram-logo.png"
-                alt="Trek Karakoram Logo"
+                src={logoUrl}
+                alt={`${siteName} Logo`}
                 className="h-10 w-auto sm:h-16 object-contain transition-transform group-hover:scale-105"
               />
             </Link>

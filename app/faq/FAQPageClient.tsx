@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { getFaqs, type PublicFaq } from '@/lib/content';
 import { FaqPageSkeleton } from '@/components/FaqSkeleton';
 import { HelpCircle, ChevronDown, Search, MessageSquare, PhoneCall, ShieldCheck } from 'lucide-react';
-import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
+import { whatsappLink, SITE_NAME } from '@/lib/site';
 
 export const FAQPageClient: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');

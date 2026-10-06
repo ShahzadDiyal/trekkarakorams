@@ -21,7 +21,7 @@ import {
   Calendar,
   Check
 } from 'lucide-react';
-import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
+import { whatsappLink, SITE_NAME } from '@/lib/site';
 
 export const PlannerPageClient: React.FC = () => {
   const router = useRouter();

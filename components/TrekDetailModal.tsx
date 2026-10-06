@@ -21,7 +21,7 @@ import {
   Sparkles,
   Check
 } from 'lucide-react';
-import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
+import { whatsappLink, SITE_NAME } from '@/lib/site';
 import { TrekPackage, Currency, DEPARTURE_STATUS_LABEL } from '@/types';
 import { formatPrice } from '@/utils/currency';
 

@@ -19,11 +19,18 @@ import {
   ArrowRight,
   Crown,
 } from 'lucide-react';
-import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
+import { useSiteSettings, useWhatsappLink } from '@/lib/site-settings';
 import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
+  const settings = useSiteSettings();
+  const whatsappUrl = useWhatsappLink('Hello Trek Karakoram');
+  const socials = [
+    { label: 'Facebook', href: settings.facebookUrl, Icon: Facebook },
+    { label: 'Instagram', href: settings.instagramUrl, Icon: Instagram },
+    { label: 'YouTube', href: settings.youtubeUrl, Icon: Youtube },
+  ].filter((s) => s.href);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -69,7 +76,7 @@ export const Footer: React.FC = () => {
 
             <div className="flex items-center gap-2">
               <a
-                href={whatsappLink("Hello Trek Karakoram")}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
@@ -107,15 +114,14 @@ export const Footer: React.FC = () => {
               title="Trek Karakoram Home"
             >
               <img
-                src="/images/footer-logo.png"
-                alt="Trek Karakoram Logo"
+                src={settings.logoUrl}
+                alt={`${settings.siteName} Logo`}
                 className="h-10 w-auto object-contain transition-transform group-hover:scale-105 sm:h-22"
               />
             </Link>
 
             <p className="text-sm leading-relaxed text-gray-600">
-              Guided expeditions to K2 Base Camp, Baltoro, Concordia,
-              Nanga Parbat, and Snow Lake.
+              {settings.footerAbout}
             </p>
 
             <div className="space-y-2 text-sm text-gray-600">
@@ -124,48 +130,39 @@ export const Footer: React.FC = () => {
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky-600" />
                 <span>
                   <strong className="text-gray-800">Skardu HQ:</strong>{' '}
-                  College Road, Airport Link, Skardu 16100
+                  {settings.address}
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0 text-sky-600" />
-                <span>{BRAND_INFO.phone}</span>
+                <span>{settings.phone}</span>
               </div>
 
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-sky-600" />
-                <span>{BRAND_INFO.email}</span>
+                <span>{settings.email}</span>
               </div>
 
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-3 pt-2">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="text-gray-400 transition-colors hover:text-sky-600"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="text-gray-400 transition-colors hover:text-sky-600"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="text-gray-400 transition-colors hover:text-sky-600"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div>
+            {/* Social Links — configured in admin Website Settings */}
+            {socials.length > 0 && (
+              <div className="flex items-center gap-3 pt-2">
+                {socials.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="text-gray-400 transition-colors hover:text-sky-600"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            )}
 
           </div>
 

@@ -16,9 +16,11 @@ import {
   Award,
   Globe,
 } from 'lucide-react';
-import { whatsappLink, SITE_NAME, PHONE_DISPLAY, EMAIL_PRIMARY } from '@/lib/site';
+import { whatsappLink, SITE_NAME } from '@/lib/site';
+import { useSiteSettings } from '@/lib/site-settings';
 
 export const ContactPageClient: React.FC = () => {
+  const siteContact = useSiteSettings();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -359,7 +361,7 @@ export const ContactPageClient: React.FC = () => {
                             Contact our expedition coordinator directly on
                             WhatsApp at{' '}
                             <strong className="text-slate-900">
-                              {PHONE_DISPLAY}
+                              {siteContact.phone}
                             </strong>
                             .
                           </p>
@@ -421,13 +423,13 @@ export const ContactPageClient: React.FC = () => {
 
                 <div className="flex items-center gap-2.5">
                   <Phone className="h-4 w-4 shrink-0 text-sky-600" />
-                  <span>{PHONE_DISPLAY} / +92 5815 452100</span>
+                  <span>{siteContact.phone} / +92 5815 452100</span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <Mail className="h-4 w-4 shrink-0 text-sky-600" />
                   <span className="break-all">
-                    {EMAIL_PRIMARY}
+                    {siteContact.email}
                   </span>
                 </div>
               </div>

@@ -14,10 +14,12 @@ import {
   Utensils,
   Sparkles,
 } from 'lucide-react';
-import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
+import { whatsappLink, SITE_NAME } from '@/lib/site';
+import { useSiteSettings } from '@/lib/site-settings';
 import { TREK_PACKAGES } from '@/data/treks';
 
 export const CustomPlanPageClient: React.FC = () => {
+  const siteContact = useSiteSettings();
   const router = useRouter();
 
   const [name, setName] = useState('');
@@ -727,7 +729,7 @@ export const CustomPlanPageClient: React.FC = () => {
                             Reach our high-altitude coordinator directly on
                             WhatsApp at{' '}
                             <strong className="text-slate-900">
-                              {PHONE_DISPLAY}
+                              {siteContact.phone}
                             </strong>.
                           </p>
 

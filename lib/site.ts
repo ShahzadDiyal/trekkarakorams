@@ -23,12 +23,27 @@ export const CONTACT = {
   email: EMAIL_PRIMARY,
 } as const;
 
+/**
+ * Live overrides populated from Firestore (`settings/website`) by
+ * SiteSettingsProvider. Makes whatsappLink()/telLink() return database
+ * values across the whole site without editing every call site.
+ */
+const liveOverrides: { whatsapp?: string } = {};
+
+export function setLiveSiteOverrides(o: { whatsapp?: string }): void {
+  if (o.whatsapp) liveOverrides.whatsapp = o.whatsapp;
+}
+
+function liveWhatsapp(): string {
+  return liveOverrides.whatsapp || WHATSAPP_NUMBER;
+}
+
 /** Pre-encoded WhatsApp deep link with a custom message. */
 export function whatsappLink(message: string): string {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${liveWhatsapp()}?text=${encodeURIComponent(message)}`;
 }
 
 /** tel: link for click-to-call. */
 export function telLink(): string {
-  return `tel:+${WHATSAPP_NUMBER}`;
+  return `tel:+${liveWhatsapp()}`;
 }

@@ -12,7 +12,8 @@ import {
   MessageSquare,
   PhoneCall,
 } from 'lucide-react';
-import { whatsappLink, PHONE_DISPLAY, SITE_NAME } from '@/lib/site';
+import { whatsappLink, SITE_NAME } from '@/lib/site';
+import { useSiteSettings } from '@/lib/site-settings';
 
 const SECTIONS = [
   { ...BOOKING_TERMS.deposit, icon: Wallet },
@@ -21,6 +22,7 @@ const SECTIONS = [
 ];
 
 export const TermsPageClient: React.FC = () => {
+  const siteContact = useSiteSettings();
   return (
     <div className="bg-slate-50 min-h-screen py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +88,7 @@ export const TermsPageClient: React.FC = () => {
           <div>
             <h3 className="font-bold text-lg">Questions about these terms?</h3>
             <p className="text-[13px] text-slate-300 mt-1">
-              Talk to our team directly — {PHONE_DISPLAY}
+              Talk to our team directly — {siteContact.phone}
             </p>
           </div>
           <a

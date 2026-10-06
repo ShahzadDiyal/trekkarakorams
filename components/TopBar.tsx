@@ -3,7 +3,7 @@
 import React from 'react';
 import { Mail, Phone, ShieldCheck, Award, MessageSquare } from 'lucide-react';
 import { Currency } from '@/types';
-import { whatsappLink, telLink, PHONE_DISPLAY, EMAIL_PRIMARY } from '@/lib/site';
+import { useSiteSettings, useWhatsappLink, useTelLink } from '@/lib/site-settings';
 
 interface TopBarProps {
   currentCurrency: Currency;
@@ -16,24 +16,27 @@ export const TopBar: React.FC<TopBarProps> = ({
   onCurrencyChange,
   onOpenCustomPlan
 }) => {
+  const { phone, email } = useSiteSettings();
+  const tel = useTelLink();
+  const whatsappUrl = useWhatsappLink('Hello, I am interested in trekking in Pakistan');
   return (
     <div id="top-contact-bar" className="bg-sky-950 text-sky-100 text-[14px] border-b border-sky-900/60 transition-colors">
       <div className="mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col md:flex-row items-center justify-between gap-2">
         {/* Left: Contact Info & Gov License */}
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6">
           <a
-            href={`mailto:${EMAIL_PRIMARY}`}
+            href={`mailto:${email}`}
             className="flex items-center gap-1.5 hover:text-sky-300 transition-colors"
           >
             <Mail className="w-3.5 h-3.5 text-sky-400" />
-            <span>{EMAIL_PRIMARY}</span>
+            <span>{email}</span>
           </a>
           <a
-            href={telLink()}
+            href={tel}
             className="flex items-center gap-1.5 hover:text-sky-300 transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-sky-400" />
-            <span>{PHONE_DISPLAY} (Skardu HQ)</span>
+            <span>{phone} (Skardu HQ)</span>
           </a>
           <div className="hidden lg:flex items-center gap-1.5 text-sky-300">
             <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
@@ -52,7 +55,7 @@ export const TopBar: React.FC<TopBarProps> = ({
 
           {/* WhatsApp Direct */}
           <a
-            href={whatsappLink("Hello, I am interested in trekking in Pakistan")}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:text-emerald-400 transition-colors font-medium text-emerald-300"
