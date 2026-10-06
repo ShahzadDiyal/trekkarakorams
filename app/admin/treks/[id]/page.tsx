@@ -18,6 +18,7 @@ import {
   Spinner,
 } from '@/components/admin/ui';
 import { ImageUpload } from '@/components/admin/ImageUpload';
+import { GalleryUpload } from '@/components/admin/GalleryUpload';
 
 const EMPTY: AdminTrek = {
   id: '',
@@ -245,7 +246,7 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
               <ListEditor label="Exclusions" values={form.exclusions} onChange={(v) => set('exclusions', v)} />
             </Card>
             <Card className="p-5">
-              <ListEditor label="Gallery image URLs" values={form.gallery} onChange={(v) => set('gallery', v)} placeholder="https://… or /images/…" />
+              <GalleryUpload label="Gallery images" values={form.gallery} onChange={(v) => set('gallery', v)} folder="treks/gallery" />
             </Card>
           </div>
         </div>
