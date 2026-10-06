@@ -122,11 +122,28 @@ export interface AdminTrek {
   gallery: string[];
   overview: string;
   highlights: string[];
-  itinerary: { day: string; title: string; description: string }[];
+  itinerary: { day: string; title: string; description: string; timing: string }[];
   inclusions: string[];
   exclusions: string[];
   permitRequirements: string;
   fitnessLevel: string;
+  /** Per-trek FAQs (shown on the trek detail page). */
+  faqs: TrekFaq[];
+  /** Pricing tiers (Basic / Standard / Premium…) — replaces the single price. */
+  pricingTiers: PricingTier[];
+}
+
+export interface TrekFaq {
+  question: string;
+  answer: string;
+}
+
+export interface PricingTier {
+  name: string;
+  priceUSD: number;
+  singleSupplementUSD: number;
+  /** e.g. "Founding Member 20% discount included." */
+  note: string;
 }
 
 export interface AdminBlog {

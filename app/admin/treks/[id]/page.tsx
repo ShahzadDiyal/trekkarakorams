@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Save, Loader2, Plus, Trash2 } from 'lucide-react';
 import { getDocById, createDoc, saveDoc, COLLECTIONS } from '@/lib/admin/db';
-import type { AdminTrek } from '@/lib/admin/types';
+import type { AdminTrek, PricingTier } from '@/lib/admin/types';
 import {
   Card,
   PageHeader,
@@ -19,6 +19,12 @@ import {
 } from '@/components/admin/ui';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import { GalleryUpload } from '@/components/admin/GalleryUpload';
+
+const DEFAULT_TIERS: PricingTier[] = [
+  { name: 'Basic', priceUSD: 0, singleSupplementUSD: 0, note: '' },
+  { name: 'Standard', priceUSD: 0, singleSupplementUSD: 0, note: '' },
+  { name: 'Premium', priceUSD: 0, singleSupplementUSD: 0, note: '' },
+];
 
 const EMPTY: AdminTrek = {
   id: '',
@@ -49,6 +55,8 @@ const EMPTY: AdminTrek = {
   exclusions: [],
   permitRequirements: '',
   fitnessLevel: '',
+  faqs: [],
+  pricingTiers: DEFAULT_TIERS,
 };
 
 export default function TrekEditorPage({ params }: { params: Promise<{ id: string }> }) {
@@ -71,7 +79,17 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
     }
     (async () => {
       const doc = await getDocById<AdminTrek>(COLLECTIONS.treks, resolved.id);
-      if (doc) setForm({ ...EMPTY, ...doc });
+      if (doc) {
+        setForm({
+          ...EMPTY,
+          ...doc,
+          // Backfill fields added after the doc was created.
+          itinerary: (doc.itinerary ?? []).map((d) => ({ ...d, timing: d.timing ?? '' })),
+          faqs: doc.faqs ?? [],
+          pricingTiers:
+            doc.pricingTiers && doc.pricingTiers.length > 0 ? doc.pricingTiers : DEFAULT_TIERS,
+        });
+      }
       setLoading(false);
     })();
   }, [resolved]);
@@ -172,6 +190,96 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
             <div className="mt-4">
               <TextArea label="Permit requirements" rows={3} value={form.permitRequirements} onChange={(e) => set('permitRequirements', e.target.value)} />
             </div>
+            <div className="mt-5 border-t border-slate-100 pt-4">
+              <h3 className="mb-1 text-sm font-bold text-slate-900">Pricing tiers</h3>
+              <p className="mb-3 text-xs text-slate-500">
+                Each tier gets its own expedition cost and single supplement (shown as a tier selector on the trek page).
+              </p>
+              <div className="space-y-3">
+                {form.pricingTiers.map((t, i) => (
+                  <div key={i} className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                    <div className="mb-2 flex items-center justify-between">
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Tier {i + 1}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => set('pricingTiers', form.pricingTiers.filter((_, j) => j !== i))}
+                        className="rounded-lg p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600"
+                        aria-label="Remove tier"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                      <input
+                        className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold"
+                        placeholder="Tier name (Basic)"
+                        value={t.name}
+                        onChange={(e) => {
+                          const next = [...form.pricingTiers];
+                          next[i] = { ...next[i], name: e.target.value };
+                          set('pricingTiers', next);
+                        }}
+                      />
+                      <label className="flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm">
+                        <span className="text-slate-400">$</span>
+                        <input
+                          type="number"
+                          min="0"
+                          className="w-full bg-transparent outline-none"
+                          placeholder="Expedition cost"
+                          value={t.priceUSD || ''}
+                          onChange={(e) => {
+                            const next = [...form.pricingTiers];
+                            next[i] = { ...next[i], priceUSD: Number(e.target.value) };
+                            set('pricingTiers', next);
+                          }}
+                        />
+                        <span className="shrink-0 text-xs text-slate-400">/ person</span>
+                      </label>
+                      <label className="flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm">
+                        <span className="text-slate-400">$</span>
+                        <input
+                          type="number"
+                          min="0"
+                          className="w-full bg-transparent outline-none"
+                          placeholder="Single supplement"
+                          value={t.singleSupplementUSD || ''}
+                          onChange={(e) => {
+                            const next = [...form.pricingTiers];
+                            next[i] = { ...next[i], singleSupplementUSD: Number(e.target.value) };
+                            set('pricingTiers', next);
+                          }}
+                        />
+                      </label>
+                    </div>
+                    <input
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
+                      placeholder="Note (e.g. Founding Member 20% discount included.)"
+                      value={t.note}
+                      onChange={(e) => {
+                        const next = [...form.pricingTiers];
+                        next[i] = { ...next[i], note: e.target.value };
+                        set('pricingTiers', next);
+                      }}
+                    />
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={() =>
+                    set('pricingTiers', [
+                      ...form.pricingTiers,
+                      { name: '', priceUSD: 0, singleSupplementUSD: 0, note: '' },
+                    ])
+                  }
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-600 hover:border-sky-400 hover:text-sky-700"
+                >
+                  <Plus className="h-4 w-4" /> Add pricing tier
+                </button>
+              </div>
+            </div>
           </Card>
 
           <Card className="p-5">
@@ -190,7 +298,7 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </div>
-                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                  <div className="grid grid-cols-2 gap-2">
                     <input
                       className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
                       placeholder="Day 1"
@@ -202,16 +310,26 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
                       }}
                     />
                     <input
-                      className="rounded-xl border border-slate-300 px-3 py-2 text-sm sm:col-span-2"
-                      placeholder="Stop title"
-                      value={d.title}
+                      className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                      placeholder="Timing (e.g. 4 hours trekking)"
+                      value={d.timing ?? ''}
                       onChange={(e) => {
                         const next = [...form.itinerary];
-                        next[i] = { ...next[i], title: e.target.value };
+                        next[i] = { ...next[i], timing: e.target.value };
                         set('itinerary', next);
                       }}
                     />
                   </div>
+                  <input
+                    className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                    placeholder="Stop title"
+                    value={d.title}
+                    onChange={(e) => {
+                      const next = [...form.itinerary];
+                      next[i] = { ...next[i], title: e.target.value };
+                      set('itinerary', next);
+                    }}
+                  />
                   <textarea
                     className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm"
                     rows={2}
@@ -227,10 +345,62 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
               ))}
               <button
                 type="button"
-                onClick={() => set('itinerary', [...form.itinerary, { day: '', title: '', description: '' }])}
+                onClick={() => set('itinerary', [...form.itinerary, { day: '', title: '', description: '', timing: '' }])}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-600 hover:border-sky-400 hover:text-sky-700"
               >
                 <Plus className="h-4 w-4" /> Add itinerary stop
+              </button>
+            </div>
+          </Card>
+
+          <Card className="p-5">
+            <h2 className="mb-1 font-bold text-slate-900">Trek FAQs</h2>
+            <p className="mb-4 text-xs text-slate-500">
+              Questions specific to this trek — shown in an accordion on the trek detail page.
+            </p>
+            <div className="space-y-3">
+              {form.faqs.map((f, i) => (
+                <div key={i} className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">FAQ {i + 1}</span>
+                    <button
+                      type="button"
+                      onClick={() => set('faqs', form.faqs.filter((_, j) => j !== i))}
+                      className="rounded-lg p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600"
+                      aria-label="Remove FAQ"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                  <input
+                    className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold"
+                    placeholder="Question"
+                    value={f.question}
+                    onChange={(e) => {
+                      const next = [...form.faqs];
+                      next[i] = { ...next[i], question: e.target.value };
+                      set('faqs', next);
+                    }}
+                  />
+                  <textarea
+                    className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
+                    rows={3}
+                    placeholder="Answer…"
+                    value={f.answer}
+                    onChange={(e) => {
+                      const next = [...form.faqs];
+                      next[i] = { ...next[i], answer: e.target.value };
+                      set('faqs', next);
+                    }}
+                  />
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => set('faqs', [...form.faqs, { question: '', answer: '' }])}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-600 hover:border-sky-400 hover:text-sky-700"
+              >
+                <Plus className="h-4 w-4" /> Add FAQ
               </button>
             </div>
           </Card>
