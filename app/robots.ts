@@ -3,13 +3,14 @@ import { SITE_URL } from '@/lib/site';
 
 /**
  * Native Next.js robots file (App Router convention).
- * Served at /robots.txt automatically and shares SITE_URL with sitemap.ts
- * so the Sitemap: line can never drift out of sync with the real domain.
+ * Served at /robots.txt automatically. The sitemap is served dynamically
+ * at /sitemap.xml (see app/sitemap.xml/route.ts) and always includes the
+ * latest admin-published treks, blogs and destinations.
  */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: '*', allow: '/' },
+      { userAgent: '*', allow: '/', disallow: '/admin' },
       // LLM & AI crawlers explicitly allowed (AEO / GEO indexing)
       { userAgent: 'GPTBot', allow: '/' },
       { userAgent: 'PerplexityBot', allow: '/' },

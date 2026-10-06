@@ -60,14 +60,23 @@
 ## Site Routes & URLs
 - Home: https://trekkarakoram.com/
 - Trek Packages Catalog: https://trekkarakoram.com/treks
+- Trek Detail Pages: https://trekkarakoram.com/treks/{trek-id} (e.g. /treks/k2-basecamp-gondogoro-la)
+- Browse by Region: https://trekkarakoram.com/treks/region/{region} (e.g. /treks/region/karakoram)
+- Browse by Activity: https://trekkarakoram.com/treks/activity/{activity}
+- Browse by Difficulty: https://trekkarakoram.com/treks/difficulty/{difficulty}
 - Destinations Hub: https://trekkarakoram.com/destinations
-- Custom Cost Estimator: https://trekkarakoram.com/planner
+- Destination Guides: https://trekkarakoram.com/destination/{slug} (e.g. /destination/hunza-nagar)
+- Travel Styles: https://trekkarakoram.com/travel-styles and https://trekkarakoram.com/travel-styles/{style} (e.g. /travel-styles/heli-treks)
+- Trip Planner (Cost Estimator): https://trekkarakoram.com/planner
+- Custom Expedition Plan: https://trekkarakoram.com/custom-plan
 - Interactive Map: https://trekkarakoram.com/routes-map
 - Safety & Guides: https://trekkarakoram.com/safety-and-guides
 - Visa & Permits Guide: https://trekkarakoram.com/permits-visa-guide
 - Blog & Guides: https://trekkarakoram.com/blog
 - FAQs: https://trekkarakoram.com/faq
+- Founding Members Offer: https://trekkarakoram.com/founding-members
 - Contact: https://trekkarakoram.com/contact
 - About Us: https://trekkarakoram.com/about
 - Booking Terms (Deposits & Cancellation): https://trekkarakoram.com/terms
+- XML Sitemap (auto-updated with every published trek, blog & destination): https://trekkarakoram.com/sitemap.xml
 - K2 vs Everest Base Camp Comparison: https://trekkarakoram.com/blog/k2-vs-everest-base-camp
