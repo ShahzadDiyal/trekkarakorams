@@ -35,7 +35,14 @@ export function ImageUpload({
       'state_changed',
       (snap) => setProgress(Math.round((snap.bytesTransferred / snap.totalBytes) * 100)),
       (err) => {
-        setError(err.message || 'Upload failed.');
+        const code = (err as { code?: string }).code;
+        // storage/unknown on a browser upload almost always means the bucket
+        // is missing its CORS policy — see lib/admin/cors.json for the fix.
+        setError(
+          code === 'storage/unknown'
+            ? 'Upload blocked by the storage bucket (CORS). Apply lib/admin/cors.json to the bucket, then retry.'
+            : err.message || 'Upload failed.'
+        );
         setProgress(null);
       },
       async () => {

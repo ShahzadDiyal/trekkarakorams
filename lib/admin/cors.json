@@ -1,0 +1,1 @@
+[{"maxAgeSeconds":3600,"method":["GET","HEAD","PUT","POST","DELETE","OPTIONS"],"origin":["https://trekkarakoram.com","https://www.trekkarakoram.com","http://localhost:3000"],"responseHeader":["Content-Type","Authorization","Content-Length","X-Upload-Content-Type","X-Upload-Content-Length","X-Goog-Upload-Protocol"]}]
