@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { getDocById, saveDoc, COLLECTIONS } from '@/lib/admin/db';
 import type { WebsiteSettings, HeroSettings } from '@/lib/admin/types';
+import { mergeSettings } from '@/lib/site-settings';
 import {
   Card,
   PageHeader,
@@ -28,43 +29,6 @@ import { MenuEditor } from '@/components/admin/settings/MenuEditor';
 import { ButtonEditor } from '@/components/admin/settings/ButtonEditor';
 import { FooterColumnsEditor } from '@/components/admin/settings/FooterColumnsEditor';
 
-const EMPTY_HERO: HeroSettings = {
-  mediaType: 'video',
-  imageUrl: '',
-  videoUrl: '',
-  posterUrl: '',
-  badge: '',
-  headline: '',
-  headlineAccent: '',
-  subheadline: '',
-  ctaPrimaryLabel: '',
-  ctaPrimaryHref: '',
-  ctaSecondaryLabel: '',
-  ctaSecondaryHref: '',
-};
-
-const EMPTY: WebsiteSettings = {
-  siteName: '',
-  tagline: '',
-  logoUrl: '',
-  faviconUrl: '',
-  phone: '',
-  whatsapp: '',
-  email: '',
-  address: '',
-  facebookUrl: '',
-  instagramUrl: '',
-  youtubeUrl: '',
-  tiktokUrl: '',
-  footerAbout: '',
-  announcementBar: '',
-  announcementBarEnabled: false,
-  headerMenus: [],
-  headerButtons: [],
-  footerColumns: [],
-  hero: EMPTY_HERO,
-};
-
 const TABS = [
   { id: 'brand', label: 'Brand', icon: Globe },
   { id: 'announcement', label: 'Announcement', icon: Megaphone },
@@ -77,8 +41,14 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]['id'];
 
+/** Form state before Firestore responds — replaced by mergeSettings() on load. */
+function initialForm(): WebsiteSettings {
+  const { loaded: _loaded, ...resolved } = mergeSettings(null);
+  return resolved;
+}
+
 export default function AdminSettingsPage() {
-  const [form, setForm] = useState<WebsiteSettings>(EMPTY);
+  const [form, setForm] = useState<WebsiteSettings>(initialForm);
   const [tab, setTab] = useState<TabId>('brand');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -87,16 +57,10 @@ export default function AdminSettingsPage() {
   useEffect(() => {
     (async () => {
       const doc = await getDocById<WebsiteSettings>(COLLECTIONS.settings, 'website');
-      if (doc) {
-        setForm({
-          ...EMPTY,
-          ...doc,
-          headerMenus: doc.headerMenus ?? [],
-          headerButtons: doc.headerButtons ?? [],
-          footerColumns: doc.footerColumns ?? [],
-          hero: { ...EMPTY_HERO, ...(doc.hero ?? {}) },
-        });
-      }
+      // Show exactly what the website renders: DB values merged over defaults,
+      // so existing menus/buttons/footer/hero are pre-filled and editable.
+      const { loaded: _loaded, ...resolved } = mergeSettings(doc);
+      setForm(resolved);
       setLoading(false);
     })();
   }, []);

@@ -165,7 +165,9 @@ function pickList<T>(dbValue: unknown, fallback: T[]): T[] {
   return Array.isArray(dbValue) && dbValue.length > 0 ? (dbValue as T[]) : fallback;
 }
 
-function mergeSettings(doc: WebsiteSettings | null): ResolvedSiteSettings {
+/** Merge a Firestore settings doc over the built-in defaults (exported so the
+ *  admin form can show exactly what the website renders). */
+export function mergeSettings(doc: WebsiteSettings | null): ResolvedSiteSettings {
   if (!doc) return { ...DEFAULTS, loaded: true };
   return {
     siteName: pick(doc.siteName, DEFAULTS.siteName),
