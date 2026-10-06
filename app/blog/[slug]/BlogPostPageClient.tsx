@@ -61,7 +61,7 @@ export const BlogPostPageClient: React.FC<BlogPostPageProps> = ({ post }) => {
 
           <div className="flex flex-wrap items-center justify-between gap-4 text-[14px] text-slate-500 mt-4 pb-6 border-b border-slate-200">
             <div className="flex items-center gap-3">
-              <span>By <strong>{post.author}</strong> ({post.authorRole})</span>
+              <span>By <strong>{post.author}</strong>{post.authorRole ? ` (${post.authorRole})` : ''}</span>
               <span>•</span>
               <span className="flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5 text-sky-600" />

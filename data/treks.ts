@@ -1985,8 +1985,8 @@ export const BLOG_POSTS = [
     slug: "k2-base-camp-trek-guide",
     category: "Expedition Guides",
     readTime: "8 min read",
-    author: "Ali Balti",
-    authorRole: "Senior IFMGA Certified Lead Guide",
+    author: "Trek Karakoram Team",
+    authorRole: "",
     date: "Jan 12, 2026",
     image: "/images/The Soul of the Karakoram.jpg",
     excerpt:
@@ -2005,8 +2005,8 @@ export const BLOG_POSTS = [
     slug: "pakistan-trekking-visa-guide",
     category: "Visa & Logistics",
     readTime: "5 min read",
-    author: "Karim Ullah",
-    authorRole: "Expedition Logistics & Government Liaison",
+    author: "Trek Karakoram Team",
+    authorRole: "",
     date: "Feb 02, 2026",
     image: "/images/trekking-peaks-karakoram-pakistan.jpg",
     excerpt:
@@ -2022,8 +2022,8 @@ export const BLOG_POSTS = [
     slug: "altitude-sickness-prevention-karakoram",
     category: "Health & Safety",
     readTime: "6 min read",
-    author: "Dr. Sarah Jennings",
-    authorRole: "High-Altitude Wilderness Medical Advisor",
+    author: "Trek Karakoram Team",
+    authorRole: "",
     date: "Feb 18, 2026",
     image: "/images/preventing-altitute.jpg",
     excerpt:
@@ -2040,8 +2040,8 @@ export const BLOG_POSTS = [
     slug: "k2-vs-everest-base-camp",
     category: "Expedition Guides",
     readTime: "9 min read",
-    author: "Ali Balti",
-    authorRole: "Senior IFMGA Certified Lead Guide",
+    author: "Trek Karakoram Team",
+    authorRole: "",
     date: "Mar 02, 2026",
     image: "/images/k2-basecamp-gondogoro-la-trek.jpg",
     excerpt:

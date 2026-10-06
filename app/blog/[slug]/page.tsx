@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: BlogPostRouteParams): Promise
       description: post.excerpt,
       images: post.image ? [{ url: post.image }] : undefined,
       type: 'article',
-      authors: [post.author],
+      authors: [SITE_NAME],
     },
   };
 }
@@ -48,9 +48,9 @@ function blogJsonLd(post: (typeof BLOG_POSTS)[number]) {
         description: post.excerpt,
         image: post.image ? [`${SITE_URL}${post.image}`] : undefined,
         author: {
-          '@type': 'Person',
-          name: post.author,
-          jobTitle: post.authorRole,
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: SITE_URL,
         },
         publisher: {
           '@type': 'Organization',
