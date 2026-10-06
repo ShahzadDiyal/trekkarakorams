@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -19,12 +19,15 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { whatsappLink } from '@/lib/site';
-import { TREK_PACKAGES } from '@/data/treks';
+import { useTreks } from '@/lib/content';
+import { saveBooking } from '@/lib/lead-capture';
 
 // Component that uses useSearchParams - wrapped in Suspense
 function BookingForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  // Live published treks for the dropdown (static fallback if DB unreachable).
+  const { treks } = useTreks();
 
   const trekTitleParam = searchParams.get('trek') || '';
   const groupSizeParam = parseInt(searchParams.get('group') || '2');
@@ -34,27 +37,51 @@ function BookingForm() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
-  const [selectedTrek, setSelectedTrek] = useState(
-    trekTitleParam || TREK_PACKAGES[0]?.title || ''
-  );
+  const [selectedTrek, setSelectedTrek] = useState(trekTitleParam);
   const [groupCount, setGroupCount] = useState(groupSizeParam || 2);
   const [departureMonth, setDepartureMonth] = useState('July 2026');
   const [userNotes, setUserNotes] = useState(notesParam || '');
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const selectedTrekDetails = TREK_PACKAGES.find(
-    (t) => t.title === selectedTrek
-  );
+  // Default to the first live trek once the list loads (unless a trek was preselected).
+  useEffect(() => {
+    if (!trekTitleParam && treks.length > 0 && !selectedTrek) {
+      setSelectedTrek(treks[0].title);
+    }
+  }, [treks, trekTitleParam, selectedTrek]);
+
+  const selectedTrekDetails = treks.find((t) => t.title === selectedTrek);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setSubmitError('');
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setSubmitted(true);
-    setIsLoading(false);
+    try {
+      // Saved to Firestore `bookings` (visible in the admin panel) and the
+      // visitor is recorded in `customers`. Requires the updated security
+      // rules to be deployed — otherwise this throws permission-denied.
+      await saveBooking({
+        trekTitle: selectedTrek,
+        name,
+        email,
+        phone,
+        country,
+        travelDate: departureMonth,
+        travelers: groupCount,
+        message: userNotes,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Booking submission failed:', err);
+      setSubmitError(
+        'We could not save your request online. Please try again or reach us directly on WhatsApp — your details are pre-filled there.'
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const whatsappInquiryUrl = whatsappLink(
@@ -424,7 +451,7 @@ function BookingForm() {
                     onChange={(e) => setSelectedTrek(e.target.value)}
                     className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-4 py-3.5 text-[14px] font-semibold text-slate-900 outline-none transition-all duration-200 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                   >
-                    {TREK_PACKAGES.map((t) => (
+                    {treks.map((t) => (
                       <option key={t.id} value={t.title}>
                         {t.title} - {t.durationDays} Days
                       </option>
@@ -550,9 +577,15 @@ function BookingForm() {
               </div>
             </div>
 
+            {/* Submission error */}
+            {submitError && (
+              <div className="rounded-md border border-rose-200 bg-rose-50 p-4 text-[13px] leading-6 text-rose-800">
+                {submitError}
+              </div>
+            )}
+
             {/* Actions */}
-            <div className="flex flex-col gap-3 pt-1 sm:flex-row">
-              <button
+            <div className="flex flex-col gap-3 pt-1 sm:flex-row">              <button
                 type="submit"
                 disabled={isLoading}
                 className="flex min-h-[50px] flex-1 items-center justify-center gap-2 rounded-md bg-sky-600 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-md disabled:cursor-not-allowed disabled:bg-sky-400"

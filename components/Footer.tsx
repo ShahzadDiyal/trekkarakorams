@@ -21,9 +21,11 @@ import {
 } from 'lucide-react';
 import { useSiteSettings, useWhatsappLink } from '@/lib/site-settings';
 import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
+import { saveNewsletterSubscriber } from '@/lib/lead-capture';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [subscribeState, setSubscribeState] = useState<'idle' | 'saving' | 'done' | 'error'>('idle');
   const settings = useSiteSettings();
   const whatsappUrl = useWhatsappLink('Hello Trek Karakoram');
   const socials = [
@@ -36,13 +38,22 @@ export const Footer: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Connect this form to your newsletter/email service later.
     if (!email.trim()) return;
 
+    const address = email.trim();
     setEmail('');
+    setSubscribeState('saving');
+    try {
+      // Recorded in the `customers` collection (tag: newsletter) — visible
+      // in the admin panel. Requires the updated Firestore rules.
+      await saveNewsletterSubscriber(address);
+      setSubscribeState('done');
+    } catch (err) {
+      console.error('Newsletter signup failed:', err);
+      setSubscribeState('error');
+    }
   };
 
   return (
@@ -260,6 +271,17 @@ export const Footer: React.FC = () => {
                 </button>
 
               </div>
+
+              {subscribeState === 'done' && (
+                <p className="mt-2 text-sm font-medium text-emerald-600">
+                  You&apos;re subscribed — welcome aboard!
+                </p>
+              )}
+              {subscribeState === 'error' && (
+                <p className="mt-2 text-sm font-medium text-rose-600">
+                  Something went wrong — please try again.
+                </p>
+              )}
             </form>
 
           </div>

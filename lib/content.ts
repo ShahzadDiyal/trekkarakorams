@@ -4,7 +4,15 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from './firebase';
 import { FAQ_ITEMS, TREK_PACKAGES, BLOG_POSTS } from '@/data/treks';
-import type { AdminTrek, AdminBlog, TrekFaq, PricingTier } from './admin/types';
+import { TEAM_MEMBERS, type TeamMember } from '@/data/team';
+import type {
+  AdminTrek,
+  AdminBlog,
+  AdminTeamMember,
+  AdminTestimonial,
+  TrekFaq,
+  PricingTier,
+} from './admin/types';
 import type {
   TrekPackage,
   BlogArticle,
@@ -402,4 +410,113 @@ export function useBlog(slug: string): {
   const { posts, loading } = useBlogs();
   const post = posts.find((p) => p.slug === slug) ?? null;
   return { post, loading };
+}
+
+/* ------------------------------------------------------------------ */
+/* Team                                                                */
+/* ------------------------------------------------------------------ */
+
+/** AdminTeamMember already matches the TeamMember shape the site renders. */
+export type PublicTeamMember = TeamMember;
+
+function toPublicTeamMember(doc: AdminTeamMember & { id: string }): PublicTeamMember {
+  return {
+    name: doc.name || 'Team Member',
+    title: doc.title || '',
+    image: doc.image || '',
+    bio: doc.bio || '',
+    phone: doc.phone || '',
+    whatsapp: doc.whatsapp || '',
+    email: doc.email || '',
+  };
+}
+
+/** Team members, live from the `team` collection ordered by `order`.
+ *  Static data only fills in when Firestore can't be reached. */
+export async function getTeamMembers(): Promise<PublicTeamMember[]> {
+  try {
+    const snap = await getDocs(
+      query(collection(db, 'team'), orderBy('order', 'asc'))
+    );
+    if (snap.empty) return [...TEAM_MEMBERS];
+    return snap.docs.map((d) => {
+      const { id: _docId, ...data } = d.data() as AdminTeamMember;
+      return toPublicTeamMember({ id: d.id, ...data });
+    });
+  } catch {
+    return [...TEAM_MEMBERS];
+  }
+}
+
+/** React hook for the public team section. */
+export function useTeam(): { members: PublicTeamMember[]; loading: boolean } {
+  const [members, setMembers] = useState<PublicTeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let cancelled = false;
+    getTeamMembers()
+      .then((m) => {
+        if (!cancelled) {
+          setMembers(m);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return { members, loading };
+}
+
+/* ------------------------------------------------------------------ */
+/* Testimonials                                                        */
+/* ------------------------------------------------------------------ */
+
+/** AdminTestimonial is rendered directly by the public section. */
+export type PublicTestimonial = AdminTestimonial;
+
+/** Testimonials, live from the `testimonials` collection.
+ *  Returns [] when the DB is unreachable or empty — the section then shows
+ *  its "first season" placeholder instead of fake reviews. */
+export async function getTestimonials(): Promise<PublicTestimonial[]> {
+  try {
+    const snap = await getDocs(
+      query(collection(db, 'testimonials'), orderBy('createdAt', 'asc'))
+    );
+    return snap.docs.map((d) => {
+      const { id: _docId, ...data } = d.data() as AdminTestimonial;
+      return { id: d.id, ...data };
+    });
+  } catch {
+    return [];
+  }
+}
+
+/** React hook for the public testimonials section. */
+export function useTestimonials(): {
+  testimonials: PublicTestimonial[];
+  loading: boolean;
+} {
+  const [testimonials, setTestimonials] = useState<PublicTestimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let cancelled = false;
+    getTestimonials()
+      .then((t) => {
+        if (!cancelled) {
+          setTestimonials(t);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return { testimonials, loading };
 }

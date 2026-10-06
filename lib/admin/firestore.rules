@@ -4,8 +4,11 @@
 # Or with the Firebase CLI: firebase deploy --only firestore:rules
 #
 # Model:
-#   • Anyone can READ content (so the public website can display it once wired up).
-#   • Only signed-in admins can CREATE / UPDATE / DELETE.
+#   • Anyone can READ public content (treks, blogs, team, testimonials, faqs, settings…).
+#   • Only signed-in admins can CREATE / UPDATE / DELETE that content.
+#   • Website visitors (not signed in) can SUBMIT bookings and be recorded as
+#     customers — creates/updates are field-validated, and only admins can
+#     read or delete those records (they contain personal data).
 #
 # First admin user: Firebase Console → Authentication → Users → Add user
 # (email + password), then sign in at https://trekkarakoram.com/admin/login
@@ -19,14 +22,69 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // Content collections managed by the admin panel
+    function str(v, min, max) {
+      return v is string && v.size() >= min && v.size() <= max;
+    }
+
+    // A booking submitted from the website booking form.
+    function isValidBooking() {
+      let d = request.resource.data;
+      return d.keys().hasOnly([
+          'trekTitle', 'name', 'email', 'phone', 'country',
+          'travelDate', 'travelers', 'message', 'status', 'source', 'createdAt'
+        ])
+        && str(d.get('trekTitle', ''), 1, 200)
+        && str(d.get('name', ''), 2, 100)
+        && str(d.get('email', ''), 4, 100)
+        && str(d.get('phone', ''), 6, 30)
+        && d.get('status', '') == 'new'
+        && d.get('source', '') == 'website'
+        && (!('country' in d) || str(d.country, 0, 60))
+        && (!('travelDate' in d) || str(d.travelDate, 0, 60))
+        && (!('travelers' in d) || (d.travelers is int && d.travelers > 0 && d.travelers <= 100))
+        && (!('message' in d) || str(d.message, 0, 2000));
+    }
+
+    // A customer record created/updated from the website (booking or newsletter).
+    function isValidCustomer() {
+      let d = request.resource.data;
+      return d.keys().hasOnly([
+          'name', 'email', 'phone', 'country', 'notes',
+          'tags', 'totalTrips', 'updatedAt', 'createdAt'
+        ])
+        && str(d.get('name', ''), 1, 100)
+        && str(d.get('email', ''), 4, 100)
+        && (!('phone' in d) || str(d.phone, 0, 30))
+        && (!('country' in d) || str(d.country, 0, 60))
+        && (!('notes' in d) || str(d.notes, 0, 1000));
+    }
+
+    // Public content collections managed by the admin panel.
     match /{collection}/{docId} {
-      allow read: if true;
+      allow read: if collection in [
+        'settings', 'hero', 'treks', 'blogs', 'team',
+        'testimonials', 'faqs'
+      ];
       allow create, update, delete: if isAdmin()
         && collection in [
           'settings', 'hero', 'treks', 'blogs', 'team',
           'testimonials', 'faqs', 'bookings', 'customers'
         ];
+    }
+
+    // Website booking submissions: public can create, only admins read/manage.
+    match /bookings/{docId} {
+      allow read: if isAdmin();
+      allow create: if isValidBooking();
+      allow update, delete: if isAdmin();
+    }
+
+    // Website customer records: public can create/update their own record
+    // (doc id is derived from their email), only admins read/delete.
+    match /customers/{docId} {
+      allow read: if isAdmin();
+      allow create, update: if isValidCustomer();
+      allow delete: if isAdmin();
     }
   }
 }
