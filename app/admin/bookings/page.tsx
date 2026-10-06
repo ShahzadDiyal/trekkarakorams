@@ -134,7 +134,8 @@ export default function AdminBookingsPage() {
       ) : (
         <Card className="divide-y divide-slate-100 overflow-hidden">
           {shown.map((b) => (
-            <div key={b.id} className="flex items-center gap-4 p-4">
+            <div key={b.id} className="flex flex-wrap items-center gap-x-4 gap-y-3 p-4">
+              <div className="flex min-w-0 flex-1 items-center gap-4">
               <span className="rounded-xl bg-indigo-100 p-2.5 text-indigo-700">
                 <CalendarCheck className="h-5 w-5" />
               </span>
@@ -148,6 +149,7 @@ export default function AdminBookingsPage() {
                 <div className="mt-1.5">
                   <Badge tone={STATUS_TONE[b.status]}>{STATUS_LABEL[b.status]}</Badge>
                 </div>
+              </div>
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 <SecondaryButton onClick={() => setViewing(b)}>

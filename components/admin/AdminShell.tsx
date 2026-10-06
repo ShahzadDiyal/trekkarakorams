@@ -20,6 +20,7 @@ import {
   X,
 } from 'lucide-react';
 import { Spinner } from './ui';
+import { useSiteSettings } from '@/lib/site-settings';
 
 const NAV = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
@@ -36,6 +37,9 @@ const NAV = [
 function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
+  // Live brand from Website Settings — the sidebar logo updates the moment
+  // the logo is changed in settings.
+  const settings = useSiteSettings();
 
   const logout = async () => {
     await signOut(auth);
@@ -45,11 +49,21 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex h-full flex-col bg-slate-950 text-slate-300">
       <div className="flex items-center gap-3 border-b border-slate-800 px-5 py-5">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600 font-bold text-white">
-          TK
-        </span>
-        <div>
-          <p className="text-sm font-bold text-white">Trek Karakoram</p>
+        {settings.logoUrl ? (
+          <img
+            src={settings.logoUrl}
+            alt={settings.siteName || 'Trek Karakoram'}
+            className="h-10 w-10 shrink-0 rounded-xl bg-white object-contain p-1"
+          />
+        ) : (
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-600 font-bold text-white">
+            TK
+          </span>
+        )}
+        <div className="min-w-0">
+          <p className="truncate text-sm font-bold text-white">
+            {settings.siteName || 'Trek Karakoram'}
+          </p>
           <p className="text-xs text-slate-500">Admin Panel</p>
         </div>
       </div>
@@ -166,7 +180,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6">{children}</main>
+        <main className="mx-auto w-full flex-1 px-4 py-6 sm:px-6">{children}</main>
       </div>
     </div>
   );

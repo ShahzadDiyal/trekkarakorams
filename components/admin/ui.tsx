@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Plus, Trash2, Loader2, AlertCircle } from 'lucide-react';
 
 /* ---------- layout primitives ---------- */
@@ -318,11 +319,40 @@ export function Modal({
   children: React.ReactNode;
   wide?: boolean;
 }) {
-  if (!open) return null;
-  return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/60 p-0 sm:items-center sm:p-6">
+  // Rendered in a portal so no ancestor CSS (transforms, filters, …) can
+  // trap the fixed overlay. Also locks body scroll + closes on Escape.
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
+
+  if (!open || !mounted) return null;
+  return createPortal(
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/60 p-0 sm:items-center sm:p-6"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+    >
       <div
         className={`w-full ${wide ? 'sm:max-w-3xl' : 'sm:max-w-lg'} overflow-hidden rounded-t-2xl bg-white shadow-2xl sm:rounded-2xl`}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
           <h3 className="text-lg font-bold text-slate-900">{title}</h3>
@@ -336,7 +366,8 @@ export function Modal({
         </div>
         <div className="max-h-[80vh] overflow-y-auto px-5 py-5">{children}</div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

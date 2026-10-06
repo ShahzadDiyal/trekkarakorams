@@ -84,7 +84,8 @@ export default function AdminBlogsPage() {
       ) : (
         <Card className="divide-y divide-slate-100 overflow-hidden">
           {blogs.map((b) => (
-            <div key={b.id} className="flex items-center gap-4 p-4">
+            <div key={b.id} className="flex flex-wrap items-center gap-x-4 gap-y-3 p-4">
+              <div className="flex min-w-0 flex-1 items-center gap-4">
               <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-slate-100">
                 {b.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -125,6 +126,7 @@ export default function AdminBlogsPage() {
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
+              </div>
               </div>
             </div>
           ))}

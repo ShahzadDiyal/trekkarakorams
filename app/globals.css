@@ -11,11 +11,12 @@
     font-family: 'Merriweather', Georgia, serif;
   }
 
-  /* Strict Zero Shadow Policy across the entire platform */
+  /* Strict Zero Shadow Policy across the entire platform.
+     NOTE: do NOT add `filter` here — any non-none filter on * makes every
+     element a containing block for position:fixed and breaks modals. */
   *, *::before, *::after {
     box-shadow: none !important;
     text-shadow: none !important;
-    filter: drop-shadow(0 0 0 transparent) !important;
   }
 }
 
