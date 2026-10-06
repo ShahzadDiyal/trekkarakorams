@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { TREK_PACKAGES } from '@/data/treks';
+import { useTreks } from '@/lib/content';
 import { useApp } from '@/lib/context/AppContext';
 import { formatPrice } from '@/utils/currency';
 import {
@@ -27,7 +27,13 @@ export const PlannerPageClient: React.FC = () => {
   const router = useRouter();
   const { currency, onOpenBooking } = useApp();
 
-  const [selectedTrekId, setSelectedTrekId] = useState<string>(TREK_PACKAGES[0].id);
+  // Live published treks (static fallback if the DB is unreachable).
+  const { treks } = useTreks();
+  const [selectedTrekId, setSelectedTrekId] = useState<string>('');
+
+  React.useEffect(() => {
+    if (!selectedTrekId && treks.length > 0) setSelectedTrekId(treks[0].id);
+  }, [treks, selectedTrekId]);
   const [groupSize, setGroupSize] = useState<number>(2);
   const [tier, setTier] = useState<'standard' | 'deluxe' | 'luxury'>('standard');
   const [includeExtraPorter, setIncludeExtraPorter] = useState(false);
@@ -37,8 +43,9 @@ export const PlannerPageClient: React.FC = () => {
   const [includeSatelliteWifi, setIncludeSatelliteWifi] = useState(false);
   const [preferredMonth, setPreferredMonth] = useState('July 2026');
 
-  const selectedTrek = TREK_PACKAGES.find((t) => t.id === selectedTrekId) || TREK_PACKAGES[0];
-  const basePrice = selectedTrek.discountPriceUSD || selectedTrek.priceUSD;
+  const selectedTrek = treks.find((t) => t.id === selectedTrekId) || treks[0];
+  if (!selectedTrek) return null;
+  const basePrice = selectedTrek.priceUSD;
 
   // Calculation Math
   let groupMultiplier = 1.0;
@@ -82,7 +89,7 @@ export const PlannerPageClient: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="rounded-2xl bg-sky-950 text-white p-6 sm:p-8 mb-8">
           <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
             Interactive Quotation Engine
           </span>
@@ -97,11 +104,11 @@ export const PlannerPageClient: React.FC = () => {
         {/* 2-Column Calculator Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Configuration Controls (7 cols) */}
-          <div className="lg:col-span-7 bg-white  p-6 space-y-6">
+          <div className="lg:col-span-7 rounded-2xl border border-slate-200 bg-white p-6 space-y-6">
             {/* Step 1: Route Selection */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="text-[13px] font-bold text-slate-900 uppercase tracking-wider">
+                <label className="field-label">
                   Step 1: Select Trekking Itinerary
                 </label>
                 <span className="text-[13px] text-sky-700 font-semibold">
@@ -111,11 +118,11 @@ export const PlannerPageClient: React.FC = () => {
               <select
                 value={selectedTrekId}
                 onChange={(e) => setSelectedTrekId(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 p-3 text-[14px] sm:text-[16px] font-semibold text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-none"
+                className="field-select"
               >
-                {TREK_PACKAGES.map((t) => (
+                {treks.map((t) => (
                   <option key={t.id} value={t.id}>
-                    {t.title} {t.durationDays} Days (Max {t.maxAltitude}m) Starting {formatPrice(t.discountPriceUSD || t.priceUSD, currency)}
+                    {t.title} {t.durationDays} Days (Max {t.maxAltitude}m) Starting {formatPrice(t.priceUSD, currency)}
                   </option>
                 ))}
               </select>
@@ -124,7 +131,7 @@ export const PlannerPageClient: React.FC = () => {
             {/* Step 2: Group Size & Month */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+                <label className="field-label">
                   Step 2: Number of Trekkers ({groupSize})
                 </label>
                 <div className="flex items-center gap-2">
@@ -133,7 +140,7 @@ export const PlannerPageClient: React.FC = () => {
                       key={n}
                       type="button"
                       onClick={() => setGroupSize(n)}
-                      className={`flex-1 py-2 text-[14px] font-bold border transition-colors cursor-pointer ${groupSize === n
+                      className={`flex-1 rounded-lg py-2 text-[14px] font-bold border transition-colors cursor-pointer ${groupSize === n
                         ? 'bg-sky-600 text-white border-sky-600'
                         : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-sky-400'
                         }`}
@@ -152,13 +159,13 @@ export const PlannerPageClient: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+                <label className="field-label">
                   Target Departure Month
                 </label>
                 <select
                   value={preferredMonth}
                   onChange={(e) => setPreferredMonth(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                  className="field-select"
                 >
                   <option value="June 2026">June 2026 (Early Summer)</option>
                   <option value="July 2026">July 2026 (Peak Season)</option>
@@ -172,13 +179,13 @@ export const PlannerPageClient: React.FC = () => {
 
             {/* Step 3: Service Comfort Tier */}
             <div>
-              <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+              <label className="field-label">
                 Step 3: Expedition Comfort Tier
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div
                   onClick={() => setTier('standard')}
-                  className={`p-3 border cursor-pointer transition-colors ${tier === 'standard'
+                  className={`rounded-xl p-3 border cursor-pointer transition-colors ${tier === 'standard'
                     ? 'bg-sky-50 border-sky-500'
                     : 'bg-slate-50 border-slate-200 hover:border-slate-300'
                     }`}
@@ -194,7 +201,7 @@ export const PlannerPageClient: React.FC = () => {
 
                 <div
                   onClick={() => setTier('deluxe')}
-                  className={`p-3 border cursor-pointer transition-colors ${tier === 'deluxe'
+                  className={`rounded-xl p-3 border cursor-pointer transition-colors ${tier === 'deluxe'
                     ? 'bg-sky-50 border-sky-500'
                     : 'bg-slate-50 border-slate-200 hover:border-slate-300'
                     }`}
@@ -210,7 +217,7 @@ export const PlannerPageClient: React.FC = () => {
 
                 <div
                   onClick={() => setTier('luxury')}
-                  className={`p-3 border cursor-pointer transition-colors ${tier === 'luxury'
+                  className={`rounded-xl p-3 border cursor-pointer transition-colors ${tier === 'luxury'
                     ? 'bg-sky-50 border-sky-500'
                     : 'bg-slate-50 border-slate-200 hover:border-slate-300'
                     }`}
@@ -228,11 +235,11 @@ export const PlannerPageClient: React.FC = () => {
 
             {/* Step 4: Add-ons & Equipment */}
             <div>
-              <label className="block text-[14px] font-bold text-slate-900 uppercase tracking-wider mb-2">
+              <label className="field-label">
                 Step 4: Safety, Gear & Add-on Services
               </label>
               <div className="space-y-2">
-                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between rounded-xl border border-transparent bg-slate-50 p-3 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -248,7 +255,7 @@ export const PlannerPageClient: React.FC = () => {
                   <span className="text-[13px] font-bold text-sky-700">+{formatPrice(120, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between rounded-xl border border-transparent bg-slate-50 p-3 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -264,7 +271,7 @@ export const PlannerPageClient: React.FC = () => {
                   <span className="text-[13px] font-bold text-sky-700">+{formatPrice(160, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between rounded-xl border border-transparent bg-slate-50 p-3 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -280,7 +287,7 @@ export const PlannerPageClient: React.FC = () => {
                   <span className="text-[13px] font-bold text-sky-700">+{formatPrice(280, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between rounded-xl border border-transparent bg-slate-50 p-3 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -296,7 +303,7 @@ export const PlannerPageClient: React.FC = () => {
                   <span className="text-[13px] font-bold text-sky-700">+{formatPrice(150, currency)}</span>
                 </label>
 
-                <label className="flex items-center justify-between p-3 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <label className="flex items-center justify-between rounded-xl border border-transparent bg-slate-50 p-3 hover:border-sky-400 cursor-pointer">
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
@@ -316,12 +323,12 @@ export const PlannerPageClient: React.FC = () => {
           </div>
 
           {/* Right Column: Calculated Quote Card (5 cols) */}
-          <div className="lg:col-span-5 bg-sky-950 text-white p-6 sticky top-24 space-y-5">
+          <div className="lg:col-span-5 rounded-2xl bg-sky-950 text-white p-6 sticky top-24 space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-sky-800">
               <span className="text-[13px] font-bold text-sky-400 uppercase tracking-wider">
                 Instant Price Calculation
               </span>
-              <span className="bg-sky-500 text-slate-950 text-[10px] font-bold uppercase px-2 py-0.5">
+              <span className="rounded-md bg-sky-500 text-slate-950 text-[10px] font-bold uppercase px-2 py-0.5">
                 Transparent Quote
               </span>
             </div>
@@ -372,7 +379,7 @@ export const PlannerPageClient: React.FC = () => {
               <button
                 type="button"
                 onClick={handleProceed}
-                className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="w-full rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <span>Reserve Custom Plan</span>
                 <ArrowRight className="w-4 h-4" />
@@ -382,7 +389,7 @@ export const PlannerPageClient: React.FC = () => {
                 href={whatsappLink(decodeURIComponent(whatsappMessage))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Discuss on WhatsApp</span>
