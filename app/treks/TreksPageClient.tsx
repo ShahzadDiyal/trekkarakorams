@@ -193,7 +193,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
           PAGE HEADER
       ========================================================= */}
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 py-10 sm:px-6 lg:px-8">
 
           {/* Breadcrumb */}
           <div className="mb-6 flex flex-wrap items-center gap-2 text-xs font-medium text-slate-500">
@@ -279,7 +279,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
           FILTERS
       ========================================================= */}
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 py-5 sm:px-6 lg:px-8">
 
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
 
@@ -472,7 +472,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
           RESULTS
       ========================================================= */}
       <section className="bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 py-10 sm:px-6 lg:px-8">
 
           {/* Results Header */}
           <div className="mb-6 flex flex-col gap-3 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between">

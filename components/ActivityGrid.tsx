@@ -16,7 +16,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
       id="popular-activities-section"
       className="bg-white border-b border-slate-200"
     >
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
         {/* Section Heading */}
         <div className="mb-10 max-w-2xl">

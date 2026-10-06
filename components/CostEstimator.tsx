@@ -125,7 +125,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
         <div className="absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-slate-200/60 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <div className="relative mx-auto w-full px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
         {/* =========================
             HEADER

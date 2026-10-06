@@ -49,7 +49,7 @@ export const CustomPlanPageClient: React.FC = () => {
           PAGE INTRO
       ========================================================= */}
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
+        <div className="mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
 
           {/* Back */}
           <button
@@ -139,7 +139,7 @@ export const CustomPlanPageClient: React.FC = () => {
           FORM SECTION
       ========================================================= */}
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
 
           <div className="mx-auto max-w-5xl">
 
@@ -781,7 +781,7 @@ export const CustomPlanPageClient: React.FC = () => {
       {!submitted && (
         <section className="overflow-hidden border-t border-sky-700 bg-sky-600 py-8 text-white sm:py-10 lg:py-12">
 
-          <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:px-8">
+          <div className="mx-auto flex flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:px-8">
 
             <div className="w-full lg:flex-1">
 

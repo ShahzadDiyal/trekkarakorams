@@ -43,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
     <>
       {/* Top Notification Bar - NOT sticky */}
       <div className="bg-slate-950 text-white text-[11px] py-2 px-4 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <Link
             href="/founding-members"
             className="group flex items-center justify-center gap-2 sm:gap-3 font-bold text-center hover:text-white transition-colors"

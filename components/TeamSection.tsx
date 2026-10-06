@@ -109,7 +109,7 @@ export const TeamSection: React.FC = () => {
 
   return (
     <section aria-labelledby="team-heading" className="bg-slate-50 py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-2xl sm:mb-12">
           <div className="mb-3 flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sky-600 text-white">

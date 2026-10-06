@@ -118,7 +118,7 @@ export const HomePageClient: React.FC = () => {
 
       {/* 2. Brand Story — We Come From Here */}
       <section className="relative overflow-hidden bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
 
             {/* Story Content */}
@@ -218,7 +218,7 @@ export const HomePageClient: React.FC = () => {
 
       {/* 3. What You Can Expect From Us */}
       <section className="bg-slate-50 border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
 
@@ -305,7 +305,7 @@ export const HomePageClient: React.FC = () => {
 
       {/* 6. Different Journeys, Same Care */}
       <section className="bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
           {/* Section Header */}
           <div className="max-w-3xl mb-12">
@@ -428,7 +428,7 @@ export const HomePageClient: React.FC = () => {
 
       {/* Bottom Conversion CTA Strip */}
       <section className="bg-sky-600 text-white py-8 sm:py-10 lg:py-12 border-t border-sky-700 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
 
             {/* Left: Text Content */}

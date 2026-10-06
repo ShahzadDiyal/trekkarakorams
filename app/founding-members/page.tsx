@@ -87,7 +87,7 @@ export default function FoundingMembersPage() {
           <div className="absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-sky-500/5 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
+        <div className="relative mx-auto px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
 
           <div className="max-w-4xl">
 
@@ -174,7 +174,7 @@ export default function FoundingMembersPage() {
           INTRO
       ========================================================= */}
       <section className="border-b border-slate-800 bg-slate-900">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
 
@@ -218,7 +218,7 @@ export default function FoundingMembersPage() {
         id="benefits"
         className="border-b border-slate-800 bg-slate-950"
       >
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
           <div className="mb-10 max-w-2xl sm:mb-12">
             <div className="mb-3 flex items-center gap-3">
@@ -303,7 +303,7 @@ export default function FoundingMembersPage() {
           WHAT IT MEANS
       ========================================================= */}
       <section className="border-b border-slate-800 bg-slate-900">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
 
@@ -353,7 +353,7 @@ export default function FoundingMembersPage() {
           HOW TO JOIN
       ========================================================= */}
       <section className="border-b border-slate-800 bg-slate-950">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
           <div className="mx-auto max-w-3xl text-center">
 
@@ -441,7 +441,7 @@ export default function FoundingMembersPage() {
           FINAL CTA
       ========================================================= */}
       <section className="bg-slate-950">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
 
           <div className="border border-slate-800 bg-slate-900 p-7 sm:p-10 lg:p-12">
 

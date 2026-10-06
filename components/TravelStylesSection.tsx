@@ -43,7 +43,7 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
       id="travel-styles-section"
       className="border-b border-slate-200 bg-slate-50"
     >
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
         {/* Section Header */}
         <div className="mb-10 max-w-3xl">

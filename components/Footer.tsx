@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
 
       {/* Top Banner - Trust Bar */}
       <div className="border-b border-gray-200 bg-white py-3">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
 
             <div className="flex items-center gap-4 text-sm text-gray-600">
@@ -111,7 +111,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Main Footer */}
-      <div className="mx-auto max-w-7xl py-12">
+      <div className="mx-auto py-12">
 
         {/* Footer Columns */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">

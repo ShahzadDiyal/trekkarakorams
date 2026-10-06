@@ -130,7 +130,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
       id="interactive-map-section"
       className="border-b border-slate-800 bg-slate-950 py-16 sm:py-20 lg:py-24 text-white"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
         <div className="mb-10 max-w-3xl sm:mb-12">

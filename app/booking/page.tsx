@@ -99,7 +99,7 @@ function BookingForm() {
         {/* Top Accent */}
         <div className="h-1 bg-sky-600" />
 
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
           {/* Breadcrumb */}
           <div className="mb-8 flex flex-wrap items-center gap-2 text-[13px] text-slate-500">
             <Link
@@ -217,7 +217,7 @@ function BookingForm() {
       {/* Top Accent */}
       <div className="h-1 bg-sky-600" />
 
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+      <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
 
         {/* Breadcrumb */}
         <div className="mb-7 flex flex-wrap items-center gap-2 text-[13px] text-slate-500">

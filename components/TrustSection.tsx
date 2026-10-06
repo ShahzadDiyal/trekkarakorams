@@ -18,7 +18,7 @@ export const TrustSection: React.FC = () => {
       id="trust-safety-section"
       className="bg-slate-900 text-white border-b border-slate-800"
     >
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
         {/* Section Header */}
         <div className="max-w-3xl mb-12">

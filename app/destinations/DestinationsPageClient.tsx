@@ -210,7 +210,7 @@ export const DestinationsPageClient: React.FC = () => {
           1. PAGE INTRO
       ============================================================ */}
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
 
           {/* Breadcrumb */}
           <div className="mb-7 flex flex-wrap items-center gap-2 text-[13px] text-slate-500">
@@ -257,7 +257,7 @@ export const DestinationsPageClient: React.FC = () => {
           2. REGION SELECTOR
       ============================================================ */}
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 py-8 sm:px-6 lg:px-8">
 
           <div className="mb-5 flex items-center justify-between gap-4">
             <div>
@@ -318,7 +318,7 @@ export const DestinationsPageClient: React.FC = () => {
           3. ACTIVE DESTINATION
       ============================================================ */}
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
 
           <div className="mb-8 max-w-3xl">
 
@@ -539,7 +539,7 @@ export const DestinationsPageClient: React.FC = () => {
           4. ALL REGIONS
       ============================================================ */}
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
 
           {/* Header */}
           <div className="mb-10 max-w-3xl">
@@ -645,7 +645,7 @@ export const DestinationsPageClient: React.FC = () => {
       ============================================================ */}
       <section className="bg-sky-600 text-white">
 
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+        <div className="mx-auto px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
 
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
