@@ -106,7 +106,7 @@ export default function AdminHeroPage() {
                 label="Background video URL"
                 value={form.bgVideoUrl}
                 onChange={(e) => set('bgVideoUrl', e.target.value)}
-                placeholder="https://…/hero.mp4 — upload the file to Storage, then paste its URL"
+                placeholder="https://…/hero.mp4 — upload to Cloudinary, then paste the URL"
               />
             )}
           </div>

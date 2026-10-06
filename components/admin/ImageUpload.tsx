@@ -1,12 +1,15 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { storage } from '@/lib/firebase';
 import { ImagePlus, Loader2, X } from 'lucide-react';
+import {
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_UPLOAD_PRESET,
+  isCloudinaryConfigured,
+} from '@/lib/cloudinary';
 
 /**
- * Uploads an image to Firebase Storage and returns the download URL.
+ * Uploads an image to Cloudinary (unsigned preset) and returns the secure URL.
  * Also accepts pasting an external URL directly.
  */
 export function ImageUpload({
@@ -25,32 +28,49 @@ export function ImageUpload({
   const [error, setError] = useState('');
 
   const startUpload = (file: File) => {
+    if (!isCloudinaryConfigured()) {
+      setError(
+        'Cloudinary is not set up yet. Add your cloud name + unsigned upload preset in lib/cloudinary.ts (see the comments there).'
+      );
+      return;
+    }
     setError('');
-    const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
-    const path = `${folder}/${Date.now()}-${safeName}`;
-    const storageRef = ref(storage, path);
-    const task = uploadBytesResumable(storageRef, file);
     setProgress(0);
-    task.on(
-      'state_changed',
-      (snap) => setProgress(Math.round((snap.bytesTransferred / snap.totalBytes) * 100)),
-      (err) => {
-        const code = (err as { code?: string }).code;
-        // storage/unknown on a browser upload almost always means the bucket
-        // is missing its CORS policy — see lib/admin/cors.json for the fix.
-        setError(
-          code === 'storage/unknown'
-            ? 'Upload blocked by the storage bucket (CORS). Apply lib/admin/cors.json to the bucket, then retry.'
-            : err.message || 'Upload failed.'
-        );
-        setProgress(null);
-      },
-      async () => {
-        const url = await getDownloadURL(task.snapshot.ref);
-        onChange(url);
-        setProgress(null);
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+    formData.append('folder', `trekkarakoram/${folder}`);
+
+    // XMLHttpRequest for upload progress events (fetch can't report these).
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`);
+
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable) setProgress(Math.round((e.loaded / e.total) * 100));
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try {
+          const res = JSON.parse(xhr.responseText);
+          if (res.secure_url) {
+            onChange(res.secure_url as string);
+          } else {
+            setError('Upload failed: unexpected response from Cloudinary.');
+          }
+        } catch {
+          setError('Upload failed: unexpected response from Cloudinary.');
+        }
+      } else {
+        setError('Upload failed. Check the upload preset is Unsigned in Cloudinary settings.');
       }
-    );
+      setProgress(null);
+    };
+    xhr.onerror = () => {
+      setError('Upload failed. Check your connection and Cloudinary settings.');
+      setProgress(null);
+    };
+    xhr.send(formData);
   };
 
   return (
