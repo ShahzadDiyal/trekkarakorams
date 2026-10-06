@@ -5,11 +5,12 @@ import { ImagePlus, Loader2, X } from 'lucide-react';
 import {
   CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_UPLOAD_PRESET,
+  CLOUDINARY_VIDEO_UPLOAD_PRESET,
   isCloudinaryConfigured,
 } from '@/lib/cloudinary';
 
 /**
- * Uploads an image to Cloudinary (unsigned preset) and returns the secure URL.
+ * Uploads an image or video to Cloudinary (unsigned preset) and returns the secure URL.
  * Also accepts pasting an external URL directly.
  */
 export function ImageUpload({
@@ -17,11 +18,14 @@ export function ImageUpload({
   value,
   onChange,
   folder = 'uploads',
+  resourceType = 'image',
 }: {
   label: string;
   value: string;
   onChange: (url: string) => void;
   folder?: string;
+  /** 'video' uploads to the video endpoint + video preset and shows a video preview. */
+  resourceType?: 'image' | 'video';
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
   const [progress, setProgress] = useState<number | null>(null);
@@ -39,12 +43,18 @@ export function ImageUpload({
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+    formData.append(
+      'upload_preset',
+      resourceType === 'video' ? CLOUDINARY_VIDEO_UPLOAD_PRESET : CLOUDINARY_UPLOAD_PRESET
+    );
     formData.append('folder', `trekkarakoram/${folder}`);
 
     // XMLHttpRequest for upload progress events (fetch can't report these).
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`);
+    xhr.open(
+      'POST',
+      `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload`
+    );
 
     xhr.upload.onprogress = (e) => {
       if (e.lengthComputable) setProgress(Math.round((e.loaded / e.total) * 100));
@@ -78,8 +88,13 @@ export function ImageUpload({
       <span className="mb-1.5 block text-sm font-semibold text-slate-700">{label}</span>
       {value ? (
         <div className="relative overflow-hidden rounded-xl border border-slate-200">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={value} alt="Uploaded preview" className="h-40 w-full object-cover" />
+          {resourceType === 'video' ? (
+            // eslint-disable-next-line jsx-a11y/media-has-caption
+            <video src={value} className="h-40 w-full object-cover" controls preload="metadata" />
+          ) : (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={value} alt="Uploaded preview" className="h-40 w-full object-cover" />
+          )}
           <button
             type="button"
             onClick={() => onChange('')}
@@ -103,8 +118,12 @@ export function ImageUpload({
           ) : (
             <>
               <ImagePlus className="h-6 w-6" />
-              <span className="font-semibold">Click to upload an image</span>
-              <span className="text-xs">JPG, PNG or WebP</span>
+              <span className="font-semibold">
+                Click to upload {resourceType === 'video' ? 'a video' : 'an image'}
+              </span>
+              <span className="text-xs">
+                {resourceType === 'video' ? 'MP4, WebM or MOV' : 'JPG, PNG or WebP'}
+              </span>
             </>
           )}
         </button>
@@ -112,7 +131,7 @@ export function ImageUpload({
       <input
         ref={fileRef}
         type="file"
-        accept="image/*"
+        accept={resourceType === 'video' ? 'video/*' : 'image/*'}
         className="hidden"
         onChange={(e) => {
           const f = e.target.files?.[0];
@@ -123,7 +142,7 @@ export function ImageUpload({
       <div className="mt-2 flex items-center gap-2">
         <input
           className="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs text-slate-600 placeholder:text-slate-400 focus:border-sky-500 focus:outline-none"
-          placeholder="…or paste an image URL"
+          placeholder={`…or paste ${resourceType === 'video' ? 'a video' : 'an image'} URL`}
           value={value.startsWith('http') || value.startsWith('/') ? value : ''}
           onChange={(e) => onChange(e.target.value)}
         />

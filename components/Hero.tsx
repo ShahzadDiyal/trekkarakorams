@@ -12,11 +12,14 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
+import { useSiteSettings } from '@/lib/site-settings';
+
 interface HeroProps {
   onTagClick: (tag: string) => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
+  const { hero } = useSiteSettings();
   const quickTags = [
     'K2 Base Camp Trek',
     'Gondogoro La Pass',
@@ -49,18 +52,27 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
       id="hero-section"
       className="relative min-h-[720px] lg:min-h-[780px] overflow-hidden bg-slate-950 flex items-center"
     >
-      {/* Background Video */}
+      {/* Background — image or video, from Website Settings → Hero Section */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=85"
-          className="h-full w-full object-cover object-center"
-        >
-          <source src="/videos/trekkarakoram-video.mp4" type="video/mp4" />
-        </video>
+        {hero.mediaType === 'video' ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={hero.posterUrl || undefined}
+            className="h-full w-full object-cover object-center"
+          >
+            <source src={hero.videoUrl} type="video/mp4" />
+          </video>
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={hero.imageUrl}
+            alt="Karakoram mountains"
+            className="h-full w-full object-cover object-center"
+          />
+        )}
 
         {/* Dark cinematic overlays */}
         <div className="absolute inset-0 bg-slate-950/45" />
@@ -76,41 +88,39 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
           <div className="mb-6 animate-hero-rise animate-hero-rise-1">
             <span className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-semibold text-sky-100 backdrop-blur-md">
               <Award className="h-4 w-4 text-sky-400" />
-              Local Pakistan Trekking & Expedition Team
+              {hero.badge}
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="max-w-4xl text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase tracking-tight leading-[1.05] text-white animate-hero-rise animate-hero-rise-2">
-            Trek deeper into the
+            {hero.headline}
             <span className="block text-sky-400">
-              Karakoram Mountains.
+              {hero.headlineAccent}
             </span>
           </h1>
 
           {/* Supporting copy */}
           <p className="mt-6 max-w-3xl text-base sm:text-lg lg:text-xl leading-relaxed text-slate-200 animate-hero-rise animate-hero-rise-3">
-            Explore K2, Concordia, Gondogoro La, Fairy Meadows and the
-            remote valleys of northern Pakistan with experienced local
-            guides who know these mountains as home.
+            {hero.subheadline}
           </p>
 
 
           {/* CTA Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 animate-hero-rise animate-hero-rise-3">
             <Link
-              href="/treks"
+              href={hero.ctaPrimaryHref}
               className="group inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-sky-950/30 transition-all duration-200 hover:bg-sky-500 hover:-translate-y-0.5"
             >
-              Explore Our Treks
+              {hero.ctaPrimaryLabel}
               <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
 
             <Link
-              href="/booking"
+              href={hero.ctaSecondaryHref}
               className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-200 hover:bg-white/15 hover:border-white/40"
             >
-              Plan Your Journey
+              {hero.ctaSecondaryLabel}
             </Link>
           </div>
 

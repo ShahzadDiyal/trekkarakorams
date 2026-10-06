@@ -166,182 +166,41 @@ export const Footer: React.FC = () => {
 
           </div>
 
-          {/* Column 2: Popular Treks */}
-          <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-gray-900">
-              Popular Treks
-            </h4>
+          {/* Dynamic link columns — configured in admin Website Settings → Footer */}
+          {settings.footerColumns.map((col) => (
+            <div key={col.title}>
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-gray-900">
+                {col.title}
+              </h4>
+              <ul className="space-y-2 text-sm">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-600 transition-colors hover:text-sky-600"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/treks/k2-basecamp-gondogoro-la"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  K2 Base Camp & Gondogoro La
-                </Link>
-              </li>
+          {/* Trust Badges */}
+          <div className="mt-4 border-t border-gray-200 pt-4">
+            <div className="flex items-center gap-4 text-xs text-gray-500">
+              <span className="flex items-center gap-1">
+                <Lock className="h-3 w-3" />
+                SSL Secure
+              </span>
 
-              <li>
-                <Link
-                  href="/treks/k2-basecamp-classic"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  K2 Base Camp Classic
-                </Link>
-              </li>
+              <span>|</span>
 
-              <li>
-                <Link
-                  href="/treks/fairy-meadows-nanga-parbat"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Fairy Meadows & Nanga Parbat
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/treks/snow-lake-biafo-hispar"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Snow Lake & Hispar La
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/treks/rakaposhi-diran-base-camp"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Rakaposhi & Diran Base Camp
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Resources */}
-          <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-gray-900">
-              Resources
-            </h4>
-
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/destinations"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Destinations
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/planner"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Trip Planner
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/safety-and-guides"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Safety & Guides
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/permits-visa-guide"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Permits & Visa Guide
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Blog & Stories
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Support */}
-          <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-gray-900">
-              Support
-            </h4>
-
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  FAQ
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Contact Us
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/custom-plan"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Custom Expedition
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  About Us
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/terms"
-                  className="text-gray-600 transition-colors hover:text-sky-600"
-                >
-                  Booking Terms
-                </Link>
-              </li>
-            </ul>
-
-            {/* Trust Badges */}
-            <div className="mt-4 border-t border-gray-200 pt-4">
-              <div className="flex items-center gap-4 text-xs text-gray-500">
-                <span className="flex items-center gap-1">
-                  <Lock className="h-3 w-3" />
-                  SSL Secure
-                </span>
-
-                <span>|</span>
-
-                <span className="flex items-center gap-1">
-                  <CreditCard className="h-3 w-3" />
-                  Visa · Mastercard
-                </span>
-              </div>
+              <span className="flex items-center gap-1">
+                <CreditCard className="h-3 w-3" />
+                Visa · Mastercard
+              </span>
             </div>
           </div>
 

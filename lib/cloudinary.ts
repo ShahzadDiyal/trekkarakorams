@@ -15,6 +15,9 @@ export const CLOUDINARY_CLOUD_NAME = 'cbxpmerj';
 
 export const CLOUDINARY_UPLOAD_PRESET = 'trekkarakoram_unsigned';
 
+/** Unsigned preset for video uploads (mp4/webm/mov). */
+export const CLOUDINARY_VIDEO_UPLOAD_PRESET = 'trekkarakoram_video_unsigned';
+
 export function isCloudinaryConfigured(): boolean {
   return CLOUDINARY_CLOUD_NAME.trim() !== '' && CLOUDINARY_UPLOAD_PRESET.trim() !== '';
 }

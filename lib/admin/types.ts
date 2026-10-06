@@ -19,6 +19,69 @@ export interface WebsiteSettings {
   footerAbout: string;
   announcementBar: string;
   announcementBarEnabled: boolean;
+  /** Header navigation menus (each may carry one level of sub-menus). */
+  headerMenus: NavMenuItem[];
+  /** Header action buttons with full styling control. */
+  headerButtons: HeaderButton[];
+  /** Footer link columns (brand column + contact stay fixed). */
+  footerColumns: FooterColumn[];
+  /** Homepage hero section. */
+  hero: HeroSettings;
+}
+
+/** One header nav item; `children` renders as a dropdown sub-menu. */
+export interface NavMenuItem {
+  label: string;
+  href: string;
+  children: NavSubItem[];
+}
+
+export interface NavSubItem {
+  label: string;
+  href: string;
+}
+
+/** A header CTA button with full visual styling. */
+export interface HeaderButton {
+  label: string;
+  href: string;
+  /** Key from lib/header-icons.ts ('' = no icon). */
+  icon: string;
+  bgColor: string;
+  textColor: string;
+  borderColor: string;
+  /** px */
+  borderWidth: number;
+  /** px */
+  borderRadius: number;
+  /** px */
+  fontSize: number;
+  fontWeight: '400' | '500' | '600' | '700' | '800';
+}
+
+export interface FooterColumn {
+  title: string;
+  links: FooterLinkItem[];
+}
+
+export interface FooterLinkItem {
+  label: string;
+  href: string;
+}
+
+export interface HeroSettings {
+  mediaType: 'image' | 'video';
+  imageUrl: string;
+  videoUrl: string;
+  posterUrl: string;
+  badge: string;
+  headline: string;
+  headlineAccent: string;
+  subheadline: string;
+  ctaPrimaryLabel: string;
+  ctaPrimaryHref: string;
+  ctaSecondaryLabel: string;
+  ctaSecondaryHref: string;
 }
 
 export interface HeroContent {

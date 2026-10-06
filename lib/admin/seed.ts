@@ -46,6 +46,24 @@ export async function seedSettings(): Promise<void> {
       'Trek Karakoram is a Skardu-based trekking company offering end-to-end guided expeditions across the Karakoram.',
     announcementBar: '',
     announcementBarEnabled: false,
+    // Header/footer/hero fall back to built-in defaults when empty.
+    headerMenus: [],
+    headerButtons: [],
+    footerColumns: [],
+    hero: {
+      mediaType: 'video',
+      imageUrl: '',
+      videoUrl: '',
+      posterUrl: '',
+      badge: '',
+      headline: '',
+      headlineAccent: '',
+      subheadline: '',
+      ctaPrimaryLabel: '',
+      ctaPrimaryHref: '',
+      ctaSecondaryLabel: '',
+      ctaSecondaryHref: '',
+    },
   };
   await upsert(COLLECTIONS.settings, 'website', data);
 }

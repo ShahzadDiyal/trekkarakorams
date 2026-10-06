@@ -3,23 +3,34 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  Menu,
-  X,
-  ChevronDown,
-  Compass,
-} from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { BRAND_INFO, FOUNDING_MEMBERS_SPECIAL } from '@/data/treks';
 import { useSiteSettings } from '@/lib/site-settings';
+import { headerIcon } from '@/lib/header-icons';
+import type { HeaderButton } from '@/lib/admin/types';
 
 interface NavbarProps {
   // No longer need onOpenCustomPlan
 }
 
+function buttonStyle(b: HeaderButton): React.CSSProperties {
+  return {
+    backgroundColor: b.bgColor || 'transparent',
+    color: b.textColor || '#ffffff',
+    borderColor: b.borderColor || 'transparent',
+    borderWidth: b.borderWidth || 0,
+    borderStyle: 'solid',
+    borderRadius: b.borderRadius ?? 2,
+    fontSize: b.fontSize || 15,
+    fontWeight: b.fontWeight || '700',
+  };
+}
+
 export const Navbar: React.FC<NavbarProps> = () => {
-  const { logoUrl, siteName } = useSiteSettings();
+  const { logoUrl, siteName, headerMenus, headerButtons } = useSiteSettings();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [destinationsDropdown, setDestinationsDropdown] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const pathname = usePathname() ?? '/';
 
   const isCurrent = (path: string) => {
@@ -28,52 +39,33 @@ export const Navbar: React.FC<NavbarProps> = () => {
     return false;
   };
 
-  const navItems = [
-    { label: 'HOME', path: '/' },
-    { label: 'TREKKING PACKAGES', path: '/treks' },
-    { label: 'DESTINATIONS', path: '/destinations', hasDropdown: true },
-    { label: 'CONTACT', path: '/contact' },
-  ];
-
-  const destinationLinks = [
-    { name: 'Central Karakoram & K2 (Skardu)', path: '/destinations' },
-    { name: 'Hunza & Nagar Valleys (Rakaposhi)', path: '/destinations' },
-    { name: 'Western Himalayas (Nanga Parbat)', path: '/destinations' },
-    { name: 'Deosai High Plains (Wilderness)', path: '/destinations' },
-    { name: 'Shimshal & Pamir (6000m Peaks)', path: '/destinations' },
-  ];
-
   return (
     <>
       {/* Top Notification Bar - NOT sticky */}
-   
-{/* Top Notification Bar - NOT sticky */}
-<div className="bg-slate-950 text-white text-[11px] py-2 px-4 border-b border-slate-800">
-  <div className="max-w-7xl mx-auto">
-    <Link
-      href="/founding-members"
-      className="group flex items-center justify-center gap-2 sm:gap-3 font-bold text-center hover:text-white transition-colors"
-    >
-      <span className="hidden md:block shrink-0 bg-amber-500 text-slate-950 font-bold px-2 py-0.5 text-[10px] uppercase tracking-wider whitespace-nowrap">
-        {FOUNDING_MEMBERS_SPECIAL.badge}
-      </span>
+      <div className="bg-slate-950 text-white text-[11px] py-2 px-4 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto">
+          <Link
+            href="/founding-members"
+            className="group flex items-center justify-center gap-2 sm:gap-3 font-bold text-center hover:text-white transition-colors"
+          >
+            <span className="hidden md:block shrink-0 bg-amber-500 text-slate-950 font-bold px-2 py-0.5 text-[10px] uppercase tracking-wider whitespace-nowrap">
+              {FOUNDING_MEMBERS_SPECIAL.badge}
+            </span>
 
-      <span className="text-slate-200 leading-5">
-        <span className="text-amber-400">Founding Members Special.</span>{' '}
-        The first 10 guests get <span className="text-white">20% off</span>{' '}
-        their trek and a lifetime <span className="text-white">10% discount</span>{' '}
-        on all future bookings.
-        <span className="hidden sm:inline text-slate-400"> Only a few spots left.</span>
-      </span>
+            <span className="text-slate-200 leading-5">
+              <span className="text-amber-400">Founding Members Special.</span>{' '}
+              The first 10 guests get <span className="text-white">20% off</span>{' '}
+              their trek and a lifetime <span className="text-white">10% discount</span>{' '}
+              on all future bookings.
+              <span className="hidden sm:inline text-slate-400"> Only a few spots left.</span>
+            </span>
 
-      <span className="hidden lg:inline shrink-0 text-sky-400 group-hover:text-sky-300 transition-colors">
-        →
-      </span>
-    </Link>
-  </div>
-</div>
-
-
+            <span className="hidden lg:inline shrink-0 text-sky-400 group-hover:text-sky-300 transition-colors">
+              →
+            </span>
+          </Link>
+        </div>
+      </div>
 
       {/* Main Header - STICKY */}
       <header className="sticky top-0 z-40 bg-white">
@@ -94,38 +86,38 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
             {/* Desktop Navigation - all menus 15px */}
             <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => {
-                const active = isCurrent(item.path);
+              {headerMenus.map((item) => {
+                const active = isCurrent(item.href);
+                const hasDropdown = (item.children?.length ?? 0) > 0;
+                const linkCls = `px-3 py-2 text-[14px] md:text-[15px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors ${
+                  active
+                    ? 'text-sky-600 bg-sky-50'
+                    : 'text-slate-700 hover:text-sky-600 hover:bg-slate-50'
+                }`;
 
-                if (item.hasDropdown) {
+                if (hasDropdown) {
                   return (
                     <div
                       key={item.label}
                       className="relative"
-                      onMouseEnter={() => setDestinationsDropdown(true)}
-                      onMouseLeave={() => setDestinationsDropdown(false)}
+                      onMouseEnter={() => setOpenDropdown(item.label)}
+                      onMouseLeave={() => setOpenDropdown(null)}
                     >
-                      <Link
-                        href={item.path}
-                        className={`px-3 py-2 text-[14px] md:text-[15px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors ${active
-                          ? 'text-sky-600 bg-sky-50'
-                          : 'text-slate-700 hover:text-sky-600 hover:bg-slate-50'
-                          }`}
-                      >
+                      <Link href={item.href} className={linkCls}>
                         <span>{item.label}</span>
                         <ChevronDown className="w-4 h-4 opacity-70" />
                       </Link>
 
-                      {destinationsDropdown && (
+                      {openDropdown === item.label && (
                         <div className="absolute top-full left-0 w-64 bg-white py-2 z-50 animate-fadeIn shadow-lg border border-slate-100">
-                          {destinationLinks.map((dest) => (
+                          {item.children.map((child) => (
                             <Link
-                              key={dest.name}
-                              href={dest.path}
+                              key={child.label}
+                              href={child.href}
                               className="block px-4 py-2.5 text-[14px] font-bold text-slate-800 hover:bg-sky-50 hover:text-sky-600 border-b border-slate-100 last:border-0"
-                              onClick={() => setDestinationsDropdown(false)}
+                              onClick={() => setOpenDropdown(null)}
                             >
-                              {dest.name}
+                              {child.label}
                             </Link>
                           ))}
                         </div>
@@ -135,29 +127,29 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 }
 
                 return (
-                  <Link
-                    key={item.label}
-                    href={item.path}
-                    className={`px-3 py-2 text-[14px] md:text-[15px] font-bold uppercase tracking-wider transition-colors ${active
-                      ? 'text-sky-600 bg-sky-50'
-                      : 'text-slate-700 hover:text-sky-600 hover:bg-slate-50'
-                      }`}
-                  >
+                  <Link key={item.label} href={item.href} className={linkCls}>
                     {item.label}
                   </Link>
                 );
               })}
             </nav>
 
-            {/* Action Buttons */}
+            {/* Action Buttons — configured in admin Website Settings → Header */}
             <div className="hidden md:flex items-center gap-2 sm:gap-3">
-              <Link
-                href="/custom-plan"
-                className="px-4 py-2.5 rounded-sm bg-sky-600 hover:bg-sky-700 text-white font-bold text-[15px] uppercase tracking-wider transition-colors flex items-center gap-1.5"
-              >
-                <Compass className="w-4 h-4 text-white" strokeWidth={2.5} />
-                <span>CUSTOM PLAN</span>
-              </Link>
+              {headerButtons.map((b) => {
+                const Icon = headerIcon(b.icon);
+                return (
+                  <Link
+                    key={b.label}
+                    href={b.href}
+                    className="px-4 py-2.5 uppercase tracking-wider transition-all flex items-center gap-1.5 hover:brightness-110"
+                    style={buttonStyle(b)}
+                  >
+                    {Icon && <Icon className="w-4 h-4" strokeWidth={2.5} />}
+                    <span>{b.label}</span>
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Mobile Hamburger */}
@@ -176,29 +168,72 @@ export const Navbar: React.FC<NavbarProps> = () => {
         {/* Mobile Menu - 15px */}
         {mobileMenuOpen && (
           <div className="xl:hidden bg-white border-t border-slate-200 px-4 pt-2 pb-6 space-y-2 animate-fadeIn max-h-[85vh] overflow-y-auto">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.path}
-                className={`block px-3 py-2.5 text-[14px] font-bold uppercase tracking-wider border-b border-slate-100 ${isCurrent(item.path)
-                  ? 'text-sky-600 bg-sky-50'
-                  : 'text-slate-800 hover:bg-slate-50'
-                  }`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="pt-4 space-y-2">
-              <Link
-                href="/custom-plan"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 bg-sky-600 text-white font-bold text-[14px] uppercase tracking-wider flex items-center justify-center gap-2"
-              >
-                <Compass className="w-5 h-5 text-white" strokeWidth={2.5} />
-                <span>REQUEST CUSTOM EXPEDITION</span>
-              </Link>
-            </div>
+            {headerMenus.map((item) => {
+              const hasDropdown = (item.children?.length ?? 0) > 0;
+              const expanded = mobileExpanded === item.label;
+              return (
+                <div key={item.label} className="border-b border-slate-100">
+                  <div className="flex items-center">
+                    <Link
+                      href={item.href}
+                      className={`flex-1 block px-3 py-2.5 text-[14px] font-bold uppercase tracking-wider ${
+                        isCurrent(item.href)
+                          ? 'text-sky-600 bg-sky-50'
+                          : 'text-slate-800 hover:bg-slate-50'
+                      }`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                    {hasDropdown && (
+                      <button
+                        type="button"
+                        aria-label={expanded ? 'Collapse sub-menu' : 'Expand sub-menu'}
+                        onClick={() => setMobileExpanded(expanded ? null : item.label)}
+                        className="p-2.5 text-slate-500"
+                      >
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${expanded ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                    )}
+                  </div>
+                  {hasDropdown && expanded && (
+                    <div className="pb-2 pl-4">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          className="block px-3 py-2 text-[13px] font-semibold text-slate-600 hover:text-sky-600"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+            {headerButtons.length > 0 && (
+              <div className="pt-4 space-y-2">
+                {headerButtons.map((b) => {
+                  const Icon = headerIcon(b.icon);
+                  return (
+                    <Link
+                      key={b.label}
+                      href={b.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full py-3 uppercase tracking-wider flex items-center justify-center gap-2"
+                      style={buttonStyle(b)}
+                    >
+                      {Icon && <Icon className="w-5 h-5" strokeWidth={2.5} />}
+                      <span>{b.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </header>
