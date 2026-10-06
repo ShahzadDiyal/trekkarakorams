@@ -238,7 +238,7 @@ export default function AdminDestinationsPage() {
                   {d.mountainRange}
                 </p>
                 <p className="mt-1 truncate text-xs text-slate-500">
-                  /destinations/{d.slug || d.id}
+                  /destination/{d.slug || d.id}
                 </p>
                 <div className="mt-4 flex items-center gap-2">
                   <button
@@ -431,7 +431,7 @@ export default function AdminDestinationsPage() {
         onConfirm={confirmDelete}
         busy={busy}
         title="Delete destination"
-        message={`Remove "${deleting?.name}" permanently? Its /destinations URL will stop working. This cannot be undone.`}
+        message={`Remove "${deleting?.name}" permanently? Its /destination URL will stop working. This cannot be undone.`}
       />
     </div>
   );

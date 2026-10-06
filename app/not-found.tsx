@@ -22,13 +22,13 @@ export default function GlobalNotFound() {
         <div className="mt-6 flex items-center justify-center gap-3">
           <Link
             href="/treks"
-            className="inline-block bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-5 py-2.5 uppercase tracking-wider transition-colors"
+            className="inline-block bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-5 py-2.5 uppercase tracking-wider transition-colors rounded-xl"
           >
             Browse All Treks
           </Link>
           <Link
             href="/"
-            className="inline-block bg-slate-900 hover:bg-slate-800 text-white font-bold text-[14px] px-5 py-2.5 uppercase tracking-wider transition-colors"
+            className="inline-block bg-slate-900 hover:bg-slate-800 text-white font-bold text-[14px] px-5 py-2.5 uppercase tracking-wider transition-colors rounded-xl"
           >
             Go Home
           </Link>

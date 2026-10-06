@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+                className="flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
               >
                 <MessageSquare className="h-4 w-4" />
                 <span>WhatsApp 24/7</span>
@@ -99,7 +99,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="rounded-md border border-gray-200 bg-gray-100 p-2 text-gray-700 transition-colors hover:bg-gray-200"
+                className="rounded-xl border border-gray-200 bg-gray-100 p-2 text-gray-700 transition-colors hover:bg-gray-200"
                 aria-label="Scroll to top"
               >
                 <ArrowUp className="h-4 w-4" />
@@ -264,7 +264,7 @@ export const Footer: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="group flex items-center justify-center gap-2 bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
+                  className="group flex items-center justify-center gap-2 bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 rounded-xl"
                 >
                   {settings.footerNewsletter.buttonLabel}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -290,7 +290,7 @@ export const Footer: React.FC = () => {
 
         {/* Founding Member Special — copy + visibility managed in Website Settings */}
         {settings.footerFounding.enabled && (
-        <div className="mt-8 rounded-lg border border-sky-200 bg-sky-50 p-4">
+        <div className="mt-8 rounded-xl border border-sky-200 bg-sky-50 p-4">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
 
             <div className="flex items-start gap-3 sm:items-center">
@@ -309,7 +309,7 @@ export const Footer: React.FC = () => {
 
             <Link
               href={settings.footerFounding.ctaHref || '/planner'}
-              className="whitespace-nowrap rounded-md bg-sky-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
+              className="whitespace-nowrap rounded-xl bg-sky-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
             >
               {settings.footerFounding.ctaLabel}
             </Link>

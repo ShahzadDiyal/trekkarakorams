@@ -52,7 +52,7 @@ export const FAQPageClient: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8 rounded-xl">
           <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
             Frequently Asked Questions
           </span>
@@ -114,7 +114,7 @@ export const FAQPageClient: React.FC = () => {
                   aria-expanded={isExpanded}
                 >
                   <div className="flex items-center gap-2.5">
-                    <span className="text-[10px] font-bold text-sky-700 bg-sky-100 px-1.5 py-0.5 shrink-0">
+                    <span className="text-[10px] font-bold text-sky-700 bg-sky-100 px-1.5 py-0.5 shrink-0 rounded-xl">
                       {faq.category}
                     </span>
                     <span className="font-bold text-[14px] sm:text-[16px] text-slate-900">
@@ -140,7 +140,7 @@ export const FAQPageClient: React.FC = () => {
         )}
 
         {/* Still Have Questions Box */}
-        <div className="p-6 bg-slate-900 text-white border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 bg-slate-900 text-white border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl">
           <div>
             <h3 className="font-bold text-[16px] text-white">Have a specific question not covered here?</h3>
             <p className="text-[13px] text-slate-400 mt-0.5">Reach out to our Skardu & Islamabad operations team directly.</p>
@@ -150,7 +150,7 @@ export const FAQPageClient: React.FC = () => {
             href={whatsappLink("Hi Trek Karakoram, I have a question about Pakistan trekking")}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-1.5 shrink-0 transition-colors"
+            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-1.5 shrink-0 transition-colors rounded-xl"
           >
             <MessageSquare className="w-4 h-4" />
             <span>Ask via WhatsApp</span>

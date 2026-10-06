@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
             href="/founding-members"
             className="group flex items-center justify-center gap-2 sm:gap-3 font-bold text-center hover:text-white transition-colors"
           >
-            <span className="hidden md:block shrink-0 bg-amber-500 text-slate-950 font-bold px-2 py-0.5 text-[10px] uppercase tracking-wider whitespace-nowrap">
+            <span className="hidden md:block shrink-0 bg-amber-500 text-slate-950 font-bold px-2 py-0.5 text-[10px] uppercase tracking-wider whitespace-nowrap rounded-xl">
               {FOUNDING_MEMBERS_SPECIAL.badge}
             </span>
 

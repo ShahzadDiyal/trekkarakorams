@@ -46,7 +46,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
   return (
     <article
       className="
-        group flex h-full flex-col overflow-hidden rounded-lg
+        group flex h-full flex-col overflow-hidden rounded-xl
         border border-slate-200 bg-white
         transition-all duration-300
         hover:-translate-y-1
@@ -84,7 +84,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
 
         {/* Discount */}
         {trek.discountPriceUSD && (
-          <div className="absolute bottom-3 left-3 rounded-md bg-amber-400 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-slate-950">
+          <div className="absolute bottom-3 left-3 rounded-xl bg-amber-400 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-slate-950">
             Save{' '}
             {formatPrice(
               trek.priceUSD - trek.discountPriceUSD,
@@ -149,7 +149,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
 
         {/* Trek Details */}
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <div className="rounded-md bg-slate-50 px-3 py-2.5">
+          <div className="rounded-xl bg-slate-50 px-3 py-2.5">
             <div className="flex items-center gap-1.5">
               <Mountain className="h-3.5 w-3.5 shrink-0 text-sky-600" />
 
@@ -163,7 +163,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
             </p>
           </div>
 
-          <div className="rounded-md bg-slate-50 px-3 py-2.5">
+          <div className="rounded-xl bg-slate-50 px-3 py-2.5">
             <div className="flex items-center gap-1.5">
               <Compass className="h-3.5 w-3.5 shrink-0 text-sky-600" />
 
@@ -212,7 +212,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
               onClick={() => onViewDetail(trek)}
               className="
                 inline-flex shrink-0 items-center justify-center gap-1.5
-                rounded-md bg-sky-600
+                rounded-xl bg-sky-600
                 px-4 py-2.5
                 text-xs font-bold uppercase tracking-wide text-white
                 transition-all duration-200

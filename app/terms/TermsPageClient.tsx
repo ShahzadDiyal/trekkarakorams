@@ -34,7 +34,7 @@ export const TermsPageClient: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8 mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8 mb-8 rounded-xl">
           <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
             Transparent Booking Policy
           </span>
@@ -51,7 +51,7 @@ export const TermsPageClient: React.FC = () => {
         {/* Terms Sections */}
         <div className="space-y-6">
           {SECTIONS.map((section) => (
-            <div key={section.title} className="bg-white border border-slate-200 p-6 sm:p-8">
+            <div key={section.title} className="bg-white border border-slate-200 p-6 sm:p-8 rounded-xl">
               <h2 className="flex items-center gap-2.5 text-lg font-bold text-slate-900 mb-4">
                 <span className="flex h-9 w-9 items-center justify-center bg-sky-100">
                   <section.icon className="h-4.5 w-4.5 text-sky-700" />
@@ -71,7 +71,7 @@ export const TermsPageClient: React.FC = () => {
         </div>
 
         {/* Insurance reminder */}
-        <div className="mt-6 bg-amber-50 border border-amber-200 p-6">
+        <div className="mt-6 bg-amber-50 border border-amber-200 p-6 rounded-xl">
           <h3 className="flex items-center gap-2 font-bold text-amber-900 mb-2 text-[15px]">
             <FileText className="h-4 w-4" />
             Travel Insurance Is Required
@@ -84,7 +84,7 @@ export const TermsPageClient: React.FC = () => {
         </div>
 
         {/* Contact CTA */}
-        <div className="mt-8 bg-sky-950 p-6 sm:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mt-8 bg-sky-950 p-6 sm:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl">
           <div>
             <h3 className="font-bold text-lg">Questions about these terms?</h3>
             <p className="text-[13px] text-slate-300 mt-1">
@@ -95,7 +95,7 @@ export const TermsPageClient: React.FC = () => {
             href={whatsappLink('Hi Trek Karakoram, I have a question about your booking terms and cancellation policy')}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 text-[14px] transition-colors"
+            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 text-[14px] transition-colors rounded-xl"
           >
             <MessageSquare className="w-4 h-4" />
             <span>WhatsApp Us</span>

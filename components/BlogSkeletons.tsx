@@ -4,7 +4,7 @@
  */
 
 function Shimmer({ className = '' }: { className?: string }) {
-  return <div className={`skeleton-shimmer rounded-md ${className}`} aria-hidden="true" />;
+  return <div className={`skeleton-shimmer rounded-xl ${className}`} aria-hidden="true" />;
 }
 
 /** Matches the blog card layout (homepage grid + /blog catalog). */

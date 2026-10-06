@@ -36,7 +36,7 @@ export const BlogPostPageClient: React.FC<{ slug: string }> = ({ slug }) => {
           </p>
           <Link
             href="/blog"
-            className="mt-6 inline-block bg-sky-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700"
+            className="mt-6 inline-block bg-sky-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700 rounded-xl"
           >
             View all articles
           </Link>
@@ -78,7 +78,7 @@ const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
 
         {/* Article Container */}
         <article className="bg-white  p-6 sm:p-10 mb-10">
-          <span className="text-[13px] font-bold text-sky-600 uppercase tracking-wider bg-sky-50 px-2.5 py-1 ">
+          <span className="text-[13px] font-bold text-sky-600 uppercase tracking-wider bg-sky-50 px-2.5 py-1  rounded-xl">
             {post.category}
           </span>
 
@@ -103,7 +103,7 @@ const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
 
             <button
               onClick={handleShare}
-              className="flex items-center gap-1 text-[14px] text-slate-700 hover:text-sky-600 bg-slate-100 px-3 py-1  transition-colors"
+              className="flex items-center gap-1 text-[14px] text-slate-700 hover:text-sky-600 bg-slate-100 px-3 py-1  transition-colors rounded-xl"
             >
               <Share2 className="w-3.5 h-3.5" />
               <span>{copied ? 'Link Copied!' : 'Share'}</span>
@@ -127,7 +127,7 @@ const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
           </div>
 
           {/* Expert Callout Box */}
-          <div className="mt-8 p-5 bg-sky-50">
+          <div className="mt-8 p-5 bg-sky-50 rounded-xl">
             <h3 className="text-[13px] font-bold uppercase tracking-wider text-sky-900 mb-1">
               Have Questions About This Route?
             </h3>
@@ -138,7 +138,7 @@ const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
               href={whatsappLink("Hi Trek Karakoram, I read your blog guide and have questions")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-4 py-2 transition-colors"
+              className="inline-flex items-center gap-1.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-4 py-2 transition-colors rounded-xl"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Chat with Expedition Leader</span>

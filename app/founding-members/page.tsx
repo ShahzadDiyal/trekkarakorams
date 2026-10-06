@@ -116,7 +116,7 @@ export default function FoundingMembersPage() {
 
               <Link
                 href="#benefits"
-                className="group inline-flex w-full items-center justify-center gap-2 bg-sky-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-2 bg-sky-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 sm:w-auto rounded-xl"
               >
                 See Founding Benefits
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -124,7 +124,7 @@ export default function FoundingMembersPage() {
 
               <Link
                 href="/contact"
-                className="inline-flex w-full items-center justify-center gap-2 border border-slate-700 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-slate-500 hover:bg-slate-900 sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 border border-slate-700 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-slate-500 hover:bg-slate-900 sm:w-auto rounded-xl"
               >
                 Ask a Question
               </Link>
@@ -247,7 +247,7 @@ export default function FoundingMembersPage() {
               return (
                 <div
                   key={benefit.title}
-                  className="border border-slate-800 bg-slate-900/70 p-6 transition-colors hover:border-slate-700 sm:p-7"
+                  className="border border-slate-800 bg-slate-900/70 p-6 transition-colors hover:border-slate-700 sm:p-7 rounded-xl"
                 >
                   <div className="flex h-11 w-11 items-center justify-center bg-sky-500 text-slate-950">
                     <Icon className="h-5 w-5" />
@@ -267,7 +267,7 @@ export default function FoundingMembersPage() {
           </div>
 
           {/* Offer summary */}
-          <div className="mt-6 border border-sky-500/30 bg-sky-950/20 p-5 sm:p-6">
+          <div className="mt-6 border border-sky-500/30 bg-sky-950/20 p-5 sm:p-6 rounded-xl">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
               <div className="flex items-start gap-3">
@@ -287,7 +287,7 @@ export default function FoundingMembersPage() {
 
               <Link
                 href="/contact"
-                className="inline-flex shrink-0 items-center justify-center gap-2 bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400"
+                className="inline-flex shrink-0 items-center justify-center gap-2 bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 rounded-xl"
               >
                 Enquire Now
                 <ArrowRight className="h-4 w-4" />
@@ -381,7 +381,7 @@ export default function FoundingMembersPage() {
 
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-2 bg-sky-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400"
+                className="group inline-flex items-center justify-center gap-2 bg-sky-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 rounded-xl"
               >
                 Become a Founding Member
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -389,7 +389,7 @@ export default function FoundingMembersPage() {
 
               <Link
                 href="/treks"
-                className="inline-flex items-center justify-center gap-2 border border-slate-700 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-slate-500 hover:bg-slate-900"
+                className="inline-flex items-center justify-center gap-2 border border-slate-700 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-slate-500 hover:bg-slate-900 rounded-xl"
               >
                 Explore Treks
               </Link>
@@ -443,7 +443,7 @@ export default function FoundingMembersPage() {
       <section className="bg-slate-950">
         <div className="mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
 
-          <div className="border border-slate-800 bg-slate-900 p-7 sm:p-10 lg:p-12">
+          <div className="border border-slate-800 bg-slate-900 p-7 sm:p-10 lg:p-12 rounded-xl">
 
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
 
@@ -470,7 +470,7 @@ export default function FoundingMembersPage() {
 
               <Link
                 href="/contact"
-                className="group inline-flex shrink-0 items-center justify-center gap-2 bg-sky-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400"
+                className="group inline-flex shrink-0 items-center justify-center gap-2 bg-sky-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 rounded-xl"
               >
                 Be One of the First
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

@@ -11,14 +11,14 @@ function TestimonialSkeleton() {
       className="flex flex-col rounded-2xl border border-slate-700 bg-slate-800/70 p-6"
       aria-label="Loading review"
     >
-      <div className="skeleton-shimmer h-4 w-full rounded" aria-hidden="true" />
-      <div className="skeleton-shimmer mt-2 h-4 w-full rounded" aria-hidden="true" />
-      <div className="skeleton-shimmer mt-2 h-4 w-3/4 rounded" aria-hidden="true" />
+      <div className="skeleton-shimmer h-4 w-full rounded-xl" aria-hidden="true" />
+      <div className="skeleton-shimmer mt-2 h-4 w-full rounded-xl" aria-hidden="true" />
+      <div className="skeleton-shimmer mt-2 h-4 w-3/4 rounded-xl" aria-hidden="true" />
       <div className="mt-6 flex items-center gap-3">
         <div className="skeleton-shimmer h-10 w-10 rounded-full" aria-hidden="true" />
         <div className="flex-1">
-          <div className="skeleton-shimmer h-4 w-32 rounded" aria-hidden="true" />
-          <div className="skeleton-shimmer mt-1.5 h-3 w-24 rounded" aria-hidden="true" />
+          <div className="skeleton-shimmer h-4 w-32 rounded-xl" aria-hidden="true" />
+          <div className="skeleton-shimmer mt-1.5 h-3 w-24 rounded-xl" aria-hidden="true" />
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@ function EmptyPlaceholder() {
       <div className="mt-8">
         <Link
           href="/founding-members"
-          className="group inline-flex items-center justify-center gap-2 bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400"
+          className="group inline-flex items-center justify-center gap-2 bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 rounded-xl"
         >
           Be One of the First
 
@@ -180,7 +180,7 @@ export const TestimonialsSection: React.FC = () => {
             <div className="mt-10 text-center">
               <Link
                 href="/founding-members"
-                className="group inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:text-sky-300"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:text-sky-300"
               >
                 Trek With Us
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

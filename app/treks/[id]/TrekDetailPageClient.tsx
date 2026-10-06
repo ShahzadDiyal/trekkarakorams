@@ -54,7 +54,7 @@ export const TrekDetailPageClient: React.FC<{ trekId: string }> = ({ trekId }) =
           </p>
           <Link
             href="/treks"
-            className="mt-6 inline-block bg-sky-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700"
+            className="mt-6 inline-block bg-sky-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700 rounded-xl"
           >
             View all treks
           </Link>
@@ -149,16 +149,16 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
 
               <div className="absolute top-4 left-4 flex gap-2">
-                <span className="bg-sky-600 text-white font-bold text-[14px] px-3 py-1 uppercase tracking-wider">
+                <span className="bg-sky-600 text-white font-bold text-[14px] px-3 py-1 uppercase tracking-wider rounded-xl">
                   {trek.region}
                 </span>
-                <span className="rounded-md bg-slate-900/90 border border-slate-700 text-sky-300 font-bold text-[14px] px-3 py-1">
+                <span className="rounded-xl bg-slate-900/90 border border-slate-700 text-sky-300 font-bold text-[14px] px-3 py-1">
                   {trek.activityType}
                 </span>
               </div>
 
               {/* Founding Member Badge */}
-              <div className="absolute bottom-4 left-4 bg-amber-500 text-slate-950 font-bold text-[14px] px-3 py-1.5 uppercase tracking-wider flex items-center gap-1.5">
+              <div className="absolute bottom-4 left-4 bg-amber-500 text-slate-950 font-bold text-[14px] px-3 py-1.5 uppercase tracking-wider flex items-center gap-1.5 rounded-xl">
                 <Gift className="w-3.5 h-3.5" />
                 <span>Founding Members 20% Applied</span>
               </div>
@@ -180,19 +180,19 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
 
               {/* 4 Metric Badges */}
               <div className="grid grid-cols-2 gap-3 py-3 border-y border-slate-800 text-[13px]">
-                <div className="bg-slate-900 p-2.5 ">
+                <div className="bg-slate-900 p-2.5  rounded-xl">
                   <span className="text-slate-400 block text-[10px] uppercase">Duration</span>
                   <div className="font-bold text-white text-[16px] mt-0.5">{trek.durationDays} Days / {trek.durationNights} Nights</div>
                 </div>
-                <div className="bg-slate-900 p-2.5 ">
+                <div className="bg-slate-900 p-2.5  rounded-xl">
                   <span className="text-slate-400 block text-[10px] uppercase">Max Elevation</span>
                   <div className="font-bold text-sky-400 text-[16px] mt-0.5">{trek.maxAltitude} m</div>
                 </div>
-                <div className="bg-slate-900 p-2.5 ">
+                <div className="bg-slate-900 p-2.5  rounded-xl">
                   <span className="text-slate-400 block text-[10px] uppercase">Difficulty Level</span>
                   <div className="font-bold text-amber-400 text-[16px] mt-0.5">{trek.difficulty}</div>
                 </div>
-                <div className="bg-slate-900 p-2.5 ">
+                <div className="bg-slate-900 p-2.5  rounded-xl">
                   <span className="text-slate-400 block text-[10px] uppercase">Group Size</span>
                   <div className="font-bold text-emerald-400 text-[16px] mt-0.5">Max 8 Trekkers</div>
                 </div>
@@ -229,7 +229,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
               </p>
 
               {/* Highlights Box */}
-              <div className="mt-6 p-4 bg-sky-50 ">
+              <div className="mt-6 p-4 bg-sky-50  rounded-xl">
                 <h3 className="text-[13px] font-bold text-sky-900 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-sky-600" />
                   <span>Key Route Highlights</span>
@@ -340,7 +340,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                     <button
                       type="button"
                       onClick={handlePrintItinerary}
-                      className="inline-flex items-center gap-1.5 border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-bold text-slate-700 hover:border-sky-500 hover:text-sky-700 transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-bold text-slate-700 hover:border-sky-500 hover:text-sky-700 transition-colors cursor-pointer rounded-xl"
                     >
                       <Printer className="w-4 h-4" />
                       <span>Download Itinerary (PDF)</span>
@@ -349,11 +349,11 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                   {trek.itinerary.map((day) => (
                     <div
                       key={day.day}
-                      className="p-4 bg-slate-50  transition-colors hover:border-sky-400"
+                      className="p-4 bg-slate-50  transition-colors hover:border-sky-400 rounded-xl"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                         <div className="flex items-center gap-2">
-                          <span className="bg-sky-600 text-white font-bold text-[14px] px-2.5 py-0.5">
+                          <span className="bg-sky-600 text-white font-bold text-[14px] px-2.5 py-0.5 rounded-xl">
                             Day {day.day}
                           </span>
                           <h4 className="font-bold text-[14px] sm:text-[16px] text-slate-900">
@@ -368,7 +368,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                               </span>
                             )}
                             {day.trekHours && (
-                              <span className="rounded-md bg-white px-2 py-0.5 border border-slate-200">
+                              <span className="rounded-xl bg-white px-2 py-0.5 border border-slate-200">
                                 {day.trekHours}
                               </span>
                             )}
@@ -396,7 +396,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                           className={`p-4 border-2 relative transition-all ${isSelected ? 'border-sky-600 bg-sky-50/50' : 'border-slate-200 bg-white'}`}
                         >
                           {isPopular && (
-                            <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[11px] font-bold uppercase px-2 py-0.5">
+                            <div className="absolute -top-3 right-3 bg-sky-600 text-white text-[11px] font-bold uppercase px-2 py-0.5 rounded-xl">
                               Most Popular
                             </div>
                           )}
@@ -475,14 +475,14 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
               {/* Tab 4: Gear Checklist */}
               {activeTab === 'gear' && (
                 <div className="space-y-4">
-                  <div className="p-4 bg-slate-50 ">
+                  <div className="p-4 bg-slate-50  rounded-xl">
                     <h4 className="font-bold text-[14px] uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-1.5">
                       <Luggage className="w-4 h-4 text-sky-600" />
                       <span>Expedition Gear Checklist ({trek.gearChecklist.length} Items)</span>
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px] text-slate-700">
                       {trek.gearChecklist.map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200">
+                        <div key={i} className="flex items-center gap-2 p-2 rounded-xl bg-white border border-slate-200">
                           <span className="w-2 h-2 bg-sky-500 rounded-none shrink-0" />
                           <span>{item}</span>
                         </div>
@@ -490,12 +490,12 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                     </div>
                   </div>
 
-                  <div className="p-4 bg-sky-50  text-[14px] text-slate-800">
+                  <div className="p-4 bg-sky-50  text-[14px] text-slate-800 rounded-xl">
                     <strong>{siteSettings.gearRental.title}:</strong> {siteSettings.gearRental.intro}
                     {siteSettings.gearRental.items.length > 0 && (
                       <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {siteSettings.gearRental.items.map((r, i) => (
-                          <div key={i} className="flex items-center justify-between bg-white border border-sky-100 px-3 py-2">
+                          <div key={i} className="flex items-center justify-between bg-white border border-sky-100 px-3 py-2 rounded-xl">
                             <span className="text-slate-700">{r.item}</span>
                             <span className="font-bold text-sky-700">{r.price}</span>
                           </div>
@@ -512,7 +512,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
               {/* Tab 5: Permits & Visa */}
               {activeTab === 'permits' && (
                 <div className="space-y-4">
-                  <div className="p-4 bg-slate-50  text-[14px] text-slate-700 leading-relaxed space-y-3">
+                  <div className="p-4 bg-slate-50  text-[14px] text-slate-700 leading-relaxed space-y-3 rounded-xl">
                     <h4 className="font-bold text-[14px] uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
                       <FileText className="w-4 h-4 text-sky-600" />
                       <span>Restricted Area Permits & Pakistan E-Visa Clearance</span>
@@ -533,7 +533,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
 
               {/* Tab 6: Weather */}
               {activeTab === 'weather' && (
-                <div className="p-4 bg-slate-50  text-[14px] text-slate-700 space-y-3">
+                <div className="p-4 bg-slate-50  text-[14px] text-slate-700 space-y-3 rounded-xl">
                   <h4 className="font-bold text-[14px] uppercase tracking-wider text-slate-900">
                     Climate & Weather Guide: {trek.region}
                   </h4>
@@ -557,7 +557,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                 <span className="text-[13px] font-bold text-sky-700 uppercase tracking-wider">
                   Guaranteed 2026 Departure
                 </span>
-                <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5">
+                <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-xl">
                   Permit Slots Open
                 </span>
               </div>
@@ -613,7 +613,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                   <select
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none rounded-xl"
                   >
                     {trek.departures.map((dep) => (
                       <option key={dep.date} value={dep.date} disabled={dep.status === 'soldout'}>
@@ -665,7 +665,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                 <button
                   type="button"
                   onClick={handleBook}
-                  className="w-full bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  className="w-full bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer rounded-xl"
                 >
                   <span>Book Expedition Now</span>
                   <ArrowRight className="w-4 h-4" />
@@ -675,7 +675,7 @@ const TrekDetailView: React.FC<{ trek: PublicTrek; allTreks: PublicTrek[] }> = (
                   href={whatsappLink(decodeURIComponent(whatsappMessage))}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors rounded-xl"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>WhatsApp Guide Direct</span>

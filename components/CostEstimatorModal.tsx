@@ -23,7 +23,7 @@ export const CostEstimatorModal: React.FC<CostEstimatorModalProps> = ({
       <div className="bg-white max-w-4xl w-full p-6 sm:p-8 relative animate-fadeIn">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[13px]"
+          className="absolute top-4 right-4 p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[13px] rounded-xl"
           aria-label="Close estimator"
         >
           <X className="w-5 h-5" />

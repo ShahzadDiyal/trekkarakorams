@@ -206,7 +206,7 @@ export const TrustSection: React.FC = () => {
           onClick={() => setVideoOpen(false)}
         >
           <div
-            className="relative w-full max-w-5xl bg-slate-900 p-3 sm:p-5"
+            className="relative w-full max-w-5xl bg-slate-900 p-3 sm:p-5 rounded-xl"
             onClick={(e) => e.stopPropagation()}
           >
 

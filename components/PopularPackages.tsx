@@ -85,7 +85,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
             {activeRegionFilter && (
               <button
                 onClick={onResetFilters}
-                className="inline-flex items-center gap-2 rounded-md bg-sky-50 px-3.5 py-2 text-sm font-semibold text-sky-700 transition-colors hover:bg-sky-100"
+                className="inline-flex items-center gap-2 rounded-xl bg-sky-50 px-3.5 py-2 text-sm font-semibold text-sky-700 transition-colors hover:bg-sky-100"
               >
                 <RefreshCw className="h-3.5 w-3.5" />
                 <span>Clear: {activeRegionFilter}</span>
@@ -102,7 +102,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
             <select
               value={activeRegionFilter}
               onChange={(e) => onFilterChange(e.target.value)}
-              className="w-full appearance-none rounded-md border border-slate-200 bg-white px-4 py-3 pr-10 text-sm font-semibold text-slate-700 focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400"
+              className="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 pr-10 text-sm font-semibold text-slate-700 focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400"
             >
               {filterTabs.map((tab) => (
                 <option key={tab.label} value={tab.value}>
@@ -135,7 +135,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
                 <button
                   key={tab.label}
                   onClick={() => onFilterChange(tab.value)}
-                  className={`rounded-md border px-4 py-2 text-sm font-semibold transition-all duration-200 cursor-pointer ${isActive
+                  className={`rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-200 cursor-pointer ${isActive
                       ? 'border-sky-600 bg-sky-600 text-white shadow-sm'
                       : 'border-slate-200 bg-white text-slate-700 hover:border-sky-400 hover:text-sky-600'
                     }`}
@@ -163,7 +163,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
             ))}
           </div>
         ) : (
-          <div className="rounded-md border border-slate-200 bg-white p-10 sm:p-12 text-center">
+          <div className="rounded-xl border border-slate-200 bg-white p-10 sm:p-12 text-center">
             <h3 className="mb-2 text-lg font-bold text-slate-900">
               No Treks Match Your Filter
             </h3>
@@ -175,7 +175,7 @@ export const PopularPackages: React.FC<PopularPackagesProps> = ({
 
             <button
               onClick={onResetFilters}
-              className="rounded-md bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
+              className="rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
             >
               Show All Treks
             </button>

@@ -186,7 +186,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
 
                       {/* Icon */}
                       <div
-                        className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
+                        className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
                           isSelected
                             ? 'bg-sky-500 text-slate-950'
                             : 'bg-slate-800 text-sky-400 group-hover:bg-slate-700'
@@ -202,7 +202,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                             {wp.name}
                           </h3>
 
-                          <span className="w-fit shrink-0 rounded-md bg-slate-800 px-2 py-1 text-[10px] font-bold tracking-wide text-sky-300">
+                          <span className="w-fit shrink-0 rounded-xl bg-slate-800 px-2 py-1 text-[10px] font-bold tracking-wide text-sky-300">
                             {wp.altitude}
                           </span>
                         </div>
@@ -230,7 +230,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                 {/* Meta */}
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-md bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-950">
+                    <span className="rounded-xl bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-950">
                       {activeWaypoint.type}
                     </span>
 
@@ -258,7 +258,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                   {/* Information Grid */}
                   <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-slate-800 bg-slate-800 sm:grid-cols-2">
 
-                    <div className="bg-slate-950/80 p-4">
+                    <div className="bg-slate-950/80 p-4 rounded-xl">
                       <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500">
                         Key Feature
                       </span>
@@ -268,7 +268,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                       </span>
                     </div>
 
-                    <div className="bg-slate-950/80 p-4">
+                    <div className="bg-slate-950/80 p-4 rounded-xl">
                       <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500">
                         Coordinates
                       </span>
@@ -299,7 +299,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
                     onClick={() =>
                       onSelectTrekById(activeWaypoint.matchedTrekId)
                     }
-                    className="group flex w-full items-center justify-center gap-2 rounded-lg bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 sm:w-auto"
+                    className="group flex w-full items-center justify-center gap-2 rounded-xl bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-400 sm:w-auto"
                   >
                     View Trek Package
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

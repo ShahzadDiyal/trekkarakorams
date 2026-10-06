@@ -4,7 +4,7 @@
  */
 
 function Shimmer({ className = '' }: { className?: string }) {
-  return <div className={`skeleton-shimmer rounded-md ${className}`} aria-hidden="true" />;
+  return <div className={`skeleton-shimmer rounded-xl ${className}`} aria-hidden="true" />;
 }
 
 /** Matches the homepage FAQSection accordion cards. */
@@ -17,7 +17,7 @@ export function FaqSectionSkeleton({ count = 5 }: { count?: number }) {
           className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
         >
           <div className="flex w-full items-center gap-4 px-5 py-5 sm:px-6">
-            <Shimmer className="h-9 w-9 shrink-0 !rounded-lg" />
+            <Shimmer className="h-9 w-9 shrink-0 !rounded-xl" />
             <div className="min-w-0 flex-1 space-y-2">
               <Shimmer className="h-3 w-28" />
               <Shimmer className="h-4 w-11/12" />
@@ -38,7 +38,7 @@ export function FaqPageSkeleton({ count = 6 }: { count?: number }) {
         <div key={i} className="rounded-2xl border border-slate-200 bg-white">
           <div className="flex w-full items-center justify-between gap-3 p-4 sm:p-5">
             <div className="flex flex-1 items-center gap-2.5">
-              <Shimmer className="h-5 w-24 shrink-0 !rounded-sm" />
+              <Shimmer className="h-5 w-24 shrink-0 !rounded-xl" />
               <Shimmer className="h-5 flex-1" />
             </div>
             <Shimmer className="h-4 w-4 shrink-0 !rounded-full" />

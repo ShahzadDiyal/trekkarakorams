@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { TREK_PACKAGES, BLOG_POSTS } from '@/data/treks';
+import { TREK_PACKAGES, BLOG_POSTS, TREK_STYLES } from '@/data/treks';
 import { SITE_URL } from '@/lib/site';
 import {
   ACTIVITY_FACETS,
@@ -81,8 +81,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.55,
   }));
 
+  const travelStyleRoutes: MetadataRoute.Sitemap = TREK_STYLES.map((st) => ({
+    url: `${SITE_URL}/travel-styles/${st.id}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }));
+
   const destinationRegionRoutes: MetadataRoute.Sitemap = DESTINATION_REGIONS.map((r) => ({
-    url: `${SITE_URL}/destinations/${r.id}`,
+    url: `${SITE_URL}/destination/${r.id}`,
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,
@@ -96,6 +103,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...difficultyFacetRoutes,
     ...blogRoutes,
     ...blogCategoryRoutes,
+    ...travelStyleRoutes,
     ...destinationRegionRoutes,
   ];
 }

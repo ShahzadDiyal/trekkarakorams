@@ -49,7 +49,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold"
+          className="absolute top-4 right-4 p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -57,7 +57,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="bg-sky-500 text-slate-950 text-[14px] font-bold px-2 py-0.5 uppercase tracking-wider">
+            <span className="bg-sky-500 text-slate-950 text-[14px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-xl">
               Expedition Reservation
             </span>
             <span className="text-[13px] text-emerald-700 font-bold flex items-center gap-1">
@@ -79,7 +79,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           </p>
 
           <div className="space-y-4">
-            <div className="bg-sky-50 border border-sky-200 p-4 text-[14px] text-slate-700">
+            <div className="bg-sky-50 border border-sky-200 p-4 text-[14px] text-slate-700 rounded-xl">
               <p className="font-medium text-sky-900 mb-1 flex items-center gap-1.5"><ClipboardList className="w-4 h-4" /> What's included in the process:</p>
               <ul className="space-y-1 text-[13px]">
                 <li>• Official Pakistan E-Visa Letter of Invitation (LOI)</li>
@@ -92,7 +92,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
                 onClick={handleProceedToBooking}
-                className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3.5 px-4 text-[15px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3.5 px-4 text-[15px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer rounded-xl"
               >
                 <span>Proceed to Booking Form</span>
                 <span>→</span>
@@ -102,7 +102,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 href={whatsappInquiryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3.5 px-4 text-[15px] flex items-center justify-center gap-2 transition-colors"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3.5 px-4 text-[15px] flex items-center justify-center gap-2 transition-colors rounded-xl"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp Direct</span>

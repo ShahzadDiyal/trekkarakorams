@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import {
   Mountain,
   Plane,
@@ -12,13 +13,7 @@ import {
 } from 'lucide-react';
 import { TREK_STYLES } from '@/data/treks';
 
-interface TravelStylesProps {
-  onSelectStyle: (styleId: string) => void;
-}
-
-export const TravelStylesSection: React.FC<TravelStylesProps> = ({
-  onSelectStyle,
-}) => {
+export const TravelStylesSection: React.FC = () => {
   const getIcon = (name: string) => {
     switch (name) {
       case 'Mountain':
@@ -68,12 +63,12 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
         {/* Travel Styles */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {TREK_STYLES.map((style, idx) => (
-            <button
+            <Link
               key={style.id}
-              onClick={() => onSelectStyle(style.id)}
+              href={`/travel-styles/${style.id}`}
               className={`
                 group flex min-h-[150px] flex-col items-start justify-between
-                rounded-md border p-5 text-left
+                rounded-xl border p-5 text-left
                 transition-all duration-200
                 cursor-pointer
                 ${idx === 0
@@ -84,7 +79,7 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
             >
               <div
                 className={`
-                  flex h-10 w-10 items-center justify-center rounded-md
+                  flex h-10 w-10 items-center justify-center rounded-xl
                   ${idx === 0
                     ? 'bg-sky-700/60 text-sky-100'
                     : 'bg-slate-50 text-sky-600 group-hover:bg-sky-50'
@@ -119,7 +114,7 @@ export const TravelStylesSection: React.FC<TravelStylesProps> = ({
                   {style.count} expeditions
                 </p>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
 

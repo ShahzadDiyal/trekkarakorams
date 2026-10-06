@@ -74,7 +74,7 @@ export const CustomPlanPageClient: React.FC = () => {
               </div>
 
               <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className="bg-sky-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+                <span className="bg-sky-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white rounded-xl">
                   Custom Expedition
                 </span>
 
@@ -97,14 +97,14 @@ export const CustomPlanPageClient: React.FC = () => {
 
             {/* Brand Panel */}
             <div className="lg:col-span-4">
-              <div className="relative overflow-hidden rounded-lg bg-sky-950 p-6 sm:p-7">
+              <div className="relative overflow-hidden rounded-xl bg-sky-950 p-6 sm:p-7">
 
                 <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full border border-sky-400/20" />
                 <div className="absolute -right-5 -top-5 h-18 w-18 rounded-full border border-sky-400/10" />
 
                 <div className="relative">
 
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-md bg-sky-500/10">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/10">
                     <Mountain className="h-6 w-6 text-sky-400" />
                   </div>
 
@@ -171,16 +171,16 @@ export const CustomPlanPageClient: React.FC = () => {
 
 
                 {/* Main Form Card */}
-                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
 
                   {/* Form Top Bar */}
-                  <div className="border-b border-slate-200 bg-slate-50 px-5 py-5 sm:px-8">
+                  <div className="border-b border-slate-200 bg-slate-50 px-5 py-5 sm:px-8 rounded-xl">
 
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
                       <div className="flex items-center gap-3">
 
-                        <div className="flex h-10 w-10 items-center justify-center rounded-md bg-sky-100 text-sky-600">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-600">
                           <Mountain className="h-5 w-5" />
                         </div>
 
@@ -219,7 +219,7 @@ export const CustomPlanPageClient: React.FC = () => {
 
                       <div className="mb-5 flex items-center gap-3 border-b border-slate-200 pb-4">
 
-                        <div className="flex h-9 w-9 items-center justify-center rounded-md bg-sky-50 text-sky-600">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
                           <Users className="h-4 w-4" />
                         </div>
 
@@ -311,7 +311,7 @@ export const CustomPlanPageClient: React.FC = () => {
 
                       <div className="mb-5 flex items-center gap-3 border-b border-slate-200 pb-4">
 
-                        <div className="flex h-9 w-9 items-center justify-center rounded-md bg-sky-50 text-sky-600">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
                           <Mountain className="h-4 w-4" />
                         </div>
 
@@ -340,7 +340,7 @@ export const CustomPlanPageClient: React.FC = () => {
                           <select
                             value={trekTitle}
                             onChange={(e) => setTrekTitle(e.target.value)}
-                            className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm font-semibold text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="w-full cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm font-semibold text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                           >
                             {TREK_PACKAGES.map((t) => (
                               <option key={t.id} value={t.title}>
@@ -371,7 +371,7 @@ export const CustomPlanPageClient: React.FC = () => {
                             onChange={(e) =>
                               setGroupSize(Number(e.target.value))
                             }
-                            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                           />
 
                         </div>
@@ -393,7 +393,7 @@ export const CustomPlanPageClient: React.FC = () => {
                             onChange={(e) =>
                               setPreferredMonth(e.target.value)
                             }
-                            className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="w-full cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                           >
                             <option value="June 2026">
                               June 2026
@@ -433,7 +433,7 @@ export const CustomPlanPageClient: React.FC = () => {
                           <select
                             value={diet}
                             onChange={(e) => setDiet(e.target.value)}
-                            className="w-full cursor-pointer rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                            className="w-full cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm text-slate-900 outline-none transition-all focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                           >
                             <option value="Standard">
                               Standard Expedition Meals
@@ -473,7 +473,7 @@ export const CustomPlanPageClient: React.FC = () => {
                           placeholder="Tell us about previous high-altitude experience, equipment needs, or helicopter requests..."
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
-                          className="w-full resize-y rounded-md border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm leading-6 text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
+                          className="w-full resize-y rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-3 text-sm leading-6 text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/10"
                         />
 
                       </div>
@@ -486,7 +486,7 @@ export const CustomPlanPageClient: React.FC = () => {
                     ====================================================== */}
                     <div className="grid grid-cols-2 gap-3 border-y border-slate-200 py-5 sm:grid-cols-4">
 
-                      <div className="rounded-md bg-slate-50 p-4 text-center">
+                      <div className="rounded-xl bg-slate-50 p-4 text-center">
                         <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                         <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-800">
@@ -499,7 +499,7 @@ export const CustomPlanPageClient: React.FC = () => {
                       </div>
 
 
-                      <div className="rounded-md bg-slate-50 p-4 text-center">
+                      <div className="rounded-xl bg-slate-50 p-4 text-center">
                         <Users className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                         <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-800">
@@ -512,7 +512,7 @@ export const CustomPlanPageClient: React.FC = () => {
                       </div>
 
 
-                      <div className="rounded-md bg-slate-50 p-4 text-center">
+                      <div className="rounded-xl bg-slate-50 p-4 text-center">
                         <Calendar className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                         <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-800">
@@ -525,7 +525,7 @@ export const CustomPlanPageClient: React.FC = () => {
                       </div>
 
 
-                      <div className="rounded-md bg-slate-50 p-4 text-center">
+                      <div className="rounded-xl bg-slate-50 p-4 text-center">
                         <Sparkles className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                         <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-800">
@@ -547,7 +547,7 @@ export const CustomPlanPageClient: React.FC = () => {
 
                       <button
                         type="submit"
-                        className="inline-flex min-h-[50px] flex-1 items-center justify-center gap-2 rounded-md bg-sky-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-md"
+                        className="inline-flex min-h-[50px] flex-1 items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-md"
                       >
                         <Send className="h-4 w-4" />
                         <span>Submit Expedition Inquiry</span>
@@ -558,7 +558,7 @@ export const CustomPlanPageClient: React.FC = () => {
                         href={whatsappInquiryUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-md bg-emerald-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-md"
+                        className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-md"
                       >
                         <MessageSquare className="h-4 w-4" />
                         <span>Send via WhatsApp</span>
@@ -595,9 +595,9 @@ export const CustomPlanPageClient: React.FC = () => {
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
 
-                    <div className="rounded-md border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm">
+                    <div className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm">
 
-                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50">
                         <Send className="h-4 w-4 text-sky-600" />
                       </div>
 
@@ -613,9 +613,9 @@ export const CustomPlanPageClient: React.FC = () => {
                     </div>
 
 
-                    <div className="rounded-md border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm">
+                    <div className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm">
 
-                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50">
                         <Mountain className="h-4 w-4 text-sky-600" />
                       </div>
 
@@ -631,9 +631,9 @@ export const CustomPlanPageClient: React.FC = () => {
                     </div>
 
 
-                    <div className="rounded-md border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm">
+                    <div className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm">
 
-                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50">
                         <MessageSquare className="h-4 w-4 text-sky-600" />
                       </div>
 
@@ -659,14 +659,14 @@ export const CustomPlanPageClient: React.FC = () => {
               /* =========================================================
                  SUCCESS STATE
               ========================================================= */
-              <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
 
                 {/* Success Header */}
-                <div className="bg-sky-950 px-6 py-8 text-white sm:px-10 sm:py-10">
+                <div className="bg-sky-950 px-6 py-8 text-white sm:px-10 sm:py-10 rounded-xl">
 
                   <div className="flex items-center gap-4">
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-emerald-500">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500">
                       <CheckCircle2 className="h-7 w-7 text-white" />
                     </div>
 
@@ -711,11 +711,11 @@ export const CustomPlanPageClient: React.FC = () => {
 
 
                     {/* WhatsApp Callout */}
-                    <div className="mt-7 rounded-md border border-sky-200 bg-sky-50 p-5">
+                    <div className="mt-7 rounded-xl border border-sky-200 bg-sky-50 p-5">
 
                       <div className="flex items-start gap-3">
 
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-sky-600">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-600">
                           <MessageSquare className="h-4 w-4 text-white" />
                         </div>
 
@@ -745,7 +745,7 @@ export const CustomPlanPageClient: React.FC = () => {
 
                       <button
                         onClick={() => router.push('/')}
-                        className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-md bg-slate-950 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-slate-800"
+                        className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-xl bg-slate-950 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-slate-800"
                       >
                         Return to Home
                       </button>
@@ -754,7 +754,7 @@ export const CustomPlanPageClient: React.FC = () => {
                         href={whatsappInquiryUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-md bg-emerald-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-emerald-700"
+                        className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-emerald-700"
                       >
                         <MessageSquare className="h-4 w-4" />
                         Chat on WhatsApp
@@ -806,7 +806,7 @@ export const CustomPlanPageClient: React.FC = () => {
                 href={whatsappInquiryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-slate-100 hover:shadow-lg sm:w-auto"
+                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-slate-100 hover:shadow-lg sm:w-auto"
               >
                 <MessageSquare className="h-4 w-4" />
                 WhatsApp Our Team

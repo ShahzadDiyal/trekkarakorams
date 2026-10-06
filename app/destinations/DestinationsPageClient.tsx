@@ -131,7 +131,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
               return (
                 <Link
                   key={region.id}
-                  href={`/destinations/${region.slug || region.id}`}
+                  href={`/destination/${region.slug || region.id}`}
                   onClick={() => setSelectedRegionId(region.id)}
                   className={`group flex min-h-[82px] cursor-pointer flex-col justify-center rounded-xl border p-3 text-left transition-all duration-200 sm:p-4 ${
                     isSelected
@@ -192,7 +192,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
 
           </div>
 
-          <div className="grid overflow-hidden border border-slate-200 bg-white lg:grid-cols-12">
+          <div className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white lg:grid-cols-12">
 
             {/* Image */}
             <div className="relative h-72 overflow-hidden bg-slate-900 sm:h-96 lg:col-span-5 lg:h-auto lg:min-h-[620px]">
@@ -207,7 +207,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
 
               <div className="absolute bottom-6 left-5 right-5 sm:left-7 sm:right-7">
 
-                <span className="inline-flex bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-950">
+                <span className="inline-flex rounded-xl bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-950">
                   {activeRegion.mountainRange}
                 </span>
 
@@ -241,9 +241,9 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
 
 
                 {/* Facts */}
-                <div className="mt-8 grid grid-cols-1 gap-px border border-slate-200 bg-slate-200 sm:grid-cols-2">
+                <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2">
 
-                  <div className="bg-slate-50 p-4">
+                  <div className="rounded-xl bg-slate-50 p-4">
                     <div className="mb-2 flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-sky-600" />
 
@@ -258,7 +258,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
                   </div>
 
 
-                  <div className="bg-slate-50 p-4">
+                  <div className="rounded-xl bg-slate-50 p-4">
                     <div className="mb-2 flex items-center gap-2">
                       <Sun className="h-4 w-4 text-sky-600" />
 
@@ -273,7 +273,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
                   </div>
 
 
-                  <div className="bg-slate-50 p-4 sm:col-span-2">
+                  <div className="rounded-xl bg-slate-50 p-4 sm:col-span-2">
                     <div className="mb-2 flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-sky-600" />
 
@@ -305,7 +305,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
                     {activeRegion.keyPeaks.map((peak, i) => (
                       <span
                         key={i}
-                        className="border border-sky-100 bg-sky-50 px-3 py-1.5 text-[12px] font-semibold text-sky-800"
+                        className="rounded-xl border border-sky-100 bg-sky-50 px-3 py-1.5 text-[12px] font-semibold text-sky-800"
                       >
                         {peak}
                       </span>
@@ -368,7 +368,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
                           : '/treks'
                       );
                     }}
-                    className="inline-flex w-full items-center justify-center gap-2 bg-sky-600 px-5 py-3 text-[12px] font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-3 text-[12px] font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 sm:w-auto"
                   >
                     <span>
                       Browse {activeRegion.name.split(' ')[0]} Treks
@@ -466,8 +466,8 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
 
 
                   <Link
-                    href={`/destinations/${region.slug || region.id}`}
-                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-[12px] font-semibold uppercase tracking-wider text-slate-800 transition-all duration-200 hover:border-sky-600 hover:bg-sky-600 hover:text-white"
+                    href={`/destination/${region.slug || region.id}`}
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 text-[12px] font-semibold uppercase tracking-wider text-slate-800 transition-all duration-200 hover:border-sky-600 hover:bg-sky-600 hover:text-white"
                   >
                     <span>View Destination Details</span>
 
@@ -516,7 +516,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
 
               <button
                 onClick={() => router.push('/planner')}
-                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 bg-slate-950 px-6 py-3 text-[12px] font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:bg-slate-900 sm:w-auto"
+                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 bg-slate-950 px-6 py-3 text-[12px] font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:bg-slate-900 sm:w-auto rounded-xl"
               >
                 <span>Plan Your Trek</span>
 
@@ -525,7 +525,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
 
               <button
                 onClick={() => router.push('/treks')}
-                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 border border-white/30 bg-white px-6 py-3 text-[12px] font-semibold uppercase tracking-wider text-sky-900 transition-all duration-200 hover:bg-slate-100 sm:w-auto"
+                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 border border-white/30 bg-white px-6 py-3 text-[12px] font-semibold uppercase tracking-wider text-sky-900 transition-all duration-200 hover:bg-slate-100 sm:w-auto rounded-xl"
               >
                 <span>Browse All Treks</span>
 

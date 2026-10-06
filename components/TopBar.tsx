@@ -68,7 +68,7 @@ export const TopBar: React.FC<TopBarProps> = ({
           <div className="h-3.5 w-px bg-sky-800" />
 
           {/* Currency Switcher */}
-          <div className="flex items-center gap-1 bg-sky-900/80 px-2 py-0.5  rounded">
+          <div className="flex items-center gap-1 bg-sky-900/80 px-2 py-0.5  rounded-xl">
             <span className="text-sky-300 text-[11px]">Curr:</span>
             <select
               value={currentCurrency}
@@ -87,7 +87,7 @@ export const TopBar: React.FC<TopBarProps> = ({
           <button
             onClick={onOpenCustomPlan}
             id="top-plan-trip-btn"
-            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1 text-[14px] uppercase tracking-wider transition-colors cursor-pointer"
+            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1 text-[14px] uppercase tracking-wider transition-colors cursor-pointer rounded-xl"
           >
             Plan A Custom Trek
           </button>

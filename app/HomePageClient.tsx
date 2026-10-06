@@ -75,10 +75,6 @@ export const HomePageClient: React.FC = () => {
     router.push(isKnownActivity(activity) ? facetUrl('activity', activity) : '/treks');
   };
 
-  const handleStyleSelect = (styleId: string) => {
-    router.push(`/travel-styles#${styleId}`);
-  };
-
   const renderValueIcon = (iconName: string) => {
     switch (iconName) {
       case 'Leaf': return <Leaf className="w-5 h-5 text-emerald-600" />;
@@ -154,7 +150,7 @@ export const HomePageClient: React.FC = () => {
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => router.push('/treks')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:bg-sky-700 hover:-translate-y-0.5"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:bg-sky-700 hover:-translate-y-0.5"
                 >
                   Explore Our Treks
                   <ArrowRight className="h-4 w-4" />
@@ -162,7 +158,7 @@ export const HomePageClient: React.FC = () => {
 
                 <button
                   onClick={() => router.push('/destinations')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wider text-slate-800 transition-colors duration-200 hover:border-slate-400 hover:bg-slate-50"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wider text-slate-800 transition-colors duration-200 hover:border-slate-400 hover:bg-slate-50"
                 >
                   Explore the Regions
                 </button>
@@ -171,14 +167,14 @@ export const HomePageClient: React.FC = () => {
 
             {/* Supporting Visual / Local Identity */}
             <div className="lg:col-span-4">
-              <div className="relative overflow-hidden rounded-lg bg-slate-900 p-7 sm:p-8">
+              <div className="relative overflow-hidden rounded-xl bg-slate-900 p-7 sm:p-8">
 
                 {/* Decorative element */}
                 <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full border border-sky-400/20" />
                 <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full border border-sky-400/10" />
 
                 <div className="relative">
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-sky-500/10">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500/10">
                     <Mountain className="h-6 w-6 text-sky-400" />
                   </div>
 
@@ -392,7 +388,7 @@ export const HomePageClient: React.FC = () => {
 
       {/* 7. Travel Styles */}
       <Reveal>
-        <TravelStylesSection onSelectStyle={handleStyleSelect} />
+        <TravelStylesSection />
       </Reveal>
 
       {/* 8. Trust Section & 4 Key Stat Metric Blocks */}
@@ -453,7 +449,7 @@ export const HomePageClient: React.FC = () => {
 
               <button
                 onClick={() => router.push('/planner')}
-                className="w-full sm:w-auto min-h-[48px] bg-slate-950 hover:bg-slate-900 text-white font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg border border-slate-800/30 rounded-sm"
+                className="w-full sm:w-auto min-h-[48px] bg-slate-950 hover:bg-slate-900 text-white font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg border border-slate-800/30 rounded-xl"
               >
                 <span>Calculate Custom Quote</span>
                 <ArrowRight className="w-4 h-4 shrink-0" />
@@ -463,7 +459,7 @@ export const HomePageClient: React.FC = () => {
                 href={whatsappLink("Hi Trek Karakoram, I want to inquire about 2026 trekking permits")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto min-h-[48px] bg-white hover:bg-slate-100 text-sky-900 font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg border border-white/20 rounded-sm"
+                className="w-full sm:w-auto min-h-[48px] bg-white hover:bg-slate-100 text-sky-900 font-semibold text-[12px] sm:text-[13px] lg:text-[14px] px-5 sm:px-6 py-3 flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg border border-white/20 rounded-xl"
               >
                 <PhoneCall className="w-4 h-4 shrink-0" />
                 <span>WhatsApp Direct Hotline</span>

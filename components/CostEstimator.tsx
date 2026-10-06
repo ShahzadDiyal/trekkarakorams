@@ -176,7 +176,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
             <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-[11px] font-bold text-white">
                     01
                   </span>
 
@@ -214,7 +214,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-[11px] font-bold text-white">
                       02
                     </span>
 
@@ -229,7 +229,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                     </div>
                   </div>
 
-                  <span className="inline-flex w-fit items-center gap-1.5 border border-sky-100 bg-sky-50 px-3 py-1.5 text-[11px] font-bold text-sky-700">
+                  <span className="inline-flex w-fit items-center gap-1.5 border border-sky-100 bg-sky-50 px-3 py-1.5 text-[11px] font-bold text-sky-700 rounded-xl">
                     <Users className="h-3.5 w-3.5" />
 
                     {groupSize === 1
@@ -246,7 +246,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                       key={number}
                       type="button"
                       onClick={() => setGroupSize(number)}
-                      className={`min-h-[44px] rounded-lg border text-sm font-bold transition-all ${
+                      className={`min-h-[44px] rounded-xl border text-sm font-bold transition-all ${
                         groupSize === number
                           ? 'border-sky-600 bg-sky-600 text-white shadow-sm'
                           : 'border-slate-200 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50'
@@ -271,7 +271,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
             <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-[11px] font-bold text-white">
                     03
                   </span>
 
@@ -370,7 +370,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
             <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <div className="p-5 sm:p-6">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-bold text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-[11px] font-bold text-white">
                     04
                   </span>
 
@@ -503,7 +503,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                     </div>
                   </div>
 
-                  <span className="shrink-0 rounded-md bg-sky-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-slate-950">
+                  <span className="shrink-0 rounded-xl bg-sky-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-slate-950">
                     Instant Quote
                   </span>
                 </div>
@@ -514,7 +514,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                 {/* SELECTED TREK */}
 
                 <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-900/80">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-900/80">
                     <Mountain className="h-5 w-5 text-sky-300" />
                   </div>
 
@@ -602,7 +602,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                     type="button"
                     onClick={handleProceed}
                     id="cost-estimator-book-btn"
-                    className="flex min-h-[50px] w-full items-center justify-center gap-2 bg-sky-500 px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-950 transition-colors hover:bg-sky-400"
+                    className="flex min-h-[50px] w-full items-center justify-center gap-2 bg-sky-500 px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-950 transition-colors hover:bg-sky-400 rounded-xl"
                   >
                     <span>Book This Custom Plan</span>
                     <ArrowRight className="h-4 w-4" />
@@ -612,7 +612,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                     href={whatsappLink(decodeURIComponent(whatsappMessage))}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex min-h-[48px] w-full items-center justify-center gap-2 bg-emerald-600 px-4 py-3 text-xs font-bold text-white transition-colors hover:bg-emerald-500"
+                    className="flex min-h-[48px] w-full items-center justify-center gap-2 bg-emerald-600 px-4 py-3 text-xs font-bold text-white transition-colors hover:bg-emerald-500 rounded-xl"
                   >
                     <MessageSquare className="h-4 w-4" />
                     <span>Ask About Availability</span>

@@ -140,7 +140,7 @@ export const PlannerPageClient: React.FC = () => {
                       key={n}
                       type="button"
                       onClick={() => setGroupSize(n)}
-                      className={`flex-1 rounded-lg py-2 text-[14px] font-bold border transition-colors cursor-pointer ${groupSize === n
+                      className={`flex-1 rounded-xl py-2 text-[14px] font-bold border transition-colors cursor-pointer ${groupSize === n
                         ? 'bg-sky-600 text-white border-sky-600'
                         : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-sky-400'
                         }`}
@@ -328,7 +328,7 @@ export const PlannerPageClient: React.FC = () => {
               <span className="text-[13px] font-bold text-sky-400 uppercase tracking-wider">
                 Instant Price Calculation
               </span>
-              <span className="rounded-md bg-sky-500 text-slate-950 text-[10px] font-bold uppercase px-2 py-0.5">
+              <span className="rounded-xl bg-sky-500 text-slate-950 text-[10px] font-bold uppercase px-2 py-0.5">
                 Transparent Quote
               </span>
             </div>
@@ -379,7 +379,7 @@ export const PlannerPageClient: React.FC = () => {
               <button
                 type="button"
                 onClick={handleProceed}
-                className="w-full rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="w-full rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <span>Reserve Custom Plan</span>
                 <ArrowRight className="w-4 h-4" />
@@ -389,7 +389,7 @@ export const PlannerPageClient: React.FC = () => {
                 href={whatsappLink(decodeURIComponent(whatsappMessage))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Discuss on WhatsApp</span>

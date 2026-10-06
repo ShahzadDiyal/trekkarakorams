@@ -72,7 +72,7 @@ export const BlogSection: React.FC = () => {
           </div>
 
           {/* Season badge */}
-          <div className="flex items-center gap-3 self-start border border-slate-200 bg-white px-4 py-3 shadow-sm lg:self-auto">
+          <div className="flex items-center gap-3 self-start border border-slate-200 bg-white px-4 py-3 shadow-sm lg:self-auto rounded-xl">
             <div className="flex h-9 w-9 items-center justify-center bg-sky-50">
               <Sparkles className="h-4 w-4 text-sky-600" />
             </div>
@@ -121,7 +121,7 @@ export const BlogSection: React.FC = () => {
 
                 {/* Category */}
                 <div className="absolute left-4 top-4">
-                  <span className="inline-flex items-center bg-sky-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white shadow-sm">
+                  <span className="inline-flex items-center bg-sky-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white shadow-sm rounded-xl">
                     {post.category}
                   </span>
                 </div>

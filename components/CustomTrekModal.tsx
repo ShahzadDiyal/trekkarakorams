@@ -49,7 +49,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
         {/* Close Button - Sticky at top */}
         <button
           onClick={onClose}
-          className="sticky top-0 float-right p-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[14px] z-10"
+          className="sticky top-0 float-right p-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[14px] z-10 rounded-xl"
           aria-label="Close form"
         >
           <X className="w-5 h-5" />
@@ -58,7 +58,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
         {!submitted ? (
           <div className="clear-both">
             <div className="flex items-center gap-2 mb-2">
-              <span className="bg-sky-500 text-slate-950 text-[14px] font-bold px-2 py-0.5 uppercase tracking-wider">
+              <span className="bg-sky-500 text-slate-950 text-[14px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-xl">
                 Expedition Booking
               </span>
               <span className="text-[13px] text-emerald-700 font-bold flex items-center gap-1">
@@ -142,7 +142,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                   <select
                     value={trekTitle}
                     onChange={(e) => setTrekTitle(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 font-semibold focus:border-sky-500 focus:outline-none rounded-xl"
                   >
                     {TREK_PACKAGES.map((t) => (
                       <option key={t.id} value={t.title}>{t.title}</option>
@@ -161,7 +161,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                     max={30}
                     value={groupSize}
                     onChange={(e) => setGroupSize(Number(e.target.value))}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:border-sky-500 focus:outline-none rounded-xl"
                   />
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                   <select
                     value={preferredMonth}
                     onChange={(e) => setPreferredMonth(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:border-sky-500 focus:outline-none rounded-xl"
                   >
                     <option value="June 2026">June 2026</option>
                     <option value="July 2026">July 2026 (Peak Season)</option>
@@ -192,7 +192,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                   <select
                     value={diet}
                     onChange={(e) => setDiet(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:border-sky-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 p-2.5 text-[14px] text-slate-900 focus:border-sky-500 focus:outline-none rounded-xl"
                   >
                     <option value="Standard">Standard Expedition Meals</option>
                     <option value="Vegetarian">Strict Vegetarian</option>
@@ -219,7 +219,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
               <div className="pt-2 flex flex-col sm:flex-row gap-2">
                 <button
                   type="submit"
-                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-medium py-3 px-4 text-[14px] uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer rounded-xl"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Expedition Inquiry</span>
@@ -229,7 +229,7 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
                   href={whatsappInquiryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors"
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 text-[14px] flex items-center justify-center gap-1.5 transition-colors rounded-xl"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>Send via WhatsApp</span>
@@ -247,13 +247,13 @@ export const CustomTrekModal: React.FC<CustomTrekModalProps> = ({
               Thank you, <strong>{name}</strong>. Our Skardu expedition operations center has received your inquiry for <strong>{trekTitle}</strong>. We will email your customized itinerary and official visa invitation details to <strong>{email}</strong> within 12 hours.
             </p>
 
-            <div className="p-4 bg-sky-50 text-[14px] text-slate-800 max-w-md mx-auto">
+            <div className="p-4 bg-sky-50 text-[14px] text-slate-800 max-w-md mx-auto rounded-xl">
               <strong>Need urgent assistance?</strong> Reach our high-altitude coordinator directly on WhatsApp at <strong>{siteContact.phone}</strong>.
             </div>
 
             <button
               onClick={onClose}
-              className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[14px] px-6 py-2.5 transition-colors cursor-pointer"
+              className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[14px] px-6 py-2.5 transition-colors cursor-pointer rounded-xl"
             >
               Done
             </button>

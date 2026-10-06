@@ -59,14 +59,14 @@ export const ContactPageClient: React.FC = () => {
         </div>
 
         {/* Hero / Page Banner */}
-        <section className="relative mb-8 overflow-hidden bg-sky-950 px-6 py-8 text-white sm:px-8 sm:py-10 lg:px-10">
+        <section className="relative mb-8 overflow-hidden bg-sky-950 px-6 py-8 text-white sm:px-8 sm:py-10 lg:px-10 rounded-xl">
           {/* Decorative mountain glow */}
           <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-blue-400/10 blur-3xl" />
 
           <div className="relative z-10 max-w-3xl">
             <div className="mb-3 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-950">
+              <span className="inline-flex items-center gap-1.5 bg-sky-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-950 rounded-xl">
                 <Mountain className="h-3 w-3" />
                 Operations & Inquiries
               </span>
@@ -260,7 +260,7 @@ export const ContactPageClient: React.FC = () => {
 
                   {/* Trust Row */}
                   <div className="grid grid-cols-2 gap-3 border-y border-slate-200 py-5 sm:grid-cols-3">
-                    <div className="bg-slate-50 p-3 text-center">
+                    <div className="bg-slate-50 p-3 text-center rounded-xl">
                       <ShieldCheck className="mx-auto mb-1.5 h-5 w-5 text-sky-600" />
                       <div className="text-[10px] font-bold uppercase tracking-wide text-slate-700">
                         Secure
@@ -270,7 +270,7 @@ export const ContactPageClient: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-slate-50 p-3 text-center">
+                    <div className="bg-slate-50 p-3 text-center rounded-xl">
                       <Clock className="mx-auto mb-1.5 h-5 w-5 text-sky-600" />
                       <div className="text-[10px] font-bold uppercase tracking-wide text-slate-700">
                         Fast Reply
@@ -280,7 +280,7 @@ export const ContactPageClient: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="col-span-2 bg-slate-50 p-3 text-center sm:col-span-1">
+                    <div className="col-span-2 bg-slate-50 p-3 text-center sm:col-span-1 rounded-xl">
                       <Mountain className="mx-auto mb-1.5 h-5 w-5 text-sky-600" />
                       <div className="text-[10px] font-bold uppercase tracking-wide text-slate-700">
                         Local Team
@@ -295,7 +295,7 @@ export const ContactPageClient: React.FC = () => {
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <button
                       type="submit"
-                      className="flex flex-1 items-center justify-center gap-2 bg-sky-600 px-5 py-3.5 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-500"
+                      className="flex flex-1 items-center justify-center gap-2 bg-sky-600 px-5 py-3.5 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-500 rounded-xl"
                     >
                       <Send className="h-4 w-4" />
                       <span>Send Expedition Inquiry</span>
@@ -305,7 +305,7 @@ export const ContactPageClient: React.FC = () => {
                       href={whatsappInquiryUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-emerald-600 px-5 py-3.5 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-emerald-500"
+                      className="flex items-center justify-center gap-2 bg-emerald-600 px-5 py-3.5 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-emerald-500 rounded-xl"
                     >
                       <MessageSquare className="h-4 w-4" />
                       <span>Chat on WhatsApp</span>
@@ -346,7 +346,7 @@ export const ContactPageClient: React.FC = () => {
                       with the relevant route information and next steps.
                     </p>
 
-                    <div className="mt-6 w-full max-w-lg border border-sky-200 bg-sky-50 p-5 text-left">
+                    <div className="mt-6 w-full max-w-lg border border-sky-200 bg-sky-50 p-5 text-left rounded-xl">
                       <div className="flex items-start gap-3">
                         <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-sky-600">
                           <MessageSquare className="h-4 w-4 text-white" />
@@ -372,14 +372,14 @@ export const ContactPageClient: React.FC = () => {
                     <div className="mt-6 flex w-full max-w-lg flex-col gap-3 sm:flex-row">
                       <button
                         onClick={() => setSubmitted(false)}
-                        className="flex-1 bg-slate-950 px-5 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-slate-800"
+                        className="flex-1 bg-slate-950 px-5 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-slate-800 rounded-xl"
                       >
                         Send Another Inquiry
                       </button>
 
                       <Link
                         href="/"
-                        className="flex flex-1 items-center justify-center gap-2 border border-slate-300 bg-white px-5 py-3 text-[12px] font-bold uppercase tracking-wider text-slate-700 transition-colors hover:border-sky-400 hover:text-sky-600"
+                        className="flex flex-1 items-center justify-center gap-2 border border-slate-300 bg-white px-5 py-3 text-[12px] font-bold uppercase tracking-wider text-slate-700 transition-colors hover:border-sky-400 hover:text-sky-600 rounded-xl"
                       >
                         Return Home
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -395,7 +395,7 @@ export const ContactPageClient: React.FC = () => {
           <div className="space-y-5 lg:col-span-5">
 
             {/* Skardu HQ */}
-            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6 rounded-xl">
               <div className="mb-4 flex items-start gap-3 border-b border-slate-200 pb-4">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-sky-50 text-sky-600">
                   <Mountain className="h-4 w-4" />
@@ -436,7 +436,7 @@ export const ContactPageClient: React.FC = () => {
             </div>
 
             {/* Islamabad Office */}
-            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+            <div className="border border-slate-200 bg-white p-5 shadow-sm sm:p-6 rounded-xl">
               <div className="mb-4 flex items-start gap-3 border-b border-slate-200 pb-4">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-sky-50 text-sky-600">
                   <ShieldCheck className="h-4 w-4" />
@@ -474,7 +474,7 @@ export const ContactPageClient: React.FC = () => {
               href={whatsappInquiryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-emerald-600 p-5 text-white transition-colors hover:bg-emerald-500 sm:p-6"
+              className="group block bg-emerald-600 p-5 text-white transition-colors hover:bg-emerald-500 sm:p-6 rounded-xl"
             >
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-white/15">
@@ -504,7 +504,7 @@ export const ContactPageClient: React.FC = () => {
             </a>
 
             {/* International Support */}
-            <div className="bg-sky-950 p-5 text-white sm:p-6">
+            <div className="bg-sky-950 p-5 text-white sm:p-6 rounded-xl">
               <div className="mb-4 flex items-center gap-2">
                 <Award className="h-4 w-4 text-sky-400" />
 
@@ -545,7 +545,7 @@ export const ContactPageClient: React.FC = () => {
         </div>
 
         {/* Bottom reassurance */}
-        <div className="mt-8 border border-slate-200 bg-white p-5 sm:p-6">
+        <div className="mt-8 border border-slate-200 bg-white p-5 sm:p-6 rounded-xl">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-3">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-sky-50 text-sky-600">
@@ -567,7 +567,7 @@ export const ContactPageClient: React.FC = () => {
 
             <Link
               href="/custom-plan"
-              className="inline-flex shrink-0 items-center justify-center gap-2 bg-slate-950 px-5 py-3 text-[11px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-slate-800"
+              className="inline-flex shrink-0 items-center justify-center gap-2 bg-slate-950 px-5 py-3 text-[11px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-slate-800 rounded-xl"
             >
               Plan a Custom Trek
               <ArrowRight className="h-3.5 w-3.5" />

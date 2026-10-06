@@ -149,7 +149,7 @@ export const FAQSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-xl px-2 py-1 text-xs font-medium text-slate-400 hover:bg-slate-100 hover:text-slate-700"
               >
                 Clear
               </button>
@@ -175,7 +175,7 @@ export const FAQSection: React.FC = () => {
                     setExpandedIndex(null);
                   }}
                   className={`
-                    rounded-lg px-3 py-2.5
+                    rounded-xl px-3 py-2.5
                     text-[11px] font-semibold
                     transition-all duration-200
                     sm:px-4
@@ -248,7 +248,7 @@ export const FAQSection: React.FC = () => {
                   <span
                     className={`
                       flex h-9 w-9 shrink-0 items-center justify-center
-                      rounded-lg text-[10px] font-bold
+                      rounded-xl text-[10px] font-bold
                       transition-all duration-300
                       ${
                         isExpanded
@@ -406,7 +406,7 @@ export const FAQSection: React.FC = () => {
               rel="noopener noreferrer"
               className="
                 inline-flex shrink-0 items-center justify-center gap-2
-                rounded-lg bg-sky-500 px-5 py-3
+                rounded-xl bg-sky-500 px-5 py-3
                 text-xs font-bold uppercase tracking-wider text-slate-950
                 transition-all duration-200
                 hover:bg-sky-400

@@ -44,7 +44,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
           {/* Trekking */}
           <div
             onClick={() => onSelectActivity('Trekking')}
-            className="group relative h-[360px] cursor-pointer overflow-hidden rounded-md border border-slate-200 lg:col-span-2"
+            className="group relative h-[360px] cursor-pointer overflow-hidden rounded-xl border border-slate-200 lg:col-span-2"
           >
             <img
               src="/images/trekking-in-karakoram-and-himalayas.jpg"
@@ -76,7 +76,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
           {/* Helicopter */}
           <div
             onClick={() => onSelectActivity('Heli Trek')}
-            className="group relative h-[360px] cursor-pointer overflow-hidden rounded-md border border-slate-200 lg:col-span-2"
+            className="group relative h-[360px] cursor-pointer overflow-hidden rounded-xl border border-slate-200 lg:col-span-2"
           >
             <img
               src="/images/helicopter-landing-on-snowy-mountain-in-karakoram.jpg"
@@ -108,7 +108,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
           {/* Jeep Safaris */}
           <div
             onClick={() => onSelectActivity('Jeep Safari')}
-            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-xl border border-slate-200"
           >
             <img
               src="/images/4wd-jeep-safaris-karakoram-pakistan.jpg"
@@ -139,7 +139,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
           {/* Pass Crossings */}
           <div
             onClick={() => onSelectActivity('Pass Crossing')}
-            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-xl border border-slate-200"
           >
             <img
               src="/images/high-pass-crossing-karakoram-pakistan.jpg"
@@ -170,7 +170,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
           {/* Trekking Peaks */}
           <div
             onClick={() => onSelectActivity('Expedition')}
-            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-xl border border-slate-200"
           >
             <img
               src="/images/trekking-peaks-karakoram-pakistan.jpg"
@@ -201,7 +201,7 @@ export const ActivityGrid: React.FC<ActivityGridProps> = ({
           {/* Cultural / Family */}
           <div
             onClick={() => onSelectActivity('Cultural Trek')}
-            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-md border border-slate-200"
+            className="group relative h-[280px] cursor-pointer overflow-hidden rounded-xl border border-slate-200"
           >
             <img
               src="/images/cultural-and-family-hikes-trekkarakoram-pakistan.jpg"

@@ -47,7 +47,7 @@ export const BlogPageClient: React.FC<BlogPageClientProps> = ({ lockedCategory }
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8 rounded-xl">
           <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
             High Altitude Knowledge Base
           </span>
@@ -116,7 +116,7 @@ export const BlogPageClient: React.FC<BlogPageClientProps> = ({ lockedCategory }
                       alt={post.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 bg-sky-600 text-white text-[11px] font-bold px-2 py-0.5">
+                    <div className="absolute top-3 left-3 bg-sky-600 text-white text-[11px] font-bold px-2 py-0.5 rounded-xl">
                       {post.category}
                     </div>
                   </div>
@@ -149,7 +149,7 @@ export const BlogPageClient: React.FC<BlogPageClientProps> = ({ lockedCategory }
                 <div className="p-5 pt-0">
                   <button
                     onClick={() => router.push(`/blog/${post.slug}`)}
-                    className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[14px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                    className="w-full bg-slate-50 hover:bg-sky-500 hover:text-white text-sky-700 font-bold text-[14px] py-2 px-3  hover:border-sky-500 transition-colors flex items-center justify-center gap-1 cursor-pointer rounded-xl"
                   >
                     <span>Read Complete Article</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -166,7 +166,7 @@ export const BlogPageClient: React.FC<BlogPageClientProps> = ({ lockedCategory }
             </p>
             <Link
               href="/blog"
-              className="inline-block mt-4 bg-sky-600 text-white font-bold text-[14px] px-4 py-2 hover:bg-sky-500 transition-colors"
+              className="inline-block mt-4 bg-sky-600 text-white font-bold text-[14px] px-4 py-2 hover:bg-sky-500 transition-colors rounded-xl"
             >
               View All Articles
             </Link>

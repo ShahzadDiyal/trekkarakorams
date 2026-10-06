@@ -125,15 +125,15 @@ function BookingForm() {
             </span>
           </div>
 
-          <div className="mx-auto max-w-3xl overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
             {/* Success Header */}
-            <div className="relative overflow-hidden bg-slate-950 px-6 py-10 text-white sm:px-10">
+            <div className="relative overflow-hidden bg-slate-950 px-6 py-10 text-white sm:px-10 rounded-xl">
               {/* Decorative circles matching homepage visual language */}
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full border border-sky-400/10" />
               <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-sky-400/10" />
 
               <div className="relative flex items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-emerald-500">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500">
                   <CheckCircle2 className="h-7 w-7 text-white" />
                 </div>
 
@@ -160,9 +160,9 @@ function BookingForm() {
                 <strong className="text-slate-900">{departureMonth}</strong>.
               </p>
 
-              <div className="mt-7 rounded-md border border-sky-200 bg-sky-50 p-5">
+              <div className="mt-7 rounded-xl border border-sky-200 bg-sky-50 p-5">
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-sky-600">
+                  <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-600">
                     <Send className="h-4 w-4 text-white" />
                   </div>
 
@@ -183,7 +183,7 @@ function BookingForm() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/"
-                  className="flex-1 rounded-md bg-slate-950 px-6 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
+                  className="flex-1 rounded-xl bg-slate-950 px-6 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
                 >
                   Return to Home
                 </Link>
@@ -192,7 +192,7 @@ function BookingForm() {
                   href={whatsappInquiryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 rounded-md bg-emerald-600 px-6 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-500"
+                  className="flex-1 rounded-xl bg-emerald-600 px-6 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-500"
                 >
                   <span className="inline-flex items-center justify-center gap-2">
                     <MessageSquare className="h-4 w-4" />
@@ -269,7 +269,7 @@ function BookingForm() {
 
             <Link
               href="/treks"
-              className="inline-flex shrink-0 items-center gap-2 self-start rounded-md border border-slate-300 bg-white px-5 py-3 text-[12px] font-bold uppercase tracking-[0.14em] text-slate-800 transition-all duration-200 hover:border-slate-400 hover:bg-slate-100 lg:self-end"
+              className="inline-flex shrink-0 items-center gap-2 self-start rounded-xl border border-slate-300 bg-white px-5 py-3 text-[12px] font-bold uppercase tracking-[0.14em] text-slate-800 transition-all duration-200 hover:border-slate-400 hover:bg-slate-100 lg:self-end"
             >
               Browse Treks
               <ChevronRight className="h-4 w-4" />
@@ -278,11 +278,11 @@ function BookingForm() {
         </section>
 
         {/* Main Booking Card */}
-        <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
 
           {/* Selected Trek Summary */}
           {selectedTrekDetails && (
-            <div className="border-b border-slate-200 bg-slate-50 px-5 py-6 sm:px-8 lg:px-10">
+            <div className="border-b border-slate-200 bg-slate-50 px-5 py-6 sm:px-8 lg:px-10 rounded-xl">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
 
                 <div>
@@ -336,7 +336,7 @@ function BookingForm() {
             {/* Personal Information */}
             <div>
               <div className="mb-5 flex items-center gap-3 border-b border-slate-200 pb-4">
-                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-sky-50 text-sky-600">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
                   <Users className="h-4 w-4" />
                 </div>
 
@@ -421,7 +421,7 @@ function BookingForm() {
             {/* Expedition Details */}
             <div>
               <div className="mb-5 flex items-center gap-3 border-b border-slate-200 pb-4">
-                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-sky-50 text-sky-600">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
                   <Mountain className="h-4 w-4" />
                 </div>
 
@@ -528,7 +528,7 @@ function BookingForm() {
 
             {/* Trust / Information */}
             <div className="grid grid-cols-2 gap-3 border-y border-slate-200 py-6 sm:grid-cols-4">
-              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
                 <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                 <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
@@ -540,7 +540,7 @@ function BookingForm() {
                 </div>
               </div>
 
-              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
                 <Users className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                 <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
@@ -552,7 +552,7 @@ function BookingForm() {
                 </div>
               </div>
 
-              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
                 <Clock className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                 <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
@@ -564,7 +564,7 @@ function BookingForm() {
                 </div>
               </div>
 
-              <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition-colors hover:bg-white">
                 <Sparkles className="mx-auto mb-2 h-5 w-5 text-sky-600" />
 
                 <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-700">
@@ -579,7 +579,7 @@ function BookingForm() {
 
             {/* Submission error */}
             {submitError && (
-              <div className="rounded-md border border-rose-200 bg-rose-50 p-4 text-[13px] leading-6 text-rose-800">
+              <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-[13px] leading-6 text-rose-800">
                 {submitError}
               </div>
             )}
@@ -588,7 +588,7 @@ function BookingForm() {
             <div className="flex flex-col gap-3 pt-1 sm:flex-row">              <button
                 type="submit"
                 disabled={isLoading}
-                className="flex min-h-[50px] flex-1 items-center justify-center gap-2 rounded-md bg-sky-600 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-md disabled:cursor-not-allowed disabled:bg-sky-400"
+                className="flex min-h-[50px] flex-1 items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-md disabled:cursor-not-allowed disabled:bg-sky-400"
               >
                 {isLoading ? (
                   <>
@@ -607,7 +607,7 @@ function BookingForm() {
                 href={whatsappInquiryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[50px] items-center justify-center gap-2 rounded-md bg-emerald-600 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-md"
+                className="flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-md"
               >
                 <MessageSquare className="h-4 w-4" />
                 <span>WhatsApp Direct</span>
@@ -634,8 +634,8 @@ function BookingForm() {
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="rounded-md border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+            <div className="rounded-xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50">
                 <Send className="h-4 w-4 text-sky-600" />
               </div>
 
@@ -648,8 +648,8 @@ function BookingForm() {
               </p>
             </div>
 
-            <div className="rounded-md border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+            <div className="rounded-xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50">
                 <Mountain className="h-4 w-4 text-sky-600" />
               </div>
 
@@ -663,8 +663,8 @@ function BookingForm() {
               </p>
             </div>
 
-            <div className="rounded-md border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-sky-50">
+            <div className="rounded-xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50">
                 <MessageSquare className="h-4 w-4 text-sky-600" />
               </div>
 

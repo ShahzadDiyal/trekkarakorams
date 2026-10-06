@@ -4,13 +4,13 @@
  */
 
 function Shimmer({ className = '' }: { className?: string }) {
-  return <div className={`skeleton-shimmer rounded-md ${className}`} aria-hidden="true" />;
+  return <div className={`skeleton-shimmer rounded-xl ${className}`} aria-hidden="true" />;
 }
 
 /** Matches the PackageCard layout used in grids. */
 export function TrekCardSkeleton() {
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <div className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white">
       <Shimmer className="h-56 !rounded-none" />
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex justify-end">

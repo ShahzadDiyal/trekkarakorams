@@ -228,7 +228,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
             <div className="max-w-3xl">
 
-              <span className="inline-flex items-center border border-sky-200 bg-sky-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-sky-700">
+              <span className="inline-flex items-center border border-sky-200 bg-sky-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-sky-700 rounded-xl">
                 2026 Season
               </span>
 
@@ -243,7 +243,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
             </div>
 
             {/* Custom Plan */}
-            <div className="border border-slate-200 bg-slate-50 p-5">
+            <div className="border border-slate-200 bg-slate-50 p-5 rounded-xl">
 
               <div className="flex items-start gap-3">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-sky-600 text-white">
@@ -263,7 +263,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
               <button
                 onClick={() => router.push('/custom-plan')}
-                className="mt-4 flex w-full items-center justify-center gap-2 bg-sky-600 px-4 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700"
+                className="mt-4 flex w-full items-center justify-center gap-2 bg-sky-600 px-4 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700 rounded-xl"
               >
                 Plan a Custom Trip
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -293,7 +293,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                 placeholder="Search by mountain, glacier, region, or pass..."
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                className="w-full border border-slate-300 bg-slate-50 py-3 pl-10 pr-4 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-sky-500 focus:bg-white"
+                className="field-input pl-10"
               />
 
             </div>
@@ -313,7 +313,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                       | 'duration'
                   )
                 }
-                className="flex-1 border border-slate-300 bg-slate-50 px-3 py-3 text-xs font-semibold text-slate-800 outline-none focus:border-sky-500 lg:w-52 lg:flex-none"
+                className="field-select flex-1 lg:w-52 lg:flex-none"
               >
                 <option value="recommended">
                   Sort by: Recommended
@@ -334,7 +334,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
               <button
                 onClick={resetAllFilters}
-                className="flex items-center justify-center gap-2 border border-slate-300 bg-white px-4 py-3 text-xs font-bold text-slate-700 transition-colors hover:bg-slate-100"
+                className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 text-xs font-bold text-slate-700 transition-colors hover:bg-slate-100"
                 title="Reset all filters"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
@@ -351,7 +351,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
             {/* Region */}
             <div>
-              <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              <label className="field-label">
                 Region
               </label>
 
@@ -363,7 +363,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                     event.target.value
                   )
                 }
-                className="w-full border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold text-slate-800 outline-none focus:border-sky-500"
+                className="field-select"
               >
                 <option value="">All Regions</option>
 
@@ -380,7 +380,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
             {/* Difficulty */}
             <div>
-              <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              <label className="field-label">
                 Difficulty
               </label>
 
@@ -392,7 +392,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                     event.target.value
                   )
                 }
-                className="w-full border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold text-slate-800 outline-none focus:border-sky-500"
+                className="field-select"
               >
                 <option value="">All Difficulties</option>
 
@@ -409,7 +409,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
             {/* Activity */}
             <div>
-              <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              <label className="field-label">
                 Activity Type
               </label>
 
@@ -421,7 +421,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                     event.target.value
                   )
                 }
-                className="w-full border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold text-slate-800 outline-none focus:border-sky-500"
+                className="field-select"
               >
                 <option value="">All Activities</option>
 
@@ -438,7 +438,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
             {/* Duration */}
             <div>
-              <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              <label className="field-label">
                 Duration
               </label>
 
@@ -447,7 +447,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
                 onChange={(event) =>
                   setSelectedDurationRange(event.target.value)
                 }
-                className="w-full border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold text-slate-800 outline-none focus:border-sky-500"
+                className="field-select"
               >
                 <option value="ALL">
                   All Durations
@@ -530,7 +530,7 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
             </div>
           ) : (
-            <div className="border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
+            <div className="border border-dashed border-slate-300 bg-white px-6 py-16 text-center rounded-xl">
 
               <Mountain className="mx-auto mb-4 h-12 w-12 text-slate-300" />
 
@@ -546,14 +546,14 @@ export const TreksPageClient: React.FC<TreksPageClientProps> = ({
 
                 <button
                   onClick={resetAllFilters}
-                  className="bg-sky-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700"
+                  className="bg-sky-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700 rounded-xl"
                 >
                   Reset All Filters
                 </button>
 
                 <button
                   onClick={() => router.push('/custom-plan')}
-                  className="bg-slate-900 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-slate-800"
+                  className="bg-slate-900 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-slate-800 rounded-xl"
                 >
                   Create Custom Route
                 </button>

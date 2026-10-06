@@ -23,9 +23,18 @@ const STYLE_ID_TO_ACTIVITY: Record<string, string> = {
   // so it intentionally falls back to the full catalog below.
 };
 
-export const TravelStylesPageClient: React.FC = () => {
+export const TravelStylesPageClient: React.FC<{ activeStyleId?: string }> = ({
+  activeStyleId,
+}) => {
   const router = useRouter();
   const { currency, onOpenBooking } = useApp();
+
+  const styles = activeStyleId
+    ? TREK_STYLES.filter((st) => st.id === activeStyleId)
+    : TREK_STYLES;
+  const activeStyle = activeStyleId
+    ? TREK_STYLES.find((st) => st.id === activeStyleId)
+    : undefined;
 
   return (
     <div className="bg-slate-50 min-h-screen py-10">
@@ -34,16 +43,24 @@ export const TravelStylesPageClient: React.FC = () => {
         <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-4">
           <Link href="/" className="hover:text-sky-600">Home</Link>
           <span>/</span>
-          <span className="font-semibold text-slate-900">Expedition Travel Styles in Pakistan</span>
+          {activeStyle ? (
+            <>
+              <Link href="/travel-styles" className="hover:text-sky-600">Travel Styles</Link>
+              <span>/</span>
+              <span className="font-semibold text-slate-900">{activeStyle.title}</span>
+            </>
+          ) : (
+            <span className="font-semibold text-slate-900">Expedition Travel Styles in Pakistan</span>
+          )}
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="rounded-2xl bg-sky-950 text-white p-6 sm:p-8 mb-8">
           <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
             Tailored Mountain Experiences
           </span>
           <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1">
-            Travel Styles That Match Your Ambition
+            {activeStyle ? activeStyle.title : 'Travel Styles That Match Your Ambition'}
           </h1>
           <p className="text-[13px] sm:text-[16px] text-slate-300 mt-2 max-w-2xl leading-relaxed">
             Whether you seek rugged high-pass glaciated crossings, swift VIP helicopter charters, or relaxed cultural walks among alpine meadows, find your ideal expedition style below.
@@ -52,7 +69,7 @@ export const TravelStylesPageClient: React.FC = () => {
 
         {/* Styles Grid */}
         <div className="space-y-10">
-          {TREK_STYLES.map((style) => {
+          {styles.map((style) => {
             const matchedTreks = TREK_PACKAGES.filter((t) => {
               if (style.id === 'heli-treks') return t.activityType === 'Heli Trek';
               if (style.id === 'climbing-peaks') return t.activityType === 'Expedition';
@@ -65,17 +82,17 @@ export const TravelStylesPageClient: React.FC = () => {
               <div
                 key={style.id}
                 id={style.id}
-                className="bg-white p-6 sm:p-8 scroll-mt-24"
+                className="rounded-2xl bg-white p-6 sm:p-8 scroll-mt-24"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                  <div className="lg:col-span-4 h-64 sm:h-72 overflow-hidden bg-slate-900 relative">
+                  <div className="lg:col-span-4 h-64 sm:h-72 overflow-hidden rounded-xl bg-slate-900 relative">
                     <img
                       src={style.image}
                       alt={style.title}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-3 bg-sky-500 text-slate-950 font-bold text-[11px] px-2 py-0.5 uppercase tracking-wider">
+                    <div className="absolute bottom-3 left-3 rounded-xl bg-sky-500 text-slate-950 font-bold text-[11px] px-2 py-0.5 uppercase tracking-wider">
                       {style.count} Expeditions
                     </div>
                   </div>
@@ -99,7 +116,7 @@ export const TravelStylesPageClient: React.FC = () => {
                           <div
                             key={t.id}
                             onClick={() => router.push(`/treks/${t.id}`)}
-                            className="p-3 bg-slate-50 hover:border-sky-500 cursor-pointer transition-colors"
+                            className="rounded-xl border border-transparent p-3 bg-slate-50 hover:border-sky-500 cursor-pointer transition-colors"
                           >
                             <span className="text-[10px] font-bold text-sky-600 uppercase block">{t.region.split(' ')[0]}</span>
                             <h4 className="font-bold text-[14px] text-slate-900  mt-0.5">{t.title}</h4>
@@ -117,7 +134,7 @@ export const TravelStylesPageClient: React.FC = () => {
                           const activity = STYLE_ID_TO_ACTIVITY[style.id];
                           router.push(activity && isKnownActivity(activity) ? facetUrl('activity', activity) : '/treks');
                         }}
-                        className="bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-4 py-2 flex items-center gap-1 transition-colors cursor-pointer"
+                        className="rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-[14px] px-4 py-2 flex items-center gap-1 transition-colors cursor-pointer"
                       >
                         <span>Explore All {style.title}</span>
                         <ArrowRight className="w-3.5 h-3.5" />

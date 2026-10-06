@@ -20,7 +20,7 @@ export const RoutesMapPageClient: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8 rounded-xl">
           <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
             Geographic Expedition Cartography
           </span>
@@ -44,60 +44,60 @@ export const RoutesMapPageClient: React.FC = () => {
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 text-[14px] text-slate-700">
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50  rounded-xl">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>1. Askole Village (Trailhead)</span>
-                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">3,040m</span>
+                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5 rounded-xl">3,040m</span>
               </div>
               <p className="leading-relaxed">
                 The final permanent settlement in Shigar Valley. Here, jeeps terminate and the expedition porters form up for gear loads along the Braldu River.
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50  rounded-xl">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>2. Paiju Camp</span>
-                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">3,450m</span>
+                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5 rounded-xl">3,450m</span>
               </div>
               <p className="leading-relaxed">
                 Situated beneath Paiju Peak (6,610m) at the snout of the Baltoro Glacier. Crucial rest day for porters to bake traditional chapattis for the glacial journey.
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50  rounded-xl">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>3. Urdukas Camp</span>
-                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">4,050m</span>
+                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5 rounded-xl">4,050m</span>
               </div>
               <p className="leading-relaxed">
                 Perched high on the grassy slopes directly overlooking the Baltoro Glacier with staggering views across to Trango Towers and Cathedral Peak.
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50  rounded-xl">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>4. Goro II Glacial Camp</span>
-                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">4,300m</span>
+                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5 rounded-xl">4,300m</span>
               </div>
               <p className="leading-relaxed">
                 First camp fully on glacial ice and moraine. Direct views of Masherbrum (7,821m) rising sheer above the southern flank of the Baltoro.
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50  rounded-xl">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>5. Concordia Amphitheatre</span>
-                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">4,600m</span>
+                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5 rounded-xl">4,600m</span>
               </div>
               <p className="leading-relaxed">
                 The world’s most dramatic mountain amphitheatre where Baltoro and Godwin-Austen glaciers meet. 360-degree panorama of K2, Broad Peak, and Gasherbrum.
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 ">
+            <div className="p-4 bg-slate-50  rounded-xl">
               <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                 <span>6. Gondogoro La High Pass</span>
-                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5">5,585m</span>
+                <span className="text-sky-700 bg-sky-100 px-1.5 py-0.5 rounded-xl">5,585m</span>
               </div>
               <p className="leading-relaxed">
                 Technical alpine col crossed under darkness with fixed ropes and crampons, descending into the lush green Hushe Valley.
@@ -108,7 +108,7 @@ export const RoutesMapPageClient: React.FC = () => {
           <div className="pt-4 border-t border-slate-200 flex justify-end">
             <button
               onClick={() => router.push('/treks/k2-basecamp-gondogoro-la')}
-              className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-[14px] px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="bg-sky-600 hover:bg-sky-500 text-white font-medium text-[14px] px-4 py-2.5 flex items-center gap-1.5 transition-colors cursor-pointer rounded-xl"
             >
               <span>View K2 & Gondogoro La Trek Details</span>
               <ArrowRight className="w-4 h-4" />

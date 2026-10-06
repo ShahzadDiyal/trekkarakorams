@@ -110,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 animate-hero-rise animate-hero-rise-3">
             <Link
               href={hero.ctaPrimaryHref}
-              className="group inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-sky-950/30 transition-all duration-200 hover:bg-sky-500 hover:-translate-y-0.5"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-sky-950/30 transition-all duration-200 hover:bg-sky-500 hover:-translate-y-0.5"
             >
               {hero.ctaPrimaryLabel}
               <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -118,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
 
             <Link
               href={hero.ctaSecondaryHref}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-200 hover:bg-white/15 hover:border-white/40"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-200 hover:bg-white/15 hover:border-white/40"
             >
               {hero.ctaSecondaryLabel}
             </Link>
@@ -129,9 +129,9 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
             {trustItems.map(({ icon: Icon, title, subtitle }) => (
               <div
                 key={title}
-                className="flex items-center gap-3 rounded-lg border border-white/10 bg-slate-950/35 px-4 py-3 backdrop-blur-md"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/35 px-4 py-3 backdrop-blur-md"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-sky-500/10">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10">
                   <Icon className="h-5 w-5 text-sky-400" />
                 </div>
 

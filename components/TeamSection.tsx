@@ -10,10 +10,10 @@ function TeamCardSkeleton() {
     <div className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" aria-label="Loading team member">
       <div className="skeleton-shimmer aspect-[4/3] w-full" aria-hidden="true" />
       <div className="flex flex-1 flex-col p-5">
-        <div className="skeleton-shimmer h-6 w-2/3 rounded-md" aria-hidden="true" />
-        <div className="skeleton-shimmer mt-2 h-4 w-1/2 rounded-md" aria-hidden="true" />
-        <div className="skeleton-shimmer mt-3 h-4 w-full rounded-md" aria-hidden="true" />
-        <div className="skeleton-shimmer mt-1 h-4 w-5/6 rounded-md" aria-hidden="true" />
+        <div className="skeleton-shimmer h-6 w-2/3 rounded-xl" aria-hidden="true" />
+        <div className="skeleton-shimmer mt-2 h-4 w-1/2 rounded-xl" aria-hidden="true" />
+        <div className="skeleton-shimmer mt-3 h-4 w-full rounded-xl" aria-hidden="true" />
+        <div className="skeleton-shimmer mt-1 h-4 w-5/6 rounded-xl" aria-hidden="true" />
       </div>
     </div>
   );

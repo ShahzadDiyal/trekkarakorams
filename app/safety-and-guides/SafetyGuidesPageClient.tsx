@@ -32,7 +32,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
         </div>
 
         {/* Page Banner */}
-        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8">
+        <div className="bg-sky-950 text-white p-6 sm:p-8  mb-8 rounded-xl">
           <span className="text-[13px] font-bold uppercase tracking-widest text-sky-400">
             Uncompromised Wilderness Standards
           </span>
@@ -98,15 +98,15 @@ export const SafetyGuidesPageClient: React.FC = () => {
               The golden rule of high altitude mountaineering is <em>"Climb high, sleep low"</em>. Our Karakoram itineraries are engineered with dedicated acclimatization rest days at Paiju (3,450m) and Urdukas (4,050m) before pushing onto the active ice moraine of Concordia (4,600m) and Gondogoro La pass (5,585m).
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-[13px]">
-              <div className="p-3 bg-slate-50">
+              <div className="p-3 bg-slate-50 rounded-xl">
                 <span className="font-bold text-slate-900 block mb-1">Daily Elevation Cap:</span>
                 <span>Ascents above 3,000m are limited to an average sleeping gain of 300m - 500m per 24 hours.</span>
               </div>
-              <div className="p-3 bg-slate-50">
+              <div className="p-3 bg-slate-50 rounded-xl">
                 <span className="font-bold text-slate-900 block mb-1">Hydration Standards:</span>
                 <span>Mandatory 4 to 5 liters of boiled, filtered water consumed daily by every participant.</span>
               </div>
-              <div className="p-3 bg-slate-50">
+              <div className="p-3 bg-slate-50 rounded-xl">
                 <span className="font-bold text-slate-900 block mb-1">Medical Monitoring:</span>
                 <span>Daily Lake Louise AMS score evaluations conducted by expedition leader before evening meal.</span>
               </div>
@@ -124,7 +124,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
           </div>
 
           {/* Porter Welfare Pledge */}
-          <div className="bg-sky-50  p-6 sm:p-8">
+          <div className="bg-sky-50  p-6 sm:p-8 rounded-xl">
             <div className="flex items-center gap-2 text-sky-800 font-bold text-[14px] uppercase tracking-wider mb-2">
               <HeartHandshake className="w-4 h-4 text-sky-600" />
               <span>Our Porter Welfare Pledge</span>
@@ -145,7 +145,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
         </div>
 
         {/* CTA */}
-        <div className="mt-10 p-6 bg-slate-900 text-white border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-10 p-6 bg-slate-900 text-white border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl">
           <div>
             <h3 className="text-[16px] font-bold text-white">Have questions regarding high altitude fitness?</h3>
             <p className="text-[13px] text-slate-400 mt-0.5">Talk to our certified medical and expedition directors directly.</p>
@@ -154,7 +154,7 @@ export const SafetyGuidesPageClient: React.FC = () => {
             href={whatsappLink("Hi Trek Karakoram, I have questions about high altitude safety")}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-2 transition-colors shrink-0"
+            className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[14px] px-4 py-2.5 flex items-center gap-2 transition-colors shrink-0 rounded-xl"
           >
             <PhoneCall className="w-4 h-4" />
             <span>Consult Safety Director</span>
