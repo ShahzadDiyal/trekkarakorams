@@ -227,9 +227,16 @@ function pickList<T>(dbValue: unknown, fallback: T[]): T[] {
 }
 
 /** Merge a Firestore settings doc over the built-in defaults (exported so the
- *  admin form can show exactly what the website renders). */
+ *  admin form can show exactly what the website renders). Empty strings in
+ *  the doc fall back to the defaults — the admin form pre-fills with the
+ *  merged values, so a field the user never touched never wipes the site. */
 export function mergeSettings(doc: WebsiteSettings | null): ResolvedSiteSettings {
   if (!doc) return { ...DEFAULTS, loaded: true };
+  const dbHero = doc.hero ?? {};
+  const heroMediaType =
+    dbHero.mediaType === 'video' || dbHero.mediaType === 'image'
+      ? dbHero.mediaType
+      : DEFAULT_HERO.mediaType;
   return {
     siteName: pick(doc.siteName, DEFAULTS.siteName),
     tagline: pick(doc.tagline, DEFAULTS.tagline),
@@ -249,19 +256,58 @@ export function mergeSettings(doc: WebsiteSettings | null): ResolvedSiteSettings
     headerMenus: pickList<NavMenuItem>(doc.headerMenus, DEFAULT_HEADER_MENUS),
     headerButtons: pickList<HeaderButton>(doc.headerButtons, DEFAULT_HEADER_BUTTONS),
     footerColumns: pickList<FooterColumn>(doc.footerColumns, DEFAULT_FOOTER_COLUMNS),
-    hero: { ...DEFAULT_HERO, ...(doc.hero ?? {}) },
+    hero: {
+      mediaType: heroMediaType,
+      imageUrl: pick(dbHero.imageUrl, DEFAULT_HERO.imageUrl),
+      videoUrl: pick(dbHero.videoUrl, DEFAULT_HERO.videoUrl),
+      posterUrl: pick(dbHero.posterUrl, DEFAULT_HERO.posterUrl),
+      badge: pick(dbHero.badge, DEFAULT_HERO.badge),
+      headline: pick(dbHero.headline, DEFAULT_HERO.headline),
+      headlineAccent: pick(dbHero.headlineAccent, DEFAULT_HERO.headlineAccent),
+      subheadline: pick(dbHero.subheadline, DEFAULT_HERO.subheadline),
+      ctaPrimaryLabel: pick(dbHero.ctaPrimaryLabel, DEFAULT_HERO.ctaPrimaryLabel),
+      ctaPrimaryHref: pick(dbHero.ctaPrimaryHref, DEFAULT_HERO.ctaPrimaryHref),
+      ctaSecondaryLabel: pick(dbHero.ctaSecondaryLabel, DEFAULT_HERO.ctaSecondaryLabel),
+      ctaSecondaryHref: pick(dbHero.ctaSecondaryHref, DEFAULT_HERO.ctaSecondaryHref),
+    },
     gearRental: {
-      ...DEFAULT_GEAR_RENTAL,
-      ...(doc.gearRental ?? {}),
+      title: pick(doc.gearRental?.title, DEFAULT_GEAR_RENTAL.title),
+      intro: pick(doc.gearRental?.intro, DEFAULT_GEAR_RENTAL.intro),
       items:
         doc.gearRental?.items && doc.gearRental.items.length > 0
           ? doc.gearRental.items
           : DEFAULT_GEAR_RENTAL.items,
+      note: pick(doc.gearRental?.note, DEFAULT_GEAR_RENTAL.note),
     },
     visaSteps: pickList<string>(doc.visaSteps, DEFAULT_VISA_STEPS),
     defaultWeatherInfo: pick(doc.defaultWeatherInfo, DEFAULT_WEATHER_INFO),
-    footerNewsletter: { ...DEFAULT_FOOTER_NEWSLETTER, ...(doc.footerNewsletter ?? {}) },
-    footerFounding: { ...DEFAULT_FOOTER_FOUNDING, ...(doc.footerFounding ?? {}) },
+    footerNewsletter: {
+      enabled: doc.footerNewsletter?.enabled ?? DEFAULT_FOOTER_NEWSLETTER.enabled,
+      eyebrow: pick(doc.footerNewsletter?.eyebrow, DEFAULT_FOOTER_NEWSLETTER.eyebrow),
+      title: pick(doc.footerNewsletter?.title, DEFAULT_FOOTER_NEWSLETTER.title),
+      description: pick(
+        doc.footerNewsletter?.description,
+        DEFAULT_FOOTER_NEWSLETTER.description
+      ),
+      placeholder: pick(
+        doc.footerNewsletter?.placeholder,
+        DEFAULT_FOOTER_NEWSLETTER.placeholder
+      ),
+      buttonLabel: pick(
+        doc.footerNewsletter?.buttonLabel,
+        DEFAULT_FOOTER_NEWSLETTER.buttonLabel
+      ),
+    },
+    footerFounding: {
+      enabled: doc.footerFounding?.enabled ?? DEFAULT_FOOTER_FOUNDING.enabled,
+      title: pick(doc.footerFounding?.title, DEFAULT_FOOTER_FOUNDING.title),
+      description: pick(
+        doc.footerFounding?.description,
+        DEFAULT_FOOTER_FOUNDING.description
+      ),
+      ctaLabel: pick(doc.footerFounding?.ctaLabel, DEFAULT_FOOTER_FOUNDING.ctaLabel),
+      ctaHref: pick(doc.footerFounding?.ctaHref, DEFAULT_FOOTER_FOUNDING.ctaHref),
+    },
     footerCopyright: pick(doc.footerCopyright, DEFAULT_FOOTER_COPYRIGHT),
     loaded: true,
   };
