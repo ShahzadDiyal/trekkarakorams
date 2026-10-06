@@ -127,7 +127,8 @@ export async function seedBlogs(): Promise<void> {
 }
 
 export async function seedTeam(): Promise<void> {
-  TEAM_MEMBERS.forEach(async (m, i) => {
+  for (let i = 0; i < TEAM_MEMBERS.length; i++) {
+    const m = TEAM_MEMBERS[i];
     const id = `member-${i + 1}`;
     const data: AdminTeamMember = {
       id,
@@ -141,7 +142,7 @@ export async function seedTeam(): Promise<void> {
       order: i,
     };
     await upsert(COLLECTIONS.team, id, data);
-  });
+  }
 }
 
 export async function seedTestimonials(): Promise<void> {
@@ -162,7 +163,8 @@ export async function seedTestimonials(): Promise<void> {
 }
 
 export async function seedFaqs(): Promise<void> {
-  FAQ_ITEMS.forEach(async (f, i) => {
+  for (let i = 0; i < FAQ_ITEMS.length; i++) {
+    const f = FAQ_ITEMS[i];
     const id = `faq-${i + 1}`;
     const data: AdminFaq = {
       id,
@@ -172,7 +174,7 @@ export async function seedFaqs(): Promise<void> {
       order: i,
     };
     await upsert(COLLECTIONS.faqs, id, data);
-  });
+  }
 }
 
 export async function seedAll(): Promise<void> {

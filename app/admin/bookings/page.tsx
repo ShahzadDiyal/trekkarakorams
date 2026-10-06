@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { CalendarCheck, Trash2, Eye, X, Loader2, Inbox } from 'lucide-react';
-import { listDocs, deleteDocById, patchDoc, COLLECTIONS } from '@/lib/admin/db';
+import { CalendarCheck, Trash2, Eye, Plus, Loader2, Inbox } from 'lucide-react';
+import { listDocs, createDoc, deleteDocById, patchDoc, COLLECTIONS } from '@/lib/admin/db';
 import type { AdminBooking, BookingStatus } from '@/lib/admin/types';
 import {
   Card,
   PageHeader,
+  PrimaryButton,
   SecondaryButton,
   Badge,
   EmptyState,
@@ -14,6 +15,8 @@ import {
   Modal,
   ConfirmDialog,
   SelectField,
+  TextField,
+  TextArea,
 } from '@/components/admin/ui';
 
 const STATUS_TONE: Record<BookingStatus, 'amber' | 'sky' | 'green' | 'red'> = {
@@ -37,6 +40,9 @@ export default function AdminBookingsPage() {
   const [deleting, setDeleting] = useState<AdminBooking | null>(null);
   const [busy, setBusy] = useState(false);
   const [filter, setFilter] = useState<'all' | BookingStatus>('all');
+  const [creating, setCreating] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [draft, setDraft] = useState({ trekTitle: '', name: '', email: '', phone: '', country: '', travelDate: '', travelers: 1, message: '' });
 
   const load = async () => {
     setLoading(true);
@@ -58,6 +64,24 @@ export default function AdminBookingsPage() {
     setViewing((v) => (v && v.id === b.id ? { ...v, status } : v));
   };
 
+  const saveNew = async () => {
+    if (!draft.name.trim() || !draft.trekTitle.trim()) return;
+    setSaving(true);
+    try {
+      await createDoc(COLLECTIONS.bookings, {
+        ...draft,
+        travelers: Number(draft.travelers) || 1,
+        status: 'new' as BookingStatus,
+        createdAt: new Date().toISOString().slice(0, 10),
+      });
+      setCreating(false);
+      setDraft({ trekTitle: '', name: '', email: '', phone: '', country: '', travelDate: '', travelers: 1, message: '' });
+      load();
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const confirmDelete = async () => {
     if (!deleting) return;
     setBusy(true);
@@ -74,6 +98,11 @@ export default function AdminBookingsPage() {
       <PageHeader
         title="Bookings"
         subtitle={`${items.length} booking enquiries. New website enquiries will appear here automatically once the booking form is connected.`}
+        actions={
+          <PrimaryButton onClick={() => setCreating(true)}>
+            <Plus className="h-4 w-4" /> Add booking
+          </PrimaryButton>
+        }
       />
 
       <div className="mb-4 flex flex-wrap gap-2">
@@ -136,6 +165,28 @@ export default function AdminBookingsPage() {
           ))}
         </Card>
       )}
+
+      <Modal open={creating} onClose={() => setCreating(false)} title="Add booking" wide>
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <TextField label="Trek" value={draft.trekTitle} onChange={(e) => setDraft({ ...draft, trekTitle: e.target.value })} placeholder="K2 Base Camp Trek" />
+            <TextField label="Customer name" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} />
+            <TextField label="Email" type="email" value={draft.email} onChange={(e) => setDraft({ ...draft, email: e.target.value })} />
+            <TextField label="Phone / WhatsApp" value={draft.phone} onChange={(e) => setDraft({ ...draft, phone: e.target.value })} />
+            <TextField label="Country" value={draft.country} onChange={(e) => setDraft({ ...draft, country: e.target.value })} />
+            <TextField label="Travel date" value={draft.travelDate} onChange={(e) => setDraft({ ...draft, travelDate: e.target.value })} placeholder="July 2026 / Flexible" />
+            <TextField label="Travelers" type="number" min={1} value={draft.travelers} onChange={(e) => setDraft({ ...draft, travelers: Number(e.target.value) })} />
+          </div>
+          <TextArea label="Message / notes" rows={3} value={draft.message} onChange={(e) => setDraft({ ...draft, message: e.target.value })} />
+          <div className="flex justify-end gap-2 pt-2">
+            <SecondaryButton onClick={() => setCreating(false)}>Cancel</SecondaryButton>
+            <PrimaryButton onClick={saveNew} disabled={saving || !draft.name.trim() || !draft.trekTitle.trim()}>
+              {saving && <Loader2 className="h-4 w-4 animate-spin" />}
+              {saving ? 'Saving…' : 'Add booking'}
+            </PrimaryButton>
+          </div>
+        </div>
+      </Modal>
 
       <Modal open={!!viewing} onClose={() => setViewing(null)} title="Booking details" wide>
         {viewing && (

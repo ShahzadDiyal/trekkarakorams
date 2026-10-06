@@ -87,7 +87,7 @@ export default function TrekEditorPage({ params }: { params: Promise<{ id: strin
     setError('');
     try {
       if (resolved?.id === 'new') {
-        await createDoc(COLLECTIONS.treks, { ...form });
+        await createDoc(COLLECTIONS.treks, (({ id, ...rest }) => rest)(form));
       } else if (resolved) {
         const { id, ...data } = form;
         await saveDoc(COLLECTIONS.treks, resolved.id, data);

@@ -74,7 +74,7 @@ export default function BlogEditorPage({ params }: { params: Promise<{ id: strin
     try {
       const payload = { ...form, slug: form.slug.trim() || slugify(form.title) };
       if (resolved?.id === 'new') {
-        await createDoc(COLLECTIONS.blogs, payload);
+        await createDoc(COLLECTIONS.blogs, (({ id, ...rest }) => rest)(payload));
       } else if (resolved) {
         const { id, ...data } = payload;
         await saveDoc(COLLECTIONS.blogs, resolved.id, data);
