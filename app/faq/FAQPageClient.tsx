@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FAQ_ITEMS } from '@/data/treks';
+import { getFaqs, type PublicFaq } from '@/lib/content';
+import { FaqPageSkeleton } from '@/components/FaqSkeleton';
 import { HelpCircle, ChevronDown, Search, MessageSquare, PhoneCall, ShieldCheck } from 'lucide-react';
 import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
 
@@ -11,10 +12,27 @@ export const FAQPageClient: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [faqs, setFaqs] = useState<PublicFaq[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const categories = ['ALL', 'Visa & Permits', 'Fitness & Altitude', 'Logistics & Safety', 'Booking & Payment'];
+  // Live FAQs from Firestore (admin panel). Falls back to static data offline.
+  useEffect(() => {
+    let cancelled = false;
+    getFaqs().then((data) => {
+      if (!cancelled) {
+        setFaqs(data);
+        setLoading(false);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const filteredFaqs = FAQ_ITEMS.filter((item) => {
+  // Categories follow whatever the database contains, in first-seen order.
+  const categories = ['ALL', ...Array.from(new Set(faqs.map((f) => f.category)))];
+
+  const filteredFaqs = faqs.filter((item) => {
     const matchesCategory = activeCategory === 'ALL' || item.category === activeCategory;
     const matchesSearch =
       !searchQuery ||
@@ -77,12 +95,15 @@ export const FAQPageClient: React.FC = () => {
         </div>
 
         {/* Accordion Questions List */}
+        {loading ? (
+          <FaqPageSkeleton count={6} />
+        ) : (
         <div className="space-y-3 mb-10">
           {filteredFaqs.map((faq, index) => {
             const isExpanded = expandedIndex === index;
             return (
               <div
-                key={faq.question}
+                key={faq.id}
                 className={`border transition-colors ${
                   isExpanded ? 'border-sky-500 bg-sky-50/40' : 'border-slate-200 bg-white hover:border-slate-300'
                 }`}
@@ -116,6 +137,7 @@ export const FAQPageClient: React.FC = () => {
             );
           })}
         </div>
+        )}
 
         {/* Still Have Questions Box */}
         <div className="p-6 bg-slate-900 text-white border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">

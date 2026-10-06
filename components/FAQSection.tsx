@@ -1,4 +1,4 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import {
   ChevronDown,
   HelpCircle,
@@ -12,22 +12,37 @@ import {
   Check
 } from 'lucide-react';
 import { whatsappLink, SITE_NAME, PHONE_DISPLAY } from '@/lib/site';
-import { FAQ_ITEMS } from '../data/treks';
+import { getFaqs, type PublicFaq } from '@/lib/content';
+import { FaqSectionSkeleton } from './FaqSkeleton';
 
 export const FAQSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [faqs, setFaqs] = useState<PublicFaq[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  // Live FAQs from Firestore (admin panel). Falls back to static data offline.
+  useEffect(() => {
+    let cancelled = false;
+    getFaqs().then((data) => {
+      if (!cancelled) {
+        setFaqs(data);
+        setLoading(false);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Categories follow whatever the database contains, in first-seen order.
   const categories = [
     'ALL',
-    'Visa & Permits',
-    'Fitness & Altitude',
-    'Logistics & Safety',
-    'Booking & Payment',
+    ...Array.from(new Set(faqs.map((f) => f.category))),
   ];
 
-  const filteredFaqs = FAQ_ITEMS.filter((item) => {
+  const filteredFaqs = faqs.filter((item) => {
     const matchesCategory =
       activeCategory === 'ALL' || item.category === activeCategory;
 
@@ -200,6 +215,9 @@ export const FAQSection: React.FC = () => {
         {/* =====================================
             FAQ ACCORDION
         ====================================== */}
+        {loading ? (
+          <FaqSectionSkeleton count={5} />
+        ) : (
         <div className="mt-4 space-y-3">
 
           {filteredFaqs.map((faq, index) => {
@@ -207,7 +225,7 @@ export const FAQSection: React.FC = () => {
 
             return (
               <div
-                key={faq.question}
+                key={faq.id}
                 className={`
                   overflow-hidden rounded-xl border
                   transition-all duration-300
@@ -350,6 +368,7 @@ export const FAQSection: React.FC = () => {
             </div>
           )}
         </div>
+        )}
 
         {/* =====================================
             SUPPORT CTA
