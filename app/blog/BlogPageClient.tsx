@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { BLOG_POSTS } from '@/data/treks';
+import { useBlogs } from '@/lib/content';
+import { BlogGridSkeleton } from '@/components/BlogSkeletons';
 import { BLOG_CATEGORY_FACETS, blogCategoryUrl } from '@/lib/trek-facets';
 import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
 
@@ -15,8 +16,10 @@ interface BlogPageClientProps {
 export const BlogPageClient: React.FC<BlogPageClientProps> = ({ lockedCategory }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
+  // Live posts from Firestore (static data only if the DB is unreachable).
+  const { posts: allPosts, loading } = useBlogs();
 
-  const filteredPosts = BLOG_POSTS.filter((post) => {
+  const filteredPosts = allPosts.filter((post) => {
     const matchesCat = !lockedCategory || post.category === lockedCategory;
     const matchesSearch =
       !searchQuery ||
@@ -97,7 +100,9 @@ export const BlogPageClient: React.FC<BlogPageClientProps> = ({ lockedCategory }
         </div>
 
         {/* Blog Grid */}
-        {filteredPosts.length > 0 ? (
+        {loading ? (
+          <BlogGridSkeleton count={6} />
+        ) : filteredPosts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {filteredPosts.map((post) => (
               <article

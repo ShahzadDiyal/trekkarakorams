@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { BLOG_POSTS, TREK_PACKAGES } from '@/data/treks';
+import { useBlogs, type PublicBlog } from '@/lib/content';
+import { BlogPostSkeleton } from '@/components/BlogSkeletons';
 import {
   Calendar,
   Clock,
@@ -18,13 +19,39 @@ import {
 } from 'lucide-react';
 import { whatsappLink } from '@/lib/site';
 
-type BlogPost = (typeof BLOG_POSTS)[number];
+/** Wrapper: resolves the post from Firestore (static fallback), then renders. */
+export const BlogPostPageClient: React.FC<{ slug: string }> = ({ slug }) => {
+  const { posts, loading } = useBlogs();
+  const post = posts.find((p) => p.slug === slug) ?? null;
 
-interface BlogPostPageProps {
-  post: BlogPost;
-}
+  if (loading) return <BlogPostSkeleton />;
 
-export const BlogPostPageClient: React.FC<BlogPostPageProps> = ({ post }) => {
+  if (!post) {
+    return (
+      <div className="bg-slate-50 min-h-screen py-24">
+        <div className="mx-auto max-w-xl px-4 text-center">
+          <h1 className="text-2xl font-bold text-slate-900">Article not found</h1>
+          <p className="mt-2 text-sm text-slate-600">
+            This article doesn&apos;t exist or was removed.
+          </p>
+          <Link
+            href="/blog"
+            className="mt-6 inline-block bg-sky-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sky-700"
+          >
+            View all articles
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return <BlogPostView post={post} allPosts={posts} />;
+};
+
+const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
+  post,
+  allPosts,
+}) => {
   const router = useRouter();
 
   const [copied, setCopied] = useState(false);
@@ -35,7 +62,7 @@ export const BlogPostPageClient: React.FC<BlogPostPageProps> = ({ post }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const relatedPosts = BLOG_POSTS.filter((p) => p.id !== post.id);
+  const relatedPosts = allPosts.filter((p) => p.id !== post.id).slice(0, 4);
 
   return (
     <div className="bg-slate-50 min-h-screen py-10">
@@ -127,7 +154,7 @@ export const BlogPostPageClient: React.FC<BlogPostPageProps> = ({ post }) => {
               <div
                 key={p.id}
                 onClick={() => {
-                  router.push(`/blog/${p.id}`);
+                  router.push(`/blog/${p.slug}`);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="p-4 bg-white  hover:border-sky-500 cursor-pointer transition-colors"

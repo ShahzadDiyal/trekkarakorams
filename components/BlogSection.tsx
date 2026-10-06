@@ -9,11 +9,14 @@ import {
   BookOpen,
   Sparkles,
 } from 'lucide-react';
-import { BLOG_POSTS } from '@/data/treks';
 import { useRouter } from 'next/navigation';
+import { useBlogs } from '@/lib/content';
+import { BlogGridSkeleton } from '@/components/BlogSkeletons';
 
 export const BlogSection: React.FC = () => {
   const router = useRouter();
+  // Live posts from Firestore (static data only if the DB is unreachable).
+  const { posts, loading } = useBlogs();
 
   return (
     <section
@@ -89,8 +92,11 @@ export const BlogSection: React.FC = () => {
         {/* =====================================================
             BLOG GRID
         ====================================================== */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {BLOG_POSTS.map((post, index) => (
+        {loading ? (
+          <BlogGridSkeleton count={3} />
+        ) : (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post, index) => (
             <article
               key={post.id}
               className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-slate-200/60"
@@ -176,8 +182,9 @@ export const BlogSection: React.FC = () => {
                 </div>
               </div>
             </article>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* =====================================================
             BOTTOM CTA

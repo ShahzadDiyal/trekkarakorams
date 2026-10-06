@@ -3,10 +3,11 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from './firebase';
-import { FAQ_ITEMS, TREK_PACKAGES } from '@/data/treks';
-import type { AdminTrek, TrekFaq, PricingTier } from './admin/types';
+import { FAQ_ITEMS, TREK_PACKAGES, BLOG_POSTS } from '@/data/treks';
+import type { AdminTrek, AdminBlog, TrekFaq, PricingTier } from './admin/types';
 import type {
   TrekPackage,
+  BlogArticle,
   TrekRegion,
   TrekDifficulty,
   ItineraryDay,
@@ -267,4 +268,83 @@ export function useTrek(id: string): {
   const { treks, loading } = useTreks();
   const trek = treks.find((t) => t.id === id) ?? null;
   return { trek, loading };
+}
+
+/* ------------------------------------------------------------------ */
+/* Blogs                                                               */
+/* ------------------------------------------------------------------ */
+
+/** AdminBlog already matches the BlogArticle shape the site renders. */
+export type PublicBlog = BlogArticle;
+
+function toPublicBlog(doc: AdminBlog & { id: string }): PublicBlog {
+  return {
+    id: doc.id,
+    title: doc.title || 'Untitled article',
+    slug: doc.slug || doc.id,
+    category: doc.category || 'Guides',
+    readTime: doc.readTime || '',
+    author: doc.author || '',
+    authorRole: doc.authorRole || '',
+    date: doc.date || '',
+    image: doc.image || '',
+    excerpt: doc.excerpt || '',
+    content: doc.content ?? [],
+  };
+}
+
+/** All published blog posts, live from the `blogs` collection.
+ *  The database is the source of truth; static data only fills in when
+ *  Firestore can't be reached. */
+export async function getBlogs(): Promise<PublicBlog[]> {
+  try {
+    const snap = await getDocs(
+      query(collection(db, 'blogs'), orderBy('createdAt', 'asc'))
+    );
+    const docs = snap.docs.map((d) => {
+      const { id: _docId, ...data } = d.data() as AdminBlog;
+      return { id: d.id, ...data };
+    });
+    const published = docs.filter((d) => d.published !== false);
+    if (published.length === 0) return [...BLOG_POSTS];
+    const order = new Map(BLOG_POSTS.map((p, i) => [p.id, i]));
+    return published
+      .map(toPublicBlog)
+      .sort((a, b) => (order.get(a.id) ?? 9999) - (order.get(b.id) ?? 9999));
+  } catch {
+    return [...BLOG_POSTS];
+  }
+}
+
+/** React hook for the public blog list. */
+export function useBlogs(): { posts: PublicBlog[]; loading: boolean } {
+  const [posts, setPosts] = useState<PublicBlog[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let cancelled = false;
+    getBlogs()
+      .then((p) => {
+        if (!cancelled) {
+          setPosts(p);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return { posts, loading };
+}
+
+/** React hook for a single post by slug (database first, static fallback). */
+export function useBlog(slug: string): {
+  post: PublicBlog | null;
+  loading: boolean;
+} {
+  const { posts, loading } = useBlogs();
+  const post = posts.find((p) => p.slug === slug) ?? null;
+  return { post, loading };
 }

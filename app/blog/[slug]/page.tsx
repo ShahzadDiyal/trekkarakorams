@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { BLOG_POSTS } from '@/data/treks';
 import { SITE_URL, SITE_NAME } from '@/lib/site';
 import { BlogPostPageClient } from './BlogPostPageClient';
@@ -78,18 +77,20 @@ export default async function BlogPostPage({ params }: BlogPostRouteParams) {
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
 
-  if (!post) {
-    notFound();
-  }
-
+  // Unknown slugs (e.g. posts created in the admin panel after build) render
+  // client-side: the client resolves them from Firestore and shows a
+  // not-found state only if the database doesn't have them either.
+  // Static posts keep their server-rendered JSON-LD for rich results.
   return (
     <>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd(post)) }}
-      />
-      <BlogPostPageClient post={post} />
+      {post && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd(post)) }}
+        />
+      )}
+      <BlogPostPageClient slug={slug} />
     </>
   );
 }
