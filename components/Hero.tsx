@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
     >
       {/* Background — image or video, from Website Settings → Hero Section */}
       <div className="absolute inset-0">
-        {hero.mediaType === 'video' ? (
+        {hero.mediaType === 'video' && hero.videoUrl ? (
           <video
             autoPlay
             loop
@@ -65,14 +65,14 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
           >
             <source src={hero.videoUrl} type="video/mp4" />
           </video>
-        ) : (
+        ) : hero.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={hero.imageUrl}
             alt="Karakoram mountains"
             className="h-full w-full object-cover object-center"
           />
-        )}
+        ) : null}
 
         {/* Dark cinematic overlays */}
         <div className="absolute inset-0 bg-slate-950/45" />
