@@ -21,7 +21,9 @@ import type {
 async function upsert<T extends object>(collectionName: string, id: string, data: T) {
   await setDoc(
     doc(db, collectionName, id),
-    { ...data, updatedAt: serverTimestamp() },
+    // createdAt is required: list queries orderBy('createdAt') and Firestore
+    // silently excludes documents that lack the ordered field.
+    { ...data, createdAt: serverTimestamp(), updatedAt: serverTimestamp() },
     { merge: true }
   );
 }
