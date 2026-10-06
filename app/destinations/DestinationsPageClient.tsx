@@ -241,7 +241,7 @@ export const DestinationsPageClient: React.FC<{ initialRegionId?: string }> = ({
 
 
                 {/* Facts */}
-                <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2">
+                <div className="mt-8 grid grid-cols-1 gap-2 p-2 overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2">
 
                   <div className="rounded-xl bg-slate-50 p-4">
                     <div className="mb-2 flex items-center gap-2">

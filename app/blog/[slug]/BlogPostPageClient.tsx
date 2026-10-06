@@ -66,7 +66,7 @@ const BlogPostView: React.FC<{ post: PublicBlog; allPosts: PublicBlog[] }> = ({
 
   return (
     <div className="bg-slate-50 min-h-screen py-10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-[14px] text-slate-500 mb-6 flex-wrap">
           <Link href="/" className="hover:text-sky-600">Home</Link>

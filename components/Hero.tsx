@@ -86,7 +86,7 @@ export const Hero: React.FC<HeroProps> = ({ onTagClick }) => {
 
           {/* Trust Badge */}
           <div className="mb-6 animate-hero-rise animate-hero-rise-1">
-            <span className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-semibold text-sky-100 backdrop-blur-md">
+            <span className="text-[14px] md:text-[18px] inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-semibold text-sky-100 backdrop-blur-md">
               <Award className="h-4 w-4 text-sky-400" />
               {hero.badge}
             </span>

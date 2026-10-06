@@ -222,8 +222,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
           <div className="lg:col-span-7">
             <div className="relative h-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80">
 
-              {/* Subtle Top Accent */}
-              <div className="h-1 w-full bg-sky-500" />
+           
 
               <div className="p-5 sm:p-7 lg:p-8">
 

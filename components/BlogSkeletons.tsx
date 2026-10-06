@@ -47,7 +47,7 @@ export function BlogGridSkeleton({ count = 6 }: { count?: number }) {
 export function BlogPostSkeleton() {
   return (
     <div className="bg-slate-50 min-h-screen py-10" aria-label="Loading article">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <Shimmer className="mb-6 h-4 w-64" />
         <div className="bg-white p-6 sm:p-10 mb-10 space-y-4">
           <Shimmer className="h-6 w-32" />

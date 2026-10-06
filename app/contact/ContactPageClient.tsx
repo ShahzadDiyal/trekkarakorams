@@ -40,7 +40,7 @@ export const ContactPageClient: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 py-8 sm:py-10 lg:py-12">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
         <div className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-slate-500 sm:text-[14px]">
