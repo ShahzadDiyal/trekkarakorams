@@ -312,12 +312,16 @@ export function Modal({
   title,
   children,
   wide = false,
+  dismissable = true,
 }: {
   open: boolean;
   onClose: () => void;
   title: string;
   children: React.ReactNode;
   wide?: boolean;
+  /** When false, backdrop click and Escape won't close the modal —
+   *  use the X / Cancel buttons instead. Prevents accidental form loss. */
+  dismissable?: boolean;
 }) {
   // Rendered in a portal so no ancestor CSS (transforms, filters, …) can
   // trap the fixed overlay. Also locks body scroll + closes on Escape.
@@ -330,7 +334,7 @@ export function Modal({
   React.useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape' && dismissable) onClose();
     };
     document.addEventListener('keydown', onKey);
     const prev = document.body.style.overflow;
@@ -339,13 +343,13 @@ export function Modal({
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = prev;
     };
-  }, [open, onClose]);
+  }, [open, onClose, dismissable]);
 
   if (!open || !mounted) return null;
   return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/60 p-0 sm:items-center sm:p-6"
-      onClick={onClose}
+      onClick={dismissable ? onClose : undefined}
       role="dialog"
       aria-modal="true"
       aria-label={title}

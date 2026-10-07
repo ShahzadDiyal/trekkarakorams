@@ -288,6 +288,7 @@ export default function AdminGalleryPage() {
         onClose={() => setEditing(null)}
         title={editing?.id ? 'Edit gallery item' : `Add ${editing?.type === 'reel' ? 'reel' : 'post'}`}
         wide
+        dismissable={false}
       >
         {editing && (
           <div className="space-y-4">
