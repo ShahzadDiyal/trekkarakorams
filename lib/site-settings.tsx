@@ -71,6 +71,7 @@ const DEFAULT_HEADER_MENUS: NavMenuItem[] = [
       { label: 'Shimshal & Pamir (6000m Peaks)', href: '/destination/shimshal' },
     ],
   },
+  { label: 'GALLERY', href: '/gallery', children: [] },
   { label: 'CONTACT', href: '/contact', children: [] },
 ];
 
@@ -104,6 +105,7 @@ const DEFAULT_FOOTER_COLUMNS: FooterColumn[] = [
     title: 'Resources',
     links: [
       { label: 'Destinations', href: '/destinations' },
+      { label: 'Gallery', href: '/gallery' },
       { label: 'Trip Planner', href: '/planner' },
       { label: 'Safety & Guides', href: '/safety-and-guides' },
       { label: 'Permits & Visa Guide', href: '/permits-visa-guide' },

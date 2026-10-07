@@ -1,7 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  orderBy,
+  query,
+  runTransaction,
+  serverTimestamp,
+} from 'firebase/firestore';
 import { db } from './firebase';
 import { FAQ_ITEMS, TREK_PACKAGES, BLOG_POSTS } from '@/data/treks';
 import { TEAM_MEMBERS, type TeamMember } from '@/data/team';
@@ -12,6 +21,8 @@ import type {
   AdminTeamMember,
   AdminTestimonial,
   AdminDestination,
+  AdminGalleryItem,
+  GalleryItemType,
   TrekFaq,
   PricingTier,
 } from './admin/types';
@@ -616,4 +627,150 @@ export function useDestinations(): {
     };
   }, []);
   return { destinations, loading };
+}
+
+/* ------------------------------------------------------------------ */
+/* Gallery                                                             */
+/* ------------------------------------------------------------------ */
+
+export interface PublicGalleryItem {
+  id: string;
+  type: GalleryItemType;
+  title: string;
+  description: string;
+  mediaUrl: string;
+  thumbnailUrl: string;
+  location: string;
+  trekId: string;
+  reactions: Record<string, number>;
+  /** ISO date string (may be empty when unknown). */
+  createdAt: string;
+}
+
+function toPublicGalleryItem(
+  doc: AdminGalleryItem & { id: string; createdAt?: unknown }
+): PublicGalleryItem {
+  const ts = doc.createdAt as { toDate?: () => Date } | undefined;
+  return {
+    id: doc.id,
+    type: doc.type === 'reel' ? 'reel' : 'post',
+    title: doc.title || '',
+    description: doc.description || '',
+    mediaUrl: doc.mediaUrl || '',
+    thumbnailUrl: doc.thumbnailUrl || '',
+    location: doc.location || '',
+    trekId: doc.trekId || '',
+    reactions: doc.reactions ?? {},
+    createdAt: ts && typeof ts.toDate === 'function' ? ts.toDate().toISOString() : '',
+  };
+}
+
+/**
+ * Database-first gallery items (published, admin order). Returns an empty
+ * list (not static filler) when Firestore can't be reached — the gallery
+ * page renders a proper empty state instead.
+ */
+export async function getGalleryItems(): Promise<PublicGalleryItem[]> {
+  try {
+    const snap = await getDocs(
+      query(collection(db, 'gallery'), orderBy('createdAt', 'asc'))
+    );
+    const docs = snap.docs.map((d) => {
+      const data = d.data() as Omit<AdminGalleryItem, 'id'>;
+      return { ...data, id: d.id };
+    });
+    return docs
+      .filter((d) => d.published !== false && d.mediaUrl)
+      .map(toPublicGalleryItem)
+      .sort(
+        (a, b) =>
+          (docs.find((d) => d.id === a.id)?.order ?? 0) -
+          (docs.find((d) => d.id === b.id)?.order ?? 0)
+      );
+  } catch {
+    return [];
+  }
+}
+
+/** Single gallery item by id (database only). */
+export async function getGalleryItem(id: string): Promise<PublicGalleryItem | null> {
+  try {
+    const snap = await getDoc(doc(db, 'gallery', id));
+    if (!snap.exists()) return null;
+    const data = snap.data() as Omit<AdminGalleryItem, 'id'>;
+    if (data.published === false || !data.mediaUrl) return null;
+    return toPublicGalleryItem({ ...data, id: snap.id });
+  } catch {
+    return null;
+  }
+}
+
+/** React hook for the public gallery page. */
+export function useGalleryItems(): {
+  items: PublicGalleryItem[];
+  loading: boolean;
+} {
+  const [items, setItems] = useState<PublicGalleryItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let cancelled = false;
+    getGalleryItems()
+      .then((g) => {
+        if (!cancelled) {
+          setItems(g);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return { items, loading };
+}
+
+/** React hook for a single gallery item. */
+export function useGalleryItem(id: string): {
+  item: PublicGalleryItem | null;
+  loading: boolean;
+} {
+  const [item, setItem] = useState<PublicGalleryItem | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let cancelled = false;
+    getGalleryItem(id)
+      .then((g) => {
+        if (!cancelled) {
+          setItem(g);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+  return { item, loading };
+}
+
+/**
+ * Increment an emoji reaction on a gallery item. Runs as a transaction so
+ * concurrent taps don't lose counts. The Firestore rule only permits
+ * `reactions` (+ `updatedAt`) to change for non-admin callers.
+ */
+export async function addGalleryReaction(id: string, emoji: string): Promise<Record<string, number>> {
+  const ref = doc(db, 'gallery', id);
+  return runTransaction(db, async (tx) => {
+    const snap = await tx.get(ref);
+    if (!snap.exists()) throw new Error('Gallery item not found');
+    const data = snap.data() as Partial<AdminGalleryItem>;
+    const reactions: Record<string, number> = { ...(data.reactions ?? {}) };
+    reactions[emoji] = (reactions[emoji] ?? 0) + 1;
+    tx.update(ref, { reactions, updatedAt: serverTimestamp() });
+    return reactions;
+  });
 }

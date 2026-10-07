@@ -59,17 +59,49 @@ service cloud.firestore {
         && (!('notes' in d) || str(d.notes, 0, 1000));
     }
 
+    // An emoji reaction bump on a gallery item: only the `reactions` map
+    // (and `updatedAt`) may change, keys are restricted to the allowed
+    // emoji set, and each count may grow by at most 5 per request.
+    function reactionCountOk(reactions, before, emoji) {
+      return !(emoji in reactions)
+        || (reactions[emoji] is int
+            && reactions[emoji] >= 0
+            && reactions[emoji] <= before.get(emoji, 0) + 5);
+    }
+
+    function isValidReactionUpdate() {
+      let after = request.resource.data;
+      let beforeReactions = resource.data.get('reactions', {});
+      let reactions = after.get('reactions', {});
+      return after.diff(resource.data).affectedKeys().hasOnly(['reactions', 'updatedAt'])
+        && reactions is map
+        && reactions.keys().hasOnly(['❤️', '😍', '👏', '🔥', '⛰️', '👍'])
+        && reactionCountOk(reactions, beforeReactions, '❤️')
+        && reactionCountOk(reactions, beforeReactions, '😍')
+        && reactionCountOk(reactions, beforeReactions, '👏')
+        && reactionCountOk(reactions, beforeReactions, '🔥')
+        && reactionCountOk(reactions, beforeReactions, '⛰️')
+        && reactionCountOk(reactions, beforeReactions, '👍')
+        && (!('updatedAt' in after) || after.updatedAt is timestamp);
+    }
+
     // Public content collections managed by the admin panel.
     match /{collection}/{docId} {
       allow read: if collection in [
         'settings', 'hero', 'treks', 'blogs', 'team',
-        'testimonials', 'faqs', 'destinations'
+        'testimonials', 'faqs', 'destinations', 'gallery'
       ];
       allow create, update, delete: if isAdmin()
         && collection in [
           'settings', 'hero', 'treks', 'blogs', 'team',
-          'testimonials', 'faqs', 'destinations', 'bookings', 'customers'
+          'testimonials', 'faqs', 'destinations', 'gallery', 'bookings', 'customers'
         ];
+    }
+
+    // Public emoji reactions on gallery items: anyone may bump reaction
+    // counts, but nothing else on the document may change.
+    match /gallery/{docId} {
+      allow update: if isValidReactionUpdate();
     }
 
     // Website booking submissions: public can create, only admins read/manage.

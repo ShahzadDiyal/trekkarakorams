@@ -238,6 +238,29 @@ export interface AdminDestination {
   order: number;
 }
 
+export type GalleryItemType = 'post' | 'reel';
+
+export interface AdminGalleryItem {
+  id: string;
+  type: GalleryItemType;
+  title: string;
+  description: string;
+  /** Image URL (post) or video URL (reel). */
+  mediaUrl: string;
+  /** Optional poster/thumbnail for reels. */
+  thumbnailUrl: string;
+  location: string;
+  /** Linked trek doc id (optional). */
+  trekId: string;
+  /** Emoji -> count, incremented publicly via a constrained rule. */
+  reactions: Record<string, number>;
+  published: boolean;
+  order: number;
+}
+
+/** Emojis visitors can react with on gallery items. */
+export const GALLERY_REACTION_EMOJIS = ['❤️', '😍', '👏', '🔥', '⛰️', '👍'] as const;
+
 export interface AdminTeamMember {
   id: string;
   name: string;

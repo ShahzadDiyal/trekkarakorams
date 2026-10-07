@@ -23,6 +23,7 @@ export const COLLECTIONS = {
   testimonials: 'testimonials',
   faqs: 'faqs',
   destinations: 'destinations',
+  gallery: 'gallery',
   bookings: 'bookings',
   customers: 'customers',
 } as const;

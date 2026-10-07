@@ -13,6 +13,7 @@ import type {
   AdminTrek,
   AdminBlog,
   AdminDestination,
+  AdminGalleryItem,
 } from '@/lib/admin/types';
 
 /**
@@ -61,6 +62,26 @@ async function liveBlogSlugs(): Promise<string[]> {
   return slugs.length > 0 ? slugs : BLOG_POSTS.map((p) => p.slug);
 }
 
+/** Live published gallery item ids from Firestore, in admin order. */
+async function liveGalleryIds(): Promise<string[]> {
+  try {
+    const snap = await getDocs(
+      query(collection(db, 'gallery'), orderBy('createdAt', 'asc'))
+    );
+    const ids = snap.docs
+      .map((d) => {
+        const data = d.data() as Omit<AdminGalleryItem, 'id'>;
+        return { ...data, id: d.id };
+      })
+      .filter((g) => g.published !== false && g.mediaUrl)
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .map((g) => g.id);
+    return ids;
+  } catch {
+    return [];
+  }
+}
+
 /** Live published destination slugs from Firestore, in admin order. */
 async function liveDestinationSlugs(): Promise<string[]> {
   const snap = await getDocs(
@@ -90,6 +111,7 @@ export async function GET() {
     { loc: `${SITE_URL}/permits-visa-guide`, changefreq: 'monthly', priority: 0.7 },
     { loc: `${SITE_URL}/blog`, changefreq: 'weekly', priority: 0.7 },
     { loc: `${SITE_URL}/faq`, changefreq: 'monthly', priority: 0.6 },
+    { loc: `${SITE_URL}/gallery`, changefreq: 'weekly', priority: 0.7 },
     { loc: `${SITE_URL}/contact`, changefreq: 'yearly', priority: 0.5 },
     { loc: `${SITE_URL}/about`, changefreq: 'monthly', priority: 0.6 },
     { loc: `${SITE_URL}/terms`, changefreq: 'yearly', priority: 0.4 },
@@ -99,10 +121,11 @@ export async function GET() {
 
   // Live content — each settles independently so one failing collection
   // never takes down the whole sitemap.
-  const [trekIds, blogSlugs, destinationSlugs] = await Promise.all([
+  const [trekIds, blogSlugs, destinationSlugs, galleryIds] = await Promise.all([
     liveTrekIds().catch(() => TREK_PACKAGES.map((t) => t.id)),
     liveBlogSlugs().catch(() => BLOG_POSTS.map((p) => p.slug)),
     liveDestinationSlugs().catch(() => DESTINATION_REGIONS.map((r) => r.id)),
+    liveGalleryIds().catch(() => []),
   ]);
 
   const entries: SitemapEntry[] = [
@@ -136,6 +159,11 @@ export async function GET() {
       loc: `${SITE_URL}/destination/${slug}`,
       changefreq: 'monthly',
       priority: 0.8,
+    })),
+    ...galleryIds.map((id) => ({
+      loc: `${SITE_URL}/gallery/${id}`,
+      changefreq: 'monthly',
+      priority: 0.6,
     })),
     ...blogSlugs.map((slug) => ({
       loc: `${SITE_URL}/blog/${slug}`,

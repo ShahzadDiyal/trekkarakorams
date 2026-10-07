@@ -65,6 +65,7 @@
 - Browse by Activity: https://trekkarakoram.com/treks/activity/{activity}
 - Browse by Difficulty: https://trekkarakoram.com/treks/difficulty/{difficulty}
 - Destinations Hub: https://trekkarakoram.com/destinations
+- Gallery (Photos & Reels): https://trekkarakoram.com/gallery
 - Destination Guides: https://trekkarakoram.com/destination/{slug} (e.g. /destination/hunza-nagar)
 - Travel Styles: https://trekkarakoram.com/travel-styles and https://trekkarakoram.com/travel-styles/{style} (e.g. /travel-styles/heli-treks)
 - Trip Planner (Cost Estimator): https://trekkarakoram.com/planner
